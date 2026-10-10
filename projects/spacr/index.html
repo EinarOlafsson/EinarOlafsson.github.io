@@ -7,9 +7,12 @@
 <script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=badab9079a">
+<link rel="stylesheet" href="/assets/css/site.css?v=080a078259">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=badab9079a" defer></script>
+<script src="/assets/js/fx.js?v=080a078259" defer></script>
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/spacr/sv/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/spacr/">
 
 <title>spaCR: spatial phenotype analysis of CRISPR-Cas9 screens</title>
 <link rel="preload" as="image" href="/assets/img/spacr/overview-hoechst.webp" fetchpriority="high">
@@ -23,11 +26,18 @@
   <div class="wrap">
     <a class="brand" href="/">Einar B. Olafsson</a>
     <nav class="nav" aria-label="Projects">
-      <a href="/projects/spacr/" data-nav="spacr" aria-current="page">spaCR</a>
+      <a href="/projects/spacr/" data-nav="spacr" aria-current="page" data-langs="sv">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
     </nav>
     <div class="tools">
+      <details class="lang" data-lang-menu>
+        <summary title="Language"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Language: </span><span class="lang-cur">English</span></summary>
+        <ul aria-label="Language">
+          <li><a href="/projects/spacr/" hreflang="en" lang="en" data-lang="en" aria-current="true">English</a></li>
+          <li><a href="/projects/spacr/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+        </ul>
+      </details>
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pause background animation" title="Pause background animation">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
         <span class="label">Pause</span>
@@ -60,7 +70,7 @@
   <section id="overview" class="panel-sec hero" role="tabpanel" aria-labelledby="tab-overview" tabindex="-1">
     <div class="wrap grid overview">
       <div>
-        <p class="kicker">Python package and desktop application · <span class="nw">BSD-3-Clause</span></p>
+        <p class="kicker"><span>Python package and desktop application</span> · <span class="nw">BSD-3-Clause</span></p>
         <h1>spaCR</h1>
         <p class="lede">Spatial phenotype analysis of CRISPR-Cas9 screens.</p>
         <p class="prose">spaCR segments cells, nuclei and pathogens in microscopy images, measures every object, and links the measurements to the guide RNAs sequenced from the same wells. It starts from plate images and FASTQ reads and ends with per-cell measurements, trained classifiers and a ranked list of genes.</p>
@@ -87,7 +97,7 @@
         <li><a class="row" href="#papers"><b>5</b><span>papers using spaCR</span></a></li>
         <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84</b><span>tutorial lessons</span></a></li>
         <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10</b><span>interface languages</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/spacr/actions"><b>84,040</b><span>automated tests</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/spacr/actions"><b>85,045</b><span>automated tests</span></a></li>
       </ul>
     </div>
   </section>
@@ -99,11 +109,11 @@
         <p>One field followed through spaCR: plate 1, well H02, field 4 of the example screen, a well whose guides are 92% GRA14, the positive control.</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="Infected cells: nuclei blue, marker green, parasites red" loading="lazy" decoding="async"></a><h3><span class="num">1</span>Image</h3><p>19 infected cells, reassembled from Measure crops.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="Cell, nucleus and parasite outlines on the same cells" loading="lazy" decoding="async"></a><h3><span class="num">2</span>Mask</h3><p>Cell, nucleus and parasite outlines.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="Cells coloured by parasite channel-1 intensity" loading="lazy" decoding="async"></a><h3><span class="num">3</span>Measure</h3><p>Cells coloured by parasite channel-1 intensity.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="Cells coloured by classifier score, most near 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span>Classify</h3><p>Classifier score per cell; 18 of 19 above 0.5.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="Volcano plot with GRA14 ringed and SAG1 labelled" loading="lazy" decoding="async"></a><h3><span class="num">5</span>Hit</h3><p>GRA14 called by regression (q 0.040).</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="Infected cells: nuclei blue, marker green, parasites red" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>Image</span></h3><p>19 infected cells, reassembled from Measure crops.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="Cell, nucleus and parasite outlines on the same cells" loading="lazy" decoding="async"></a><h3><span class="num">2</span><span>Mask</span></h3><p>Cell, nucleus and parasite outlines.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="Cells coloured by parasite channel-1 intensity" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Measure</span></h3><p>Cells coloured by parasite channel-1 intensity.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="Cells coloured by classifier score, most near 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Classify</span></h3><p>Classifier score per cell; 18 of 19 above 0.5.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="Volcano plot with GRA14 ringed and SAG1 labelled" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>Hit</span></h3><p>GRA14 called by regression (q 0.040).</p></li>
       </ol>
       <p class="note">Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> crops and <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a> measurements, scores and guide counts. Cell outlines are the screen's masks; nucleus and parasite outlines were recomputed with Cellpose-SAM through spaCR on CPU; the regression covers this 30-well subset.</p>
       <ul class="steps" aria-label="Modules" style="margin-top:48px">
@@ -523,6 +533,7 @@ spacr</code></pre>
   <div class="wrap">
     <p>Static HTML and CSS. The background is a WebGL port of spaCR's advection theme. No analytics and no cookies.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
   </div>
 </footer>
 

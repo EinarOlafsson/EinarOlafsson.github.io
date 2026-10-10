@@ -7,9 +7,10 @@
 <script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=badab9079a">
+<link rel="stylesheet" href="/assets/css/site.css?v=080a078259">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=badab9079a" defer></script>
+<script src="/assets/js/fx.js?v=080a078259" defer></script>
+
 
 <title>Einar B. Olafsson</title>
 <meta name="description" content="Software, models and hardware by Einar B. Olafsson: spaCR, live-cell segmentation models and a phone mount for microscope eyepieces.">
@@ -22,11 +23,12 @@
   <div class="wrap">
     <a class="brand" href="/">Einar B. Olafsson</a>
     <nav class="nav" aria-label="Projects">
-      <a href="/projects/spacr/" data-nav="spacr">spaCR</a>
+      <a href="/projects/spacr/" data-nav="spacr" data-langs="sv">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
     </nav>
     <div class="tools">
+
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pause background animation" title="Pause background animation">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
         <span class="label">Pause</span>
@@ -82,6 +84,7 @@
   <div class="wrap">
     <p>Static HTML and CSS. The background is a WebGL port of spaCR's advection theme. No analytics and no cookies.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
   </div>
 </footer>
 
