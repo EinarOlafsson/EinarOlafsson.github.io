@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("js");var r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;var p=null;try{p=localStorage.getItem("fx-paused")}catch(e){}if(r)document.documentElement.classList.add("no-motion");if(p==="1")document.documentElement.classList.add("fx-paused");})();</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=7e54200ae5">
+<script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=d9f38db81a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=7e54200ae5" defer></script>
+<script src="/assets/js/fx.js?v=d9f38db81a" defer></script>
 
-<title>spaCR · spatial phenotype analysis of CRISPR screens</title>
-<meta name="description" content="spaCR 1.5.1.4: segment and measure single cells, link pooled CRISPR perturbations to spatial phenotypes, and rank the genes behind them. Desktop installers, PyPI, docs, tutorials and citation.">
-<link rel="preload" as="image" href="/assets/img/deck-01.webp" type="image/webp">
+<title>spaCR: spatial phenotype analysis of CRISPR-Cas9 screens</title>
+<meta name="description" content="spaCR 1.5.1.4: segmentation, single-cell measurement, classification, barcode mapping and regression for image-based pooled CRISPR screens. Installers, PyPI, models, papers and citation.">
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Skip to content</a>
@@ -19,20 +20,20 @@
 <canvas id="fx" aria-hidden="true"></canvas>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Einar B. Olafsson <span>· projects</span></a>
+    <a class="brand" href="/">Einar B. Olafsson</a>
     <nav class="nav" aria-label="Projects">
       <a href="/projects/spacr/" data-nav="spacr" aria-current="page">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
     </nav>
     <div class="tools">
-      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false">
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pause background animation" title="Pause background animation">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
-        <span class="label-long">Pause effects</span><span class="label-short">Pause</span>
+        <span class="label">Pause</span>
       </button>
-      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch theme">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch theme" title="Switch theme">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
-        <span class="label-long">Theme</span>
+        <span class="label">Theme</span>
       </button>
     </div>
   </div>
@@ -40,123 +41,215 @@
 
 <main id="main">
   <section class="hero">
-    <div class="wrap grid-2">
-      <div>
-        <p class="eyebrow">Open source · BSD-3-Clause</p>
-        <h1><span class="grad">spaCR</span></h1>
-        <p class="lede">Spatial phenotype analysis of CRISPR screens.</p>
-        <div class="stat-row">
-          <span class="chip">Version <b>1.5.1.4</b></span>
-          <span class="chip">Released <b>2026-10-09</b></span>
-          <span class="chip">Python <b>3.9–3.14</b></span>
-        </div>
-        <div class="btns">
-          <a class="btn primary" href="#install">Install</a>
-          <a class="btn" href="https://einarolafsson.github.io/spacr/">Documentation</a>
-          <a class="btn" href="https://einarolafsson.github.io/spacr/tutorials/">Tutorials</a>
-          <a class="btn" href="https://github.com/EinarOlafsson/spacr">GitHub</a>
-        </div>
+    <div class="wrap">
+      <p class="kicker">Python package and desktop application · <span class="nw">BSD-3-Clause</span></p>
+      <h1>spaCR</h1>
+      <p class="lede">Spatial phenotype analysis of CRISPR-Cas9 screens.</p>
+      <ul class="facts">
+        <li>Version <b>1.5.1.4</b></li>
+        <li>Released <b>2026-10-09</b></li>
+        <li>Python <b>3.9–3.14</b></li>
+      </ul>
+      <div class="btns">
+        <a class="btn primary" href="#install">Install</a>
+        <a class="btn" href="https://einarolafsson.github.io/spacr/">Documentation</a>
+        <a class="btn" href="https://einarolafsson.github.io/spacr/tutorials/">Tutorials</a>
+        <a class="btn" href="https://github.com/EinarOlafsson/spacr">Source code</a>
       </div>
-      <figure class="parallax" data-parallax="0.06">
-        <img src="/assets/img/deck-01.webp" width="1280" height="720" alt="spaCR overview slide: image every well, sequence every well, link the two" fetchpriority="high">
-      </figure>
     </div>
   </section>
 
   <section aria-labelledby="what-h">
-    <div class="wrap grid-2">
-      <div class="reveal">
-        <h2 id="what-h">What it does</h2>
-        <p>spaCR segments and measures single cells in microscopy images, integrates per-object phenotypes with sequencing-derived guide abundance, and estimates which genes are associated with phenotypic changes. Starting from plate images and FASTQ reads, it produces per-object measurements, trained classifiers, per-guide and per-gene effect estimates, and a ranked hit list.</p>
-        <p>The segmentation, measurement, annotation and classification modules also run without a sequencing arm. Images, masks, crops, measurements, annotations, predictions, barcodes and well identifiers live in one SQLite project. It runs as a desktop application or headlessly on a workstation, server or cluster.</p>
+    <div class="wrap grid side">
+      <div>
+        <h2 id="what-h">Overview</h2>
       </div>
-      <ul class="feature-list reveal" aria-label="Core workflow">
-        <li><b>Mask</b> segments cells, nuclei, pathogens and organelles with Cellpose.</li>
-        <li><b>Measure</b> writes morphology, intensity, texture, spatial and colocalization features, together with object crops, to SQLite.</li>
-        <li><b>Annotate</b> labels crops in a keyboard-driven grid and supports active-learning queues.</li>
-        <li><b>Classify</b> trains image or measurement-based models and records held-out performance with each checkpoint.</li>
-        <li><b>Map Barcodes</b> maps FASTQ reads to wells and gRNAs, with abundance, collision and coverage QC.</li>
-        <li><b>Regression</b> estimates guide, gene, condition and control effects with model families suited to continuous, fractional and count responses.</li>
-      </ul>
+      <div>
+        <div class="prose">
+          <p>spaCR segments cells and their compartments in microscopy images, measures each object, and links the measurements to the guide RNAs sequenced from the same wells. The input is plate images and FASTQ reads. The output is per-object measurements, trained classifiers, per-guide and per-gene effect estimates and a ranked list of genes.</p>
+          <p>The segmentation, measurement, annotation and classification steps can also be used without sequencing data. All results for a project are stored in one SQLite database. spaCR runs as a desktop application or from Python on a workstation, server or cluster.</p>
+        </div>
+        <ul class="steps" aria-label="Modules">
+          <li><b>Mask</b><span>Segments cells, nuclei, pathogens and organelles with Cellpose models.</span></li>
+          <li><b>Measure</b><span>Computes morphology, intensity, texture, spatial and colocalization features and saves object crops.</span></li>
+          <li><b>Annotate</b><span>Labels object crops in a grid with keyboard shortcuts.</span></li>
+          <li><b>Classify</b><span>Trains image or measurement classifiers and stores held-out performance with each checkpoint.</span></li>
+          <li><b>Map barcodes</b><span>Assigns sequencing reads to wells and guide RNAs and reports abundance and coverage.</span></li>
+          <li><b>Regression</b><span>Estimates guide, gene and condition effects with models for continuous, fractional and count responses.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section aria-labelledby="seg-h">
-    <div class="wrap grid-2">
-      <div class="reveal">
-        <h2 id="seg-h">From pixels to objects</h2>
-        <p>Drag the divider to compare the input image with what Cellpose produces inside spaCR: an instance mask with one label per nucleus, and the flow field that the mask is recovered from.</p>
-        <div class="seg-tabs" role="group" aria-label="Overlay to compare" data-seg-tabs="seg-compare">
-          <button type="button" aria-pressed="true" data-src="/assets/img/seg-mask.webp" data-alt="Instance mask, one colour per nucleus">Mask</button>
-          <button type="button" aria-pressed="false" data-src="/assets/img/seg-flow.webp" data-alt="Cellpose flow field, colour encodes flow direction">Flow</button>
-        </div>
-        <p class="small muted">Images from spaCR's mask tutorial notebook (docs/resources/tutorial/1_mask).</p>
+  <section id="models" aria-labelledby="models-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="models-h">Published models</h2>
+        <p>Each figure shows one real image and the objects that spaCR's published models detect in it. Drag the divider to compare the input with the outlines, and use the check boxes to show or hide a class. Counts are objects in the image shown. Weights resolved through spaCR's model zoo (nightly, 2026-10-10) and run with Cellpose 4.2.1.1 on CPU.</p>
       </div>
-      <div class="reveal">
-        <div class="compare" id="seg-compare">
-          <img src="/assets/img/seg-raw.webp" width="720" height="720" alt="Fluorescence image of nuclei" loading="lazy" decoding="async">
-          <img class="top" src="/assets/img/seg-mask.webp" width="720" height="720" alt="Instance mask, one colour per nucleus" loading="lazy" decoding="async">
-          <span class="lbl l">Image</span><span class="lbl r">Mask</span>
-          <input type="range" min="0" max="100" value="50" aria-label="Divider position: left shows the image, right shows the overlay">
-          <span class="handle" aria-hidden="true"></span>
-        </div>
+      <div class="showcase">
+        <figure class="model-fig" aria-labelledby="hoechst-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/hoechst-raw.webp" width="1024" height="1024" alt="Hoechst fluorescence image of HeLa cells with bright nuclei and faint cytoplasm" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="hoechst-l0" src="/assets/img/models/hoechst-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l1" src="/assets/img/models/hoechst-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l2" src="/assets/img/models/hoechst-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Hoechst</span><span class="lbl r">Objects</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Divider: left of it the input image, right of it the detected objects">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="hoechst-h">Hoechst image: nuclei, host cells and Toxoplasma</h3>
+          <p class="small">One Hoechst image of HeLa cells infected with Toxoplasma gondii. Host cells and parasite vacuoles are predicted from the Hoechst channel alone by two spaCR cross-channel models. Nuclei come from stock Cellpose-SAM on the same channel.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l0" aria-label="Show Nuclei outlines">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>Nuclei</span>
+            <span class="count">53</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. Pixels below 500 set to 0, diameter 90 px</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l1" aria-label="Show Host cells outlines">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>Host cells</span>
+            <span class="count">61</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. Test F1 0.870 on 451 fields</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="Show Toxoplasma vacuoles outlines">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma vacuoles</span>
+            <span class="count">63</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. Test F1 0.569 on 463 fields</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Input</dt><dd>Hoechst (nuclear stain)</dd>
+          <dt>Image</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">HeLa field, plate 1 well L08 field 12, test split (held out by well)</a></dd>
+          <dt>Licence</dt><dd>CC BY 4.0</dd>
+          <dt>Size</dt><dd>2000 × 2000 px, shown at 1024 px</dd>
+          <dt>Figure</dt><dd><a href="/assets/img/models/hoechst-figure.webp">With caption and checksums</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="cellmask-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/cellmask-raw.webp" width="1024" height="1024" alt="Whole-cell stain fluorescence image of the same HeLa field" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="cellmask-l0" src="/assets/img/models/cellmask-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l1" src="/assets/img/models/cellmask-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l2" src="/assets/img/models/cellmask-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Cell mask</span><span class="lbl r">Objects</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Divider: left of it the input image, right of it the detected objects">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="cellmask-h">Cell-mask image: Toxoplasma, nuclei and host cells</h3>
+          <p class="small">The same field imaged with a whole-cell stain. Parasite vacuoles and nuclei are predicted from this channel alone by two spaCR cross-channel models, so no nuclear or parasite stain is needed. Host cells come from stock Cellpose-SAM on the same channel.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="Show Toxoplasma vacuoles outlines">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma vacuoles</span>
+            <span class="count">43</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. Test F1 0.606 on 463 fields</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l1" aria-label="Show Nuclei outlines">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>Nuclei</span>
+            <span class="count">56</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-nuclei-from-cellmask-cpsam">nuclei_from_cellmask_v1</a>. Test F1 0.888 on 453 fields</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l2" aria-label="Show Host cells outlines">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>Host cells</span>
+            <span class="count">80</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. Default settings</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Input</dt><dd>Cell mask (whole-cell stain)</dd>
+          <dt>Image</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">HeLa field, plate 1 well L08 field 12, test split (held out by well)</a></dd>
+          <dt>Licence</dt><dd>CC BY 4.0</dd>
+          <dt>Size</dt><dd>2000 × 2000 px, shown at 1024 px</dd>
+          <dt>Figure</dt><dd><a href="/assets/img/models/cellmask-figure.webp">With caption and checksums</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="plaque-h">
+          <div class="viewer" style="aspect-ratio:1024/1011">
+            <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="Greyscale image of a crystal-violet stained well with pale plaques in a dark monolayer" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="plaque-l0" src="/assets/img/models/plaque-plaque.webp" width="1024" height="1011" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Well</span><span class="lbl r">Objects</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Divider: left of it the input image, right of it the detected objects">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="plaque-h">Plaque assay: Toxoplasma plaques</h3>
+          <p class="small">A crystal-violet plaque-assay well from a published figure. Plaques are segmented by spaCR's plaque model. This well was not used to train the model.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="plaque-l0" aria-label="Show Plaques outlines">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Plaques</span>
+            <span class="count">99</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. Candidate model, not yet the default. 98 plaques in the hand-drawn mask; F1 0.964 at IoU 0.5 on this well</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Input</dt><dd>Crystal violet, greyscale</dd>
+          <dt>Image</dt><dd><a href="https://doi.org/10.1128/spectrum.01229-24">Cabral G, et al. Microbiol Spectrum 2024, Fig. 2</a></dd>
+          <dt>Dataset</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-plaque-dataset">toxoplasma-plaque-dataset (held out from v3 training)</a></dd>
+          <dt>Licence</dt><dd>CC BY 4.0</dd>
+          <dt>Figure</dt><dd><a href="/assets/img/models/plaque-figure.webp">With caption and checksums</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <section aria-labelledby="clips-h">
     <div class="wrap">
-      <h2 id="clips-h" class="reveal">See it run</h2>
-      <p class="reveal muted">Short muted excerpts from the narrated tutorials. The full lessons, with voices in several languages and captions, are in the <a href="https://einarolafsson.github.io/spacr/tutorials/">tutorial portal</a>.</p>
-      <div class="grid-2">
-        <figure class="reveal">
+      <div class="section-head">
+        <h2 id="clips-h">The desktop application</h2>
+        <p>Muted excerpts from the narrated tutorials. The full lessons, with narration and captions in several languages, are in the <a href="https://einarolafsson.github.io/spacr/tutorials/">tutorial portal</a>.</p>
+      </div>
+      <div class="grid two">
+        <figure>
           <div class="clip">
             <video muted loop playsinline preload="none" width="1280" height="720" poster="/assets/media/clip-home.webp" data-src="/assets/media/clip-home.mp4" aria-label="spaCR home screen with its module tiles"></video>
           </div>
-          <figcaption>The home screen: every module is a tile. From tutorial lesson 5.</figcaption>
+          <figcaption>Home screen with one tile per module. Tutorial lesson 5.</figcaption>
         </figure>
-        <figure class="reveal">
+        <figure>
           <div class="clip">
             <video muted loop playsinline preload="none" width="1280" height="720" poster="/assets/media/clip-cellpose.webp" data-src="/assets/media/clip-cellpose.mp4" aria-label="Cellpose Workbench in Make Masks with image, outline and flow previews"></video>
           </div>
-          <figcaption>Cellpose Workbench in Make Masks: image, outlines and flows. From tutorial lesson 20.</figcaption>
+          <figcaption>Cellpose Workbench in Make Masks, showing the image, outlines and flows. Tutorial lesson 20.</figcaption>
         </figure>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="tour-h">
-    <div class="wrap">
-      <h2 id="tour-h" class="reveal">A tour in slides</h2>
-      <p class="reveal muted">Slides from the <a href="https://einarolafsson.github.io/spacr/_static/deck/">spaCR README deck</a>. Scroll sideways.</p>
-      <div class="gallery reveal" tabindex="0" role="region" aria-label="Slides, scroll horizontally">
-        <figure><img src="/assets/img/deck-04.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Six steps from plate to hit list: Mask, Measure, Annotate, Classify, Map Barcodes, Regression"></figure>
-        <figure><img src="/assets/img/deck-05.webp" width="1280" height="720" loading="lazy" decoding="async" alt="The modules in one desktop app"></figure>
-        <figure><img src="/assets/img/deck-09.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Mask: segmentation"></figure>
-        <figure><img src="/assets/img/deck-10.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Mask: every object class"></figure>
-        <figure><img src="/assets/img/deck-12.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Annotate: label cells by hand"></figure>
-        <figure><img src="/assets/img/deck-13.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Classify: score every cell"></figure>
-        <figure><img src="/assets/img/deck-18.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Regression: choose the model"></figure>
-        <figure><img src="/assets/img/deck-20.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Regression: which assumptions hold"></figure>
       </div>
     </div>
   </section>
 
   <section id="install" aria-labelledby="install-h">
     <div class="wrap">
-      <h2 id="install-h" class="reveal">Install spaCR 1.5.1.4</h2>
-      <div class="grid-2">
-        <div class="panel reveal">
+      <div class="section-head">
+        <h2 id="install-h">Install spaCR 1.5.1.4</h2>
+      </div>
+      <div class="grid two">
+        <div>
           <h3>Desktop installers</h3>
-          <p class="muted small">They bundle their own Python; Conda is not required. From the <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">v1.5.1.4 release</a>.</p>
+          <p class="note">The installers include their own Python, so Conda is not needed. Files from the <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">v1.5.1.4 release</a>.</p>
           <ul class="dl">
             <li><a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Windows-Online-Setup.exe"><span>Windows 10/11<br><span class="small muted">spaCR-1.5.1.4-Windows-Online-Setup.exe</span></span><span class="sz">244 kB</span></a></li>
             <li><a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-macOS-Universal-Online.pkg"><span>macOS 11+ (Intel and Apple silicon)<br><span class="small muted">spaCR-1.5.1.4-macOS-Universal-Online.pkg</span></span><span class="sz">390 kB</span></a></li>
             <li><a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Linux-x86_64-Online.run"><span>Linux x86-64<br><span class="small muted">spaCR-1.5.1.4-Linux-x86_64-Online.run</span></span><span class="sz">236 kB</span></a></li>
           </ul>
-          <p class="small muted">Checksums: <a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/SHA256SUMS.txt">SHA256SUMS.txt</a>. Older installers and the troubleshooting guide are in the <a href="https://einarolafsson.github.io/spacr/installers.html">installer docs</a>.</p>
+          <p class="note">Checksums: <a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/SHA256SUMS.txt">SHA256SUMS.txt</a>. Older installers and troubleshooting: <a href="https://einarolafsson.github.io/spacr/installers.html">installer documentation</a>.</p>
         </div>
-        <div class="panel reveal">
+        <div>
           <h3>PyPI</h3>
           <div class="code-wrap">
 <pre id="pip-cmd"><code>conda create -n spacr python=3.12 -y
@@ -165,7 +258,7 @@ python -m pip install spacr==1.5.1.4
 spacr</code></pre>
             <button class="copy" type="button" data-copy="pip-cmd">Copy</button>
           </div>
-          <h3 style="margin-top:18px">conda-forge</h3>
+          <h3>conda-forge</h3>
           <div class="code-wrap">
 <pre id="conda-cmd"><code>conda create -n spacr python=3.12 -y
 conda activate spacr
@@ -173,45 +266,70 @@ conda install conda-forge::spacr
 spacr</code></pre>
             <button class="copy" type="button" data-copy="conda-cmd">Copy</button>
           </div>
-          <p class="small muted" style="margin-top:12px"><a href="https://pypi.org/project/spacr/1.5.1.4/">spaCR on PyPI</a> · <a href="https://anaconda.org/conda-forge/spacr">on conda-forge</a> · Requires Python !=3.14.1,&lt;3.15,&gt;=3.9</p>
+          <p class="note"><a href="https://pypi.org/project/spacr/1.5.1.4/">spaCR on PyPI</a> · <a href="https://anaconda.org/conda-forge/spacr">spaCR on conda-forge</a> · Requires Python <code>!=3.14.1,&lt;3.15,&gt;=3.9</code></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="docs-h">
-    <div class="wrap">
-      <h2 id="docs-h" class="reveal">Documentation and tutorials</h2>
-      <div class="cards">
-        <a class="card reveal" href="https://einarolafsson.github.io/spacr/">
-          <span class="tag live">main</span><h3>Docs: release</h3>
-          <p>User guide and API reference for the released version.</p><span class="go">Open →</span>
-        </a>
-        <a class="card reveal" href="https://einarolafsson.github.io/spacr/nightly/">
-          <span class="tag">nightly</span><h3>Docs: nightly</h3>
-          <p>The same docs built from the development branch.</p><span class="go">Open →</span>
-        </a>
-        <a class="card reveal" href="https://einarolafsson.github.io/spacr/tutorials/">
-          <span class="tag">video</span><h3>Tutorials</h3>
-          <p>Narrated, captioned walkthroughs of each module, with example data.</p><span class="go">Open →</span>
-        </a>
+  <section id="papers" aria-labelledby="papers-h">
+    <div class="wrap grid side">
+      <div>
+        <h2 id="papers-h">Papers using spaCR</h2>
+        <p class="note">Found through OpenAlex, Crossref, Semantic Scholar, Europe PMC and web search, and checked by reading each paper. Last checked 2026-10-10. To add a paper, <a href="https://github.com/EinarOlafsson/spacr/issues">open an issue</a>.</p>
+      </div>
+      <div>
+        <ul class="papers">
+        <li>
+          <a class="title" href="https://doi.org/10.64898/2026.07.08.737057">A pooled image-based CRISPR screen identifies EAF1 as a T. gondii modulator of ESCRT subversion</a>
+          <span class="cite">Olafsson EB, et al. bioRxiv, 2026 (preprint). doi:10.64898/2026.07.08.737057</span>
+          <span class="note">Describes spaCR</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.21203/rs.3.rs-7368254/v1">spaCR: Spatial phenotype analysis of CRISPR-Cas9 screens</a>
+          <span class="cite">Olafsson EB, et al. Research Square, 2025 (preprint). doi:10.21203/rs.3.rs-7368254/v1</span>
+          <span class="note">Describes spaCR</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.64898/2026.07.20.739547">Toxoplasma GRA8 engages the host ESCRT accessory protein ALG-2 and is necessary for parasite metabolic integrity</a>
+          <span class="cite">Kaur H, et al. bioRxiv, 2026 (preprint). doi:10.64898/2026.07.20.739547</span>
+          <span class="note">Uses spaCR</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.1016/j.celrep.2025.115694">IRE1α promotes phagosomal calcium flux to enhance macrophage fungicidal activity</a>
+          <span class="cite">McFadden MJ, et al. Cell Reports 44(5):115694, 2025. doi:10.1016/j.celrep.2025.115694</span>
+          <span class="note">Uses spaCR. Preprint: <a href="https://doi.org/10.1101/2023.10.02.560560">bioRxiv 2023</a></span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.1128/msphere.01011-24">Metabolic adaptability and nutrient scavenging in Toxoplasma gondii: insights from ingestion pathway-deficient mutants</a>
+          <span class="cite">Rimple PA, et al. mSphere 10:e01011-24, 2025. doi:10.1128/msphere.01011-24</span>
+          <span class="note">Uses spaCR. Preprint: <a href="https://doi.org/10.1101/2024.11.27.625683">bioRxiv 2024</a></span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.48550/arXiv.2507.01163">cp_measure: API-first feature extraction for image-based profiling workflows</a>
+          <span class="cite">Muñoz AF, et al. arXiv, 2025 (preprint). doi:10.48550/arXiv.2507.01163</span>
+          <span class="note">Cites spaCR</span>
+        </li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section id="cite" aria-labelledby="cite-h">
-    <div class="wrap grid-2">
-      <div class="reveal">
+    <div class="wrap grid two">
+      <div>
         <h2 id="cite-h">Cite spaCR</h2>
         <p>Olafsson EB, Arnold CS, Kellermeier JA, Rimple PA, Kaur H, Wang Y, Sexton JZ, Svärd S, Carruthers VB, O'Meara MJ. spaCR: spatial phenotype analysis of CRISPR-Cas9 screens (version 1.5.1.4). Zenodo; 2026. doi:10.5281/zenodo.23266544</p>
-        <ul class="feature-list">
-          <li>All versions (concept DOI): <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a></li>
-          <li>This release, 1.5.1.4: <a href="https://doi.org/10.5281/zenodo.23266544">10.5281/zenodo.23266544</a></li>
-          <li>Preprint: <a href="https://www.biorxiv.org/content/10.64898/2026.07.08.737057v1">bioRxiv 10.64898/2026.07.08.737057</a></li>
-          <li><a href="https://github.com/EinarOlafsson/spacr/blob/main/CITATION.cff">CITATION.cff</a></li>
-        </ul>
+        <table>
+          <tbody>
+            <tr><th scope="row">All versions (concept DOI)</th><td><a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a></td></tr>
+            <tr><th scope="row">Version 1.5.1.4</th><td><a href="https://doi.org/10.5281/zenodo.23266544">10.5281/zenodo.23266544</a></td></tr>
+            <tr><th scope="row">Preprint</th><td><a href="https://doi.org/10.64898/2026.07.08.737057">10.64898/2026.07.08.737057</a></td></tr>
+            <tr><th scope="row">Metadata</th><td><a href="https://github.com/EinarOlafsson/spacr/blob/main/CITATION.cff">CITATION.cff</a></td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="panel reveal">
+      <div>
         <h3>BibTeX</h3>
         <div class="code-wrap">
 <pre id="bibtex"><code>@software{olafsson_spacr_2026,
@@ -228,10 +346,24 @@ spacr</code></pre>
       </div>
     </div>
   </section>
+
+  <section aria-labelledby="docs-h">
+    <div class="wrap grid side">
+      <div>
+        <h2 id="docs-h">Documentation</h2>
+      </div>
+      <ul class="links">
+        <li><a href="https://einarolafsson.github.io/spacr/"><b>User guide and API</b><span>For the released version.</span></a></li>
+        <li><a href="https://einarolafsson-spacr-docs-nightly.static.hf.space/index.html"><b>Nightly documentation</b><span>Built from the development branch.</span></a></li>
+        <li><a href="https://einarolafsson.github.io/spacr/tutorials/"><b>Tutorials</b><span>Narrated, captioned lessons for each module, with example data.</span></a></li>
+        <li><a href="https://huggingface.co/einarolafsson"><b>Models and datasets</b><span>Model weights, model cards and training data on Hugging Face.</span></a></li>
+      </ul>
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <p>Static site: HTML, CSS and a small WebGL shader that ports spaCR's ambient background. No tracking, no cookies.</p>
+    <p>Static HTML and CSS. The background is a WebGL port of spaCR's advection theme. No analytics and no cookies.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
   </div>
 </footer>
