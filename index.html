@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("js");var r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;var p=null;try{p=localStorage.getItem("fx-paused")}catch(e){}if(r)document.documentElement.classList.add("no-motion");if(p==="1")document.documentElement.classList.add("fx-paused");})();</script>
+<link rel="stylesheet" href="/assets/css/site.css?v=7e54200ae5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=7e54200ae5" defer></script>
+
+<title>Einar B. Olafsson · projects</title>
+<meta name="description" content="Projects by Einar B. Olafsson: spaCR, live-cell segmentation models and the Cellect phone eyepiece mount.">
+</head>
+<body data-page="home">
+<a class="skip" href="#main">Skip to content</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Einar B. Olafsson <span>· projects</span></a>
+    <nav class="nav" aria-label="Projects">
+      <a href="/projects/spacr/" data-nav="spacr">spaCR</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label-long">Pause effects</span><span class="label-short">Pause</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch theme">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label-long">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Projects</p>
+      <h1>Microscopy software,<br><span class="grad">models and hardware.</span></h1>
+      <p class="lede">Tools for image-based screens and cell segmentation, by Einar B. Olafsson.</p>
+      <div class="placeholder" role="note"><strong>Placeholder:</strong> short bio and affiliation, to be written by the maintainer.</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="projects-h">
+    <div class="wrap">
+      <h2 id="projects-h" class="reveal">Projects</h2>
+      <div class="cards">
+        <a class="card reveal" href="/projects/spacr/">
+          <span class="tag live">Public · v1.5.1.4</span>
+          <h3>spaCR</h3>
+          <p>Spatial phenotype analysis of CRISPR screens: segment and measure single cells, map guides to wells and rank the genes behind a phenotype.</p>
+          <span class="go">Open the spaCR page →</span>
+        </a>
+        <a class="card reveal" href="/projects/live-cell/">
+          <span class="tag lock"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1zm2 0h4V5a2 2 0 1 0-4 0v2z"/></svg>Password</span>
+          <h3>live_cell</h3>
+          <p>Segmentation models for transmitted-light microscopy.</p>
+          <span class="go">Unlock →</span>
+        </a>
+        <a class="card reveal" href="/projects/cellect/">
+          <span class="tag lock"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1zm2 0h4V5a2 2 0 1 0-4 0v2z"/></svg>Password</span>
+          <h3>Cellect phone mount</h3>
+          <p>A 3D-printed mount for imaging through a microscope eyepiece with a phone.</p>
+          <span class="go">Unlock →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Static site: HTML, CSS and a small WebGL shader that ports spaCR's ambient background. No tracking, no cookies.</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
