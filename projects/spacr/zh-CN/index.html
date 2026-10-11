@@ -127,10 +127,10 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="一个感染弓形虫的 HeLa 细胞视野，分为五个面板：图像、细胞、细胞核和空泡的细轮廓、测量值表格、按感染得分着色的细胞，以及标注了 GRA14 的火山图" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="一个感染 Toxoplasma 的 HeLa 细胞视野，分为五个面板：图像、细胞、细胞核和空泡的细轮廓、测量值表格、按感染得分着色的细胞，以及标注了 GRA14 的火山图" fetchpriority="high">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>图像</li><li>掩膜</li><li>测量值</li><li>分类器得分</li><li>命中</li></ol>
-        <figcaption>一个感染<i>弓形虫</i>的 HeLa 细胞完整视野（MTOC 筛选第 2 板，P08 孔，第 16 视野；<a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">公开数据</a>，CC BY 4.0）经 spaCR 处理：图像、轮廓、Measure 测量值和感染得分。命中列表来自另一个公开筛选，即四板 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">示例筛选</a>。参见<a href="#pipeline">流程</a>。</figcaption>
+        <figcaption>一个感染 <i>Toxoplasma</i> 的 HeLa 细胞完整视野（MTOC 筛选第 2 板，P08 孔，第 16 视野；<a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">公开数据</a>，CC BY 4.0）经 spaCR 处理：图像、轮廓、Measure 测量值和感染得分。命中列表来自另一个公开筛选，即四板 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">示例筛选</a>。参见<a href="#pipeline">流程</a>。</figcaption>
       </figure>
       <ul class="stats six" aria-label="spaCR 数据一览">
         <li><a class="row" href="#models"><b>16</b><span>已发布模型</span></a></li>
@@ -170,7 +170,7 @@
         <div>
           <h3>生物</h3>
           <ul class="plain">
-            <li>宿主细胞中的<i>刚地弓形虫（Toxoplasma gondii）</i>：向导、募集、噬斑和复制实验</li>
+            <li>宿主细胞中的 <i>Toxoplasma gondii</i>：向导、募集、噬斑和复制实验</li>
             <li>任何细胞类型均可用于分割、测量和分类</li>
             <li>其他病原体的页面正在开发中，默认隐藏</li>
           </ul>
@@ -220,10 +220,10 @@
     <div class="wrap">
       <div class="section-head">
         <h2>流程</h2>
-        <p>用一个完整视野贯穿 spaCR 全流程：感染<i>弓形虫</i>的 HeLa 细胞，MTOC 筛选的第 2 板、P08 孔、第 16 视野，用 Hoechst 和 CellMask 成像。步骤 1 至 4 使用该视野；步骤 5 是 GFP-TSG101 示例筛选的命中列表，因为 MTOC 筛选的命中结果未公开。</p>
+        <p>用一个完整视野贯穿 spaCR 全流程：感染 <i>Toxoplasma</i> 的 HeLa 细胞，MTOC 筛选的第 2 板、P08 孔、第 16 视野，用 Hoechst 和 CellMask 成像。步骤 1 至 4 使用该视野；步骤 5 是 GFP-TSG101 示例筛选的命中列表，因为 MTOC 筛选的命中结果未公开。</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="HeLa 细胞，细胞核为蓝色，细胞质为灰色；弓形虫空泡呈暖色团簇" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>图像</span></h3><p>2000 × 2000 px 视野的这一窗口中有 13 个宿主细胞和 54 个空泡；Hoechst 为蓝色，CellMask 为灰色。</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="HeLa 细胞，细胞核为蓝色，细胞质为灰色；Toxoplasma 空泡呈暖色团簇" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>图像</span></h3><p>2000 × 2000 px 视野的这一窗口中有 13 个宿主细胞和 54 个空泡；Hoechst 为蓝色，CellMask 为灰色。</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/02_masks.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/02_masks.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/02_masks.light.webp" width="800" height="600" alt="同一批细胞上的细轮廓：细胞为青色，细胞核为蓝色，空泡为品红色" loading="lazy" decoding="async"></picture></a><h3><span class="num">2</span><span>Mask</span></h3><p>细胞、细胞核和空泡轮廓：该视野中共有 37 个细胞、44 个细胞核和 130 个空泡。</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/03_measurements.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/03_measurements.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/03_measurements.light.webp" width="800" height="600" alt="按细胞面积中被空泡覆盖的比例着色的细胞" loading="lazy" decoding="async"></picture></a><h3><span class="num">3</span><span>Measure</span></h3><p>按空泡覆盖率（Measure）着色的细胞：13 个中有 9 个高于 0，最高 0.161。</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/04_classification.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/04_classification.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/04_classification.light.webp" width="800" height="600" alt="按感染得分着色的细胞，从蓝色（低）到橙色（高）" loading="lazy" decoding="async"></picture></a><h3><span class="num">4</span><span>Classify</span></h3><p>仅基于宿主特征的 XGBoost 感染得分；13 个细胞中有 8 个高于 0.5，该视野未用于训练。</p></li>
@@ -266,8 +266,8 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="hoechst-h">Hoechst 图像：细胞核、宿主细胞和弓形虫</h3>
-          <p class="small">一张感染刚地弓形虫的 HeLa 细胞的 Hoechst 图像。宿主细胞和寄生虫空泡由两个 spaCR 跨通道模型仅根据 Hoechst 通道预测。细胞核来自在同一通道上运行的原版 Cellpose-SAM。</p>
+          <h3 id="hoechst-h">Hoechst 图像：细胞核、宿主细胞和 Toxoplasma</h3>
+          <p class="small">一张感染 Toxoplasma gondii 的 HeLa 细胞的 Hoechst 图像。宿主细胞和寄生虫空泡由两个 spaCR 跨通道模型仅根据 Hoechst 通道预测。细胞核来自在同一通道上运行的原版 Cellpose-SAM。</p>
           <ul class="classes">
           <li><label>
             <input type="checkbox" checked data-layer="hoechst-l0" aria-label="显示 细胞核 轮廓">
@@ -282,8 +282,8 @@
             <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. 在 451 个视野上测试 F1 为 0.870</span>
           </label></li>
           <li><label>
-            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="显示 弓形虫空泡 轮廓">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>弓形虫空泡</span>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="显示 Toxoplasma 空泡 轮廓">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 空泡</span>
             <span class="count">63</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. 在 463 个视野上测试 F1 为 0.569</span>
           </label></li>
@@ -310,12 +310,12 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="cellmask-h">Cell mask 图像：弓形虫、细胞核和宿主细胞</h3>
+          <h3 id="cellmask-h">Cell mask 图像：Toxoplasma、细胞核和宿主细胞</h3>
           <p class="small">用全细胞染料对同一视野成像。寄生虫空泡和细胞核由两个 spaCR 跨通道模型仅根据该通道预测，因此不需要核染料或寄生虫染料。宿主细胞来自在同一通道上运行的原版 Cellpose-SAM。</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="显示 弓形虫空泡 轮廓">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>弓形虫空泡</span>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="显示 Toxoplasma 空泡 轮廓">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 空泡</span>
             <span class="count">43</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. 在 463 个视野上测试 F1 为 0.606</span>
           </label></li>
@@ -343,27 +343,27 @@
         </figure>
         <figure class="model-fig" aria-labelledby="pv-h">
           <div class="viewer" style="aspect-ratio:1024/1024">
-            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="灰度荧光图像，明亮的圆形弓形虫空泡散布在暗淡的宿主细胞上" loading="lazy" decoding="async">
+            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="灰度荧光图像，明亮的圆形 Toxoplasma 空泡散布在暗淡的宿主细胞上" loading="lazy" decoding="async">
             <div class="layers">
             <img id="pv-l0" src="/assets/img/models/pv-vacuole.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             </div>
-            <span class="lbl l">弓形虫</span><span class="lbl r">对象</span>
+            <span class="lbl l">Toxoplasma</span><span class="lbl r">对象</span>
             <input type="range" min="0" max="100" value="50" aria-label="分隔线：左侧为输入图像，右侧为检测到的对象">
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="pv-h">弓形虫空泡：纳虫空泡分割</h3>
-          <p class="small">一张来自受感染宿主细胞单层的弓形虫通道荧光图像。纳虫空泡由 spaCR 的 PV 模型分割。该孔属于数据集的留出测试集，未用于训练模型。</p>
+          <h3 id="pv-h">Toxoplasma 空泡：纳虫空泡分割</h3>
+          <p class="small">一张来自受感染宿主细胞单层的 Toxoplasma 通道荧光图像。纳虫空泡由 spaCR 的 PV 模型分割。该孔属于数据集的留出测试集，未用于训练模型。</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="pv-l0" aria-label="显示 弓形虫空泡 轮廓">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>弓形虫空泡</span>
+            <input type="checkbox" checked data-layer="pv-l0" aria-label="显示 Toxoplasma 空泡 轮廓">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 空泡</span>
             <span class="count">125</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. 在 11 个留出孔上测试 F1 为 0.854（模型卡）。人工整理的掩膜中有 136 个空泡；在该孔上 IoU 0.5 时 F1 为 0.874</span>
           </label></li>
           </ul>
           <dl>
-          <dt>输入</dt><dd>弓形虫荧光通道，灰度</dd>
+          <dt>输入</dt><dd>Toxoplasma 荧光通道，灰度</dd>
           <dt>图像</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">锚定孔 plate7_K07_8，测试集（未用于训练）</a></dd>
           <dt>许可证</dt><dd>CC BY 4.0</dd>
           <dt>尺寸</dt><dd>1994 × 1994 px，以 1024 px 显示</dd>
@@ -382,7 +382,7 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="plaque-h">噬斑实验：弓形虫噬斑</h3>
+          <h3 id="plaque-h">噬斑实验：Toxoplasma 噬斑</h3>
           <p class="small">来自已发表图片的结晶紫噬斑实验孔。噬斑由 spaCR 噬斑模型分割。该孔未用于训练模型。</p>
           <ul class="classes">
           <li><label>
@@ -580,7 +580,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>筛选结果</h2>
-        <p>在<i>刚地弓形虫（Toxoplasma gondii）</i>中进行的混合 CRISPR 筛选，寻找影响宿主 ESCRT 蛋白 GFP-TSG101 向寄生虫空泡募集的寄生虫基因，使用 spaCR 分析。出自 <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR 预印本</a>。</p>
+        <p>在 <i>Toxoplasma gondii</i> 中进行的混合 CRISPR 筛选，寻找影响宿主 ESCRT 蛋白 GFP-TSG101 向寄生虫空泡募集的寄生虫基因，使用 spaCR 分析。出自 <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR 预印本</a>。</p>
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>筛选板</span></div></li>
@@ -688,7 +688,7 @@
         </div>
         <div class="results stack">
         <figure class="wide">
-          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="黑色背景上的两个三乘三单细胞荧光裁剪图网格，分别标注为 SAG1（左）和 GRA14（右）。每张裁剪图显示一个 HeLa 细胞，细胞核为蓝色，GFP-TSG101 为绿色，弓形虫空泡为红色；在大多数 SAG1 裁剪图中，绿色与红色重叠处的空泡呈黄色，而在 GRA14 裁剪图中空泡仍为红色。" loading="lazy" decoding="async"></picture>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="黑色背景上的两个三乘三单细胞荧光裁剪图网格，分别标注为 SAG1（左）和 GRA14（右）。每张裁剪图显示一个 HeLa 细胞，细胞核为蓝色，GFP-TSG101 为绿色，Toxoplasma 空泡为红色；在大多数 SAG1 裁剪图中，绿色与红色重叠处的空泡呈黄色，而在 GRA14 裁剪图中空泡仍为红色。" loading="lazy" decoding="async"></picture>
           <figcaption>spaCR 的 CNN 以最高置信度正确分类的每类 9 个留出细胞，选自 4 个从未用于训练的孔（A01、C02、F01、H01）中的 405 个测试细胞（SAG1 孔 306 个，GRA14 孔 99 个）；测试准确率 0.909，ROC AUC 0.958。</figcaption>
         </figure>
         <figure class="wide">

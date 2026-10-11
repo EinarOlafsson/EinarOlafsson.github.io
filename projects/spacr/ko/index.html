@@ -127,10 +127,10 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="톡소플라스마에 감염된 HeLa 세포 시야 하나를 다섯 패널로 나타낸 그림: 이미지, 얇은 세포·핵·액포 윤곽선, 측정값 표, 감염 점수로 색칠한 세포, GRA14에 라벨이 붙은 볼케이노 플롯" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma에 감염된 HeLa 세포 시야 하나를 다섯 패널로 나타낸 그림: 이미지, 얇은 세포·핵·액포 윤곽선, 측정값 표, 감염 점수로 색칠한 세포, GRA14에 라벨이 붙은 볼케이노 플롯" fetchpriority="high">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>이미지</li><li>마스크</li><li>측정값</li><li>분류기 점수</li><li>히트</li></ol>
-        <figcaption><i>톡소플라스마</i>에 감염된 HeLa 세포의 시야 하나 전체(MTOC 스크린 플레이트 2, 웰 P08, 시야 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">공개 데이터</a>, CC BY 4.0)를 spaCR로 따라간 결과: 이미지, 윤곽선, Measure 값, 감염 점수. 히트 목록은 다른 공개 스크린인 플레이트 네 장 규모의 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">예제 스크린</a>에서 가져왔습니다. <a href="#pipeline">파이프라인</a> 참조.</figcaption>
+        <figcaption><i>Toxoplasma</i>에 감염된 HeLa 세포의 시야 하나 전체(MTOC 스크린 플레이트 2, 웰 P08, 시야 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">공개 데이터</a>, CC BY 4.0)를 spaCR로 따라간 결과: 이미지, 윤곽선, Measure 값, 감염 점수. 히트 목록은 다른 공개 스크린인 플레이트 네 장 규모의 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">예제 스크린</a>에서 가져왔습니다. <a href="#pipeline">파이프라인</a> 참조.</figcaption>
       </figure>
       <ul class="stats six" aria-label="숫자로 보는 spaCR">
         <li><a class="row" href="#models"><b>16</b><span>공개 모델</span></a></li>
@@ -170,7 +170,7 @@
         <div>
           <h3>생물</h3>
           <ul class="plain">
-            <li>숙주 세포 안의 <i>톡소플라스마 곤디(Toxoplasma gondii)</i>: 가이드, 모집, 플라크, 증식 분석</li>
+            <li>숙주 세포 안의 <i>Toxoplasma gondii</i>: 가이드, 모집, 플라크, 증식 분석</li>
             <li>분할, 측정, 분류에는 모든 세포 유형</li>
             <li>다른 병원체용 페이지는 개발 중이며 기본적으로 숨겨져 있습니다</li>
           </ul>
@@ -220,10 +220,10 @@
     <div class="wrap">
       <div class="section-head">
         <h2>파이프라인</h2>
-        <p>spaCR을 따라가는 시야 하나 전체: <i>톡소플라스마</i>에 감염된 HeLa 세포로, MTOC 스크린의 플레이트 2, 웰 P08, 시야 16이며 Hoechst와 CellMask로 촬영했습니다. 1-4단계는 이 시야를 사용하고, 5단계는 MTOC 스크린의 히트가 공개되어 있지 않으므로 GFP-TSG101 예제 스크린의 히트 목록입니다.</p>
+        <p>spaCR을 따라가는 시야 하나 전체: <i>Toxoplasma</i>에 감염된 HeLa 세포로, MTOC 스크린의 플레이트 2, 웰 P08, 시야 16이며 Hoechst와 CellMask로 촬영했습니다. 1-4단계는 이 시야를 사용하고, 5단계는 MTOC 스크린의 히트가 공개되어 있지 않으므로 GFP-TSG101 예제 스크린의 히트 목록입니다.</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="파란색 핵과 회색 세포질을 가진 HeLa 세포. 톡소플라스마 액포는 따뜻한 색의 무리로 보임" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>이미지</span></h3><p>2000 × 2000 px 시야 중 이 창에 있는 숙주 세포 13개와 액포 54개. Hoechst는 파란색, CellMask는 회색.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="파란색 핵과 회색 세포질을 가진 HeLa 세포. Toxoplasma 액포는 따뜻한 색의 무리로 보임" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>이미지</span></h3><p>2000 × 2000 px 시야 중 이 창에 있는 숙주 세포 13개와 액포 54개. Hoechst는 파란색, CellMask는 회색.</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/02_masks.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/02_masks.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/02_masks.light.webp" width="800" height="600" alt="같은 세포 위의 얇은 청록색 세포 윤곽선, 파란색 핵 윤곽선, 자홍색 액포 윤곽선" loading="lazy" decoding="async"></picture></a><h3><span class="num">2</span><span>Mask</span></h3><p>세포, 핵, 액포 윤곽선: 시야 전체에서 세포 37개, 핵 44개, 액포 130개.</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/03_measurements.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/03_measurements.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/03_measurements.light.webp" width="800" height="600" alt="세포 면적 중 액포가 덮은 비율로 색칠한 세포" loading="lazy" decoding="async"></picture></a><h3><span class="num">3</span><span>Measure</span></h3><p>액포 피복률(Measure)로 색칠한 세포: 13개 중 9개가 0 초과, 최대 0.161.</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/04_classification.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/04_classification.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/04_classification.light.webp" width="800" height="600" alt="파란색(낮음)에서 주황색(높음)까지 감염 점수로 색칠한 세포" loading="lazy" decoding="async"></picture></a><h3><span class="num">4</span><span>Classify</span></h3><p>숙주 특징만으로 계산한 XGBoost 감염 점수. 세포 13개 중 8개가 0.5 초과이며, 이 시야는 학습에 사용하지 않음.</p></li>
@@ -266,8 +266,8 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="hoechst-h">Hoechst 이미지: 핵, 숙주 세포, 톡소플라스마</h3>
-          <p class="small">톡소플라스마 곤디에 감염된 HeLa 세포의 Hoechst 이미지 한 장. 숙주 세포와 기생충 액포는 spaCR 교차 채널 모델 두 개가 Hoechst 채널만으로 예측합니다. 핵은 같은 채널에서 기본 Cellpose-SAM으로 얻었습니다.</p>
+          <h3 id="hoechst-h">Hoechst 이미지: 핵, 숙주 세포, Toxoplasma</h3>
+          <p class="small">Toxoplasma gondii에 감염된 HeLa 세포의 Hoechst 이미지 한 장. 숙주 세포와 기생충 액포는 spaCR 교차 채널 모델 두 개가 Hoechst 채널만으로 예측합니다. 핵은 같은 채널에서 기본 Cellpose-SAM으로 얻었습니다.</p>
           <ul class="classes">
           <li><label>
             <input type="checkbox" checked data-layer="hoechst-l0" aria-label="핵 윤곽선 표시">
@@ -282,8 +282,8 @@
             <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. 시야 451개에서 테스트 F1 0.870</span>
           </label></li>
           <li><label>
-            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="톡소플라스마 액포 윤곽선 표시">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>톡소플라스마 액포</span>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="Toxoplasma 액포 윤곽선 표시">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 액포</span>
             <span class="count">63</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. 시야 463개에서 테스트 F1 0.569</span>
           </label></li>
@@ -310,12 +310,12 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="cellmask-h">Cell mask 이미지: 톡소플라스마, 핵, 숙주 세포</h3>
+          <h3 id="cellmask-h">Cell mask 이미지: Toxoplasma, 핵, 숙주 세포</h3>
           <p class="small">같은 시야를 전세포 염색으로 촬영한 이미지. 기생충 액포와 핵은 spaCR 교차 채널 모델 두 개가 이 채널만으로 예측하므로 핵 염색이나 기생충 염색이 필요하지 않습니다. 숙주 세포는 같은 채널에서 기본 Cellpose-SAM으로 얻었습니다.</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="톡소플라스마 액포 윤곽선 표시">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>톡소플라스마 액포</span>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="Toxoplasma 액포 윤곽선 표시">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 액포</span>
             <span class="count">43</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. 시야 463개에서 테스트 F1 0.606</span>
           </label></li>
@@ -343,27 +343,27 @@
         </figure>
         <figure class="model-fig" aria-labelledby="pv-h">
           <div class="viewer" style="aspect-ratio:1024/1024">
-            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="희미한 숙주 세포 위에 밝고 둥근 톡소플라스마 액포가 흩어져 있는 회색조 형광 이미지" loading="lazy" decoding="async">
+            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="희미한 숙주 세포 위에 밝고 둥근 Toxoplasma 액포가 흩어져 있는 회색조 형광 이미지" loading="lazy" decoding="async">
             <div class="layers">
             <img id="pv-l0" src="/assets/img/models/pv-vacuole.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             </div>
-            <span class="lbl l">톡소플라스마</span><span class="lbl r">객체</span>
+            <span class="lbl l">Toxoplasma</span><span class="lbl r">객체</span>
             <input type="range" min="0" max="100" value="50" aria-label="구분선: 왼쪽은 입력 이미지, 오른쪽은 검출된 객체">
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="pv-h">톡소플라스마 액포: 기생충 액포(parasitophorous vacuole) 분할</h3>
-          <p class="small">감염된 숙주 세포 단층에서 얻은 톡소플라스마 채널 형광 이미지 한 장. 기생충 액포는 spaCR PV 모델로 분할합니다. 이 웰은 데이터 세트의 홀드아웃 테스트 분할에 속하며 모델 학습에 사용하지 않았습니다.</p>
+          <h3 id="pv-h">Toxoplasma 액포: 기생충 액포(parasitophorous vacuole) 분할</h3>
+          <p class="small">감염된 숙주 세포 단층에서 얻은 Toxoplasma 채널 형광 이미지 한 장. 기생충 액포는 spaCR PV 모델로 분할합니다. 이 웰은 데이터 세트의 홀드아웃 테스트 분할에 속하며 모델 학습에 사용하지 않았습니다.</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="pv-l0" aria-label="톡소플라스마 액포 윤곽선 표시">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>톡소플라스마 액포</span>
+            <input type="checkbox" checked data-layer="pv-l0" aria-label="Toxoplasma 액포 윤곽선 표시">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma 액포</span>
             <span class="count">125</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. 홀드아웃 웰 11개에서 테스트 F1 0.854(모델 카드). 수작업으로 큐레이션한 마스크의 액포 136개. 이 웰에서 IoU 0.5 기준 F1 0.874</span>
           </label></li>
           </ul>
           <dl>
-          <dt>입력</dt><dd>톡소플라스마 형광 채널, 회색조</dd>
+          <dt>입력</dt><dd>Toxoplasma 형광 채널, 회색조</dd>
           <dt>이미지</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">기준 웰 plate7_K07_8, 테스트 분할(학습에서 제외)</a></dd>
           <dt>라이선스</dt><dd>CC BY 4.0</dd>
           <dt>크기</dt><dd>1994 × 1994 px, 1024 px로 표시</dd>
@@ -382,7 +382,7 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="plaque-h">플라크 분석: 톡소플라스마 플라크</h3>
+          <h3 id="plaque-h">플라크 분석: Toxoplasma 플라크</h3>
           <p class="small">출판된 그림에서 가져온 크리스탈 바이올렛 플라크 분석 웰. 플라크는 spaCR 플라크 모델로 분할합니다. 이 웰은 모델 학습에 사용하지 않았습니다.</p>
           <ul class="classes">
           <li><label>
@@ -580,7 +580,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>스크린 결과</h2>
-        <p>숙주 ESCRT 단백질 GFP-TSG101이 기생충 액포로 모집되는 데 영향을 주는 기생충 유전자를 찾기 위해 <i>톡소플라스마 곤디(Toxoplasma gondii)</i>에서 수행하고 spaCR로 분석한 풀링 CRISPR 스크린. <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR 프리프린트</a>에서 발췌.</p>
+        <p>숙주 ESCRT 단백질 GFP-TSG101이 기생충 액포로 모집되는 데 영향을 주는 기생충 유전자를 찾기 위해 <i>Toxoplasma gondii</i>에서 수행하고 spaCR로 분석한 풀링 CRISPR 스크린. <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR 프리프린트</a>에서 발췌.</p>
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>스크린 플레이트</span></div></li>
@@ -688,7 +688,7 @@
         </div>
         <div class="results stack">
         <figure class="wide">
-          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="검은 배경 위 단일 세포 형광 크롭으로 이루어진 3×3 그리드 두 개. SAG1(왼쪽)과 GRA14(오른쪽) 라벨. 각 크롭은 파란색 핵, 녹색 GFP-TSG101, 빨간색 톡소플라스마 액포가 있는 HeLa 세포를 보여 줌. SAG1 크롭 대부분에서는 녹색이 빨간색과 겹쳐 액포가 노란색으로 보이고, GRA14 크롭에서는 빨간색으로 남아 있음." loading="lazy" decoding="async"></picture>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="검은 배경 위 단일 세포 형광 크롭으로 이루어진 3×3 그리드 두 개. SAG1(왼쪽)과 GRA14(오른쪽) 라벨. 각 크롭은 파란색 핵, 녹색 GFP-TSG101, 빨간색 Toxoplasma 액포가 있는 HeLa 세포를 보여 줌. SAG1 크롭 대부분에서는 녹색이 빨간색과 겹쳐 액포가 노란색으로 보이고, GRA14 크롭에서는 빨간색으로 남아 있음." loading="lazy" decoding="async"></picture>
           <figcaption>spaCR CNN이 가장 높은 신뢰도로 올바르게 분류한 클래스별 홀드아웃 세포 9개. 학습에 전혀 사용하지 않은 웰 4개(A01, C02, F01, H01)의 테스트 세포 405개(SAG1 웰 306개, GRA14 웰 99개)에서 선택. 테스트 정확도 0.909, ROC AUC 0.958.</figcaption>
         </figure>
         <figure class="wide">

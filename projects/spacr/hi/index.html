@@ -127,10 +127,10 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="टॉक्सोप्लाज़्मा से संक्रमित HeLa कोशिकाओं का एक फ़ील्ड पाँच पैनलों में: इमेज, कोशिका, केंद्रक और रिक्तिका की पतली रूपरेखाएँ, मापे गए मानों की एक तालिका, संक्रमण स्कोर के अनुसार रंगी गई कोशिकाएँ, और एक वॉल्केनो प्लॉट जिसमें GRA14 लेबल किया गया है" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma से संक्रमित HeLa कोशिकाओं का एक फ़ील्ड पाँच पैनलों में: इमेज, कोशिका, केंद्रक और रिक्तिका की पतली रूपरेखाएँ, मापे गए मानों की एक तालिका, संक्रमण स्कोर के अनुसार रंगी गई कोशिकाएँ, और एक वॉल्केनो प्लॉट जिसमें GRA14 लेबल किया गया है" fetchpriority="high">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>इमेज</li><li>मास्क</li><li>माप</li><li>क्लासिफ़ायर स्कोर</li><li>हिट</li></ol>
-        <figcaption><i>टॉक्सोप्लाज़्मा</i> से संक्रमित HeLa कोशिकाओं का एक पूरा फ़ील्ड (MTOC स्क्रीन प्लेट 2, वेल P08, फ़ील्ड 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">सार्वजनिक डेटा</a>, CC BY 4.0) spaCR में शुरू से अंत तक: इमेज, रूपरेखाएँ, Measure मान और एक संक्रमण स्कोर। हिट सूची एक अलग सार्वजनिक स्क्रीन से आती है, चार प्लेटों वाली GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">उदाहरण स्क्रीन</a>। देखें <a href="#pipeline">पाइपलाइन</a>।</figcaption>
+        <figcaption><i>Toxoplasma</i> से संक्रमित HeLa कोशिकाओं का एक पूरा फ़ील्ड (MTOC स्क्रीन प्लेट 2, वेल P08, फ़ील्ड 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">सार्वजनिक डेटा</a>, CC BY 4.0) spaCR में शुरू से अंत तक: इमेज, रूपरेखाएँ, Measure मान और एक संक्रमण स्कोर। हिट सूची एक अलग सार्वजनिक स्क्रीन से आती है, चार प्लेटों वाली GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">उदाहरण स्क्रीन</a>। देखें <a href="#pipeline">पाइपलाइन</a>।</figcaption>
       </figure>
       <ul class="stats six" aria-label="संख्याओं में spaCR">
         <li><a class="row" href="#models"><b>16</b><span>प्रकाशित मॉडल</span></a></li>
@@ -170,7 +170,7 @@
         <div>
           <h3>जीव</h3>
           <ul class="plain">
-            <li>मेज़बान कोशिकाओं में <i>टॉक्सोप्लाज़्मा गोंडी (Toxoplasma gondii)</i>: गाइड, भर्ती, प्लाक और प्रतिकृति परख</li>
+            <li>मेज़बान कोशिकाओं में <i>Toxoplasma gondii</i>: गाइड, भर्ती, प्लाक और प्रतिकृति परख</li>
             <li>विभाजन, मापन और वर्गीकरण के लिए कोई भी कोशिका प्रकार</li>
             <li>अन्य रोगजनकों के पेज विकास में हैं और डिफ़ॉल्ट रूप से छिपे हैं</li>
           </ul>
@@ -220,10 +220,10 @@
     <div class="wrap">
       <div class="section-head">
         <h2>पाइपलाइन</h2>
-        <p>spaCR में शुरू से अंत तक एक पूरा फ़ील्ड: <i>टॉक्सोप्लाज़्मा</i> से संक्रमित HeLa कोशिकाएँ, MTOC स्क्रीन की प्लेट 2, वेल P08, फ़ील्ड 16, Hoechst और CellMask से इमेज की गई। चरण 1 से 4 इसी फ़ील्ड का उपयोग करते हैं; चरण 5 GFP-TSG101 उदाहरण स्क्रीन की हिट सूची है, क्योंकि MTOC स्क्रीन के हिट सार्वजनिक नहीं हैं।</p>
+        <p>spaCR में शुरू से अंत तक एक पूरा फ़ील्ड: <i>Toxoplasma</i> से संक्रमित HeLa कोशिकाएँ, MTOC स्क्रीन की प्लेट 2, वेल P08, फ़ील्ड 16, Hoechst और CellMask से इमेज की गई। चरण 1 से 4 इसी फ़ील्ड का उपयोग करते हैं; चरण 5 GFP-TSG101 उदाहरण स्क्रीन की हिट सूची है, क्योंकि MTOC स्क्रीन के हिट सार्वजनिक नहीं हैं।</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="नीले केंद्रक और ग्रे कोशिकाद्रव्य वाली HeLa कोशिकाएँ; टॉक्सोप्लाज़्मा रिक्तिकाएँ गर्म रंगों के गुच्छों के रूप में दिखती हैं" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>इमेज</span></h3><p>2000 × 2000 px फ़ील्ड की इस विंडो में 13 मेज़बान कोशिकाएँ और 54 रिक्तिकाएँ; Hoechst नीला, CellMask ग्रे।</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="नीले केंद्रक और ग्रे कोशिकाद्रव्य वाली HeLa कोशिकाएँ; Toxoplasma रिक्तिकाएँ गर्म रंगों के गुच्छों के रूप में दिखती हैं" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>इमेज</span></h3><p>2000 × 2000 px फ़ील्ड की इस विंडो में 13 मेज़बान कोशिकाएँ और 54 रिक्तिकाएँ; Hoechst नीला, CellMask ग्रे।</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/02_masks.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/02_masks.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/02_masks.light.webp" width="800" height="600" alt="उन्हीं कोशिकाओं पर कोशिका की पतली सियान, केंद्रक की नीली और रिक्तिका की मैजेंटा रूपरेखाएँ" loading="lazy" decoding="async"></picture></a><h3><span class="num">2</span><span>Mask</span></h3><p>कोशिका, केंद्रक और रिक्तिका की रूपरेखाएँ: फ़ील्ड में 37 कोशिकाएँ, 44 केंद्रक और 130 रिक्तिकाएँ।</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/03_measurements.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/03_measurements.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/03_measurements.light.webp" width="800" height="600" alt="रिक्तिकाओं से ढके अपने क्षेत्रफल के अंश के अनुसार रंगी गई कोशिकाएँ" loading="lazy" decoding="async"></picture></a><h3><span class="num">3</span><span>Measure</span></h3><p>रिक्तिका आवरण (Measure) के अनुसार रंगी गई कोशिकाएँ: 13 में से 9 का मान 0 से अधिक, अधिकतम 0.161।</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/04_classification.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/04_classification.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/04_classification.light.webp" width="800" height="600" alt="नीले (निम्न) से नारंगी (उच्च) तक संक्रमण स्कोर के अनुसार रंगी गई कोशिकाएँ" loading="lazy" decoding="async"></picture></a><h3><span class="num">4</span><span>Classify</span></h3><p>केवल मेज़बान फ़ीचरों से XGBoost संक्रमण स्कोर; 13 में से 8 कोशिकाएँ 0.5 से अधिक, यह फ़ील्ड प्रशिक्षण में उपयोग नहीं किया गया।</p></li>
@@ -266,8 +266,8 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="hoechst-h">Hoechst इमेज: केंद्रक, मेज़बान कोशिकाएँ और टॉक्सोप्लाज़्मा</h3>
-          <p class="small">टॉक्सोप्लाज़्मा गोंडी से संक्रमित HeLa कोशिकाओं की एक Hoechst इमेज। मेज़बान कोशिकाओं और परजीवी रिक्तिकाओं का अनुमान दो spaCR क्रॉस-चैनल मॉडल केवल Hoechst चैनल से लगाते हैं। केंद्रक उसी चैनल पर मानक Cellpose-SAM से आते हैं।</p>
+          <h3 id="hoechst-h">Hoechst इमेज: केंद्रक, मेज़बान कोशिकाएँ और Toxoplasma</h3>
+          <p class="small">Toxoplasma gondii से संक्रमित HeLa कोशिकाओं की एक Hoechst इमेज। मेज़बान कोशिकाओं और परजीवी रिक्तिकाओं का अनुमान दो spaCR क्रॉस-चैनल मॉडल केवल Hoechst चैनल से लगाते हैं। केंद्रक उसी चैनल पर मानक Cellpose-SAM से आते हैं।</p>
           <ul class="classes">
           <li><label>
             <input type="checkbox" checked data-layer="hoechst-l0" aria-label="केंद्रक रूपरेखाएँ दिखाएँ">
@@ -282,8 +282,8 @@
             <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. 451 फ़ील्ड पर टेस्ट F1 0.870</span>
           </label></li>
           <li><label>
-            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="टॉक्सोप्लाज़्मा रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>टॉक्सोप्लाज़्मा रिक्तिकाएँ</span>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="Toxoplasma रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma रिक्तिकाएँ</span>
             <span class="count">63</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. 463 फ़ील्ड पर टेस्ट F1 0.569</span>
           </label></li>
@@ -310,12 +310,12 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="cellmask-h">Cell mask इमेज: टॉक्सोप्लाज़्मा, केंद्रक और मेज़बान कोशिकाएँ</h3>
+          <h3 id="cellmask-h">Cell mask इमेज: Toxoplasma, केंद्रक और मेज़बान कोशिकाएँ</h3>
           <p class="small">वही फ़ील्ड, पूर्ण-कोशिका रंजक से इमेज किया गया। परजीवी रिक्तिकाओं और केंद्रकों का अनुमान दो spaCR क्रॉस-चैनल मॉडल केवल इसी चैनल से लगाते हैं, इसलिए किसी केंद्रक या परजीवी रंजक की आवश्यकता नहीं होती। मेज़बान कोशिकाएँ उसी चैनल पर मानक Cellpose-SAM से आती हैं।</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="टॉक्सोप्लाज़्मा रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>टॉक्सोप्लाज़्मा रिक्तिकाएँ</span>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="Toxoplasma रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma रिक्तिकाएँ</span>
             <span class="count">43</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. 463 फ़ील्ड पर टेस्ट F1 0.606</span>
           </label></li>
@@ -343,27 +343,27 @@
         </figure>
         <figure class="model-fig" aria-labelledby="pv-h">
           <div class="viewer" style="aspect-ratio:1024/1024">
-            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="ग्रेस्केल फ़्लोरेसेंस इमेज जिसमें धुँधली मेज़बान कोशिकाओं पर चमकीली, गोल टॉक्सोप्लाज़्मा रिक्तिकाएँ बिखरी हैं" loading="lazy" decoding="async">
+            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="ग्रेस्केल फ़्लोरेसेंस इमेज जिसमें धुँधली मेज़बान कोशिकाओं पर चमकीली, गोल Toxoplasma रिक्तिकाएँ बिखरी हैं" loading="lazy" decoding="async">
             <div class="layers">
             <img id="pv-l0" src="/assets/img/models/pv-vacuole.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             </div>
-            <span class="lbl l">टॉक्सोप्लाज़्मा</span><span class="lbl r">ऑब्जेक्ट</span>
+            <span class="lbl l">Toxoplasma</span><span class="lbl r">ऑब्जेक्ट</span>
             <input type="range" min="0" max="100" value="50" aria-label="विभाजक: इसके बाईं ओर इनपुट इमेज, दाईं ओर पहचाने गए ऑब्जेक्ट">
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="pv-h">टॉक्सोप्लाज़्मा रिक्तिकाएँ: पैरासाइटोफ़ोरस रिक्तिका विभाजन</h3>
-          <p class="small">संक्रमित मेज़बान-कोशिका एकल परत से टॉक्सोप्लाज़्मा चैनल की एक फ़्लोरेसेंस इमेज। पैरासाइटोफ़ोरस रिक्तिकाओं का विभाजन spaCR के PV मॉडल से किया जाता है। यह वेल डेटा सेट के होल्ड-आउट टेस्ट विभाजन में है और मॉडल के प्रशिक्षण में उपयोग नहीं हुआ।</p>
+          <h3 id="pv-h">Toxoplasma रिक्तिकाएँ: पैरासाइटोफ़ोरस रिक्तिका विभाजन</h3>
+          <p class="small">संक्रमित मेज़बान-कोशिका एकल परत से Toxoplasma चैनल की एक फ़्लोरेसेंस इमेज। पैरासाइटोफ़ोरस रिक्तिकाओं का विभाजन spaCR के PV मॉडल से किया जाता है। यह वेल डेटा सेट के होल्ड-आउट टेस्ट विभाजन में है और मॉडल के प्रशिक्षण में उपयोग नहीं हुआ।</p>
           <ul class="classes">
           <li><label>
-            <input type="checkbox" checked data-layer="pv-l0" aria-label="टॉक्सोप्लाज़्मा रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
-            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>टॉक्सोप्लाज़्मा रिक्तिकाएँ</span>
+            <input type="checkbox" checked data-layer="pv-l0" aria-label="Toxoplasma रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma रिक्तिकाएँ</span>
             <span class="count">125</span>
             <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. 11 होल्ड-आउट वेल पर टेस्ट F1 0.854 (मॉडल कार्ड)। हाथ से क्यूरेट किए गए मास्क में 136 रिक्तिकाएँ; इस वेल पर IoU 0.5 पर F1 0.874</span>
           </label></li>
           </ul>
           <dl>
-          <dt>इनपुट</dt><dd>टॉक्सोप्लाज़्मा फ़्लोरेसेंस चैनल, ग्रेस्केल</dd>
+          <dt>इनपुट</dt><dd>Toxoplasma फ़्लोरेसेंस चैनल, ग्रेस्केल</dd>
           <dt>इमेज</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">एंकर वेल plate7_K07_8, टेस्ट विभाजन (प्रशिक्षण से अलग रखा गया)</a></dd>
           <dt>लाइसेंस</dt><dd>CC BY 4.0</dd>
           <dt>आकार</dt><dd>1994 × 1994 px, 1024 px पर दिखाया गया</dd>
@@ -382,7 +382,7 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="plaque-h">प्लाक परख: टॉक्सोप्लाज़्मा प्लाक</h3>
+          <h3 id="plaque-h">प्लाक परख: Toxoplasma प्लाक</h3>
           <p class="small">एक प्रकाशित चित्र से लिया गया क्रिस्टल-वायलेट प्लाक-परख वेल। प्लाक का विभाजन spaCR के प्लाक मॉडल से किया जाता है। इस वेल का उपयोग मॉडल के प्रशिक्षण में नहीं हुआ।</p>
           <ul class="classes">
           <li><label>
@@ -580,7 +580,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>स्क्रीन परिणाम</h2>
-        <p><i>टॉक्सोप्लाज़्मा गोंडी (Toxoplasma gondii)</i> में एक पूल्ड CRISPR स्क्रीन, उन परजीवी जीनों के लिए जो मेज़बान ESCRT प्रोटीन GFP-TSG101 की परजीवी रिक्तिका तक भर्ती को प्रभावित करते हैं, spaCR से विश्लेषित। <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR प्रीप्रिंट</a> से।</p>
+        <p><i>Toxoplasma gondii</i> में एक पूल्ड CRISPR स्क्रीन, उन परजीवी जीनों के लिए जो मेज़बान ESCRT प्रोटीन GFP-TSG101 की परजीवी रिक्तिका तक भर्ती को प्रभावित करते हैं, spaCR से विश्लेषित। <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR प्रीप्रिंट</a> से।</p>
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>स्क्रीन प्लेटें</span></div></li>
@@ -688,7 +688,7 @@
         </div>
         <div class="results stack">
         <figure class="wide">
-          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="काली पृष्ठभूमि पर एकल-कोशिका फ़्लोरेसेंस क्रॉप के दो तीन-गुणा-तीन ग्रिड, SAG1 (बाएँ) और GRA14 (दाएँ) लेबल वाले। हर क्रॉप में एक HeLa कोशिका है जिसमें नीला केंद्रक, हरा GFP-TSG101 और लाल टॉक्सोप्लाज़्मा रिक्तिकाएँ हैं; अधिकांश SAG1 क्रॉप में जहाँ हरा लाल पर चढ़ता है वहाँ रिक्तिकाएँ पीली दिखती हैं, GRA14 क्रॉप में वे लाल रहती हैं।" loading="lazy" decoding="async"></picture>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="काली पृष्ठभूमि पर एकल-कोशिका फ़्लोरेसेंस क्रॉप के दो तीन-गुणा-तीन ग्रिड, SAG1 (बाएँ) और GRA14 (दाएँ) लेबल वाले। हर क्रॉप में एक HeLa कोशिका है जिसमें नीला केंद्रक, हरा GFP-TSG101 और लाल Toxoplasma रिक्तिकाएँ हैं; अधिकांश SAG1 क्रॉप में जहाँ हरा लाल पर चढ़ता है वहाँ रिक्तिकाएँ पीली दिखती हैं, GRA14 क्रॉप में वे लाल रहती हैं।" loading="lazy" decoding="async"></picture>
           <figcaption>प्रति वर्ग वे 9 होल्ड-आउट कोशिकाएँ जिन्हें spaCR के CNN ने सबसे अधिक विश्वास के साथ सही वर्गीकृत किया, प्रशिक्षण में कभी उपयोग न किए गए 4 वेल (A01, C02, F01, H01) की 405 टेस्ट कोशिकाओं (306 SAG1-वेल, 99 GRA14-वेल) में से; टेस्ट सटीकता 0.909, ROC AUC 0.958।</figcaption>
         </figure>
         <figure class="wide">
