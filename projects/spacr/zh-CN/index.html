@@ -413,24 +413,24 @@
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>筛选板</span></div></li>
-        <li><div class="tile"><b>3</b><span>genes past FDR 5% and the effect cut, by permutation</span></div></li>
+        <li><div class="tile"><b>3</b><span>经置换检验超过 FDR 5% 和效应阈值的基因</span></div></li>
         <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>GRA14 相对 SAG1 的募集</span></div></li>
       </ul>
       <div class="perm">
-        <h3>Permutation tests</h3>
-        <p class="note">spaCR's guide-permutation analysis (Regression, nonparametric inference) on the screen's MaxViT per-cell scores: each gene's and each guide's partial correlation with the well-mean score, given plate, row and column, against 2,000,000 within-plate Freedman–Lane permutations (seed 0). Layout as in the preprint's Figure S7 (panels R and S). With the example's shipped settings, control wells and guides stay in, so the numbers differ from the preprint, which excluded them and filtered wells. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>, settings from <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>.</p>
+        <h3>置换检验</h3>
+        <p class="note">spaCR 对本筛选 MaxViT 单细胞得分进行的向导 RNA 置换分析（Regression，非参数推断）：在控制板、行和列的条件下，计算每个基因和每条向导 RNA 与孔平均得分的偏相关，并与 2,000,000 次板内 Freedman–Lane 置换（随机种子 0）比较。版式与预印本图 S7（R 和 S 子图）相同。按示例自带的设置，对照孔和对照向导 RNA 保留在分析中，因此数值与预印本不同；预印本排除了它们并对孔进行了过滤。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>，设置来自 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>。</p>
         <div class="results stack">
       <figure class="wide">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_gene_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_gene_volcano.light.webp" width="1200" height="750" alt="Gene-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14, EAF1 and SAG1 named." loading="lazy" decoding="async"></picture>
-        <figcaption>Gene level: 414 genes tested (each gene's summed guide fractions). 4 reach BH q &lt; 0.05 (SAG1 (TGGT1_233460) r = −0.317, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; GRA14 (TGGT1_239740) r = +0.435, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; EAF1 (TGGT1_225160) r = +0.240, P = 1.0×10⁻⁶, q = 1.4×10⁻⁴; GRA12B (TGGT1_275860) r = +0.157, P = 1.7×10⁻⁴, q = 1.7×10⁻²); 3 also pass the effect cut: SAG1 (TGGT1_233460), GRA14 (TGGT1_239740), EAF1 (TGGT1_225160). 2 genes sit at the P floor (no permutation as extreme). 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_gene_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_gene_volcano.light.webp" width="1200" height="750" alt="基因水平置换火山图：偏相关对 BH 校正经验 P 的负 log10，按区室着色；标注了 GRA14、EAF1 和 SAG1。" loading="lazy" decoding="async"></picture>
+        <figcaption>基因水平：检验了 414 个基因（每个基因的向导 RNA 比例之和）。4 个达到 BH q &lt; 0.05 (SAG1 (TGGT1_233460) r = −0.317, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; GRA14 (TGGT1_239740) r = +0.435, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; EAF1 (TGGT1_225160) r = +0.240, P = 1.0×10⁻⁶, q = 1.4×10⁻⁴; GRA12B (TGGT1_275860) r = +0.157, P = 1.7×10⁻⁴, q = 1.7×10⁻²)；其中 3 个也通过效应阈值：SAG1 (TGGT1_233460), GRA14 (TGGT1_239740), EAF1 (TGGT1_225160)。2 个基因位于 P 值下限（没有同样极端的置换）。2,000,000 次板内 Freedman-Lane 置换，随机种子 0；可达到的最小 P = 1/(B+1) = 5.0×10⁻⁷。MaxViT 单细胞得分按孔平均，4 块板上 1,290 个孔，控制板、行和列后的偏 Pearson r。虚线为 BH q = 0.05；点线为 spaCR 效应阈值（29 个对照 std 的 3x = 0.221）。</figcaption>
       </figure>
       <figure class="wide">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_guide_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_guide_volcano.light.webp" width="1200" height="750" alt="Guide-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14 guides 1 and 3, SAG1 guide 4 and EAF1 guide 2 named." loading="lazy" decoding="async"></picture>
-        <figcaption>Guide level: 953 guides tested. 3 reach BH q &lt; 0.05 (SAG1 guide 4 r = −0.317, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 1 r = +0.397, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 3 r = +0.263, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴); 3 pass the effect cut. 3 guides sit at the P floor. 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_guide_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_guide_volcano.light.webp" width="1200" height="750" alt="向导 RNA 水平置换火山图：偏相关对 BH 校正经验 P 的负 log10，按区室着色；标注了 GRA14 向导 RNA 1 和 3、SAG1 向导 RNA 4 以及 EAF1 向导 RNA 2。" loading="lazy" decoding="async"></picture>
+        <figcaption>向导 RNA 水平：检验了 953 条向导 RNA。3 条达到 BH q &lt; 0.05（SAG1 向导 RNA 4 r = −0.317, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 向导 RNA 1 r = +0.397, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 向导 RNA 3 r = +0.263, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴）；3 条通过效应阈值。3 条向导 RNA 位于 P 值下限。2,000,000 次板内 Freedman-Lane 置换，随机种子 0；可达到的最小 P = 1/(B+1) = 5.0×10⁻⁷。MaxViT 单细胞得分按孔平均，4 块板上 1,290 个孔，控制板、行和列后的偏 Pearson r。虚线为 BH q = 0.05；点线为 spaCR 效应阈值（29 个对照 std 的 3x = 0.221）。</figcaption>
       </figure>
       <figure class="wide">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_null.dark.webp" width="1200" height="480"><img src="/assets/img/screen/perm_null.light.webp" width="1200" height="480" alt="Three histograms of the permutation null of the partial correlation, for GRA14, EAF1 and SAG1, each with the observed value far outside the null." loading="lazy" decoding="async"></picture>
-        <figcaption>Permutation null of the gene-level partial correlation for GRA14, EAF1 and SAG1 (2,000,000 draws, seed 0; log count scale). Solid line: observed r; dashed: -r (the test is two-sided on |r|). b = permutations at least as extreme; P = (b+1)/(B+1). GRA14 r = +0.435, b = 0; EAF1 r = +0.240, b = 1; SAG1 r = −0.317, b = 0. The draws were regenerated from spaCR's own projection and seeded generator, and their exceedance counts equal the counts spaCR reported for these genes.</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_null.dark.webp" width="1200" height="480"><img src="/assets/img/screen/perm_null.light.webp" width="1200" height="480" alt="GRA14、EAF1 和 SAG1 偏相关置换零分布的三幅直方图，每幅中观测值都远在零分布之外。" loading="lazy" decoding="async"></picture>
+        <figcaption>GRA14、EAF1 和 SAG1 基因水平偏相关的置换零分布（2,000,000 次抽取，随机种子 0；计数为对数刻度）。实线：观测 r；虚线：-r（检验对 |r| 为双侧）。b = 至少同样极端的置换数；P = (b+1)/(B+1)。GRA14 r = +0.435, b = 0；EAF1 r = +0.240, b = 1；SAG1 r = −0.317, b = 0。这些抽取由 spaCR 自身的投影和设定种子的随机数生成器重新生成，其超出计数与 spaCR 为这些基因报告的计数相同。</figcaption>
       </figure>
         </div>
       </div>
@@ -447,7 +447,7 @@
         <p class="volcano-hint" id="ols-volcano-hint">将鼠标悬停在某个点上或用 Tab 键移到该点可查看数值；点击该点或按 Enter 键可打开基因卡片。方向键在基因之间移动，Escape 键关闭卡片。</p>
         <div class="volcano-card" hidden role="region" tabindex="-1"></div>
         <p class="volcano-live vh" aria-live="polite"></p>
-        <figcaption>Ordinary least squares on the MaxViT per-cell scores of all four screen plates (1,290 wells, 414 genes, 953 guides), as spaCR's Regression module runs it on its test data. Height is the raw p; Benjamini–Hochberg FDR 5% decides the colour and the dashed line. Dotted lines: ±3σ (MAD) of the gene effects. 225160 (TGGT1_225160) is the gene the preprint names EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
+        <figcaption>对全部四块筛选板（1,290 个孔、414 个基因、953 条向导 RNA）的 MaxViT 单细胞得分进行普通最小二乘，与 spaCR 的 Regression 模块在其测试数据上的运行方式相同。高度为原始 p；Benjamini–Hochberg FDR 5% 决定颜色和虚线。点线：基因效应的 ±3σ（MAD）。225160（TGGT1_225160）即预印本中称为 EAF1 的基因。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>。</figcaption>
         <template class="volcano-strings">
           <span data-k="plotLabel">基因效应火山图。用方向键在基因之间移动，按 Enter 键打开基因卡片。</span>
           <span data-k="xLabel">OLS 系数（基因效应）</span>
@@ -771,9 +771,9 @@ spacr</code></pre>
       </div>
       <dl class="about">
         <div><dt>维护者</dt><dd>Einar B. Olafsson</dd></div>
-        <div><dt>单位</dt><dd>Research Investigator, Department of Microbiology &amp; Immunology, University of Michigan</dd></div>
-        <div><dt>简介</dt><dd>Einar B. Olafsson is a Research Investigator in the Department of Microbiology &amp; Immunology at the University of Michigan. He studies how <i>Toxoplasma gondii</i> interacts with the cells it infects, combining CRISPR screening, high-content microscopy and AI-based single-cell image analysis to link genetic perturbations to spatial cellular phenotypes. He created and maintains spaCR. He studied biology and immunology at Uppsala University and received his PhD in Molecular Biosciences from Stockholm University, with a thesis on signalling in <i>Toxoplasma</i> dissemination by infected immune cells.</dd></div>
-        <div><dt>Contact</dt><dd><a href="mailto:olafsson@med.umich.edu">olafsson@med.umich.edu</a></dd></div>
+        <div><dt>单位</dt><dd>研究员，Department of Microbiology &amp; Immunology，University of Michigan</dd></div>
+        <div><dt>简介</dt><dd>Einar B. Olafsson 是 University of Michigan Department of Microbiology &amp; Immunology 的研究员。他研究<i>Toxoplasma gondii</i>如何与其感染的细胞相互作用，结合 CRISPR 筛选、高内涵显微成像和基于 AI 的单细胞图像分析，将基因扰动与空间细胞表型联系起来。他创建并维护 spaCR。他曾在 Uppsala University 学习生物学和免疫学，并在 Stockholm University 获得分子生物科学（Molecular Biosciences）博士学位，博士论文研究受感染免疫细胞介导的<i>Toxoplasma</i>播散中的信号传导。</dd></div>
+        <div><dt>联系方式</dt><dd><a href="mailto:olafsson@med.umich.edu">olafsson@med.umich.edu</a></dd></div>
         <div><dt>个人主页</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
         <div><dt>如何引用</dt><dd>引用 spaCR 时可使用涵盖所有版本的概念 DOI <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>，或使用<a href="#cite">安装与引用</a>中的版本 DOI 和 BibTeX。</dd></div>
       </dl>
