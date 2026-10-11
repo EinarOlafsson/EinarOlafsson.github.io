@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=080a078259">
+<link rel="stylesheet" href="/assets/css/site.css?v=3cb955e92c">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=080a078259" defer></script>
+<script src="/assets/js/fx.js?v=3cb955e92c" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,8 +24,10 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Mudar para o tema escuro","ui.theme_light":"Mudar para o tema claro","ui.fx_pause":"Pausar a animação de fundo","ui.fx_resume":"Retomar a animação de fundo","ui.fx_reduced":"A animação de fundo está desativada: seu sistema solicita movimento reduzido","ui.pause":"Pausar","ui.resume":"Retomar","ui.copied":"Copiado"}</script>
 
 <title>spaCR: análise espacial de fenótipos em triagens CRISPR-Cas9</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-hoechst.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.webp" media="(min-width: 601px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.webp" media="(max-width: 600px)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: segmentação, medição de células individuais, classificação, mapeamento de códigos de barras e regressão para triagens CRISPR em pool baseadas em imagens. Fluxo de análise, modelos publicados, resultados da triagem, artigos e instalação.">
+<script src="/assets/js/volcano.js?v=3cb955e92c" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Ir para o conteúdo</a>
@@ -33,11 +35,12 @@
 <canvas id="fx" aria-hidden="true"></canvas>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Einar B. Olafsson</a>
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Microscopy projects</span></a>
     <nav class="nav" aria-label="Projetos">
       <a href="/projects/spacr/pt/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+      <a href="#about" data-nav="about">About</a>
     </nav>
     <div class="tools">
       <details class="lang" data-lang-menu>
@@ -59,6 +62,21 @@
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
         <span class="label">Pausar</span>
       </button>
+      <details class="fx-pick" data-fx-menu>
+        <summary class="icon-btn" title="Background"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Background</span></summary>
+        <ul aria-label="Background">
+          <li><button type="button" data-fx-theme="advection" aria-pressed="true">spaCR advection</button></li>
+          <li><button type="button" data-fx-theme="field" aria-pressed="false">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR field phenomena</button></li>
+          <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
+          <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
+          <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
+          <li><button type="button" data-fx-theme="aurora" aria-pressed="false">spaCR aurora</button></li>
+          <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
+          <li><button type="button" data-fx-theme="spinn" aria-pressed="false">spaCR spinn</button></li>
+          <li><button type="button" data-fx-theme="fractals" aria-pressed="false">spaCR fractals</button></li>
+        </ul>
+      </details>
       <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Mudar de tema" title="Mudar de tema">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
         <span class="label">Tema</span>
@@ -79,14 +97,15 @@
         <a role="tab" id="tab-assays" href="#assays" aria-controls="assays" aria-selected="false">Ensaios e controle de qualidade</a>
         <a role="tab" id="tab-papers" href="#papers" aria-controls="papers" aria-selected="false">Artigos</a>
         <a role="tab" id="tab-install" href="#install" aria-controls="install" aria-selected="false">Instalar e citar</a>
+        <a role="tab" id="tab-about" href="#about" aria-controls="about" aria-selected="false">About</a>
       </div>
     </nav>
   </div>
 </div>
 <main id="main">
   <section id="overview" class="panel-sec hero" role="tabpanel" aria-labelledby="tab-overview" tabindex="-1">
-    <div class="wrap grid overview">
-      <div>
+    <div class="wrap">
+      <div class="ov-head">
         <p class="kicker"><span>Pacote Python e aplicativo de desktop</span> · <span class="nw">BSD-3-Clause</span></p>
         <h1>spaCR</h1>
         <p class="lede">Análise espacial de fenótipos em triagens CRISPR-Cas9.</p>
@@ -103,19 +122,95 @@
           <a class="btn" href="https://github.com/EinarOlafsson/spacr">Código-fonte</a>
         </div>
       </div>
-      <figure>
-        <a class="figlink" href="#models"><img src="/assets/img/spacr/overview-hoechst.webp" width="560" height="560" alt="Imagem de Hoechst de células HeLa infectadas com os núcleos contornados em azul, as células hospedeiras em ciano e os vacúolos de Toxoplasma em magenta" fetchpriority="high"></a>
-        <figcaption>Uma imagem de Hoechst, três classes de objetos: núcleos (azul), células hospedeiras (ciano) e vacúolos de Toxoplasma (magenta). As células hospedeiras e os vacúolos são previstos apenas a partir do canal de Hoechst. Veja <a href="#models">Modelos</a>.</figcaption>
+      <figure class="ov-strip">
+        <a class="figlink" href="#pipeline"><picture>
+          <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.webp" width="800" height="1140">
+          <img src="/assets/img/spacr/overview-strip.webp" width="1600" height="400" alt="One field of the example screen in five panels: the raw image, cell, nucleus and parasite outlines, a table of measurements, cells coloured by classifier score, and a volcano plot with the hit labelled" fetchpriority="high">
+        </picture></a>
+        <ol class="ov-steps" aria-hidden="true"><li>Image</li><li>Masks</li><li>Measurements</li><li>Classifier scores</li><li>Hits</li></ol>
+        <figcaption>One field from the public example screen followed from the raw image to the gene it implicates: plate 1, well H02, a GRA14 well. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> and <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, CC BY 4.0. See <a href="#pipeline">Pipeline</a>.</figcaption>
       </figure>
-    </div>
-    <div class="wrap">
-      <ul class="stats" aria-label="spaCR em números">
+      <ul class="stats six" aria-label="spaCR em números">
         <li><a class="row" href="#models"><b>16</b><span>modelos publicados</span></a></li>
         <li><a class="row" href="#papers"><b>5</b><span>artigos que usam o spaCR</span></a></li>
-        <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84</b><span>lições de tutorial</span></a></li>
-        <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10</b><span>idiomas da interface</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/spacr/actions"><b>85,045</b><span>testes automatizados</span></a></li>
+        <li><a class="row" href="#screen"><b>4</b><span>screen plates analysed</span></a></li>
+        <li><a class="row" href="#learn"><b>84</b><span>lições de tutorial</span></a></li>
+        <li><a class="row" href="#learn"><b>10</b><span>idiomas da interface</span></a></li>
+        <li><a class="row" href="#install"><b>84,854</b><span>testes automatizados</span></a></li>
       </ul>
+
+      <div class="ov-block">
+        <h2>What spaCR does</h2>
+        <p class="note">Seven modules, run in order. Each one reads the previous module's output and writes its own into the same project folder. Segmentation, measurement, annotation and classification also run without sequencing data.</p>
+        <ol class="mods">
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M7.5 9.5 12 14l4.5-4.5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg><b>Import</b><span>Converts microscope files into one folder layout per plate.</span><span class="out"><span class="vh">Produces:</span> <span>Image folders and a project</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="5"/><circle cx="16" cy="14" r="5"/><circle cx="9" cy="10" r="1.5"/></svg><b>Mask</b><span>Segments cells, nuclei, parasites and organelles with Cellpose models.</span><span class="out"><span class="vh">Produces:</span> <span>Label masks for every field</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg><b>Measure</b><span>Measures shape, intensity, texture and position of every object.</span><span class="out"><span class="vh">Produces:</span> <span><code>measurements.db</code> and single-object crops</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></svg><b>Annotate</b><span>Labels object crops in a keyboard-driven grid.</span><span class="out"><span class="vh">Produces:</span> <span>Labels in the project database</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="m15 17.5 2 2 3.5-4"/></svg><b>Classify</b><span>Trains image models (ResNet, MaxViT) or measurement models (XGBoost, random forest).</span><span class="out"><span class="vh">Produces:</span> <span>Checkpoints with held-out metrics, per-object scores</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14M7 5v14M11 5v14M13 5v14M17 5v14M20 5v14"/></svg><b>Map barcodes</b><span>Decodes row, column and guide barcodes from FASTQ reads.</span><span class="out"><span class="vh">Produces:</span> <span>Guide counts per well</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="15" r="1"/><circle cx="12" cy="11" r="1"/><circle cx="16" cy="9" r="1"/><circle cx="18" cy="5" r="1"/><path d="m6 18 14-13"/></svg><b>Regression</b><span>Estimates guide and gene effects from scores and guide counts.</span><span class="out"><span class="vh">Produces:</span> <span>Volcano plot and ranked hit list</span></span></li>
+          <li class="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><b class="nonum">And more</b><span>Dose-response, control charts, plaque and recruitment assays, image UMAP, batch correction, power and plate design, and a QC dashboard. See <a href="#assays">Assays and QC</a> and <a href="#phenotypes">Phenotypes</a>.</span></li>
+        </ol>
+      </div>
+
+      <div class="ov-block grid three io">
+        <div>
+          <h3>Inputs</h3>
+          <ul class="plain">
+            <li>TIFF, OME-TIFF, ND2, CZI and LIF images, 2-D, volumetric and time series</li>
+            <li>Multi-well plates from any microscope that writes one of these formats</li>
+            <li>FASTQ reads with row, column and guide barcodes</li>
+            <li>Live folder watch for ND2, CZI, LIF and OME-TIFF files as they are written (alpha, off by default)</li>
+            <li>OME-Zarr and OMERO through optional extras</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Organisms</h3>
+          <ul class="plain">
+            <li><i>Toxoplasma gondii</i> in host cells: guide, recruitment, plaque and replication assays</li>
+            <li>Any cell type for segmentation, measurement and classification</li>
+            <li>Pages for other pathogens are in development and hidden by default</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Outputs</h3>
+          <ul class="plain">
+            <li>An SQLite database per project: measurements, labels, predictions</li>
+            <li>Masks, crops and images as files on disk</li>
+            <li>Effect estimates, p and q values, diagnostics and run records</li>
+            <li>Figures as PNG, PDF, SVG or TIFF; one zip per figure with its data, statistics and a script that redraws it</li>
+            <li>AnnData export, and a vvvv export (alpha)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ov-block">
+        <h2>Models</h2>
+        <p class="note">16 published Cellpose-SAM and YOLO models with model cards: parasite vacuoles, plaques, plaque-assay wells, and cross-channel models that predict cells, nuclei or parasites from a single stain. Weights download from Hugging Face and are checked against a published checksum. See <a href="#models">Models</a>.</p>
+      </div>
+
+      <div class="ov-block">
+        <h2>Ways to run it</h2>
+        <ul class="ways">
+          <li><b>Desktop app</b><span>Installers for Windows, macOS and Linux, or <code>spacr</code> after pip or conda.</span></li>
+          <li><b>Python API</b><span>Every module is a function that takes a settings dictionary.</span></li>
+          <li><b>Command line</b><span><code>spacr-run</code> runs any pipeline headless on a workstation, server or cluster.</span></li>
+          <li><b>Notebooks</b><span>Jupyter notebooks for each step, from masks to regression, in the repository.</span></li>
+          <li><b>Docker</b><span>CPU and CUDA images on GitHub Container Registry. See <a href="#docker">Docker</a>.</span></li>
+        </ul>
+      </div>
+
+      <div id="learn" class="ov-block">
+        <h2>Learn and cite</h2>
+        <ul class="links">
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84 tutorial lessons</b><span>Narrated and captioned, with example data.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Documentation</b><span>User guide and API reference.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10 languages</b><span>The interface, tutorials and README are translated.</span></a></li>
+          <li><a class="row" href="https://github.com/EinarOlafsson/spacr/blob/main/LICENSE"><b>BSD-3-Clause licence</b><span>Free for academic and commercial use.</span></a></li>
+          <li><a class="row" href="#cite"><b>Citation</b><span>Concept DOI, version DOI, preprint and BibTeX.</span></a></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -153,7 +248,7 @@
       <ul class="stats mini">
         <li><div class="tile"><b>16</b><span>modelos publicados</span></div></li>
         <li><div class="tile"><b>4</b><span>modelos entre canais</span></div></li>
-        <li><div class="tile"><b>7</b><span>classes de objetos mostradas</span></div></li>
+        <li><div class="tile"><b>8</b><span>classes de objetos mostradas</span></div></li>
       </ul>
       <div class="showcase">
         <figure class="model-fig" aria-labelledby="hoechst-h">
@@ -244,6 +339,36 @@
           </dl>
           </figcaption>
         </figure>
+        <figure class="model-fig" aria-labelledby="pv-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="Greyscale fluorescence image with bright, rounded Toxoplasma vacuoles scattered over faint host cells" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="pv-l0" src="/assets/img/models/pv-vacuole.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Toxoplasma</span><span class="lbl r">Objetos</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Divisor: à esquerda dele, a imagem de entrada; à direita, os objetos detectados">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="pv-h">Toxoplasma vacuoles: parasitophorous vacuole segmentation</h3>
+          <p class="small">One fluorescence image of the Toxoplasma channel from an infected host-cell monolayer. Parasitophorous vacuoles are segmented by spaCR's PV model. This well is in the dataset's held-out test split and was not used to train the model.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="pv-l0" aria-label="Mostrar os contornos de Vacúolos de Toxoplasma">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Vacúolos de Toxoplasma</span>
+            <span class="count">125</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. Test F1 0.854 on 11 held-out wells (model card). 136 vacuoles in the hand-curated mask; F1 0.874 at IoU 0.5 on this well</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Entrada</dt><dd>Toxoplasma fluorescence channel, greyscale</dd>
+          <dt>Imagem</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">Anchor well plate7_K07_8, test split (held out from training)</a></dd>
+          <dt>Licença</dt><dd>CC BY 4.0</dd>
+          <dt>Tamanho</dt><dd>1994 × 1994 px, shown at 1024 px</dd>
+          <dt>Figura</dt><dd><a href="/assets/img/models/pv-figure.webp">Com legenda e somas de verificação</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
         <figure class="model-fig" aria-labelledby="plaque-h">
           <div class="viewer" style="aspect-ratio:1024/1011">
             <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="Imagem em tons de cinza de um poço corado com cristal violeta com placas claras em uma monocamada escura" loading="lazy" decoding="async">
@@ -262,7 +387,7 @@
             <input type="checkbox" checked data-layer="plaque-l0" aria-label="Mostrar os contornos de Placas de lise">
             <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Placas de lise</span>
             <span class="count">99</span>
-            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. Modelo candidato, ainda não é o padrão. 98 placas na máscara desenhada à mão; F1 0,964 com IoU 0,5 neste poço</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. The default plaque model in the zoo since 2026-10-10. 98 plaques in the hand-drawn mask; F1 0.964 at IoU 0.5 on this well</span>
           </label></li>
           </ul>
           <dl>
@@ -290,32 +415,67 @@
         <li><div class="tile"><b>2</b><span>genes acima de 3σ com ambos os classificadores</span></div></li>
         <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>recrutamento GRA14 vs. SAG1</span></div></li>
       </ul>
-      <div class="grid two results">
-        <figure>
-          <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="Dois gráficos de vulcão do efeito gênico contra a significância; EAF1 e GRA14 ficam acima do limiar em ambos" loading="lazy" decoding="async">
-          <figcaption>Efeitos gênicos de um classificador de medições (XGBoost, à esquerda) e de um classificador de imagens (MaxViT, à direita); EAF1 e GRA14 ultrapassam 3σ em ambos. Fig. 5 do preprint.</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/examples/hit_volcano.webp" width="1152" height="792" alt="Gráfico de vulcão com SAG1 e GRA14 acima da linha de significância" loading="lazy" decoding="async">
-          <figcaption>Regressão em uma placa (30 poços): os controles GRA14 (q 0,040) e SAG1 (q 0,006) atendem a q &lt; 0,05. Dados: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>.</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/spacr/gene-volcano.webp" width="976" height="1004" alt="Gráfico de vulcão interativo no módulo Regression com um gene selecionado e sua ficha do gene abaixo" loading="lazy" decoding="async">
-          <figcaption>Módulo Regression: clicar em um ponto abre a ficha do gene, aqui EAF1 (TGGT1_225160).</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/spacr/gene-cells.webp" width="1196" height="778" alt="Grade de recortes de células de um poço com guias de EAF1" loading="lazy" decoding="async">
-          <figcaption>Células de um poço de EAF1 cujas pontuações do classificador correspondem ao efeito estimado.</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/spacr/ranked.webp" width="682" height="812" alt="Gráfico de linhas do fenótipo médio contra a posição do gene no ranking, com genes selecionados rotulados" loading="lazy" decoding="async">
-          <figcaption>Todos os genes ordenados pelo fenótipo médio; os hits mais fortes estão rotulados pelo ID do gene.</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/spacr/barcodes.webp" width="1002" height="1002" alt="Mapas de calor de RNAs guia únicos por poço em quatro placas" loading="lazy" decoding="async">
-          <figcaption>Map barcodes: RNAs guia únicos por poço nas quatro placas da triagem.</figcaption>
-        </figure>
-      </div>
+      <figure class="wide results">
+        <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="Dois gráficos de vulcão do efeito gênico contra a significância; EAF1 e GRA14 ficam acima do limiar em ambos" loading="lazy" decoding="async">
+        <figcaption>Efeitos gênicos de um classificador de medições (XGBoost, à esquerda) e de um classificador de imagens (MaxViT, à direita); EAF1 e GRA14 ultrapassam 3σ em ambos. Fig. 5 do preprint.</figcaption>
+      </figure>
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=3cb955e92c">
+        <h3 id="ols-volcano-title">All four plates: gene effects from spaCR's OLS regression</h3>
+        <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
+          <p class="volcano-status">Loading the regression results…</p>
+        </div>
+        <ul class="volcano-legend" aria-hidden="true">
+          <li class="hit">Called and past 3σ</li>
+          <li class="called">Called (FDR 5%)</li>
+          <li>Not called</li>
+        </ul>
+        <p class="volcano-hint" id="ols-volcano-hint">Hover or tab to a point for its values; click it, or press Enter, for the gene card. Arrow keys move between genes, Escape closes the card.</p>
+        <div class="volcano-card" hidden role="region" tabindex="-1"></div>
+        <p class="volcano-live vh" aria-live="polite"></p>
+        <figcaption>Ordinary least squares on all four screen plates (1,290 wells, 414 genes, 953 guides), as spaCR's Regression module runs it on its test data. Height is the raw p; Benjamini–Hochberg FDR 5% decides the colour and the dashed line. Dotted lines: ±3σ (MAD) of the gene effects. 225160 (TGGT1_225160) is the gene the preprint names EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
+        <template class="volcano-strings">
+          <span data-k="plotLabel">Volcano plot of gene effects. Use the arrow keys to move between genes and Enter to open a gene card.</span>
+          <span data-k="xLabel">OLS coefficient (gene effect)</span>
+          <span data-k="yLabel">−log10(raw OLS p)</span>
+          <span data-k="sigma">3σ</span>
+          <span data-k="fdr">FDR 5%</span>
+          <span data-k="coef">Coefficient</span>
+          <span data-k="p">p</span>
+          <span data-k="q">q</span>
+          <span data-k="pZero">&lt; 10⁻³⁰⁰</span>
+          <span data-k="zeroNote">(reported as 0; drawn three decades above the smallest non-zero p, as spaCR does)</span>
+          <span data-k="controlTitle">Non-targeting control</span>
+          <span data-k="controlNote">Non-targeting guides, not a gene: the null this screen measures every real guide against.</span>
+          <span data-k="noProduct">no product description</span>
+          <span data-k="identity">Identity</span>
+          <span data-k="geneId">Gene ID</span>
+          <span data-k="product">Product</span>
+          <span data-k="symbol">Symbol</span>
+          <span data-k="localisation">Localisation (TAGM/LOPIT)</span>
+          <span data-k="thisScreen">This screen</span>
+          <span data-k="effect">Effect (coefficient)</span>
+          <span data-k="pValue">p-value</span>
+          <span data-k="qValue">q-value (Benjamini–Hochberg)</span>
+          <span data-k="condition">Condition</span>
+          <span data-k="condPc">positive control</span>
+          <span data-k="condNc">negative control</span>
+          <span data-k="condCtl">non-targeting control</span>
+          <span data-k="condOther">library gene</span>
+          <span data-k="nGene">Well–guide observations</span>
+          <span data-k="guidesFitted">Guides fitted</span>
+          <span data-k="guidesAgree">Guides agreeing in sign</span>
+          <span data-k="agreeOf">{a} of {b}</span>
+          <span data-k="guidesHeading">The guides behind it</span>
+          <span data-k="guide">Guide</span>
+          <span data-k="nGrna">Wells</span>
+          <span data-k="opposes">opposes the gene effect</span>
+          <span data-k="records">External records</span>
+          <span data-k="close">Close</span>
+          <span data-k="opened">Gene card opened:</span>
+          <span data-k="closed">Gene card closed.</span>
+          <span data-k="error">The regression results could not be loaded.</span>
+        </template>
+      </figure>
     </div>
   </section>
 
@@ -343,6 +503,53 @@
           <img src="/assets/img/spacr/recruitment-field.webp" width="1200" height="241" alt="Um campo mostrado como canais separados, seguidos das máscaras de célula, núcleo e parasita" loading="lazy" decoding="async">
           <figcaption>Um campo do ensaio de recrutamento: os canais e, em seguida, as máscaras de célula, núcleo e parasita.</figcaption>
         </figure>
+      </div>
+
+      <div class="sub" id="classification">
+        <div class="section-head">
+          <h2>Classification</h2>
+          <p>Classifiers that tell the screen's control wells apart, trained and explained with spaCR on CPU: an XGBoost model on per-cell measurements and a small image model (MobileNetV3-small, 8 epochs) on single-cell crops. Column 1 wells carry guides against SAG1 (negative control) and column 2 wells against GRA14 (positive control). Wells are held out whole, so no test cell shares a well with a training cell. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> and <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, plate 1, CC BY 4.0.</p>
+        </div>
+        <div class="results stack">
+        <figure class="wide">
+          <img src="/assets/img/phenotypes/class_example_crops.webp" width="1200" height="660" alt="Two three-by-three grids of single-cell fluorescence crops on black. Left grid labelled SAG1, right grid labelled GRA14. Each crop shows a HeLa cell with a blue nucleus, green GFP-TSG101 cytoplasm and red Toxoplasma vacuoles; in most SAG1 crops the vacuoles look yellow where green overlaps red, in the GRA14 crops they stay red." loading="lazy" decoding="async">
+          <figcaption>The 9 held-out cells per class that spaCR&#x27;s CNN classified correctly with the highest confidence, from 405 test cells in 4 wells never used for training (B02, C01, E02, G01); test accuracy 0.901.</figcaption>
+        </figure>
+        <div class="grid two">
+        <figure>
+          <img src="/assets/img/phenotypes/xgb_confusion_matrix.webp" width="900" height="750" alt="Two-by-two confusion matrix heatmap in blues, true class on rows (SAG1 c1, GRA14 c2), predicted class on columns, with row-normalised fractions 0.81, 0.19, 0.12 and 0.88." loading="lazy" decoding="async">
+          <figcaption>XGBoost on 76 GFP-TSG101-channel measurements per cell, 5-fold cross-validation with whole wells held out: 1,277 control cells from 16 wells, accuracy 0.853 (445 of 547 SAG1-well and 644 of 730 GRA14-well cells correct).</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/phenotypes/xgb_roc_pr.webp" width="1200" height="550" alt="Two panels. Left: ROC curve rising steeply toward the top-left corner above a dashed diagonal chance line, legend AUC = 0.922. Right: precision-recall curve mostly between 0.85 and 0.97 precision, falling at the highest recall, above a dashed prevalence line at 0.57, legend AP = 0.913." loading="lazy" decoding="async">
+          <figcaption>ROC (AUC 0.922) and precision-recall (average precision 0.913) of the same well-held-out XGBoost predictions for 1,277 cells, GRA14 wells as the positive class (prevalence 0.57).</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/phenotypes/cnn_confusion_matrix.webp" width="900" height="750" alt="Two-by-two confusion matrix heatmap in blues for the image classifier, true class on rows, predicted on columns, fractions 0.92, 0.08, 0.12 and 0.88." loading="lazy" decoding="async">
+          <figcaption>spaCR&#x27;s CNN on single-cell crops of 405 held-out cells from 4 test wells: accuracy 0.901 (184 of 200 SAG1-well and 181 of 205 GRA14-well cells correct).</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/phenotypes/cnn_roc_pr.webp" width="1200" height="550" alt="Two panels for the image classifier. Left: ROC curve hugging the top-left corner above a dashed chance line, legend AUC = 0.968. Right: precision-recall curve near 1.0 precision until high recall, above a dashed prevalence line at 0.51, legend AP = 0.970." loading="lazy" decoding="async">
+          <figcaption>ROC (AUC 0.968) and precision-recall (average precision 0.970) of the CNN on 405 cells from 4 held-out wells, GRA14 wells as the positive class.</figcaption>
+        </figure>
+        </div>
+        <figure class="wide">
+          <img src="/assets/img/phenotypes/saliency_maps.webp" width="1200" height="970" alt="Four rows of five single-cell crops: SAG1 crops, their Grad-CAM heatmaps, GRA14 crops, their Grad-CAM heatmaps. Heatmaps are jet-coloured over a grey version of the crop; on GRA14 cells the hot spot sits on the red parasite vacuoles, on SAG1 cells heat also falls on the black background corners." loading="lazy" decoding="async">
+          <figcaption>Grad-CAM maps of the CNN for the 5 most confident correct held-out cells per class; on GRA14-well cells 4-13% of the map falls on the masked black background, on SAG1-well cells 18-53%.</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="/assets/img/phenotypes/shap_beeswarm.webp" width="1200" height="498" alt="SHAP beeswarm: twelve feature names on the left, one row of coloured dots per feature along a horizontal SHAP value axis from about -1.1 to 1.4. The top rows, cell_channel_1_shannon_entropy and cell_channel_1_channel_2_M2_correlation_85, spread widest in both directions; lower rows cluster near zero." loading="lazy" decoding="async">
+          <figcaption>SHAP values of the XGBoost model for 256 held-out cells from 3 wells (C02, D02, H01), top 12 of 76 features by mean |SHAP|; each dot is a cell coloured by its feature value (dark low, yellow high), and positive values push toward the GRA14 class.</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="/assets/img/phenotypes/shap_waterfall_cell.webp" width="1200" height="547" alt="SHAP waterfall for one cell: ten horizontal arrows, red pushing right and blue pushing left, from the expected value 0.178 at the bottom to f(x) = 1.545 at the top; cell_channel_1_shannon_entropy adds +0.92 and cell_channel_1_channel_2_M2_correlation_85 adds +0.47." loading="lazy" decoding="async">
+          <figcaption>Per-cell SHAP explanation of one held-out GRA14-well cell (plate 1, well C02, field 1, object 35): the model&#x27;s base value of 0.178 log-odds plus the feature contributions gives 1.545, a GRA14 probability of 0.82.</figcaption>
+        </figure>
+        <figure class="wide">
+          <img src="/assets/img/phenotypes/xgb_feature_importance.webp" width="1200" height="737" alt="Horizontal grey bar chart of the 15 most important measurement features, longest bar at the top for cell_channel_1_channel_2_M2_correlation_85 (about 0.20), then cell_channel_1_shannon_entropy (about 0.13), with the remaining bars below 0.06." loading="lazy" decoding="async">
+          <figcaption>Top 15 of 76 features by XGBoost importance for the model trained on 1,021 control cells from 13 wells; cell_channel_1_channel_2_M2_correlation_85 ranks first (0.196), then cell_channel_1_shannon_entropy (0.133).</figcaption>
+        </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -403,20 +610,21 @@
         </li>
         <li class="paper">
           <a class="title-wrap row" href="https://doi.org/10.64898/2026.07.20.739547">
-          <img src="/assets/img/papers/kaur2026_biorxiv_fig4.webp" width="480" height="320" alt="Fig. 4: TgGRA8 is essential for PV recruitment of ALG-2" loading="lazy" decoding="async">
+          <img src="/assets/img/papers/kaur2026_biorxiv_fig4c.webp" width="480" height="320" alt="Fig. 4: TgGRA8 is essential for PV recruitment of ALG-2" loading="lazy" decoding="async">
           <span class="title">Toxoplasma GRA8 engages the host ESCRT accessory protein ALG-2 and is necessary for parasite metabolic integrity</span>
           </a>
           <span class="cite">Kaur H, et al. bioRxiv, 2026, preprint. <span class="rel">Usa o spaCR</span></span>
           <blockquote class="evidence"><q>All quantitative image analysis was performed as described in (33) in detail.</q><span class="where">Methods, ESCRT protein recruitment</span></blockquote>
-          <span class="credit">Imagem: Fig. 4 from Kaur et al. bioRxiv 2026, CC0 1.0 (cropped)</span>
+          <span class="credit">Imagem: Fig. 4C from Kaur et al. bioRxiv 2026, CC0 1.0 (cropped and rearranged)</span>
         </li>
         <li class="paper">
           <a class="title-wrap row" href="https://doi.org/10.1016/j.celrep.2025.115694">
-          <div class="badge" aria-hidden="true"><span>Cell Reports</span><b>2025</b></div>
+          <img src="/assets/img/papers/mcfadden2025_celrep_illustration.webp" width="480" height="320" alt="Four HeLa cells expressing the calcium sensor Yellow Cameleon 3.60, coloured by YFP/CFP ratio (warm = high calcium), outlined and tracked with spaCR, with each tracked cell's calcium trace oscillating after histamine and stopping after pyrilamine" loading="lazy" decoding="async">
           <span class="title">IRE1α promotes phagosomal calcium flux to enhance macrophage fungicidal activity</span>
           </a>
           <span class="cite">McFadden MJ, et al. Cell Reports, 2025. <span class="rel">Usa o spaCR</span>. Preprint: <a href="https://doi.org/10.1101/2023.10.02.560560">bioRxiv 2023</a></span>
           <blockquote class="evidence"><q>For analysis of cellular calcium flux, the Python package spacr (https://github.com/EinarOlafsson/spacr) was used to segment and track cells over time and quantify single cell calcium oscillations.</q><span class="where">STAR Methods, 'Quantification of calcium flux'</span></blockquote>
+          <span class="credit">Imagem: Illustration made with spaCR from Mahlandt, Arts &amp; Goedhart, Zenodo 10.5281/zenodo.4501412 (CC BY 4.0); not from the paper</span>
         </li>
         <li class="paper">
           <a class="title-wrap row" href="https://doi.org/10.1128/msphere.01011-24">
@@ -460,6 +668,27 @@
             </li>
           </ul>
           <p class="note">Somas de verificação: <a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/SHA256SUMS.txt">SHA256SUMS.txt</a>. Instaladores anteriores e solução de problemas: <a href="https://einarolafsson.github.io/spacr/installers.html">documentação dos instaladores</a>.</p>
+      </div>
+      <div id="docker" class="docker sub-s">
+        <h3>Docker</h3>
+        <p class="note">Images for Linux x86-64 on <a href="https://github.com/EinarOlafsson/spacr/pkgs/container/spacr">GitHub Container Registry</a>, one per release: <code>1.5.1.4</code> and <code>1.5.1.4-cpu</code> for CPU, <code>1.5.1.4-cuda12.4</code> for NVIDIA GPUs, and <code>latest</code>. They run the command-line pipelines; the desktop app is not included.</p>
+        <div class="grid two">
+          <div>
+            <p class="small">CPU: list the pipelines</p>
+            <div class="code-wrap">
+<pre id="docker-cmd"><code>docker run --rm ghcr.io/einarolafsson/spacr:1.5.1.4 spacr-run --list</code></pre>
+              <button class="copy" type="button" data-copy="docker-cmd">Copiar</button>
+            </div>
+          </div>
+          <div>
+            <p class="small">NVIDIA GPU (needs the NVIDIA Container Toolkit)</p>
+            <div class="code-wrap">
+<pre id="docker-gpu-cmd"><code>docker run --rm --gpus all ghcr.io/einarolafsson/spacr:1.5.1.4-cuda12.4 spacr-run --list</code></pre>
+              <button class="copy" type="button" data-copy="docker-gpu-cmd">Copiar</button>
+            </div>
+          </div>
+        </div>
+        <p class="note">Mounting data and models, settings files and full pipeline commands: <a href="https://einarolafsson.github.io/spacr/installer_guide.html#container-images">container guide</a>.</p>
       </div>
       <div class="grid two sub-s">
         <div>
@@ -545,10 +774,27 @@ spacr</code></pre>
       </div>
     </div>
   </section>
+
+  <section id="about" class="panel-sec" role="tabpanel" aria-labelledby="tab-about" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="about-h">About</h2>
+        <p>This site presents spaCR and related microscopy projects: software, segmentation models and hardware, with the data and code behind each figure.</p>
+      </div>
+      <dl class="about">
+        <div><dt>Maintainer</dt><dd>Einar B. Olafsson</dd></div>
+        <div><dt>Affiliation</dt><dd class="pending-inline">Affiliation pending</dd></div>
+        <div><dt>Biography</dt><dd class="pending-inline">Short biography pending</dd></div>
+        <div><dt>Profiles</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
+        <div><dt>How to cite</dt><dd>Cite spaCR with its concept DOI <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>, which covers all versions, or with the version DOI and BibTeX under <a href="#cite">Install and cite</a>.</dd></div>
+      </dl>
+
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <p>HTML e CSS estáticos. O fundo é uma adaptação para WebGL do tema de advecção do spaCR. Sem análise de tráfego e sem cookies.</p>
+    <p>Static HTML and CSS. The backgrounds are WebGL ports of the spaCR desktop app's animated themes; choose one under Background. No analytics and no cookies.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
 
   </div>
