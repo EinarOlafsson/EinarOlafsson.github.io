@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=08370ee546">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=08370ee546" defer></script>
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/starplast/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/starplast/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/starplast/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/starplast/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/starplast/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/starplast/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/starplast/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/starplast/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/starplast/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/starplast/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/starplast/">
+<script type="application/json" id="i18n-ui">{"ui.theme_dark":"डार्क थीम पर जाएँ","ui.theme_light":"लाइट थीम पर जाएँ","ui.fx_pause":"पृष्ठभूमि एनिमेशन रोकें","ui.fx_resume":"पृष्ठभूमि एनिमेशन फिर से चलाएँ","ui.fx_reduced":"पृष्ठभूमि एनिमेशन बंद है: आपका सिस्टम कम गति का अनुरोध करता है","ui.pause":"रोकें","ui.resume":"फिर से चलाएँ","ui.copied":"कॉपी हो गया"}</script>
+
+<title>Starplast: Toxoplasma और Plasmodium के लिए जीन साक्ष्य</title>
+<meta name="description" content="Starplast 0.54.0: Toxoplasma gondii और Plasmodium falciparum में जीन साक्ष्य देखने के लिए एक डेस्कटॉप एप्लिकेशन: अभिव्यक्ति, फ़िटनेस स्क्रीन, स्थानीयकरण, प्रोटीन विशेषताएँ, अंतःक्रियाएँ और साहित्य एनोटेशन।">
+</head>
+<body data-page="starplast">
+<a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>माइक्रोस्कोपी परियोजनाएँ</span></a>
+    <nav class="nav" aria-label="परियोजनाएँ">
+      <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/starplast/hi/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+      <a href="/#about" data-nav="about">परिचय</a>
+    </nav>
+    <div class="tools">
+      <details class="lang" data-lang-menu>
+        <summary title="भाषा"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">भाषा: </span><span class="lang-cur">हिन्दी</span></summary>
+        <ul aria-label="भाषा">
+          <li><a href="/projects/starplast/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/starplast/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/starplast/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/starplast/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/starplast/hi/" hreflang="hi" lang="hi" data-lang="hi" aria-current="true">हिन्दी</a></li>
+          <li><a href="/projects/starplast/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/starplast/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/starplast/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/starplast/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/starplast/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="पृष्ठभूमि एनिमेशन रोकें" title="पृष्ठभूमि एनिमेशन रोकें">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label">रोकें</span>
+      </button>
+      <details class="fx-pick" data-fx-menu>
+        <summary class="icon-btn" title="पृष्ठभूमि"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">पृष्ठभूमि</span></summary>
+        <ul aria-label="पृष्ठभूमि">
+          <li><button type="button" data-fx-theme="field" aria-pressed="true">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="advection" aria-pressed="false">spaCR advection</button></li>
+          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR फ़ील्ड परिघटनाएँ</button></li>
+          <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
+          <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
+          <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
+          <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="थीम बदलें" title="थीम बदलें">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label">थीम</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero sp-hero">
+    <div class="wrap grid sp-top">
+      <div>
+        <p class="kicker"><span>डेस्कटॉप एप्लिकेशन (PyQt6)</span> · <span class="nw">MIT</span></p>
+        <h1>Starplast</h1>
+        <p class="lede"><i>Toxoplasma gondii</i> और <i>Plasmodium falciparum</i> के जीन साक्ष्य एक ही स्थान पर।</p>
+        <p class="prose">Starplast अभिव्यक्ति, फ़िटनेस स्क्रीन, स्थानीयकरण, प्रोटीन विशेषताएँ, अंतःक्रियाएँ और साहित्य एनोटेशन को एक साथ लाता है। इसका उपयोग किसी जीन को खोजने, किसी स्क्रीन के हिट की जाँच करने, जीनों के समूहों की तुलना करने और आगे के प्रयोगों के लिए उम्मीदवार चुनने में करें। साथ आने वाले मानचित्रों में 8,140 <i>T. gondii</i> जीन और 5,720 <i>P. falciparum</i> जीन हैं, जिन्हें अलग-अलग देखा जाता है।</p>
+        <ul class="facts">
+          <li>संस्करण <b>0.54.0</b></li>
+          <li>रिलीज़ <b>2026-10-05</b></li>
+          <li>Python <b>3.10 or newer</b></li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="#install">इंस्टॉल करें</a>
+          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">उपयोगकर्ता गाइड</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/starplast">स्रोत कोड</a>
+          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+        </div>
+      </div>
+      <figure class="sp-map">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Starplast जीन मानचित्र: रंगीन समूहों में हज़ारों बिंदु, हर जीन के लिए एक, और एक चयनित जीन से संबंधित जीनों तक रेखाएँ" fetchpriority="high"></picture>
+        <figcaption>Starplast की डार्क और लाइट थीम में <i>T. gondii</i> जीन मानचित्र; यह इस पृष्ठ की थीम के अनुसार बदलता है। हर बिंदु एक जीन है; रेखाएँ चयनित जीन को संबंधित जीनों से जोड़ती हैं। स्क्रीनशॉट <a href="https://github.com/EinarOlafsson/starplast">Starplast रिपॉज़िटरी</a> (MIT) से।</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-does-h">
+    <div class="wrap">
+      <h2 id="sp-does-h">यह क्या करता है</h2>
+      <ul class="ways sp-tools">
+        <li><b>किसी जीन का अन्वेषण करें</b><span>पहचानकर्ताओं, प्रतीकों और विवरणों में खोजता है, फिर स्रोत साक्ष्य दिखाता है।</span></li>
+        <li><b>किसी गुण का पूर्वानुमान करें</b><span>बिना लेबल वाले जीनों के लिए निर्णय लेने से पहले रोके गए (held-out) पूर्वानुमानों की तुलना करता है, और संबंधित जीनों को एक ही मूल्यांकन समूह में रखता है।</span></li>
+        <li><b>किसी स्क्रीन की तुलना करें</b><span>जीन-स्तरीय CSV या TSV को मौजूदा साक्ष्य से जोड़ता है और अनसुलझे पहचानकर्ताओं को दिखाई देता रखता है।</span></li>
+        <li><b>39 रणनीतियाँ</b><span>संयुक्त डेटा को किसी दावे में बदलने के नामित तरीके, हर एक के साथ एक गाइड और फेरबदल किए गए (shuffled) डेटा के विरुद्ध एक स्व-परीक्षण।</span></li>
+      </ul>
+      <p class="note sp-note">मानचित्र पर स्थितियाँ चुनी गई विशेषताओं के एम्बेडिंग से आती हैं: पास-पास के जीनों के इनपुट समान होते हैं, जो अकेले साझा कार्य या भौतिक अंतःक्रिया नहीं दर्शाता। खोज स्कोर उम्मीदवारों को प्राथमिकता देने में मदद करते हैं; वे प्रायोगिक सत्यापन नहीं हैं। जीन तालिकाएँ और ग्राफ़ पैकेज के साथ आते हैं और ऑफ़लाइन काम करते हैं; 130 पंजीकृत डेटासेट अपने स्रोतों के साथ <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">डेटासेट सूची</a> में दिए गए हैं।</p>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-screen-h">
+    <div class="wrap">
+      <h2 id="sp-screen-h">किसी स्क्रीन का अन्वेषण करें</h2>
+      <ol class="sp-steps">
+        <li>File → Species में जीव चुनें।</li>
+        <li>किसी जीन ID को खोजें। <i>T. gondii</i> के लिए, File → Import data आपके स्क्रीन परिणाम जोड़ता है।</li>
+        <li>जिन मापों की आप तुलना करना चाहते हैं, उनके अनुसार मानचित्र को रंगें और फ़िल्टर करें।</li>
+        <li>किसी जीन का साक्ष्य पढ़ने के लिए उस पर क्लिक करें और हर प्रकार के संबंध को अलग से देखें।</li>
+        <li>लैसो या ब्रश से एक समूह चुनें, फिर आगे के काम के लिए जीन सूची निर्यात करें।</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
+    <div class="wrap">
+      <h2 id="sp-install-h">Starplast 0.54.0 इंस्टॉल करें</h2>
+      <div class="grid two">
+        <div>
+          <h3>PyPI</h3>
+          <div class="code-wrap">
+<pre id="sp-pip"><code>pip install starplast
+starplast</code></pre>
+            <button class="copy" type="button" data-copy="sp-pip">कॉपी करें</button>
+          </div>
+          <p class="note">Python &gt;=3.10, एक डिस्प्ले और OpenGL आवश्यक हैं। विश्लेषण CPU पर चलते हैं; <code>pip install "starplast[gpu]"</code> CUDA 12 ड्राइवर वाले Linux x86-64 पर NVIDIA GPU समर्थन जोड़ता है।</p>
+        </div>
+        <div>
+          <h3>spaCR से</h3>
+          <p>spaCR डेस्कटॉप एप्लिकेशन में, <i>Toxoplasma</i> पृष्ठ पर Starplast टाइल Starplast को उसके अपने Python एनवायरनमेंट में इंस्टॉल करती है और उसे एक अलग एप्लिकेशन के रूप में खोलती है (spaCR में अल्फ़ा के रूप में चिह्नित)। spaCR परिणामों को Starplast में देखने के लिए, spaCR से एक जीन-स्तरीय तालिका निर्यात करें और उसे File → Import data से आयात करें।</p>
+          <p class="note"><a href="/projects/spacr/">spaCR के बारे में</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-links-h">
+    <div class="wrap">
+      <h2 id="sp-links-h">लिंक और लाइसेंस</h2>
+      <ul class="links">
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>स्रोत कोड</b><span>GitHub रिपॉज़िटरी, इश्यू और रिलीज़।</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>starplast पैकेज।</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>दस्तावेज़</b><span>उपयोगकर्ता गाइड, Python API और 40 स्लाइड का परिचय।</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>परिवर्तन</b><span>हर रिलीज़ में क्या बदला।</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>उद्धरण</b><span>Starplast और आपके द्वारा उपयोग किए गए डेटासेट के मूल स्रोतों का उद्धरण दें।</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>MIT लाइसेंस</b><span>स्रोत कोड के लिए; स्रोत डेटासेट और तृतीय-पक्ष आर्टवर्क अपने-अपने लाइसेंस बनाए रखते हैं।</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>स्थिर HTML और CSS। पृष्ठभूमियाँ spaCR डेस्कटॉप एप्लिकेशन की एनिमेटेड थीमों के WebGL पोर्ट हैं; पृष्ठभूमि के अंतर्गत एक चुनें। कोई एनालिटिक्स नहीं और कोई कुकी नहीं।</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=08370ee546">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=08370ee546" defer></script>
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/starplast/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/starplast/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/starplast/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/starplast/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/starplast/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/starplast/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/starplast/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/starplast/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/starplast/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/starplast/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/starplast/">
+<script type="application/json" id="i18n-ui">{"ui.theme_dark":"Mudar para o tema escuro","ui.theme_light":"Mudar para o tema claro","ui.fx_pause":"Pausar a animação de fundo","ui.fx_resume":"Retomar a animação de fundo","ui.fx_reduced":"A animação de fundo está desativada: seu sistema solicita movimento reduzido","ui.pause":"Pausar","ui.resume":"Retomar","ui.copied":"Copiado"}</script>
+
+<title>Starplast: evidências gênicas para Toxoplasma e Plasmodium</title>
+<meta name="description" content="Starplast 0.54.0: um aplicativo de desktop para explorar evidências gênicas em Toxoplasma gondii e Plasmodium falciparum: expressão, triagens de fitness, localização, características de proteínas, interações e anotações da literatura.">
+</head>
+<body data-page="starplast">
+<a class="skip" href="#main">Ir para o conteúdo</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Projetos de microscopia</span></a>
+    <nav class="nav" aria-label="Projetos">
+      <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/starplast/pt/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+      <a href="/#about" data-nav="about">Sobre</a>
+    </nav>
+    <div class="tools">
+      <details class="lang" data-lang-menu>
+        <summary title="Idioma"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Idioma: </span><span class="lang-cur">Português</span></summary>
+        <ul aria-label="Idioma">
+          <li><a href="/projects/starplast/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/starplast/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/starplast/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/starplast/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/starplast/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/starplast/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/starplast/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/starplast/pt/" hreflang="pt" lang="pt" data-lang="pt" aria-current="true">Português</a></li>
+          <li><a href="/projects/starplast/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/starplast/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pausar a animação de fundo" title="Pausar a animação de fundo">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label">Pausar</span>
+      </button>
+      <details class="fx-pick" data-fx-menu>
+        <summary class="icon-btn" title="Fundo"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Fundo</span></summary>
+        <ul aria-label="Fundo">
+          <li><button type="button" data-fx-theme="field" aria-pressed="true">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="advection" aria-pressed="false">spaCR advection</button></li>
+          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">Fenômenos do campo spaCR</button></li>
+          <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
+          <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
+          <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
+          <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Mudar de tema" title="Mudar de tema">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label">Tema</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero sp-hero">
+    <div class="wrap grid sp-top">
+      <div>
+        <p class="kicker"><span>Aplicativo de desktop (PyQt6)</span> · <span class="nw">MIT</span></p>
+        <h1>Starplast</h1>
+        <p class="lede">Evidências gênicas para <i>Toxoplasma gondii</i> e <i>Plasmodium falciparum</i> em um só lugar.</p>
+        <p class="prose">O Starplast reúne expressão, triagens de fitness, localização, características de proteínas, interações e anotações da literatura. Use-o para consultar um gene, investigar hits de uma triagem, comparar grupos de genes e escolher candidatos para experimentos de acompanhamento. Os mapas incluídos contêm 8.140 genes de <i>T. gondii</i> e 5.720 genes de <i>P. falciparum</i>, visualizados separadamente.</p>
+        <ul class="facts">
+          <li>Versão <b>0.54.0</b></li>
+          <li>Lançada em <b>2026-10-05</b></li>
+          <li>Python <b>3.10 or newer</b></li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="#install">Instalar</a>
+          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">Guia do usuário</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/starplast">Código-fonte</a>
+          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+        </div>
+      </div>
+      <figure class="sp-map">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Mapa de genes do Starplast: milhares de pontos, um por gene, em grupos coloridos, com linhas de um gene selecionado até genes relacionados" fetchpriority="high"></picture>
+        <figcaption>O mapa de genes de <i>T. gondii</i> nos temas escuro e claro do Starplast; ele acompanha o tema desta página. Cada ponto é um gene; as linhas ligam o gene selecionado a genes relacionados. Capturas de tela do <a href="https://github.com/EinarOlafsson/starplast">repositório do Starplast</a> (MIT).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-does-h">
+    <div class="wrap">
+      <h2 id="sp-does-h">O que ele faz</h2>
+      <ul class="ways sp-tools">
+        <li><b>Explorar um gene</b><span>Pesquisa identificadores, símbolos e descrições e, em seguida, mostra as evidências das fontes.</span></li>
+        <li><b>Prever uma característica</b><span>Compara as previsões em dados reservados antes de fazer atribuições para genes sem rótulo, mantendo genes relacionados no mesmo grupo de avaliação.</span></li>
+        <li><b>Comparar uma triagem</b><span>Une um CSV ou TSV no nível de gene às evidências existentes e mantém visíveis os identificadores não resolvidos.</span></li>
+        <li><b>39 estratégias</b><span>Formas nomeadas de transformar os dados combinados em uma afirmação, cada uma com um guia e um autoteste com dados embaralhados.</span></li>
+      </ul>
+      <p class="note sp-note">As posições no mapa vêm de um embedding de características selecionadas: genes próximos têm entradas semelhantes, o que por si só não mostra uma função compartilhada nem uma interação física. As pontuações de busca ajudam a priorizar candidatos; elas não são validação experimental. As tabelas e os grafos de genes vêm com o pacote e funcionam offline; 130 conjuntos de dados registrados estão listados com suas fontes no <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">catálogo de conjuntos de dados</a>.</p>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-screen-h">
+    <div class="wrap">
+      <h2 id="sp-screen-h">Explorar uma triagem</h2>
+      <ol class="sp-steps">
+        <li>Escolha o organismo em File → Species.</li>
+        <li>Pesquise um ID de gene. Para <i>T. gondii</i>, File → Import data adiciona os resultados da sua triagem.</li>
+        <li>Colora e filtre o mapa pelas medições que você deseja comparar.</li>
+        <li>Clique em um gene para ler suas evidências e inspecionar cada tipo de relação separadamente.</li>
+        <li>Selecione um grupo com um laço ou um pincel e, em seguida, exporte a lista de genes para acompanhamento.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
+    <div class="wrap">
+      <h2 id="sp-install-h">Instalar o Starplast 0.54.0</h2>
+      <div class="grid two">
+        <div>
+          <h3>PyPI</h3>
+          <div class="code-wrap">
+<pre id="sp-pip"><code>pip install starplast
+starplast</code></pre>
+            <button class="copy" type="button" data-copy="sp-pip">Copiar</button>
+          </div>
+          <p class="note">Requer Python &gt;=3.10, uma tela e OpenGL. As análises são executadas na CPU; <code>pip install "starplast[gpu]"</code> adiciona suporte a GPU NVIDIA no Linux x86-64 com um driver CUDA 12.</p>
+        </div>
+        <div>
+          <h3>Pelo spaCR</h3>
+          <p>No aplicativo de desktop do spaCR, o bloco do Starplast na página <i>Toxoplasma</i> instala o Starplast em seu próprio ambiente Python e o abre como um aplicativo separado (marcado como alfa no spaCR). Para ver resultados do spaCR no Starplast, exporte uma tabela no nível de gene do spaCR e importe-a com File → Import data.</p>
+          <p class="note"><a href="/projects/spacr/">Sobre o spaCR</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-links-h">
+    <div class="wrap">
+      <h2 id="sp-links-h">Links e licença</h2>
+      <ul class="links">
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>Código-fonte</b><span>Repositório no GitHub, issues e versões.</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>O pacote starplast.</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>Documentação</b><span>Guia do usuário, API Python e uma introdução de 40 slides.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>Alterações</b><span>O que cada versão alterou.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>Citar</b><span>Cite o Starplast e as fontes originais dos conjuntos de dados que você usar.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>Licença MIT</b><span>Para o código-fonte; os conjuntos de dados de origem e as ilustrações de terceiros mantêm suas próprias licenças.</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>HTML e CSS estáticos. Os fundos são versões em WebGL dos temas animados do aplicativo de desktop do spaCR; escolha um em Fundo. Sem análise de tráfego e sem cookies.</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
+  </div>
+</footer>
+
+</body>
+</html>

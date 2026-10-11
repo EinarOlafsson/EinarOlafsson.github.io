@@ -8,6 +8,6 @@
   "starplast": {
     "version": "0.54.0"
   },
-  "built": "2026-10-11T12:53:09Z",
-  "trigger": "schedule"
+  "built": "2026-10-11T13:52:12Z",
+  "trigger": "push"
 }
