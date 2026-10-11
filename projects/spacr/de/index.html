@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=56d6459866">
+<link rel="stylesheet" href="/assets/css/site.css?v=4c77ca4e3a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=56d6459866" defer></script>
+<script src="/assets/js/fx.js?v=4c77ca4e3a" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: Segmentierung, Einzelzellmessung, Klassifikation, Barcode-Zuordnung und Regression für bildbasierte gepoolte CRISPR-Screens. Pipeline, veröffentlichte Modelle, Screen-Ergebnisse, Publikationen und Installation.">
-<script src="/assets/js/volcano.js?v=56d6459866" defer></script>
+<script src="/assets/js/volcano.js?v=4c77ca4e3a" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -40,6 +40,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Mikroskopieprojekte</span></a>
     <nav class="nav" aria-label="Projekte">
       <a href="/projects/spacr/de/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/starplast/" data-nav="starplast">Starplast</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="#about" data-nav="about">Über</a>
@@ -67,8 +68,8 @@
       <details class="fx-pick" data-fx-menu>
         <summary class="icon-btn" title="Hintergrund"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Hintergrund</span></summary>
         <ul aria-label="Hintergrund">
-          <li><button type="button" data-fx-theme="advection" aria-pressed="true">spaCR advection</button></li>
-          <li><button type="button" data-fx-theme="field" aria-pressed="false">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="field" aria-pressed="true">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="advection" aria-pressed="false">spaCR advection</button></li>
           <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR-Feldphänomene</button></li>
           <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
           <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
@@ -434,7 +435,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=56d6459866">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=4c77ca4e3a">
         <h3 id="ols-volcano-title">Alle vier Platten: Geneffekte aus der OLS-Regression von spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Die Regressionsergebnisse werden geladen…</p>

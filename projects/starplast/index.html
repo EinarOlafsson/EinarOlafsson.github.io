@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=4c77ca4e3a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=4c77ca4e3a" defer></script>
+
+
+<title>Starplast: gene evidence for Toxoplasma and Plasmodium</title>
+<meta name="description" content="Starplast 0.54.0: a desktop app for exploring gene evidence in Toxoplasma gondii and Plasmodium falciparum: expression, fitness screens, localization, protein features, interactions and literature annotations.">
+</head>
+<body data-page="starplast">
+<a class="skip" href="#main">Skip to content</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Microscopy projects</span></a>
+    <nav class="nav" aria-label="Projects">
+      <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/starplast/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+      <a href="/#about" data-nav="about">About</a>
+    </nav>
+    <div class="tools">
+
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pause background animation" title="Pause background animation">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label">Pause</span>
+      </button>
+      <details class="fx-pick" data-fx-menu>
+        <summary class="icon-btn" title="Background"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Background</span></summary>
+        <ul aria-label="Background">
+          <li><button type="button" data-fx-theme="field" aria-pressed="true">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="advection" aria-pressed="false">spaCR advection</button></li>
+          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR field phenomena</button></li>
+          <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
+          <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
+          <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
+          <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch theme" title="Switch theme">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero sp-hero">
+    <div class="wrap grid sp-top">
+      <div>
+        <p class="kicker"><span>Desktop application (PyQt6)</span> · <span class="nw">MIT</span></p>
+        <h1>Starplast</h1>
+        <p class="lede">Gene evidence for <i>Toxoplasma gondii</i> and <i>Plasmodium falciparum</i> in one place.</p>
+        <p class="prose">Starplast brings expression, fitness screens, localization, protein features, interactions and literature annotations together. Use it to look up a gene, investigate hits from a screen, compare groups of genes and choose candidates for follow-up experiments. The bundled maps contain 8,140 <i>T. gondii</i> genes and 5,720 <i>P. falciparum</i> genes, viewed separately.</p>
+        <ul class="facts">
+          <li>Version <b>0.54.0</b></li>
+          <li>Released <b>2026-10-05</b></li>
+          <li>Python <b>3.10 or newer</b></li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="#install">Install</a>
+          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">User guide</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/starplast">Source code</a>
+          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+        </div>
+      </div>
+      <figure class="sp-map">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Starplast gene map: thousands of points, one per gene, in coloured groups, with lines from one selected gene to related genes" fetchpriority="high"></picture>
+        <figcaption>The <i>T. gondii</i> gene map in Starplast's dark and light themes; it follows this page's theme. Each point is a gene; lines link the selected gene to related genes. Screenshots from the <a href="https://github.com/EinarOlafsson/starplast">Starplast repository</a> (MIT).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-does-h">
+    <div class="wrap">
+      <h2 id="sp-does-h">What it does</h2>
+      <ul class="ways sp-tools">
+        <li><b>Explore a gene</b><span>Searches identifiers, symbols and descriptions, then shows the source evidence.</span></li>
+        <li><b>Predict a trait</b><span>Compares held-out predictions before making calls for unlabelled genes, keeping related genes in the same evaluation group.</span></li>
+        <li><b>Compare a screen</b><span>Joins a gene-level CSV or TSV to the existing evidence and keeps unresolved identifiers visible.</span></li>
+        <li><b>39 strategies</b><span>Named ways of turning the combined data into a claim, each with a guide and a self-test against shuffled data.</span></li>
+      </ul>
+      <p class="note sp-note">Positions on the map come from an embedding of selected features: nearby genes have similar inputs, which alone does not show a shared function or a physical interaction. Search scores help to prioritise candidates; they are not experimental validation. Gene tables and graphs ship with the package and work offline; 130 registered datasets are listed with their sources in the <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">dataset catalogue</a>.</p>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-screen-h">
+    <div class="wrap">
+      <h2 id="sp-screen-h">Explore a screen</h2>
+      <ol class="sp-steps">
+        <li>Choose the organism under File → Species.</li>
+        <li>Search for a gene ID. For <i>T. gondii</i>, File → Import data adds your screen results.</li>
+        <li>Colour and filter the map by the measurements you want to compare.</li>
+        <li>Click a gene to read its evidence and inspect each type of relationship separately.</li>
+        <li>Select a group with a lasso or brush, then export the gene list for follow-up.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
+    <div class="wrap">
+      <h2 id="sp-install-h">Install Starplast 0.54.0</h2>
+      <div class="grid two">
+        <div>
+          <h3>PyPI</h3>
+          <div class="code-wrap">
+<pre id="sp-pip"><code>pip install starplast
+starplast</code></pre>
+            <button class="copy" type="button" data-copy="sp-pip">Copy</button>
+          </div>
+          <p class="note">Requires Python &gt;=3.10, a display and OpenGL. Analyses run on the CPU; <code>pip install "starplast[gpu]"</code> adds NVIDIA GPU support on Linux x86-64 with a CUDA 12 driver.</p>
+        </div>
+        <div>
+          <h3>From spaCR</h3>
+          <p>In the spaCR desktop app, the Starplast tile on the <i>Toxoplasma</i> page installs Starplast in its own Python environment and opens it as a separate application (marked alpha in spaCR). To look at spaCR results in Starplast, export a gene-level table from spaCR and import it with File → Import data.</p>
+          <p class="note"><a href="/projects/spacr/">About spaCR</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-sec" aria-labelledby="sp-links-h">
+    <div class="wrap">
+      <h2 id="sp-links-h">Links and licence</h2>
+      <ul class="links">
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>Source code</b><span>GitHub repository, issues and releases.</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>The starplast package.</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>Documentation</b><span>User guide, Python API and a 40-slide introduction.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>Changes</b><span>What each release changed.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>Cite</b><span>Cite Starplast and the original sources of the datasets you use.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>MIT licence</b><span>For the source code; source datasets and third-party artwork keep their own licences.</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Static HTML and CSS. The backgrounds are WebGL ports of the spaCR desktop app's animated themes; choose one under Background. No analytics and no cookies.</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
+  </div>
+</footer>
+
+</body>
+</html>

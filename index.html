@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
+<script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=56d6459866">
+<link rel="stylesheet" href="/assets/css/site.css?v=4c77ca4e3a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=56d6459866" defer></script>
+<script src="/assets/js/fx.js?v=4c77ca4e3a" defer></script>
 
 
 <title>Microscopy projects</title>
-<meta name="description" content="Software, models and hardware by Einar B. Olafsson: spaCR, live-cell segmentation models and a phone mount for microscope eyepieces.">
+<meta name="description" content="Software, models and hardware by Einar B. Olafsson: spaCR, Starplast, live-cell segmentation models and a phone mount for microscope eyepieces.">
 </head>
 <body data-page="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -24,6 +24,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Microscopy projects</span></a>
     <nav class="nav" aria-label="Projects">
       <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/starplast/" data-nav="starplast">Starplast</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="#about" data-nav="about">About</a>
@@ -37,8 +38,8 @@
       <details class="fx-pick" data-fx-menu>
         <summary class="icon-btn" title="Background"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Background</span></summary>
         <ul aria-label="Background">
-          <li><button type="button" data-fx-theme="advection" aria-pressed="true">spaCR advection</button></li>
-          <li><button type="button" data-fx-theme="field" aria-pressed="false">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="field" aria-pressed="true">spaCR field</button></li>
+          <li><button type="button" data-fx-theme="advection" aria-pressed="false">spaCR advection</button></li>
           <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR field phenomena</button></li>
           <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
           <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
@@ -59,7 +60,7 @@
     <div class="wrap">
       <p class="kicker">Microscopy projects</p>
       <h1>Software, models and hardware for microscopy</h1>
-      <p class="lede">The spaCR page is public. The live_cell and Cellect pages are drafts and require a password.</p>
+      <p class="lede">The spaCR and Starplast pages are public. The live_cell and Cellect pages are drafts and require a password.</p>
     </div>
   </section>
 
@@ -72,6 +73,13 @@
             <h3>spaCR</h3>
             <p>A Python package and desktop application for image-based pooled CRISPR screens: segmentation, single-cell measurements, annotation, classification, barcode mapping and regression.</p>
             <span class="meta">Version 1.5.1.4</span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="/projects/starplast/">
+            <h3>Starplast</h3>
+            <p>A desktop app for exploring gene evidence in <i>Toxoplasma gondii</i> and <i>Plasmodium falciparum</i>: expression, fitness screens, localization, protein features, interactions and literature annotations.</p>
+            <span class="meta">Version 0.54.0</span>
           </a>
         </li>
         <li>
