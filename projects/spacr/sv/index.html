@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=82ca62514b">
+<link rel="stylesheet" href="/assets/css/site.css?v=cdb51bbe7a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=82ca62514b" defer></script>
+<script src="/assets/js/fx.js?v=cdb51bbe7a" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: segmentering, mätning av enskilda celler, klassificering, streckkodsmappning och regression för bildbaserade poolade CRISPR-screener. Arbetsflöde, publicerade modeller, screenresultat, artiklar och installation.">
-<script src="/assets/js/volcano.js?v=82ca62514b" defer></script>
+<script src="/assets/js/volcano.js?v=cdb51bbe7a" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Hoppa till innehållet</a>
@@ -420,7 +420,7 @@
         <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="Två vulkandiagram över geneffekt mot signifikans; EAF1 och GRA14 ligger över tröskeln i båda" loading="lazy" decoding="async">
         <figcaption>Geneffekter från en mätklassificerare (XGBoost, vänster) och en bildklassificerare (MaxViT, höger); EAF1 och GRA14 passerar 3σ i båda. Preprint, fig. 5.</figcaption>
       </figure>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=82ca62514b">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=cdb51bbe7a">
         <h3 id="ols-volcano-title">Alla fyra plattor: geneffekter från spaCR:s OLS-regression</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Läser in regressionsresultaten…</p>
