@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=080a078259">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=080a078259" defer></script>
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/spacr/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/spacr/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/spacr/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/spacr/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/spacr/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/spacr/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/spacr/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/spacr/">
+<script type="application/json" id="i18n-ui">{"ui.theme_dark":"Skipta yfir í dökkt þema","ui.theme_light":"Skipta yfir í ljóst þema","ui.fx_pause":"Gera hlé á bakgrunnshreyfimynd","ui.fx_resume":"Halda bakgrunnshreyfimynd áfram","ui.fx_reduced":"Slökkt er á bakgrunnshreyfimyndinni: kerfið þitt biður um minni hreyfingu","ui.pause":"Hlé","ui.resume":"Halda áfram","ui.copied":"Afritað"}</script>
+
+<title>spaCR: rúmræn svipgerðargreining á CRISPR-Cas9-skimunum</title>
+<link rel="preload" as="image" href="/assets/img/spacr/overview-hoechst.webp" fetchpriority="high">
+<meta name="description" content="spaCR 1.5.1.4: hlutun, mælingar á stökum frumum, flokkun, vörpun strikamerkja og aðhvarfsgreining fyrir myndrænar, samsafnaðar CRISPR-skimanir. Vinnsluferli, birt líkön, niðurstöður skimunar, greinar og uppsetning.">
+</head>
+<body data-page="spacr">
+<a class="skip" href="#main">Fara beint í efni</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Einar B. Olafsson</a>
+    <nav class="nav" aria-label="Verkefni">
+      <a href="/projects/spacr/is/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+    </nav>
+    <div class="tools">
+      <details class="lang" data-lang-menu>
+        <summary title="Tungumál"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Tungumál: </span><span class="lang-cur">Íslenska</span></summary>
+        <ul aria-label="Tungumál">
+          <li><a href="/projects/spacr/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/spacr/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/spacr/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/spacr/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/spacr/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/spacr/is/" hreflang="is" lang="is" data-lang="is" aria-current="true">Íslenska</a></li>
+          <li><a href="/projects/spacr/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/spacr/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/spacr/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/spacr/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Gera hlé á bakgrunnshreyfimynd" title="Gera hlé á bakgrunnshreyfimynd">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label">Hlé</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Skipta um þema" title="Skipta um þema">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label">Þema</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="tabbar">
+  <div class="wrap">
+    <nav class="tabs" aria-label="Hlutar síðunnar um spaCR">
+      <div role="tablist" aria-label="Hlutar síðunnar um spaCR">
+        <a role="tab" id="tab-overview" href="#overview" aria-controls="overview" aria-selected="true">Yfirlit</a>
+        <a role="tab" id="tab-pipeline" href="#pipeline" aria-controls="pipeline" aria-selected="false">Vinnsluferli</a>
+        <a role="tab" id="tab-models" href="#models" aria-controls="models" aria-selected="false">Líkön</a>
+        <a role="tab" id="tab-screen" href="#screen" aria-controls="screen" aria-selected="false">Niðurstöður skimunar</a>
+        <a role="tab" id="tab-phenotypes" href="#phenotypes" aria-controls="phenotypes" aria-selected="false">Svipgerðir</a>
+        <a role="tab" id="tab-assays" href="#assays" aria-controls="assays" aria-selected="false">Mælingar og gæðaeftirlit</a>
+        <a role="tab" id="tab-papers" href="#papers" aria-controls="papers" aria-selected="false">Greinar</a>
+        <a role="tab" id="tab-install" href="#install" aria-controls="install" aria-selected="false">Uppsetning og tilvísun</a>
+      </div>
+    </nav>
+  </div>
+</div>
+<main id="main">
+  <section id="overview" class="panel-sec hero" role="tabpanel" aria-labelledby="tab-overview" tabindex="-1">
+    <div class="wrap grid overview">
+      <div>
+        <p class="kicker"><span>Python-pakki og skjáborðsforrit</span> · <span class="nw">BSD-3-Clause</span></p>
+        <h1>spaCR</h1>
+        <p class="lede">Rúmræn svipgerðargreining á CRISPR-Cas9-skimunum.</p>
+        <p class="prose">spaCR hlutar frumur, frumukjarna og sýkla í smásjármyndum, mælir hvern hlut og tengir mælingarnar við leiðsagnar-RNA sem raðgreind eru úr sömu brunnum. Vinnslan hefst á myndum af plötum og FASTQ-lestrum og endar á mælingum fyrir hverja frumu, þjálfuðum flokkurum og raðaðum lista yfir gen.</p>
+        <ul class="facts">
+          <li>Útgáfa <b>1.5.1.4</b></li>
+          <li>Gefin út <b>2026-10-09</b></li>
+          <li>Python <b>3.9–3.14</b></li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="#install">Setja upp</a>
+          <a class="btn" href="https://einarolafsson.github.io/spacr/">Leiðbeiningar</a>
+          <a class="btn" href="https://einarolafsson.github.io/spacr/tutorials/">Kennsluefni</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/spacr">Frumkóði</a>
+        </div>
+      </div>
+      <figure>
+        <a class="figlink" href="#models"><img src="/assets/img/spacr/overview-hoechst.webp" width="560" height="560" alt="Hoechst-mynd af sýktum HeLa-frumum þar sem frumukjarnar eru afmarkaðir með bláu, hýsilfrumur með blágrænu og Toxoplasma-safabólur með blárauðu" fetchpriority="high"></a>
+        <figcaption>Ein Hoechst-mynd, þrír flokkar hluta: frumukjarnar (blátt), hýsilfrumur (blágrænt) og Toxoplasma-safabólur (blárautt). Hýsilfrumur og safabólur eru spáðar út frá Hoechst-rásinni einni. Sjá <a href="#models">Líkön</a>.</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <ul class="stats" aria-label="spaCR í tölum">
+        <li><a class="row" href="#models"><b>16</b><span>birt líkön</span></a></li>
+        <li><a class="row" href="#papers"><b>5</b><span>greinar sem nota spaCR</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84</b><span>kennslustundir</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10</b><span>tungumál viðmóts</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/spacr/actions"><b>85,045</b><span>sjálfvirk próf</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pipeline" class="panel-sec" role="tabpanel" aria-labelledby="tab-pipeline" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Vinnsluferli</h2>
+        <p>Eitt myndsvið rakið gegnum spaCR: plata 1, brunnur H02, myndsvið 4 í dæmaskimuninni, brunnur þar sem 92 % leiðsagnarraðanna eru GRA14, jákvæða viðmiðið.</p>
+      </div>
+      <ol class="strip">
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="Sýktar frumur: frumukjarnar bláir, merki grænt, sníkjudýr rauð" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>Mynd</span></h3><p>19 sýktar frumur, settar saman úr myndskurðum frá Measure.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="Útlínur frumna, frumukjarna og sníkjudýra á sömu frumum" loading="lazy" decoding="async"></a><h3><span class="num">2</span><span>Mask</span></h3><p>Útlínur frumna, frumukjarna og sníkjudýra.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="Frumur litaðar eftir styrk sníkjudýrs í rás 1" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Measure</span></h3><p>Frumur litaðar eftir styrk sníkjudýrs í rás 1.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="Frumur litaðar eftir einkunn flokkara, flestar nálægt 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Classify</span></h3><p>Einkunn flokkara fyrir hverja frumu; 18 af 19 yfir 0,5.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="Eldfjallarit þar sem hringur er dreginn um GRA14 og SAG1 er merkt" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>Frambjóðandi</span></h3><p>GRA14 greint með aðhvarfsgreiningu (q 0,040).</p></li>
+      </ol>
+      <p class="note">Gögn: myndskurðir úr <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> og mælingar, einkunnir og talningar leiðsagnarraða úr <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>. Útlínur frumna eru grímur skimunarinnar; útlínur frumukjarna og sníkjudýra voru reiknaðar upp á nýtt með Cellpose-SAM gegnum spaCR á örgjörva; aðhvarfsgreiningin nær yfir þetta 30 brunna undirmengi.</p>
+      <ul class="steps" aria-label="Einingar" style="margin-top:48px">
+        <li><b>Mask</b><span>Hlutar frumur, frumukjarna, sýkla og frumulíffæri með Cellpose-líkönum.</span></li>
+        <li><b>Measure</b><span>Lögun, styrkur, áferð og staðsetning hvers hlutar, ásamt myndskurði af hverjum og einum, í SQLite.</span></li>
+        <li><b>Annotate</b><span>Merkir myndskurði hluta í hnitaneti með flýtilyklum.</span></li>
+        <li><b>Classify</b><span>Þjálfar flokkara á myndum eða mælingum og vistar frammistöðu á fráteknum gögnum með hverjum varðveislupunkti.</span></li>
+        <li><b>Map barcodes</b><span>Úthlutar raðgreiningarlestrum á brunna og leiðsagnar-RNA.</span></li>
+        <li><b>Regression</b><span>Metur áhrif leiðsagnarraða, gena og tilraunaskilyrða með bilum og raðaðum frambjóðendalista.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="models" class="panel-sec" role="tabpanel" aria-labelledby="tab-models" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Birt líkön</h2>
+        <p>Hver mynd sýnir raunverulega mynd og þá hluti sem birt líkön spaCR finna í henni. Dragðu skiptilínuna til að bera inntakið saman við útlínurnar og notaðu gátreitina til að sýna eða fela flokk. Tölurnar eiga við hluti í myndinni sem sýnd er. Vigt sótt gegnum líkanasafn spaCR (nightly, 2026-10-10) og keyrð með Cellpose 4.2.1.1 á örgjörva.</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>16</b><span>birt líkön</span></div></li>
+        <li><div class="tile"><b>4</b><span>líkön milli rása</span></div></li>
+        <li><div class="tile"><b>7</b><span>flokkar hluta sýndir</span></div></li>
+      </ul>
+      <div class="showcase">
+        <figure class="model-fig" aria-labelledby="hoechst-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/hoechst-raw.webp" width="1024" height="1024" alt="Hoechst-flúrljómunarmynd af HeLa-frumum með björtum frumukjörnum og daufu umfrymi" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="hoechst-l0" src="/assets/img/models/hoechst-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l1" src="/assets/img/models/hoechst-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l2" src="/assets/img/models/hoechst-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Hoechst</span><span class="lbl r">Hlutir</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Skiptilína: vinstra megin við hana er inntaksmyndin, hægra megin hlutirnir sem fundust">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="hoechst-h">Hoechst-mynd: frumukjarnar, hýsilfrumur og Toxoplasma</h3>
+          <p class="small">Ein Hoechst-mynd af HeLa-frumum sýktum af Toxoplasma gondii. Tvö líkön spaCR milli rása spá fyrir um hýsilfrumur og safabólur sníkjudýrsins út frá Hoechst-rásinni einni. Frumukjarnarnir koma frá óbreyttu Cellpose-SAM á sömu rás.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l0" aria-label="Sýna útlínur: Frumukjarnar">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>Frumukjarnar</span>
+            <span class="count">53</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. Dílar undir 500 settir á 0, þvermál 90 px</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l1" aria-label="Sýna útlínur: Hýsilfrumur">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>Hýsilfrumur</span>
+            <span class="count">61</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. F1 á prófunargögnum 0,870 á 451 myndsviði</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="Sýna útlínur: Toxoplasma-safabólur">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma-safabólur</span>
+            <span class="count">63</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. F1 á prófunargögnum 0,569 á 463 myndsviðum</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Inntak</dt><dd>Hoechst (kjarnalitun)</dd>
+          <dt>Mynd</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">HeLa-myndsvið, plata 1, brunnur L08, myndsvið 12, prófunarhluti (frátekinn eftir brunnum)</a></dd>
+          <dt>Leyfi</dt><dd>CC BY 4.0</dd>
+          <dt>Stærð</dt><dd>2000 × 2000 px, sýnd í 1024 px</dd>
+          <dt>Skýringarmynd</dt><dd><a href="/assets/img/models/hoechst-figure.webp">Með myndatexta og gátsummum</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="cellmask-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/cellmask-raw.webp" width="1024" height="1024" alt="Flúrljómunarmynd með heilfrumulitun af sama HeLa-myndsviði" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="cellmask-l0" src="/assets/img/models/cellmask-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l1" src="/assets/img/models/cellmask-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l2" src="/assets/img/models/cellmask-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Cell mask</span><span class="lbl r">Hlutir</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Skiptilína: vinstra megin við hana er inntaksmyndin, hægra megin hlutirnir sem fundust">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="cellmask-h">Cell mask-mynd: Toxoplasma, frumukjarnar og hýsilfrumur</h3>
+          <p class="small">Sama myndsvið, myndað með heilfrumulitun. Tvö líkön spaCR milli rása spá fyrir um safabólur sníkjudýrsins og frumukjarna út frá þessari rás einni, svo engin kjarna- eða sníkjudýralitun er nauðsynleg. Hýsilfrumurnar koma frá óbreyttu Cellpose-SAM á sömu rás.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="Sýna útlínur: Toxoplasma-safabólur">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma-safabólur</span>
+            <span class="count">43</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. F1 á prófunargögnum 0,606 á 463 myndsviðum</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l1" aria-label="Sýna útlínur: Frumukjarnar">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>Frumukjarnar</span>
+            <span class="count">56</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-nuclei-from-cellmask-cpsam">nuclei_from_cellmask_v1</a>. F1 á prófunargögnum 0,888 á 453 myndsviðum</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l2" aria-label="Sýna útlínur: Hýsilfrumur">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>Hýsilfrumur</span>
+            <span class="count">80</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. Sjálfgefnar stillingar</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Inntak</dt><dd>Cell mask (heilfrumulitun)</dd>
+          <dt>Mynd</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">HeLa-myndsvið, plata 1, brunnur L08, myndsvið 12, prófunarhluti (frátekinn eftir brunnum)</a></dd>
+          <dt>Leyfi</dt><dd>CC BY 4.0</dd>
+          <dt>Stærð</dt><dd>2000 × 2000 px, sýnd í 1024 px</dd>
+          <dt>Skýringarmynd</dt><dd><a href="/assets/img/models/cellmask-figure.webp">Með myndatexta og gátsummum</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="plaque-h">
+          <div class="viewer" style="aspect-ratio:1024/1011">
+            <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="Grátónamynd af brunni lituðum með kristalfjólubláu, með ljósum skellum í dökku frumueinlagi" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="plaque-l0" src="/assets/img/models/plaque-plaque.webp" width="1024" height="1011" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Brunnur</span><span class="lbl r">Hlutir</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Skiptilína: vinstra megin við hana er inntaksmyndin, hægra megin hlutirnir sem fundust">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="plaque-h">Skellumæling: Toxoplasma-skellur</h3>
+          <p class="small">Brunnur úr skellumælingu, litaður með kristalfjólubláu, úr birtri mynd. Skellulíkan spaCR hlutar skellurnar. Þessi brunnur var ekki notaður til að þjálfa líkanið.</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="plaque-l0" aria-label="Sýna útlínur: Skellur">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Skellur</span>
+            <span class="count">99</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. Líkan til reynslu, ekki enn sjálfgefið. 98 skellur í handteiknuðu grímunni; F1 0,964 við IoU 0,5 í þessum brunni</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>Inntak</dt><dd>Kristalfjólublátt, grátónar</dd>
+          <dt>Mynd</dt><dd><a href="https://doi.org/10.1128/spectrum.01229-24">Cabral G, et al. Microbiol Spectrum 2024, Fig. 2</a></dd>
+          <dt>Gagnasafn</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-plaque-dataset">toxoplasma-plaque-dataset (frátekið frá þjálfun v3)</a></dd>
+          <dt>Leyfi</dt><dd>CC BY 4.0</dd>
+          <dt>Skýringarmynd</dt><dd><a href="/assets/img/models/plaque-figure.webp">Með myndatexta og gátsummum</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:48px">Öll líkön, með líkanaspjöldum, mælikvörðum og þjálfunargögnum: <a href="https://einarolafsson.github.io/spacr/model_zoo.html">leiðbeiningar um líkanasafnið</a> og <a href="https://huggingface.co/einarolafsson">Hugging Face</a>.</p>
+    </div>
+  </section>
+
+  <section id="screen" class="panel-sec" role="tabpanel" aria-labelledby="tab-screen" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Niðurstöður skimunar</h2>
+        <p>Samsöfnuð CRISPR-skimun í <i>Toxoplasma gondii</i> að genum sníkjudýrsins sem hafa áhrif á hvernig ESCRT-prótein hýsilsins, GFP-TSG101, safnast að safabólu sníkjudýrsins, greind með spaCR. Úr <a href="https://doi.org/10.64898/2026.07.08.737057">forprenti spaCR</a>.</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>4</b><span>skimunarplötur</span></div></li>
+        <li><div class="tile"><b>2</b><span>gen yfir 3σ með báðum flokkurum</span></div></li>
+        <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>söfnun, GRA14 á móti SAG1</span></div></li>
+      </ul>
+      <div class="grid two results">
+        <figure>
+          <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="Tvö eldfjallarit af áhrifum gena á móti marktækni; EAF1 og GRA14 eru yfir þröskuldinum í báðum" loading="lazy" decoding="async">
+          <figcaption>Áhrif gena samkvæmt mælingaflokkara (XGBoost, vinstri) og myndflokkara (MaxViT, hægri); EAF1 og GRA14 fara yfir 3σ í báðum. Forprent, mynd 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/examples/hit_volcano.webp" width="1152" height="792" alt="Eldfjallarit þar sem SAG1 og GRA14 eru yfir marktæknilínunni" loading="lazy" decoding="async">
+          <figcaption>Aðhvarfsgreining á einni plötu (30 brunnar): viðmiðin GRA14 (q 0,040) og SAG1 (q 0,006) standast q &lt; 0,05. Gögn: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/gene-volcano.webp" width="976" height="1004" alt="Gagnvirkt eldfjallarit í einingunni Regression þar sem eitt gen er valið og genaspjald þess sést fyrir neðan" loading="lazy" decoding="async">
+          <figcaption>Einingin Regression: smellt á punkt opnar genaspjaldið, hér EAF1 (TGGT1_225160).</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/gene-cells.webp" width="1196" height="778" alt="Hnitanet myndskurða af frumum úr brunni með EAF1-leiðsagnarröðum" loading="lazy" decoding="async">
+          <figcaption>Frumur úr EAF1-brunni þar sem einkunnir flokkara samsvara metnum áhrifum.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/ranked.webp" width="682" height="812" alt="Línurit af meðalsvipgerð á móti röð gena þar sem valin gen eru merkt" loading="lazy" decoding="async">
+          <figcaption>Öllum genum raðað eftir meðalsvipgerð; sterkustu frambjóðendurnir eru merktir með auðkenni gens.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/barcodes.webp" width="1002" height="1002" alt="Hitakort af einstökum leiðsagnar-RNA í hverjum brunni á fjórum plötum" loading="lazy" decoding="async">
+          <figcaption>Map barcodes: einstök leiðsagnar-RNA í hverjum brunni á fjórum skimunarplötunum.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="phenotypes" class="panel-sec" role="tabpanel" aria-labelledby="tab-phenotypes" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Svipgerðir</h2>
+        <p>Hverri mældri frumu má koma fyrir á tvívíðu korti ásamt myndskurði hennar, svo að finna megi hópa líkra frumna og skoða þá með berum augum.</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>5,000</b><span>frumur á korti</span></div></li>
+        <li><div class="tile"><b>5</b><span>klasar</span></div></li>
+        <li><div class="tile"><b>9%</b><span>án klasa</span></div></li>
+      </ul>
+      <figure class="wide">
+        <img src="/assets/img/spacr/umap.webp" width="1200" height="592" alt="UMAP af 5.000 frumum með fimm afmörkuðum klösum og fjórum dæmum um myndskurði í hverjum klasa" loading="lazy" decoding="async">
+        <figcaption>UMAP mynda af 5.000 frumum af skimunarplötu 1: fimm HDBSCAN-klasar sem eru ólíkir að fjölda frumukjarna og safabólna á hverja frumu; myndskurðirnir eru frumur nálægt miðju hvers klasa.</figcaption>
+      </figure>
+      <div class="grid two results" style="margin-top:48px">
+        <figure>
+          <img src="/assets/img/spacr/measure-crops.webp" width="804" height="496" alt="Einingin Measure sem sýnir hnitanet myndskurða af stökum frumum" loading="lazy" decoding="async">
+          <figcaption>Myndskurðir hluta sem Measure vistaði í keyrslu á sextán myndsviðum.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/recruitment-field.webp" width="1200" height="241" alt="Eitt myndsvið sýnt sem aðskildar rásir og síðan grímur frumna, frumukjarna og sníkjudýra" loading="lazy" decoding="async">
+          <figcaption>Eitt myndsvið úr söfnunarmælingunni: rásir, síðan grímur frumna, frumukjarna og sníkjudýra.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="assays" class="panel-sec" role="tabpanel" aria-labelledby="tab-assays" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Mælingar og gæðaeftirlit</h2>
+        <p>Úttak úr einingum spaCR fyrir mælingar og gæðaeftirlit á opnu dæmagagnasöfnunum, reiknað á örgjörva.</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>1,536</b><span>brunnar, skammta-svörun</span></div></li>
+        <li><div class="tile"><b>24</b><span>plötur, stýrikort</span></div></li>
+        <li><div class="tile"><b>99</b><span>skellur í einum brunni</span></div></li>
+      </ul>
+      <div class="grid two results">
+        <figure>
+          <img src="/assets/img/examples/dose_response.webp" width="1170" height="792" alt="Skammta-svörunarferlar miðgildis frumufjölda fyrir fimm efni, SNX-2112 auðkennt ásamt EC50-gildi sínu" loading="lazy" decoding="async">
+          <figcaption>Dose-Response: fjögurra stika lógístískar aðfellur fyrir þau 5 af 58 efnum sem hafa afmarkað EC50; SNX-2112 EC50 0,299 µM (95 % öryggisbil 0,279–0,319). Gögn: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-dose">spacr-example-dose</a>, 1.536 brunnar, 4 plötur.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/examples/control_chart.webp" width="1200" height="747" alt="Stýrikort af miðgildi frumufjölda í DMSO-brunnum á 24 plötum með stýrimörkum og flögguðum plötum" loading="lazy" decoding="async">
+          <figcaption>Stýrikort: miðgildi frumufjölda í DMSO-brunnum á 24 plötum; allar 24 lenda utan markanna eftir breytingar á frumulínu, tímapunkti og sáningu. Gögn: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-control-chart">spacr-example-control-chart</a>.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/models/plaque-figure.webp" width="1024" height="1090" alt="Skellubrunnur litaður með kristalfjólubláu þar sem 99 skellur eru afmarkaðar með blárauðu" loading="lazy" decoding="async">
+          <figcaption>Plaque Assay: 99 skellur sem toxoplasma_plaque_v3 fann í brunni úr Cabral et al. 2024 (CC BY 4.0); 98 í handteiknuðu grímunni.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/recruitment.webp" width="1200" height="464" alt="Súlurit af söfnun GFP-TSG101 í neikvæðum og jákvæðum viðmiðunarbrunnum á fjórum plötum" loading="lazy" decoding="async">
+          <figcaption>Recruitment: hlutfall GFP-TSG101 í safabólu og umfrymi í viðmiðunarbrunnum með SAG1 (neikvætt) og GRA14 (jákvætt) á fjórum plötum; meðaltöl platna p = 8,4 × 10⁻⁵.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="papers" class="panel-sec" role="tabpanel" aria-labelledby="tab-papers" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Greinar sem nota spaCR</h2>
+        <p>Greinar þar sem spaCR er notað í aðferðum, hver um sig yfirfarin í heildartexta; tilvitnunin undir hverri færslu er sönnunin. Greinar sem aðeins vísa í spaCR eru ekki taldar upp. Síðast yfirfarið 2026-10-10. Til að bæta við grein, <a href="https://github.com/EinarOlafsson/spacr/issues">opnaðu mál</a>.</p>
+      </div>
+        <ul class="papers">
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.64898/2026.07.08.737057">
+          <div class="badge" aria-hidden="true"><span>bioRxiv</span><b>2026</b></div>
+          <span class="title">A pooled image-based CRISPR screen identifies EAF1 as a T. gondii modulator of ESCRT subversion</span>
+          </a>
+          <span class="cite">Olafsson EB, et al. bioRxiv, 2026, forprent. <span class="rel">Grein spaCR</span></span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.21203/rs.3.rs-7368254/v1">
+          <img src="/assets/img/papers/olafsson2025_researchsquare_fig3.webp" width="480" height="320" alt="Fig. 3: Classification of GFP-TSG101 recruitment" loading="lazy" decoding="async">
+          <span class="title">spaCR: Spatial phenotype analysis of CRISPR-Cas9 screens</span>
+          </a>
+          <span class="cite">Olafsson EB, et al. Research Square, 2025, forprent. <span class="rel">Grein spaCR</span></span>
+          <span class="credit">Mynd: Fig. 3 from Olafsson et al. Research Square 2025, CC BY 4.0 (cropped)</span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.64898/2026.07.20.739547">
+          <img src="/assets/img/papers/kaur2026_biorxiv_fig4.webp" width="480" height="320" alt="Fig. 4: TgGRA8 is essential for PV recruitment of ALG-2" loading="lazy" decoding="async">
+          <span class="title">Toxoplasma GRA8 engages the host ESCRT accessory protein ALG-2 and is necessary for parasite metabolic integrity</span>
+          </a>
+          <span class="cite">Kaur H, et al. bioRxiv, 2026, forprent. <span class="rel">Notar spaCR</span></span>
+          <blockquote class="evidence"><q>All quantitative image analysis was performed as described in (33) in detail.</q><span class="where">Methods, ESCRT protein recruitment</span></blockquote>
+          <span class="credit">Mynd: Fig. 4 from Kaur et al. bioRxiv 2026, CC0 1.0 (cropped)</span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.1016/j.celrep.2025.115694">
+          <div class="badge" aria-hidden="true"><span>Cell Reports</span><b>2025</b></div>
+          <span class="title">IRE1α promotes phagosomal calcium flux to enhance macrophage fungicidal activity</span>
+          </a>
+          <span class="cite">McFadden MJ, et al. Cell Reports, 2025. <span class="rel">Notar spaCR</span>. Forprent: <a href="https://doi.org/10.1101/2023.10.02.560560">bioRxiv 2023</a></span>
+          <blockquote class="evidence"><q>For analysis of cellular calcium flux, the Python package spacr (https://github.com/EinarOlafsson/spacr) was used to segment and track cells over time and quantify single cell calcium oscillations.</q><span class="where">STAR Methods, 'Quantification of calcium flux'</span></blockquote>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.1128/msphere.01011-24">
+          <img src="/assets/img/papers/rimple2025_msphere_figS3.webp" width="480" height="320" alt="Fig. S3: Analysis of plaque efficiency and size for screen hits" loading="lazy" decoding="async">
+          <span class="title">Metabolic adaptability and nutrient scavenging in Toxoplasma gondii: insights from ingestion pathway-deficient mutants</span>
+          </a>
+          <span class="cite">Rimple PA, et al. mSphere, 2025. <span class="rel">Notar spaCR</span>. Forprent: <a href="https://doi.org/10.1101/2024.11.27.625683">bioRxiv 2024</a></span>
+          <blockquote class="evidence"><q>Plaques were detected and quantified using the plaque assay module in SpaCR (v. 0.3.62, https://github.com/EinarOlafsson/spacr and https://pypi.org/project/spacr/). First, plaques were manually …</q><span class="where">Methods, 'Validation of screens'</span></blockquote>
+          <span class="credit">Mynd: Fig. S3 from Rimple et al. mSphere 2025, CC BY 4.0 (cropped)</span>
+        </li>
+        </ul>
+    </div>
+  </section>
+
+  <section id="install" class="panel-sec" role="tabpanel" aria-labelledby="tab-install" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Setja upp spaCR 1.5.1.4</h2>
+      </div>
+      <div class="installers">
+          <h3>Uppsetningarforrit fyrir skjáborð</h3>
+          <p class="note">Uppsetningarforritin innihalda eigið Python, svo Conda er óþarft. Skrár úr <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">útgáfunni v1.5.1.4</a>.</p>
+          <ul class="os-list">
+            <li class="os">
+              <img src="/assets/img/os/windows.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">Windows 10 og 11</span>
+              <span class="os-file">spaCR-1.5.1.4-Windows-Online-Setup.exe</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Windows-Online-Setup.exe">Sækja <span class="sz">244 kB</span></a>
+            </li>
+            <li class="os">
+              <img src="/assets/img/os/macos.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">macOS 11 eða nýrra, Intel og Apple silicon</span>
+              <span class="os-file">spaCR-1.5.1.4-macOS-Universal-Online.pkg</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-macOS-Universal-Online.pkg">Sækja <span class="sz">390 kB</span></a>
+            </li>
+            <li class="os">
+              <img src="/assets/img/os/linux.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">Linux x86-64</span>
+              <span class="os-file">spaCR-1.5.1.4-Linux-x86_64-Online.run</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Linux-x86_64-Online.run">Sækja <span class="sz">236 kB</span></a>
+            </li>
+          </ul>
+          <p class="note">Gátsummur: <a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/SHA256SUMS.txt">SHA256SUMS.txt</a>. Eldri uppsetningarforrit og bilanaleit: <a href="https://einarolafsson.github.io/spacr/installers.html">leiðbeiningar um uppsetningarforrit</a>.</p>
+      </div>
+      <div class="grid two sub-s">
+        <div>
+          <h3>PyPI</h3>
+          <div class="code-wrap">
+<pre id="pip-cmd"><code>conda create -n spacr python=3.12 -y
+conda activate spacr
+python -m pip install spacr==1.5.1.4
+spacr</code></pre>
+            <button class="copy" type="button" data-copy="pip-cmd">Afrita</button>
+          </div>
+        </div>
+        <div>
+          <h3>conda-forge</h3>
+          <div class="code-wrap">
+<pre id="conda-cmd"><code>conda create -n spacr python=3.12 -y
+conda activate spacr
+conda install conda-forge::spacr
+spacr</code></pre>
+            <button class="copy" type="button" data-copy="conda-cmd">Afrita</button>
+          </div>
+          <p class="note"><a href="https://pypi.org/project/spacr/1.5.1.4/">spaCR á PyPI</a> · <a href="https://anaconda.org/conda-forge/spacr">spaCR á conda-forge</a> · Krefst Python <code>!=3.14.1,&lt;3.15,&gt;=3.9</code></p>
+        </div>
+      </div>
+
+      <div id="cite" class="grid two sub">
+        <div>
+          <h3>Vísa í spaCR</h3>
+          <p>Olafsson EB, Arnold CS, Kellermeier JA, Rimple PA, Kaur H, Wang Y, Sexton JZ, Svärd S, Carruthers VB, O'Meara MJ. spaCR: spatial phenotype analysis of CRISPR-Cas9 screens (version 1.5.1.4). Zenodo; 2026. doi:10.5281/zenodo.23266544</p>
+          <table>
+            <tbody>
+              <tr><th scope="row">Allar útgáfur (hugtaks-DOI)</th><td><a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a></td></tr>
+              <tr><th scope="row">Útgáfa 1.5.1.4</th><td><a href="https://doi.org/10.5281/zenodo.23266544">10.5281/zenodo.23266544</a></td></tr>
+              <tr><th scope="row">Forprent</th><td><a href="https://doi.org/10.64898/2026.07.08.737057">10.64898/2026.07.08.737057</a></td></tr>
+              <tr><th scope="row">Lýsigögn</th><td><a href="https://github.com/EinarOlafsson/spacr/blob/main/CITATION.cff">CITATION.cff</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>BibTeX</h3>
+          <div class="code-wrap">
+<pre id="bibtex"><code>@software{olafsson_spacr_2026,
+  author    = {Olafsson, Einar B. and Arnold, Christophe-Sebastien and Kellermeier, Jacob A. and Rimple, Patrick A. and Kaur, Hargobinder and Wang, Yifan and Sexton, Jonathan Z. and Svärd, Staffan and Carruthers, Vern B. and O'Meara, Matthew J.},
+  title     = {{spaCR: spatial phenotype analysis of CRISPR-Cas9 screens}},
+  version   = {1.5.1.4},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23266544},
+  url       = {https://doi.org/10.5281/zenodo.23266544}
+}</code></pre>
+            <button class="copy" type="button" data-copy="bibtex">Afrita</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="docs" class="sub">
+        <h3>Leiðbeiningar</h3>
+        <ul class="links">
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Notendahandbók og API</b><span>Fyrir útgefnu útgáfuna.</span></a></li>
+          <li><a class="row" href="https://einarolafsson-spacr-docs-nightly.static.hf.space/index.html"><b>Næturleiðbeiningar</b><span>Byggðar úr þróunargreininni.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>Kennsluefni</b><span>Kennslustundir með tali og skjátexta fyrir hverja einingu, með dæmagögnum.</span></a></li>
+          <li><a class="row" href="https://huggingface.co/einarolafsson"><b>Líkön og gagnasöfn</b><span>Líkanavigt, líkanaspjöld og þjálfunargögn á Hugging Face.</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3>Skjáborðsforritið</h3>
+        <p class="note">Hljóðlaus brot úr kennsluefninu með tali. Kennslustundirnar í heild, með tali og skjátexta á nokkrum tungumálum, eru á <a href="https://einarolafsson.github.io/spacr/tutorials/">kennslugáttinni</a>.</p>
+        <div class="grid two">
+          <figure>
+            <div class="clip">
+              <video muted loop playsinline preload="none" width="1280" height="720" data-poster="/assets/media/clip-home.webp" data-src="/assets/media/clip-home.mp4" aria-label="Upphafsskjár spaCR með reitum eininganna"></video>
+            </div>
+            <figcaption>Upphafsskjár með einum reit fyrir hverja einingu. Kennslustund 5.</figcaption>
+          </figure>
+          <figure>
+            <div class="clip">
+              <video muted loop playsinline preload="none" width="1280" height="720" data-poster="/assets/media/clip-cellpose.webp" data-src="/assets/media/clip-cellpose.mp4" aria-label="Cellpose Workbench í Make Masks með forskoðun myndar, útlína og flæðis"></video>
+            </div>
+            <figcaption>Cellpose Workbench í Make Masks, sem sýnir myndina, útlínurnar og flæðin. Kennslustund 20.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Kyrrstætt HTML og CSS. Bakgrunnurinn er WebGL-útgáfa af aðstreymisþema spaCR. Engin vefgreining og engar vafrakökur.</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
+  </div>
+</footer>
+
+</body>
+</html>

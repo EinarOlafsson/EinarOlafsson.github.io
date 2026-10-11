@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null,p=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");})();</script>
+<link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=080a078259">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/fx.js?v=080a078259" defer></script>
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/spacr/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/spacr/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/spacr/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/spacr/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/spacr/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/spacr/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/spacr/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/spacr/">
+<script type="application/json" id="i18n-ui">{"ui.theme_dark":"डार्क थीम पर जाएँ","ui.theme_light":"लाइट थीम पर जाएँ","ui.fx_pause":"पृष्ठभूमि एनिमेशन रोकें","ui.fx_resume":"पृष्ठभूमि एनिमेशन फिर से चलाएँ","ui.fx_reduced":"पृष्ठभूमि एनिमेशन बंद है: आपका सिस्टम कम गति का अनुरोध करता है","ui.pause":"रोकें","ui.resume":"फिर से चलाएँ","ui.copied":"कॉपी हो गया"}</script>
+
+<title>spaCR: CRISPR-Cas9 स्क्रीन का स्थानिक फ़ीनोटाइप विश्लेषण</title>
+<link rel="preload" as="image" href="/assets/img/spacr/overview-hoechst.webp" fetchpriority="high">
+<meta name="description" content="spaCR 1.5.1.4: इमेज-आधारित पूल्ड CRISPR स्क्रीन के लिए विभाजन, एकल-कोशिका मापन, वर्गीकरण, बारकोड मैपिंग और रिग्रेशन। पाइपलाइन, प्रकाशित मॉडल, स्क्रीन परिणाम, शोध-पत्र और इंस्टॉलेशन।">
+</head>
+<body data-page="spacr">
+<a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
+<div class="fx-css" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Einar B. Olafsson</a>
+    <nav class="nav" aria-label="परियोजनाएँ">
+      <a href="/projects/spacr/hi/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
+      <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
+      <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
+    </nav>
+    <div class="tools">
+      <details class="lang" data-lang-menu>
+        <summary title="भाषा"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">भाषा: </span><span class="lang-cur">हिन्दी</span></summary>
+        <ul aria-label="भाषा">
+          <li><a href="/projects/spacr/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/spacr/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/spacr/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/spacr/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/spacr/hi/" hreflang="hi" lang="hi" data-lang="hi" aria-current="true">हिन्दी</a></li>
+          <li><a href="/projects/spacr/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/spacr/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/spacr/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/spacr/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/spacr/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+        </ul>
+      </details>
+      <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="पृष्ठभूमि एनिमेशन रोकें" title="पृष्ठभूमि एनिमेशन रोकें">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <span class="label">रोकें</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="थीम बदलें" title="थीम बदलें">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1.5v11a5.5 5.5 0 0 1 0-11z"/></svg>
+        <span class="label">थीम</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="tabbar">
+  <div class="wrap">
+    <nav class="tabs" aria-label="spaCR अनुभाग">
+      <div role="tablist" aria-label="spaCR अनुभाग">
+        <a role="tab" id="tab-overview" href="#overview" aria-controls="overview" aria-selected="true">अवलोकन</a>
+        <a role="tab" id="tab-pipeline" href="#pipeline" aria-controls="pipeline" aria-selected="false">पाइपलाइन</a>
+        <a role="tab" id="tab-models" href="#models" aria-controls="models" aria-selected="false">मॉडल</a>
+        <a role="tab" id="tab-screen" href="#screen" aria-controls="screen" aria-selected="false">स्क्रीन परिणाम</a>
+        <a role="tab" id="tab-phenotypes" href="#phenotypes" aria-controls="phenotypes" aria-selected="false">फ़ीनोटाइप</a>
+        <a role="tab" id="tab-assays" href="#assays" aria-controls="assays" aria-selected="false">परख और QC</a>
+        <a role="tab" id="tab-papers" href="#papers" aria-controls="papers" aria-selected="false">शोध-पत्र</a>
+        <a role="tab" id="tab-install" href="#install" aria-controls="install" aria-selected="false">इंस्टॉल और उद्धरण</a>
+      </div>
+    </nav>
+  </div>
+</div>
+<main id="main">
+  <section id="overview" class="panel-sec hero" role="tabpanel" aria-labelledby="tab-overview" tabindex="-1">
+    <div class="wrap grid overview">
+      <div>
+        <p class="kicker"><span>Python पैकेज और डेस्कटॉप एप्लिकेशन</span> · <span class="nw">BSD-3-Clause</span></p>
+        <h1>spaCR</h1>
+        <p class="lede">CRISPR-Cas9 स्क्रीन का स्थानिक फ़ीनोटाइप विश्लेषण।</p>
+        <p class="prose">spaCR माइक्रोस्कोपी इमेज में कोशिकाओं, केंद्रकों और रोगजनकों का विभाजन करता है, हर ऑब्जेक्ट को मापता है, और मापों को उन्हीं वेल से अनुक्रमित गाइड RNA से जोड़ता है। यह प्लेट इमेज और FASTQ रीड से शुरू होकर प्रति-कोशिका माप, प्रशिक्षित क्लासिफ़ायर और जीनों की क्रमबद्ध सूची पर समाप्त होता है।</p>
+        <ul class="facts">
+          <li>संस्करण <b>1.5.1.4</b></li>
+          <li>जारी <b>2026-10-09</b></li>
+          <li>Python <b>3.9–3.14</b></li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="#install">इंस्टॉल करें</a>
+          <a class="btn" href="https://einarolafsson.github.io/spacr/">दस्तावेज़</a>
+          <a class="btn" href="https://einarolafsson.github.io/spacr/tutorials/">ट्यूटोरियल</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/spacr">स्रोत कोड</a>
+        </div>
+      </div>
+      <figure>
+        <a class="figlink" href="#models"><img src="/assets/img/spacr/overview-hoechst.webp" width="560" height="560" alt="संक्रमित HeLa कोशिकाओं की Hoechst इमेज, जिसमें केंद्रक नीले, मेज़बान कोशिकाएँ सियान और टॉक्सोप्लाज़्मा रिक्तिकाएँ मैजेंटा रूपरेखा में हैं" fetchpriority="high"></a>
+        <figcaption>एक Hoechst इमेज, तीन ऑब्जेक्ट वर्ग: केंद्रक (नीला), मेज़बान कोशिकाएँ (सियान) और टॉक्सोप्लाज़्मा रिक्तिकाएँ (मैजेंटा)। मेज़बान कोशिकाओं और रिक्तिकाओं का अनुमान केवल Hoechst चैनल से लगाया जाता है। देखें <a href="#models">मॉडल</a>।</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <ul class="stats" aria-label="संख्याओं में spaCR">
+        <li><a class="row" href="#models"><b>16</b><span>प्रकाशित मॉडल</span></a></li>
+        <li><a class="row" href="#papers"><b>5</b><span>spaCR का उपयोग करने वाले शोध-पत्र</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84</b><span>ट्यूटोरियल पाठ</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10</b><span>इंटरफ़ेस भाषाएँ</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/spacr/actions"><b>85,045</b><span>स्वचालित परीक्षण</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pipeline" class="panel-sec" role="tabpanel" aria-labelledby="tab-pipeline" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>पाइपलाइन</h2>
+        <p>spaCR में शुरू से अंत तक एक फ़ील्ड: उदाहरण स्क्रीन की प्लेट 1, वेल H02, फ़ील्ड 4; इस वेल के 92% गाइड GRA14 के हैं, जो पॉज़िटिव कंट्रोल है।</p>
+      </div>
+      <ol class="strip">
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="संक्रमित कोशिकाएँ: केंद्रक नीले, मार्कर हरा, परजीवी लाल" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>इमेज</span></h3><p>19 संक्रमित कोशिकाएँ, Measure क्रॉप से फिर से जोड़ी गईं।</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="उन्हीं कोशिकाओं पर कोशिका, केंद्रक और परजीवी की रूपरेखाएँ" loading="lazy" decoding="async"></a><h3><span class="num">2</span><span>Mask</span></h3><p>कोशिका, केंद्रक और परजीवी की रूपरेखाएँ।</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="परजीवी चैनल-1 तीव्रता के अनुसार रंगी गई कोशिकाएँ" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Measure</span></h3><p>परजीवी चैनल-1 तीव्रता के अनुसार रंगी गई कोशिकाएँ।</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="क्लासिफ़ायर स्कोर के अनुसार रंगी गई कोशिकाएँ, अधिकांश 1 के निकट" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Classify</span></h3><p>प्रति कोशिका क्लासिफ़ायर स्कोर; 19 में से 18 का स्कोर 0.5 से अधिक।</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="वॉल्केनो प्लॉट जिसमें GRA14 घेरा गया है और SAG1 लेबल किया गया है" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>हिट</span></h3><p>रिग्रेशन द्वारा GRA14 को हिट माना गया (q 0.040)।</p></li>
+      </ol>
+      <p class="note">डेटा: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> क्रॉप और <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a> माप, स्कोर और गाइड गणनाएँ। कोशिका रूपरेखाएँ स्क्रीन के मास्क हैं; केंद्रक और परजीवी रूपरेखाएँ spaCR के माध्यम से CPU पर Cellpose-SAM से फिर से गणना की गईं; रिग्रेशन 30 वेल के इस उपसमुच्चय पर किया गया है।</p>
+      <ul class="steps" aria-label="मॉड्यूल" style="margin-top:48px">
+        <li><b>Mask</b><span>Cellpose मॉडलों से कोशिकाओं, केंद्रकों, रोगजनकों और कोशिकांगों का विभाजन करता है।</span></li>
+        <li><b>Measure</b><span>हर ऑब्जेक्ट का आकार, तीव्रता, बनावट और स्थिति, और प्रत्येक का एक क्रॉप, SQLite में।</span></li>
+        <li><b>Annotate</b><span>ग्रिड में ऑब्जेक्ट क्रॉप को कीबोर्ड शॉर्टकट से लेबल करता है।</span></li>
+        <li><b>Classify</b><span>इमेज या माप क्लासिफ़ायर प्रशिक्षित करता है और हर चेकपॉइंट के साथ होल्ड-आउट प्रदर्शन सहेजता है।</span></li>
+        <li><b>Map barcodes</b><span>अनुक्रमण रीड को वेल और गाइड RNA से जोड़ता है।</span></li>
+        <li><b>Regression</b><span>गाइड, जीन और स्थिति के प्रभावों का अंतरालों सहित आकलन करता है और हिटों की क्रमबद्ध सूची देता है।</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="models" class="panel-sec" role="tabpanel" aria-labelledby="tab-models" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>प्रकाशित मॉडल</h2>
+        <p>हर चित्र एक वास्तविक इमेज और उसमें spaCR के प्रकाशित मॉडलों द्वारा पहचाने गए ऑब्जेक्ट दिखाता है। इनपुट की तुलना रूपरेखाओं से करने के लिए विभाजक को खींचें, और किसी वर्ग को दिखाने या छिपाने के लिए चेक बॉक्स का उपयोग करें। गणनाएँ दिखाई गई इमेज के ऑब्जेक्टों की हैं। वेट spaCR की मॉडल लाइब्रेरी (नाइटली, 2026-10-10) से प्राप्त किए गए और CPU पर Cellpose 4.2.1.1 से चलाए गए।</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>16</b><span>प्रकाशित मॉडल</span></div></li>
+        <li><div class="tile"><b>4</b><span>क्रॉस-चैनल मॉडल</span></div></li>
+        <li><div class="tile"><b>7</b><span>दिखाए गए ऑब्जेक्ट वर्ग</span></div></li>
+      </ul>
+      <div class="showcase">
+        <figure class="model-fig" aria-labelledby="hoechst-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/hoechst-raw.webp" width="1024" height="1024" alt="HeLa कोशिकाओं की Hoechst फ़्लोरेसेंस इमेज, चमकीले केंद्रक और धुँधले कोशिकाद्रव्य के साथ" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="hoechst-l0" src="/assets/img/models/hoechst-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l1" src="/assets/img/models/hoechst-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="hoechst-l2" src="/assets/img/models/hoechst-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Hoechst</span><span class="lbl r">ऑब्जेक्ट</span>
+            <input type="range" min="0" max="100" value="50" aria-label="विभाजक: इसके बाईं ओर इनपुट इमेज, दाईं ओर पहचाने गए ऑब्जेक्ट">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="hoechst-h">Hoechst इमेज: केंद्रक, मेज़बान कोशिकाएँ और टॉक्सोप्लाज़्मा</h3>
+          <p class="small">टॉक्सोप्लाज़्मा गोंडी से संक्रमित HeLa कोशिकाओं की एक Hoechst इमेज। मेज़बान कोशिकाओं और परजीवी रिक्तिकाओं का अनुमान दो spaCR क्रॉस-चैनल मॉडल केवल Hoechst चैनल से लगाते हैं। केंद्रक उसी चैनल पर मानक Cellpose-SAM से आते हैं।</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l0" aria-label="केंद्रक रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>केंद्रक</span>
+            <span class="count">53</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. 500 से कम पिक्सेल 0 पर सेट, व्यास 90 px</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l1" aria-label="मेज़बान कोशिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>मेज़बान कोशिकाएँ</span>
+            <span class="count">61</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">cell_from_hoechst_v1</a>. 451 फ़ील्ड पर टेस्ट F1 0.870</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="hoechst-l2" aria-label="टॉक्सोप्लाज़्मा रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>टॉक्सोप्लाज़्मा रिक्तिकाएँ</span>
+            <span class="count">63</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">toxoplasma_from_hoechst_v1</a>. 463 फ़ील्ड पर टेस्ट F1 0.569</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>इनपुट</dt><dd>Hoechst (केंद्रक रंजक)</dd>
+          <dt>इमेज</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">HeLa फ़ील्ड, प्लेट 1 वेल L08 फ़ील्ड 12, टेस्ट विभाजन (वेल के आधार पर अलग रखा गया)</a></dd>
+          <dt>लाइसेंस</dt><dd>CC BY 4.0</dd>
+          <dt>आकार</dt><dd>2000 × 2000 px, 1024 px पर दिखाया गया</dd>
+          <dt>चित्र</dt><dd><a href="/assets/img/models/hoechst-figure.webp">कैप्शन और चेकसम सहित</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="cellmask-h">
+          <div class="viewer" style="aspect-ratio:1024/1024">
+            <img class="base" src="/assets/img/models/cellmask-raw.webp" width="1024" height="1024" alt="उसी HeLa फ़ील्ड की पूर्ण-कोशिका रंजक फ़्लोरेसेंस इमेज" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="cellmask-l0" src="/assets/img/models/cellmask-toxoplasma.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l1" src="/assets/img/models/cellmask-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            <img id="cellmask-l2" src="/assets/img/models/cellmask-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">Cell mask</span><span class="lbl r">ऑब्जेक्ट</span>
+            <input type="range" min="0" max="100" value="50" aria-label="विभाजक: इसके बाईं ओर इनपुट इमेज, दाईं ओर पहचाने गए ऑब्जेक्ट">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="cellmask-h">Cell mask इमेज: टॉक्सोप्लाज़्मा, केंद्रक और मेज़बान कोशिकाएँ</h3>
+          <p class="small">वही फ़ील्ड, पूर्ण-कोशिका रंजक से इमेज किया गया। परजीवी रिक्तिकाओं और केंद्रकों का अनुमान दो spaCR क्रॉस-चैनल मॉडल केवल इसी चैनल से लगाते हैं, इसलिए किसी केंद्रक या परजीवी रंजक की आवश्यकता नहीं होती। मेज़बान कोशिकाएँ उसी चैनल पर मानक Cellpose-SAM से आती हैं।</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l0" aria-label="टॉक्सोप्लाज़्मा रिक्तिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>टॉक्सोप्लाज़्मा रिक्तिकाएँ</span>
+            <span class="count">43</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">toxoplasma_from_cellmask_v1</a>. 463 फ़ील्ड पर टेस्ट F1 0.606</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l1" aria-label="केंद्रक रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#3B82F6" aria-hidden="true"></span>केंद्रक</span>
+            <span class="count">56</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/cross-channel-nuclei-from-cellmask-cpsam">nuclei_from_cellmask_v1</a>. 453 फ़ील्ड पर टेस्ट F1 0.888</span>
+          </label></li>
+          <li><label>
+            <input type="checkbox" checked data-layer="cellmask-l2" aria-label="मेज़बान कोशिकाएँ रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#00CEC8" aria-hidden="true"></span>मेज़बान कोशिकाएँ</span>
+            <span class="count">80</span>
+            <span class="src"><a href="https://github.com/MouseLand/cellpose">Stock Cellpose-SAM (cpsam_v2), same channel</a>. डिफ़ॉल्ट सेटिंग</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>इनपुट</dt><dd>Cell mask (पूर्ण-कोशिका रंजक)</dd>
+          <dt>इमेज</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">HeLa फ़ील्ड, प्लेट 1 वेल L08 फ़ील्ड 12, टेस्ट विभाजन (वेल के आधार पर अलग रखा गया)</a></dd>
+          <dt>लाइसेंस</dt><dd>CC BY 4.0</dd>
+          <dt>आकार</dt><dd>2000 × 2000 px, 1024 px पर दिखाया गया</dd>
+          <dt>चित्र</dt><dd><a href="/assets/img/models/cellmask-figure.webp">कैप्शन और चेकसम सहित</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+        <figure class="model-fig" aria-labelledby="plaque-h">
+          <div class="viewer" style="aspect-ratio:1024/1011">
+            <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="क्रिस्टल-वायलेट से रंगे वेल की ग्रेस्केल इमेज, गहरी एकल परत में हल्के प्लाक के साथ" loading="lazy" decoding="async">
+            <div class="layers">
+            <img id="plaque-l0" src="/assets/img/models/plaque-plaque.webp" width="1024" height="1011" alt="" loading="lazy" decoding="async">
+            </div>
+            <span class="lbl l">वेल</span><span class="lbl r">ऑब्जेक्ट</span>
+            <input type="range" min="0" max="100" value="50" aria-label="विभाजक: इसके बाईं ओर इनपुट इमेज, दाईं ओर पहचाने गए ऑब्जेक्ट">
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+          <h3 id="plaque-h">प्लाक परख: टॉक्सोप्लाज़्मा प्लाक</h3>
+          <p class="small">एक प्रकाशित चित्र से लिया गया क्रिस्टल-वायलेट प्लाक-परख वेल। प्लाक का विभाजन spaCR के प्लाक मॉडल से किया जाता है। इस वेल का उपयोग मॉडल के प्रशिक्षण में नहीं हुआ।</p>
+          <ul class="classes">
+          <li><label>
+            <input type="checkbox" checked data-layer="plaque-l0" aria-label="प्लाक रूपरेखाएँ दिखाएँ">
+            <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>प्लाक</span>
+            <span class="count">99</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. उम्मीदवार मॉडल, अभी डिफ़ॉल्ट नहीं। हाथ से बने मास्क में 98 प्लाक; इस वेल पर IoU 0.5 पर F1 0.964</span>
+          </label></li>
+          </ul>
+          <dl>
+          <dt>इनपुट</dt><dd>क्रिस्टल वायलेट, ग्रेस्केल</dd>
+          <dt>इमेज</dt><dd><a href="https://doi.org/10.1128/spectrum.01229-24">Cabral G, et al. Microbiol Spectrum 2024, Fig. 2</a></dd>
+          <dt>डेटा सेट</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-plaque-dataset">toxoplasma-plaque-dataset (v3 प्रशिक्षण से अलग रखा गया)</a></dd>
+          <dt>लाइसेंस</dt><dd>CC BY 4.0</dd>
+          <dt>चित्र</dt><dd><a href="/assets/img/models/plaque-figure.webp">कैप्शन और चेकसम सहित</a></dd>
+          </dl>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:48px">सभी मॉडल, मॉडल कार्ड, मेट्रिक और प्रशिक्षण डेटा सहित: <a href="https://einarolafsson.github.io/spacr/model_zoo.html">मॉडल लाइब्रेरी दस्तावेज़</a> और <a href="https://huggingface.co/einarolafsson">Hugging Face</a>।</p>
+    </div>
+  </section>
+
+  <section id="screen" class="panel-sec" role="tabpanel" aria-labelledby="tab-screen" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>स्क्रीन परिणाम</h2>
+        <p><i>टॉक्सोप्लाज़्मा गोंडी (Toxoplasma gondii)</i> में एक पूल्ड CRISPR स्क्रीन, उन परजीवी जीनों के लिए जो मेज़बान ESCRT प्रोटीन GFP-TSG101 की परजीवी रिक्तिका तक भर्ती को प्रभावित करते हैं, spaCR से विश्लेषित। <a href="https://doi.org/10.64898/2026.07.08.737057">spaCR प्रीप्रिंट</a> से।</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>4</b><span>स्क्रीन प्लेटें</span></div></li>
+        <li><div class="tile"><b>2</b><span>दोनों क्लासिफ़ायर में 3σ से आगे के जीन</span></div></li>
+        <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>GRA14 बनाम SAG1 भर्ती</span></div></li>
+      </ul>
+      <div class="grid two results">
+        <figure>
+          <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="जीन प्रभाव बनाम सार्थकता के दो वॉल्केनो प्लॉट; EAF1 और GRA14 दोनों में सीमा से ऊपर हैं" loading="lazy" decoding="async">
+          <figcaption>माप क्लासिफ़ायर (XGBoost, बाएँ) और इमेज क्लासिफ़ायर (MaxViT, दाएँ) से जीन प्रभाव; EAF1 और GRA14 दोनों में 3σ पार करते हैं। प्रीप्रिंट चित्र 5।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/examples/hit_volcano.webp" width="1152" height="792" alt="वॉल्केनो प्लॉट जिसमें SAG1 और GRA14 सार्थकता रेखा से ऊपर हैं" loading="lazy" decoding="async">
+          <figcaption>एक प्लेट (30 वेल) पर रिग्रेशन: कंट्रोल GRA14 (q 0.040) और SAG1 (q 0.006) q &lt; 0.05 पार करते हैं। डेटा: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/gene-volcano.webp" width="976" height="1004" alt="Regression मॉड्यूल में इंटरैक्टिव वॉल्केनो प्लॉट, जिसमें एक जीन चुना गया है और नीचे उसका जीन कार्ड है" loading="lazy" decoding="async">
+          <figcaption>Regression मॉड्यूल: किसी बिंदु पर क्लिक करने से जीन कार्ड खुलता है, यहाँ EAF1 (TGGT1_225160)।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/gene-cells.webp" width="1196" height="778" alt="EAF1 गाइड वाले वेल की कोशिका क्रॉप का ग्रिड" loading="lazy" decoding="async">
+          <figcaption>एक EAF1 वेल की कोशिकाएँ जिनके क्लासिफ़ायर स्कोर अनुमानित प्रभाव से मेल खाते हैं।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/ranked.webp" width="682" height="812" alt="जीन रैंक के विरुद्ध औसत फ़ीनोटाइप का लाइन प्लॉट, चुने हुए जीन लेबल किए गए" loading="lazy" decoding="async">
+          <figcaption>सभी जीन औसत फ़ीनोटाइप के अनुसार क्रमबद्ध; सबसे प्रबल हिट जीन ID से लेबल किए गए हैं।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/barcodes.webp" width="1002" height="1002" alt="चार प्लेटों पर प्रति वेल अद्वितीय गाइड RNA के हीट मैप" loading="lazy" decoding="async">
+          <figcaption>Map barcodes: चार स्क्रीन प्लेटों पर प्रति वेल अद्वितीय गाइड RNA।</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="phenotypes" class="panel-sec" role="tabpanel" aria-labelledby="tab-phenotypes" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>फ़ीनोटाइप</h2>
+        <p>हर मापी गई कोशिका को उसके इमेज क्रॉप के साथ एक द्वि-आयामी मानचित्र पर रखा जा सकता है, ताकि समान कोशिकाओं के समूह खोजे जा सकें और आँख से जाँचे जा सकें।</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>5,000</b><span>मैप की गई कोशिकाएँ</span></div></li>
+        <li><div class="tile"><b>5</b><span>क्लस्टर</span></div></li>
+        <li><div class="tile"><b>9%</b><span>असाइन नहीं</span></div></li>
+      </ul>
+      <figure class="wide">
+        <img src="/assets/img/spacr/umap.webp" width="1200" height="592" alt="5,000 कोशिकाओं का UMAP, पाँच रेखांकित क्लस्टर और प्रति क्लस्टर चार उदाहरण क्रॉप" loading="lazy" decoding="async">
+        <figcaption>स्क्रीन प्लेट 1 की 5,000 कोशिकाओं का इमेज UMAP: पाँच HDBSCAN क्लस्टर जो प्रति कोशिका केंद्रकों और रिक्तिकाओं की संख्या में भिन्न हैं; क्रॉप प्रत्येक क्लस्टर केंद्र के पास की कोशिकाएँ हैं।</figcaption>
+      </figure>
+      <div class="grid two results" style="margin-top:48px">
+        <figure>
+          <img src="/assets/img/spacr/measure-crops.webp" width="804" height="496" alt="एकल-कोशिका क्रॉप का ग्रिड दिखाता Measure मॉड्यूल" loading="lazy" decoding="async">
+          <figcaption>सोलह-फ़ील्ड रन से Measure द्वारा सहेजे गए ऑब्जेक्ट क्रॉप।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/recruitment-field.webp" width="1200" height="241" alt="एक फ़ील्ड अलग-अलग चैनलों के रूप में, उसके बाद कोशिका, केंद्रक और परजीवी मास्क" loading="lazy" decoding="async">
+          <figcaption>एक भर्ती-परख फ़ील्ड: चैनल, फिर कोशिका, केंद्रक और परजीवी मास्क।</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="assays" class="panel-sec" role="tabpanel" aria-labelledby="tab-assays" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>परख और QC</h2>
+        <p>spaCR के परख और गुणवत्ता-नियंत्रण मॉड्यूलों के आउटपुट, उसके सार्वजनिक उदाहरण डेटा सेट पर, CPU पर गणना किए गए।</p>
+      </div>
+      <ul class="stats mini">
+        <li><div class="tile"><b>1,536</b><span>वेल, डोज़-रिस्पॉन्स</span></div></li>
+        <li><div class="tile"><b>24</b><span>प्लेटें, नियंत्रण चार्ट</span></div></li>
+        <li><div class="tile"><b>99</b><span>एक वेल में प्लाक</span></div></li>
+      </ul>
+      <div class="grid two results">
+        <figure>
+          <img src="/assets/img/examples/dose_response.webp" width="1170" height="792" alt="पाँच यौगिकों के लिए माध्यिका कोशिका गणना के डोज़-रिस्पॉन्स वक्र, SNX-2112 उसके EC50 के साथ हाइलाइट" loading="lazy" decoding="async">
+          <figcaption>Dose-Response: 58 में से उन 5 यौगिकों के लिए चार-पैरामीटर लॉजिस्टिक फ़िट जिनका EC50 परिबद्ध है; SNX-2112 EC50 0.299 µM (95% CI 0.279–0.319)। डेटा: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-dose">spacr-example-dose</a>, 1,536 वेल, 4 प्लेटें।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/examples/control_chart.webp" width="1200" height="747" alt="24 प्लेटों पर DMSO-वेल माध्यिका कोशिका गणना का नियंत्रण चार्ट, नियंत्रण सीमाओं और चिह्नित प्लेटों सहित" loading="lazy" decoding="async">
+          <figcaption>नियंत्रण चार्ट: 24 प्लेटों पर DMSO-वेल माध्यिका कोशिका गणना; कोशिका-लाइन, समय-बिंदु और सीडिंग में बदलाव के बाद सभी 24 सीमाओं से बाहर हैं। डेटा: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-control-chart">spacr-example-control-chart</a>।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/models/plaque-figure.webp" width="1024" height="1090" alt="क्रिस्टल-वायलेट प्लाक वेल जिसमें 99 प्लाक मैजेंटा रूपरेखा में हैं" loading="lazy" decoding="async">
+          <figcaption>Plaque Assay: Cabral et al. 2024 (CC BY 4.0) के एक वेल में toxoplasma_plaque_v3 द्वारा पाए गए 99 प्लाक; हाथ से बने मास्क में 98।</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/img/spacr/recruitment.webp" width="1200" height="464" alt="चार प्लेटों पर नेगेटिव और पॉज़िटिव कंट्रोल वेल के लिए GFP-TSG101 भर्ती के बार प्लॉट" loading="lazy" decoding="async">
+          <figcaption>Recruitment: चार प्लेटों पर SAG1 (नेगेटिव) और GRA14 (पॉज़िटिव) कंट्रोल वेल में GFP-TSG101 का रिक्तिका-से-कोशिकाद्रव्य अनुपात; प्लेट माध्य p = 8.4 × 10⁻⁵।</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="papers" class="panel-sec" role="tabpanel" aria-labelledby="tab-papers" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>spaCR का उपयोग करने वाले शोध-पत्र</h2>
+        <p>वे शोध-पत्र जिनकी विधियों में spaCR का उपयोग हुआ है, प्रत्येक की पूरे पाठ में जाँच की गई है; हर प्रविष्टि के नीचे का उद्धरण प्रमाण है। जो शोध-पत्र केवल spaCR का उद्धरण देते हैं, वे सूचीबद्ध नहीं हैं। अंतिम जाँच 2026-10-10। कोई शोध-पत्र जोड़ने के लिए <a href="https://github.com/EinarOlafsson/spacr/issues">एक issue खोलें</a>।</p>
+      </div>
+        <ul class="papers">
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.64898/2026.07.08.737057">
+          <div class="badge" aria-hidden="true"><span>bioRxiv</span><b>2026</b></div>
+          <span class="title">A pooled image-based CRISPR screen identifies EAF1 as a T. gondii modulator of ESCRT subversion</span>
+          </a>
+          <span class="cite">Olafsson EB, et al. bioRxiv, 2026, प्रीप्रिंट. <span class="rel">spaCR शोध-पत्र</span></span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.21203/rs.3.rs-7368254/v1">
+          <img src="/assets/img/papers/olafsson2025_researchsquare_fig3.webp" width="480" height="320" alt="Fig. 3: Classification of GFP-TSG101 recruitment" loading="lazy" decoding="async">
+          <span class="title">spaCR: Spatial phenotype analysis of CRISPR-Cas9 screens</span>
+          </a>
+          <span class="cite">Olafsson EB, et al. Research Square, 2025, प्रीप्रिंट. <span class="rel">spaCR शोध-पत्र</span></span>
+          <span class="credit">इमेज: Fig. 3 from Olafsson et al. Research Square 2025, CC BY 4.0 (cropped)</span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.64898/2026.07.20.739547">
+          <img src="/assets/img/papers/kaur2026_biorxiv_fig4.webp" width="480" height="320" alt="Fig. 4: TgGRA8 is essential for PV recruitment of ALG-2" loading="lazy" decoding="async">
+          <span class="title">Toxoplasma GRA8 engages the host ESCRT accessory protein ALG-2 and is necessary for parasite metabolic integrity</span>
+          </a>
+          <span class="cite">Kaur H, et al. bioRxiv, 2026, प्रीप्रिंट. <span class="rel">spaCR का उपयोग करता है</span></span>
+          <blockquote class="evidence"><q>All quantitative image analysis was performed as described in (33) in detail.</q><span class="where">Methods, ESCRT protein recruitment</span></blockquote>
+          <span class="credit">इमेज: Fig. 4 from Kaur et al. bioRxiv 2026, CC0 1.0 (cropped)</span>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.1016/j.celrep.2025.115694">
+          <div class="badge" aria-hidden="true"><span>Cell Reports</span><b>2025</b></div>
+          <span class="title">IRE1α promotes phagosomal calcium flux to enhance macrophage fungicidal activity</span>
+          </a>
+          <span class="cite">McFadden MJ, et al. Cell Reports, 2025. <span class="rel">spaCR का उपयोग करता है</span>. प्रीप्रिंट: <a href="https://doi.org/10.1101/2023.10.02.560560">bioRxiv 2023</a></span>
+          <blockquote class="evidence"><q>For analysis of cellular calcium flux, the Python package spacr (https://github.com/EinarOlafsson/spacr) was used to segment and track cells over time and quantify single cell calcium oscillations.</q><span class="where">STAR Methods, 'Quantification of calcium flux'</span></blockquote>
+        </li>
+        <li class="paper">
+          <a class="title-wrap row" href="https://doi.org/10.1128/msphere.01011-24">
+          <img src="/assets/img/papers/rimple2025_msphere_figS3.webp" width="480" height="320" alt="Fig. S3: Analysis of plaque efficiency and size for screen hits" loading="lazy" decoding="async">
+          <span class="title">Metabolic adaptability and nutrient scavenging in Toxoplasma gondii: insights from ingestion pathway-deficient mutants</span>
+          </a>
+          <span class="cite">Rimple PA, et al. mSphere, 2025. <span class="rel">spaCR का उपयोग करता है</span>. प्रीप्रिंट: <a href="https://doi.org/10.1101/2024.11.27.625683">bioRxiv 2024</a></span>
+          <blockquote class="evidence"><q>Plaques were detected and quantified using the plaque assay module in SpaCR (v. 0.3.62, https://github.com/EinarOlafsson/spacr and https://pypi.org/project/spacr/). First, plaques were manually …</q><span class="where">Methods, 'Validation of screens'</span></blockquote>
+          <span class="credit">इमेज: Fig. S3 from Rimple et al. mSphere 2025, CC BY 4.0 (cropped)</span>
+        </li>
+        </ul>
+    </div>
+  </section>
+
+  <section id="install" class="panel-sec" role="tabpanel" aria-labelledby="tab-install" tabindex="-1">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>spaCR 1.5.1.4 इंस्टॉल करें</h2>
+      </div>
+      <div class="installers">
+          <h3>डेस्कटॉप इंस्टॉलर</h3>
+          <p class="note">इंस्टॉलरों में अपना Python शामिल है, इसलिए Conda की आवश्यकता नहीं है। फ़ाइलें <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">v1.5.1.4 रिलीज़</a> से।</p>
+          <ul class="os-list">
+            <li class="os">
+              <img src="/assets/img/os/windows.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">Windows 10 और 11</span>
+              <span class="os-file">spaCR-1.5.1.4-Windows-Online-Setup.exe</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Windows-Online-Setup.exe">डाउनलोड करें <span class="sz">244 kB</span></a>
+            </li>
+            <li class="os">
+              <img src="/assets/img/os/macos.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">macOS 11 या बाद का, Intel और Apple silicon</span>
+              <span class="os-file">spaCR-1.5.1.4-macOS-Universal-Online.pkg</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-macOS-Universal-Online.pkg">डाउनलोड करें <span class="sz">390 kB</span></a>
+            </li>
+            <li class="os">
+              <img src="/assets/img/os/linux.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
+              <span class="os-name">Linux x86-64</span>
+              <span class="os-file">spaCR-1.5.1.4-Linux-x86_64-Online.run</span>
+              <a class="btn" href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/spaCR-1.5.1.4-Linux-x86_64-Online.run">डाउनलोड करें <span class="sz">236 kB</span></a>
+            </li>
+          </ul>
+          <p class="note">चेकसम: <a href="https://github.com/EinarOlafsson/spacr/releases/download/v1.5.1.4/SHA256SUMS.txt">SHA256SUMS.txt</a>। पुराने इंस्टॉलर और समस्या निवारण: <a href="https://einarolafsson.github.io/spacr/installers.html">इंस्टॉलर दस्तावेज़</a>।</p>
+      </div>
+      <div class="grid two sub-s">
+        <div>
+          <h3>PyPI</h3>
+          <div class="code-wrap">
+<pre id="pip-cmd"><code>conda create -n spacr python=3.12 -y
+conda activate spacr
+python -m pip install spacr==1.5.1.4
+spacr</code></pre>
+            <button class="copy" type="button" data-copy="pip-cmd">कॉपी करें</button>
+          </div>
+        </div>
+        <div>
+          <h3>conda-forge</h3>
+          <div class="code-wrap">
+<pre id="conda-cmd"><code>conda create -n spacr python=3.12 -y
+conda activate spacr
+conda install conda-forge::spacr
+spacr</code></pre>
+            <button class="copy" type="button" data-copy="conda-cmd">कॉपी करें</button>
+          </div>
+          <p class="note"><a href="https://pypi.org/project/spacr/1.5.1.4/">PyPI पर spaCR</a> · <a href="https://anaconda.org/conda-forge/spacr">conda-forge पर spaCR</a> · Python <code>!=3.14.1,&lt;3.15,&gt;=3.9</code> आवश्यक</p>
+        </div>
+      </div>
+
+      <div id="cite" class="grid two sub">
+        <div>
+          <h3>spaCR का उद्धरण दें</h3>
+          <p>Olafsson EB, Arnold CS, Kellermeier JA, Rimple PA, Kaur H, Wang Y, Sexton JZ, Svärd S, Carruthers VB, O'Meara MJ. spaCR: spatial phenotype analysis of CRISPR-Cas9 screens (version 1.5.1.4). Zenodo; 2026. doi:10.5281/zenodo.23266544</p>
+          <table>
+            <tbody>
+              <tr><th scope="row">सभी संस्करण (कॉन्सेप्ट DOI)</th><td><a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a></td></tr>
+              <tr><th scope="row">संस्करण 1.5.1.4</th><td><a href="https://doi.org/10.5281/zenodo.23266544">10.5281/zenodo.23266544</a></td></tr>
+              <tr><th scope="row">प्रीप्रिंट</th><td><a href="https://doi.org/10.64898/2026.07.08.737057">10.64898/2026.07.08.737057</a></td></tr>
+              <tr><th scope="row">मेटाडेटा</th><td><a href="https://github.com/EinarOlafsson/spacr/blob/main/CITATION.cff">CITATION.cff</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>BibTeX</h3>
+          <div class="code-wrap">
+<pre id="bibtex"><code>@software{olafsson_spacr_2026,
+  author    = {Olafsson, Einar B. and Arnold, Christophe-Sebastien and Kellermeier, Jacob A. and Rimple, Patrick A. and Kaur, Hargobinder and Wang, Yifan and Sexton, Jonathan Z. and Svärd, Staffan and Carruthers, Vern B. and O'Meara, Matthew J.},
+  title     = {{spaCR: spatial phenotype analysis of CRISPR-Cas9 screens}},
+  version   = {1.5.1.4},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23266544},
+  url       = {https://doi.org/10.5281/zenodo.23266544}
+}</code></pre>
+            <button class="copy" type="button" data-copy="bibtex">कॉपी करें</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="docs" class="sub">
+        <h3>दस्तावेज़</h3>
+        <ul class="links">
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>उपयोगकर्ता गाइड और API</b><span>जारी संस्करण के लिए।</span></a></li>
+          <li><a class="row" href="https://einarolafsson-spacr-docs-nightly.static.hf.space/index.html"><b>नाइटली दस्तावेज़</b><span>डेवलपमेंट ब्रांच से बनाया गया।</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>ट्यूटोरियल</b><span>हर मॉड्यूल के लिए वर्णन और कैप्शन वाले पाठ, उदाहरण डेटा सहित।</span></a></li>
+          <li><a class="row" href="https://huggingface.co/einarolafsson"><b>मॉडल और डेटा सेट</b><span>Hugging Face पर मॉडल वेट, मॉडल कार्ड और प्रशिक्षण डेटा।</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3>डेस्कटॉप एप्लिकेशन</h3>
+        <p class="note">वर्णित ट्यूटोरियल के मौन अंश। वर्णन और कई भाषाओं में कैप्शन वाले पूरे पाठ <a href="https://einarolafsson.github.io/spacr/tutorials/">ट्यूटोरियल पोर्टल</a> में हैं।</p>
+        <div class="grid two">
+          <figure>
+            <div class="clip">
+              <video muted loop playsinline preload="none" width="1280" height="720" data-poster="/assets/media/clip-home.webp" data-src="/assets/media/clip-home.mp4" aria-label="मॉड्यूल टाइलों वाली spaCR होम स्क्रीन"></video>
+            </div>
+            <figcaption>होम स्क्रीन, प्रति मॉड्यूल एक टाइल। ट्यूटोरियल पाठ 5।</figcaption>
+          </figure>
+          <figure>
+            <div class="clip">
+              <video muted loop playsinline preload="none" width="1280" height="720" data-poster="/assets/media/clip-cellpose.webp" data-src="/assets/media/clip-cellpose.mp4" aria-label="Make Masks में Cellpose Workbench, इमेज, रूपरेखा और फ़्लो पूर्वावलोकन के साथ"></video>
+            </div>
+            <figcaption>Make Masks में Cellpose Workbench, जो इमेज, रूपरेखाएँ और फ़्लो दिखाता है। ट्यूटोरियल पाठ 20।</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>स्थिर HTML और CSS। पृष्ठभूमि spaCR की एडवेक्शन (advection) थीम का WebGL पोर्ट है। कोई वेब एनालिटिक्स नहीं और कोई कुकी नहीं।</p>
+    <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
+
+  </div>
+</footer>
+
+</body>
+</html>

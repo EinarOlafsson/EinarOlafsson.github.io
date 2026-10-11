@@ -11,10 +11,17 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/assets/js/fx.js?v=080a078259" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/spacr/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/spacr/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/spacr/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/spacr/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/spacr/pt/">
 <link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/spacr/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/spacr/zh-CN/">
 <link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/spacr/">
-<meta name="robots" content="noindex">
-<script type="application/json" id="i18n-ui">{"ui.theme_dark":"Byt till mörkt tema","ui.theme_light":"Byt till ljust tema","ui.fx_pause":"Pausa bakgrundsanimationen","ui.fx_resume":"Återuppta bakgrundsanimationen","ui.fx_reduced":"Bakgrundsanimationen är av: ditt system begär reducerad rörelse","ui.pause":"Pausa","ui.resume":"Fortsätt","ui.copied":"Kopierat"}</script>
+<script type="application/json" id="i18n-ui">{"ui.theme_dark":"Byt till mörkt tema","ui.theme_light":"Byt till ljust tema","ui.fx_pause":"Pausa bakgrundsanimationen","ui.fx_resume":"Återuppta bakgrundsanimationen","ui.fx_reduced":"Bakgrundsanimationen är avstängd: ditt system begär minskad rörelse","ui.pause":"Pausa","ui.resume":"Fortsätt","ui.copied":"Kopierat"}</script>
 
 <title>spaCR: spatial fenotypanalys av CRISPR-Cas9-screener</title>
 <link rel="preload" as="image" href="/assets/img/spacr/overview-hoechst.webp" fetchpriority="high">
@@ -28,7 +35,7 @@
   <div class="wrap">
     <a class="brand" href="/">Einar B. Olafsson</a>
     <nav class="nav" aria-label="Projekt">
-      <a href="/projects/spacr/sv/" data-nav="spacr" aria-current="page" data-langs="sv">spaCR</a>
+      <a href="/projects/spacr/sv/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
     </nav>
@@ -37,7 +44,15 @@
         <summary title="Språk"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Språk: </span><span class="lang-cur">Svenska</span></summary>
         <ul aria-label="Språk">
           <li><a href="/projects/spacr/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/spacr/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/spacr/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/spacr/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/spacr/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/spacr/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/spacr/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/spacr/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
           <li><a href="/projects/spacr/sv/" hreflang="sv" lang="sv" data-lang="sv" aria-current="true">Svenska</a></li>
+          <li><a href="/projects/spacr/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
         </ul>
       </details>
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Pausa bakgrundsanimationen" title="Pausa bakgrundsanimationen">
@@ -75,7 +90,7 @@
         <p class="kicker"><span>Python-paket och skrivbordsprogram</span> · <span class="nw">BSD-3-Clause</span></p>
         <h1>spaCR</h1>
         <p class="lede">Spatial fenotypanalys av CRISPR-Cas9-screener.</p>
-        <p class="prose">spaCR segmenterar celler, cellkärnor och patogener i mikroskopibilder, mäter varje objekt och kopplar mätningarna till de guide-RNA som sekvenserats från samma brunnar. Det börjar med plattbilder och FASTQ-läsningar och slutar med mätningar per cell, tränade klassificerare och en rangordnad lista över gener.</p>
+        <p class="prose">spaCR segmenterar celler, cellkärnor och patogener i mikroskopibilder, mäter varje objekt och kopplar mätningarna till de guide-RNA som sekvenserats från samma brunnar. Analysen börjar med plattbilder och FASTQ-läsningar och slutar med mätningar per cell, tränade klassificerare och en rangordnad lista över gener.</p>
         <ul class="facts">
           <li>Version <b>1.5.1.4</b></li>
           <li>Släppt <b>2026-10-09</b></li>
@@ -111,19 +126,19 @@
         <p>Ett synfält följt genom spaCR: platta 1, brunn H02, synfält 4 i exempelscreenen, en brunn där 92 % av guiderna är GRA14, den positiva kontrollen.</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="Infekterade celler: cellkärnor blå, markör grön, parasiter röda" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>Bild</span></h3><p>19 infekterade celler, sammansatta från utklipp från Measure.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="Infekterade celler: cellkärnor blå, markör grön, parasiter röda" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>Bild</span></h3><p>19 infekterade celler, sammanfogade från utklipp från Measure.</p></li>
         <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="Konturer av celler, cellkärnor och parasiter på samma celler" loading="lazy" decoding="async"></a><h3><span class="num">2</span><span>Mask</span></h3><p>Konturer av celler, cellkärnor och parasiter.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="Celler färgade efter parasitens intensitet i kanal 1" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Mätning</span></h3><p>Celler färgade efter parasitens intensitet i kanal 1.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="Celler färgade efter klassificerarpoäng, de flesta nära 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Klassificering</span></h3><p>Klassificerarpoäng per cell; 18 av 19 över 0,5.</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="Vulkandiagram med GRA14 inringad och SAG1 märkt" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>Träff</span></h3><p>GRA14 identifierad genom regression (q 0,040).</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="Celler färgade efter parasitens intensitet i kanal 1" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Measure</span></h3><p>Celler färgade efter parasitens intensitet i kanal 1.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="Celler färgade efter klassificerarpoäng, de flesta nära 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Classify</span></h3><p>Klassificerarpoäng per cell; 18 av 19 över 0,5.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="Vulkandiagram med GRA14 inringad och SAG1 märkt" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>Träff</span></h3><p>GRA14 utpekad genom regression (q 0,040).</p></li>
       </ol>
       <p class="note">Data: utklipp från <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> och mätningar, poäng och guideantal från <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>. Cellkonturerna är screenens masker; konturerna för cellkärnor och parasiter beräknades om med Cellpose-SAM via spaCR på CPU; regressionen omfattar denna delmängd på 30 brunnar.</p>
       <ul class="steps" aria-label="Moduler" style="margin-top:48px">
         <li><b>Mask</b><span>Segmenterar celler, cellkärnor, patogener och organeller med Cellpose-modeller.</span></li>
-        <li><b>Mätning</b><span>Form, intensitet, textur och position för varje objekt, och ett utklipp av vart och ett, i SQLite.</span></li>
-        <li><b>Annotering</b><span>Märker objektutklipp i ett rutnät med kortkommandon.</span></li>
-        <li><b>Klassificering</b><span>Tränar bild- eller mätklassificerare och sparar prestanda på undanhållna data med varje kontrollpunkt.</span></li>
-        <li><b>Streckkodsmappning</b><span>Tilldelar sekvensläsningar till brunnar och guide-RNA.</span></li>
+        <li><b>Measure</b><span>Form, intensitet, textur och position för varje objekt, och ett utklipp av vart och ett, i SQLite.</span></li>
+        <li><b>Annotate</b><span>Märker objektutklipp i ett rutnät med kortkommandon.</span></li>
+        <li><b>Classify</b><span>Tränar bild- eller mätklassificerare och sparar prestanda på undanhållna data med varje kontrollpunkt.</span></li>
+        <li><b>Map barcodes</b><span>Tilldelar sekvensläsningar till brunnar och guide-RNA.</span></li>
         <li><b>Regression</b><span>Skattar effekter av guider, gener och betingelser med intervall och en rangordnad träfflista.</span></li>
       </ul>
     </div>
@@ -138,7 +153,7 @@
       <ul class="stats mini">
         <li><div class="tile"><b>16</b><span>publicerade modeller</span></div></li>
         <li><div class="tile"><b>4</b><span>korskanalmodeller</span></div></li>
-        <li><div class="tile"><b>7</b><span>objektklasser visas</span></div></li>
+        <li><div class="tile"><b>7</b><span>visade objektklasser</span></div></li>
       </ul>
       <div class="showcase">
         <figure class="model-fig" aria-labelledby="hoechst-h">
@@ -178,7 +193,7 @@
           </ul>
           <dl>
           <dt>Indata</dt><dd>Hoechst (kärnfärgning)</dd>
-          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">HeLa-synfält, platta 1 brunn L08 synfält 12, testdel (undanhållen per brunn)</a></dd>
+          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">HeLa-synfält, platta 1 brunn L08 synfält 12, testuppsättning (undanhållen per brunn)</a></dd>
           <dt>Licens</dt><dd>CC BY 4.0</dd>
           <dt>Storlek</dt><dd>2000 × 2000 px, visad i 1024 px</dd>
           <dt>Figur</dt><dd><a href="/assets/img/models/hoechst-figure.webp">Med bildtext och kontrollsummor</a></dd>
@@ -193,12 +208,12 @@
             <img id="cellmask-l1" src="/assets/img/models/cellmask-nuclei.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             <img id="cellmask-l2" src="/assets/img/models/cellmask-cell.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             </div>
-            <span class="lbl l">Cellmask</span><span class="lbl r">Objekt</span>
+            <span class="lbl l">Cell mask</span><span class="lbl r">Objekt</span>
             <input type="range" min="0" max="100" value="50" aria-label="Avdelare: till vänster indatabilden, till höger de hittade objekten">
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="cellmask-h">Cellmaskbild: Toxoplasma, cellkärnor och värdceller</h3>
+          <h3 id="cellmask-h">Bild med Cell mask: Toxoplasma, cellkärnor och värdceller</h3>
           <p class="small">Samma synfält avbildat med en helcellsfärgning. Parasitvakuoler och cellkärnor förutsägs enbart från denna kanal av två korskanalmodeller i spaCR, så ingen kärn- eller parasitfärgning behövs. Värdcellerna kommer från standardmodellen Cellpose-SAM på samma kanal.</p>
           <ul class="classes">
           <li><label>
@@ -221,8 +236,8 @@
           </label></li>
           </ul>
           <dl>
-          <dt>Indata</dt><dd>Cellmask (helcellsfärgning)</dd>
-          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">HeLa-synfält, platta 1 brunn L08 synfält 12, testdel (undanhållen per brunn)</a></dd>
+          <dt>Indata</dt><dd>Cell mask (helcellsfärgning)</dd>
+          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">HeLa-synfält, platta 1 brunn L08 synfält 12, testuppsättning (undanhållen per brunn)</a></dd>
           <dt>Licens</dt><dd>CC BY 4.0</dd>
           <dt>Storlek</dt><dd>2000 × 2000 px, visad i 1024 px</dd>
           <dt>Figur</dt><dd><a href="/assets/img/models/cellmask-figure.webp">Med bildtext och kontrollsummor</a></dd>
@@ -231,7 +246,7 @@
         </figure>
         <figure class="model-fig" aria-labelledby="plaque-h">
           <div class="viewer" style="aspect-ratio:1024/1011">
-            <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="Gråskalebild av en brunn färgad med kristallviolett, med ljusa plack i ett mörkt enskiktslager" loading="lazy" decoding="async">
+            <img class="base" src="/assets/img/models/plaque-raw.webp" width="1024" height="1011" alt="Gråskalebild av en brunn färgad med kristallviolett, med ljusa plack i ett mörkt monolager" loading="lazy" decoding="async">
             <div class="layers">
             <img id="plaque-l0" src="/assets/img/models/plaque-plaque.webp" width="1024" height="1011" alt="" loading="lazy" decoding="async">
             </div>
@@ -241,7 +256,7 @@
           </div>
           <figcaption>
           <h3 id="plaque-h">Plackanalys: Toxoplasma-plack</h3>
-          <p class="small">En brunn från en plackanalys färgad med kristallviolett, hämtad från en publicerad figur. Placken segmenteras av spaCR:s plackmodell. Brunnen användes inte för att träna modellen.</p>
+          <p class="small">En brunn från en plackanalys med kristallviolettfärgning, hämtad från en publicerad figur. Placken segmenteras av spaCR:s plackmodell. Brunnen användes inte för att träna modellen.</p>
           <ul class="classes">
           <li><label>
             <input type="checkbox" checked data-layer="plaque-l0" aria-label="Visa konturer för Plack">
@@ -298,7 +313,7 @@
         </figure>
         <figure>
           <img src="/assets/img/spacr/barcodes.webp" width="1002" height="1002" alt="Värmekartor över unika guide-RNA per brunn på fyra plattor" loading="lazy" decoding="async">
-          <figcaption>Streckkodsmappning: unika guide-RNA per brunn på de fyra screenplattorna.</figcaption>
+          <figcaption>Map barcodes: unika guide-RNA per brunn på de fyra screenplattorna.</figcaption>
         </figure>
       </div>
     </div>
@@ -311,7 +326,7 @@
         <p>Varje uppmätt cell kan placeras på en tvådimensionell karta tillsammans med sitt bildutklipp, så att grupper av liknande celler kan hittas och kontrolleras med ögat.</p>
       </div>
       <ul class="stats mini">
-        <li><div class="tile"><b>5,000</b><span>celler kartlagda</span></div></li>
+        <li><div class="tile"><b>5,000</b><span>kartlagda celler</span></div></li>
         <li><div class="tile"><b>5</b><span>kluster</span></div></li>
         <li><div class="tile"><b>9%</b><span>ej tilldelade</span></div></li>
       </ul>
@@ -336,7 +351,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Analyser och QC</h2>
-        <p>Resultat från spaCR:s analys- och kvalitetskontrollmoduler på dess offentliga exempeldata, beräknade på CPU.</p>
+        <p>Resultat från spaCR:s moduler för analyser och kvalitetskontroll på de offentliga exempeldatamängderna, beräknade på CPU.</p>
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>1,536</b><span>brunnar, dos-respons</span></div></li>
@@ -346,7 +361,7 @@
       <div class="grid two results">
         <figure>
           <img src="/assets/img/examples/dose_response.webp" width="1170" height="792" alt="Dos-responskurvor för mediant cellantal för fem substanser, SNX-2112 markerad med sitt EC50" loading="lazy" decoding="async">
-          <figcaption>Dos-respons: fyraparametriska logistiska anpassningar för de 5 av 58 substanser som har ett begränsat EC50; SNX-2112 EC50 0,299 µM (95 % KI 0,279–0,319). Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-dose">spacr-example-dose</a>, 1 536 brunnar, 4 plattor.</figcaption>
+          <figcaption>Dose-Response: logistiska anpassningar med fyra parametrar för de 5 av 58 substanser som har ett avgränsat EC50; SNX-2112 EC50 0,299 µM (95 % KI 0,279–0,319). Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-dose">spacr-example-dose</a>, 1 536 brunnar, 4 plattor.</figcaption>
         </figure>
         <figure>
           <img src="/assets/img/examples/control_chart.webp" width="1200" height="747" alt="Styrdiagram över mediant cellantal i DMSO-brunnar på 24 plattor med kontrollgränser och flaggade plattor" loading="lazy" decoding="async">
@@ -354,11 +369,11 @@
         </figure>
         <figure>
           <img src="/assets/img/models/plaque-figure.webp" width="1024" height="1090" alt="Plackbrunn färgad med kristallviolett med 99 plack markerade i magenta" loading="lazy" decoding="async">
-          <figcaption>Plackanalys: 99 plack hittade av toxoplasma_plaque_v3 i en brunn från Cabral et al. 2024 (CC BY 4.0); 98 i den handritade masken.</figcaption>
+          <figcaption>Plaque Assay: 99 plack hittade av toxoplasma_plaque_v3 i en brunn från Cabral et al. 2024 (CC BY 4.0); 98 i den handritade masken.</figcaption>
         </figure>
         <figure>
           <img src="/assets/img/spacr/recruitment.webp" width="1200" height="464" alt="Stapeldiagram över rekrytering av GFP-TSG101 i negativa och positiva kontrollbrunnar på fyra plattor" loading="lazy" decoding="async">
-          <figcaption>Rekrytering: kvoten mellan GFP-TSG101 i vakuol och cytoplasma i kontrollbrunnar med SAG1 (negativ) och GRA14 (positiv) på fyra plattor; plattmedelvärden p = 8,4 × 10⁻⁵.</figcaption>
+          <figcaption>Recruitment: kvoten mellan GFP-TSG101 i vakuol och cytoplasma i kontrollbrunnar med SAG1 (negativ) och GRA14 (positiv) på fyra plattor; plattmedelvärden p = 8,4 × 10⁻⁵.</figcaption>
         </figure>
       </div>
     </div>
@@ -368,7 +383,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Artiklar som använder spaCR</h2>
-        <p>Artiklar vars metoder använder spaCR, var och en kontrollerad i fulltext; citatet under varje post är belägget. Artiklar som bara citerar spaCR listas inte. Senast kontrollerad 2026-10-10. För att lägga till en artikel, <a href="https://github.com/EinarOlafsson/spacr/issues">öppna ett ärende</a>.</p>
+        <p>Artiklar vars metoder använder spaCR, var och en kontrollerad i fulltext; citatet under varje post är belägget. Artiklar som bara citerar spaCR listas inte. Senast kontrollerat 2026-10-10. För att lägga till en artikel, <a href="https://github.com/EinarOlafsson/spacr/issues">öppna ett ärende</a>.</p>
       </div>
         <ul class="papers">
         <li class="paper">
@@ -422,8 +437,8 @@
         <h2>Installera spaCR 1.5.1.4</h2>
       </div>
       <div class="installers">
-          <h3>Installationsprogram</h3>
-          <p class="note">Installationsprogrammen innehåller en egen Python, så Conda behövs inte. Filer från <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">versionen v1.5.1.4</a>.</p>
+          <h3>Installationsprogram för skrivbordet</h3>
+          <p class="note">Installationsprogrammen innehåller en egen Python, så Conda behövs inte. Filer från <a href="https://github.com/EinarOlafsson/spacr/releases/tag/v1.5.1.4">utgåvan v1.5.1.4</a>.</p>
           <ul class="os-list">
             <li class="os">
               <img src="/assets/img/os/windows.webp" width="64" height="75" alt="" loading="lazy" decoding="async">
@@ -503,16 +518,16 @@ spacr</code></pre>
       <div id="docs" class="sub">
         <h3>Dokumentation</h3>
         <ul class="links">
-          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Användarhandbok och API</b><span>För den släppta versionen.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Användarhandbok och API</b><span>För den utgivna versionen.</span></a></li>
           <li><a class="row" href="https://einarolafsson-spacr-docs-nightly.static.hf.space/index.html"><b>Nattlig dokumentation</b><span>Byggd från utvecklingsgrenen.</span></a></li>
-          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>Handledningar</b><span>Berättade, textade lektioner för varje modul, med exempeldata.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>Handledningar</b><span>Lektioner med berättarröst och undertexter för varje modul, med exempeldata.</span></a></li>
           <li><a class="row" href="https://huggingface.co/einarolafsson"><b>Modeller och datamängder</b><span>Modellvikter, modellkort och träningsdata på Hugging Face.</span></a></li>
         </ul>
       </div>
 
       <div class="sub">
         <h3>Skrivbordsprogrammet</h3>
-        <p class="note">Ljudlösa utdrag ur de berättade handledningarna. De fullständiga lektionerna, med berättarröst och undertexter på flera språk, finns i <a href="https://einarolafsson.github.io/spacr/tutorials/">handledningsportalen</a>.</p>
+        <p class="note">Utdrag utan ljud ur handledningarna med berättarröst. De fullständiga lektionerna, med berättarröst och undertexter på flera språk, finns i <a href="https://einarolafsson.github.io/spacr/tutorials/">handledningsportalen</a>.</p>
         <div class="grid two">
           <figure>
             <div class="clip">
@@ -533,9 +548,9 @@ spacr</code></pre>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <p>Statisk HTML och CSS. Bakgrunden är en WebGL-version av spaCR:s advektionstema. Ingen analys och inga kakor.</p>
+    <p>Statisk HTML och CSS. Bakgrunden är en WebGL-version av advektionstemat i spaCR. Ingen webbanalys och inga kakor.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
-<p class="i18n-status" lang="en">Svenska: machine draft - pending review</p>
+
   </div>
 </footer>
 
