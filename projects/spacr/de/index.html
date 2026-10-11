@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=08370ee546">
+<link rel="stylesheet" href="/assets/css/site.css?v=944302ba24">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=08370ee546" defer></script>
+<script src="/assets/js/fx.js?v=944302ba24" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: Segmentierung, Einzelzellmessung, Klassifikation, Barcode-Zuordnung und Regression für bildbasierte gepoolte CRISPR-Screens. Pipeline, veröffentlichte Modelle, Screen-Ergebnisse, Publikationen und Installation.">
-<script src="/assets/js/volcano.js?v=08370ee546" defer></script>
+<script src="/assets/js/volcano.js?v=944302ba24" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -138,7 +138,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>analysierte Screen-Platten</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>Tutorial-Lektionen</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>Sprachen der Oberfläche</span></a></li>
-        <li><a class="row" href="#install"><b>85,263</b><span>automatisierte Tests</span></a></li>
+        <li><a class="row" href="#install"><b>85,264</b><span>automatisierte Tests</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -408,28 +408,7 @@
         <div class="mc-group" role="group" aria-labelledby="mc-pv">
           <h3 id="mc-pv">Parasitophorous vacuole segmentation</h3>
           <p class="note mc-why">Stock Cellpose-SAM (cpsam_v2) misses or misdraws many Toxoplasma parasitophorous vacuoles. On the 11 anchor wells held out since round 1 it scores F1 0.765 at IoU 0.5 and AJI 0.505, against F1 0.860 and 0.854 and AJI 0.803 and 0.776 for v3 and v4. On 50 held-out fields that include published-figure crops, stock scores 0.559 and v5 0.792.</p>
-          <div class="mc-grid">
-          <article class="mc">
-            <header><h4>Toxoplasma PV v1</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v1</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>11 held-out in-house wells · the 11 in-house wells held out since round 1, scored at IoU 0.5</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam_v2</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.864"></span><span class="mc-num">0.864</span></td><td><span class="mc-bar va" style="--v:0.713"></span><span class="mc-num">0.713</span></td></tr><tr><th scope="row">mAP over IoU 0.5 to 0.9</th><td><span class="mc-bar ft" style="--v:0.575"></span><span class="mc-num">0.575</span></td><td><span class="mc-bar va" style="--v:0.322"></span><span class="mc-num">0.322</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.843"></span><span class="mc-num">0.843</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.886"></span><span class="mc-num">0.886</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">AJI</th><td><span class="mc-bar ft" style="--v:0.809"></span><span class="mc-num">0.809</span></td><td><span class="mc-bar va" style="--v:0.426"></span><span class="mc-num">0.426</span></td></tr><tr><th scope="row">Dice</th><td><span class="mc-bar ft" style="--v:0.837"></span><span class="mc-num">0.837</span></td><td><span class="mc-nr">–</span></td></tr></tbody></table>
-            <p class="mc-note">Accuracy falls sharply above IoU 0.8; suited to counting and area rather than precise morphometry.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam">Model card</a></p>
-          </article>
-          <article class="mc">
-            <header><h4>Toxoplasma PV v2 (round 5)</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v2</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>619 curated pairs, 5-fold cross-validation · mean over 5 cross-validation folds; stock cpsam_v2 was not scored on these folds</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam_v2 (not scored on the cross-validation folds)</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.817"></span><span class="mc-num">0.817</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">mAP over IoU 0.5 to 0.9</th><td><span class="mc-bar ft" style="--v:0.556"></span><span class="mc-num">0.556</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.829"></span><span class="mc-num">0.829</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.809"></span><span class="mc-num">0.809</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">AJI</th><td><span class="mc-bar ft" style="--v:0.714"></span><span class="mc-num">0.714</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">Dice</th><td><span class="mc-bar ft" style="--v:0.802"></span><span class="mc-num">0.802</span></td><td><span class="mc-nr">–</span></td></tr></tbody></table>
-            <p class="mc-note">F1 0.817 +/- 0.036 over five folds; the card's stock row (F1 0.713) is on the 11 in-house held-out wells, a different set.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r5">Model card</a></p>
-          </article>
-          <article class="mc">
-            <header><h4>Toxoplasma PV v3 (round 6)</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v3</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>11 anchor wells (10 with objects scored) · the 11 in-house anchor wells held out since round 1; no PV round has trained on them</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam_v2</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.860"></span><span class="mc-num">0.860</span></td><td><span class="mc-bar va" style="--v:0.765"></span><span class="mc-num">0.765</span></td></tr><tr><th scope="row">mAP over IoU 0.5 to 0.9</th><td><span class="mc-bar ft" style="--v:0.506"></span><span class="mc-num">0.506</span></td><td><span class="mc-bar va" style="--v:0.362"></span><span class="mc-num">0.362</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.847"></span><span class="mc-num">0.847</span></td><td><span class="mc-bar va" style="--v:0.754"></span><span class="mc-num">0.754</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.874"></span><span class="mc-num">0.874</span></td><td><span class="mc-bar va" style="--v:0.776"></span><span class="mc-num">0.776</span></td></tr><tr><th scope="row">AJI</th><td><span class="mc-bar ft" style="--v:0.803"></span><span class="mc-num">0.803</span></td><td><span class="mc-bar va" style="--v:0.505"></span><span class="mc-num">0.505</span></td></tr><tr><th scope="row">Dice</th><td><span class="mc-bar ft" style="--v:0.906"></span><span class="mc-num">0.906</span></td><td><span class="mc-bar va" style="--v:0.643"></span><span class="mc-num">0.643</span></td></tr></tbody></table>
-            <p class="mc-note">First PV round whose checkpoint was chosen on a held-out validation set (108 fields) instead of on the test wells.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r6">Model card</a></p>
-          </article>
+          <div class="mc-one">
           <article class="mc">
             <header><h4>Toxoplasma PV v4 (round 7)</h4><span class="mc-badge default">default</span></header>
             <dl class="mc-facts"><div><dt>Version</dt><dd>v4</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>11 anchor wells (10 with objects scored) · the 11 in-house anchor wells held out since round 1; no PV round has trained on them</dd></div></dl>
@@ -437,40 +416,14 @@
             <p class="mc-note">On 20 held-out fields of the new plate it was trained on it scores F1 0.748 against 0.899 for round 6; prefer toxoplasma_pv_v3 on that plate.</p>
             <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">Model card</a></p>
           </article>
-          <article class="mc">
-            <header><h4>Toxoplasma PV v5 (round 8, alternative)</h4><span class="mc-badge alternative">alternative</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v5</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>50 held-out fields (36 lab, 14 published-figure crops) · test split grouped by whole acquisition and whole paper</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam_v2</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.792"></span><span class="mc-num">0.792</span></td><td><span class="mc-bar va" style="--v:0.559"></span><span class="mc-num">0.559</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.753"></span><span class="mc-num">0.753</span></td><td><span class="mc-bar va" style="--v:0.463"></span><span class="mc-num">0.463</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.835"></span><span class="mc-num">0.835</span></td><td><span class="mc-bar va" style="--v:0.703"></span><span class="mc-num">0.703</span></td></tr></tbody></table>
-            <p class="mc-note">35 of the 50 test fields were in round 7's training or validation set; on the 15 it never saw, v5 scores F1 0.536 against v4's 0.525.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r8">Model card</a></p>
-          </article>
+          <p class="mc-more">Also published, not the default: <a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r8">v5</a> (alternative)</p>
+          <p class="mc-more">Previous versions: <a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam">v1</a>, <a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r5">v2</a>, <a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r6">v3</a></p>
           </div>
         </div>
         <div class="mc-group" role="group" aria-labelledby="mc-plaque">
           <h3 id="mc-plaque">Plaque segmentation</h3>
           <p class="note mc-why">Stock Cellpose-SAM scores F1 0.300 (cpsam) and 0.373 (cpsam_v2) at IoU 0.5 on 263 held-out crystal violet plaque fields, against 0.815 for v4 and 0.844 for v3. On Bio-Rad Gel Doc wells stock scores 0.000, the earlier v2 model 0.013, v4 0.804 and v3 0.913.</p>
-          <div class="mc-grid">
-          <article class="mc">
-            <header><h4>Toxoplasma Plaque v1</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v1</dd></div><div><dt>Base model</dt><dd>cpsam</dd></div><div class="wide"><dt>Held-out test set</dt><dd>184 wells, 3-fold cross-validation (in-domain) · in-house crystal violet plaque wells, held out per fold</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>round 1 (the retired earlier plaque model); stock not recorded</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.856"></span><span class="mc-num">0.856</span></td><td><span class="mc-bar va" style="--v:0.718"></span><span class="mc-num">0.718</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.832"></span><span class="mc-num">0.832</span></td><td><span class="mc-bar va" style="--v:0.704"></span><span class="mc-num">0.704</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.881"></span><span class="mc-num">0.881</span></td><td><span class="mc-bar va" style="--v:0.732"></span><span class="mc-num">0.732</span></td></tr></tbody></table>
-            <p class="mc-note">F1 0.806 on a held-out literature set (3-fold cross-validated, SD 0.020); round 3 trades precision for recall on that set.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam">Model card</a></p>
-          </article>
-          <article class="mc">
-            <header><h4>Toxoplasma Plaque v2 (round 5)</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v2</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>263 held-out fields · 3 held-out Bio-Rad Gel Doc plates plus the round-5 evaluation split; no compared model trained on them</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam_v2 (same fields, Cellpose evaluation scorer)</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.798"></span><span class="mc-num">0.798</span></td><td><span class="mc-bar va" style="--v:0.373"></span><span class="mc-num">0.373</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.805"></span><span class="mc-num">0.805</span></td><td><span class="mc-bar va" style="--v:0.339"></span><span class="mc-num">0.339</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.792"></span><span class="mc-num">0.792</span></td><td><span class="mc-bar va" style="--v:0.414"></span><span class="mc-num">0.414</span></td></tr></tbody></table>
-            <p class="mc-note">The only plaque model trained on phone-camera wells (F1 0.415 there against round 3's 0.249); scores 0.013 on Gel Doc wells.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5">Model card</a></p>
-          </article>
-          <article class="mc">
-            <header><h4>Toxoplasma Plaque v3 (Gel Doc r5)</h4><span class="mc-badge alternative">alternative</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v3</dd></div><div><dt>Base model</dt><dd>cpsam</dd></div><div class="wide"><dt>Held-out test set</dt><dd>263 held-out fields · 3 held-out Bio-Rad Gel Doc plates plus the round-5 evaluation split; no compared model trained on them</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>stock cpsam (same fields, Cellpose evaluation scorer)</th></tr></thead><tbody><tr><th scope="row">F1 at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.844"></span><span class="mc-num">0.844</span></td><td><span class="mc-bar va" style="--v:0.300"></span><span class="mc-num">0.300</span></td></tr><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.848"></span><span class="mc-num">0.848</span></td><td><span class="mc-bar va" style="--v:0.223"></span><span class="mc-num">0.223</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.841"></span><span class="mc-num">0.841</span></td><td><span class="mc-bar va" style="--v:0.458"></span><span class="mc-num">0.458</span></td></tr></tbody></table>
-            <p class="mc-note">Scores higher than v4 on every source of the 263 fields (Gel Doc 0.913 against 0.804); it was the default from 2026-10-10 to 2026-10-11.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">Model card</a></p>
-          </article>
+          <div class="mc-one">
           <article class="mc">
             <header><h4>Toxoplasma Plaque v4 (round 6, cpsam_v2)</h4><span class="mc-badge default" title="Default in spaCR (DEFAULT_PLAQUE_MODEL)">default</span></header>
             <dl class="mc-facts"><div><dt>Version</dt><dd>v4</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>263 held-out fields · 3 held-out Bio-Rad Gel Doc plates plus the round-5 evaluation split; no compared model trained on them; scored through spacr.plaque.segment_plaque_image</dd></div></dl>
@@ -482,19 +435,13 @@
             <p class="mc-note">Stock cpsam_v2 scores 0.373 on the same fields with the Cellpose evaluation scorer; literature crops stay hard (F1 0.530).</p>
             <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r6">Model card</a></p>
           </article>
+          <p class="mc-more">Previous versions: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam">v1</a>, <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5">v2</a>, <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">v3</a> (alternative)</p>
           </div>
         </div>
         <div class="mc-group" role="group" aria-labelledby="mc-wells">
           <h3 id="mc-wells">Plaque-well detection</h3>
           <p class="note mc-why">The plaque module first finds each well in a plate image or published figure and then segments plaques inside it; the detected well also gives the diameter that makes plaque areas comparable across microscopes. Stock YOLO has no plaque-well class, so each detector is compared with the one before it: on 129 held-out test images v2 scores mAP50 0.946 against v1's 0.884, with 49 false boxes on no-well images against 152.</p>
-          <div class="mc-grid">
-          <article class="mc">
-            <header><h4>Toxoplasma Plaque Well Detector v1</h4><span class="mc-badge superseded">earlier version</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v1</dd></div><div><dt>Base model</dt><dd>yolo11n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>held-out split of 562 images (190 with no well) · its own held-out split, which the zoo notes is easier than the set v2 is measured on</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>none recorded (stock YOLO has no plaque-well class)</th></tr></thead><tbody><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.987"></span><span class="mc-num">0.987</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.987"></span><span class="mc-num">0.987</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">mAP at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.993"></span><span class="mc-num">0.993</span></td><td><span class="mc-nr">–</span></td></tr><tr><th scope="row">mAP at IoU 0.5 to 0.95</th><td><span class="mc-bar ft" style="--v:0.886"></span><span class="mc-num">0.886</span></td><td><span class="mc-nr">–</span></td></tr></tbody></table>
-            <p class="mc-note">Kept because the published plaque corpus was measured with these weights; on v2's test set it scores mAP50 0.884.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11">Model card</a></p>
-          </article>
+          <div class="mc-one">
           <article class="mc">
             <header><h4>Toxoplasma Plaque Well Detector v2</h4><span class="mc-badge default">default</span></header>
             <dl class="mc-facts"><div><dt>Version</dt><dd>v2</dd></div><div><dt>Base model</dt><dd>yolo26n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>129 test images (84 with no well) · plate images and literature figures, split by PMC article; never used for training or model selection</dd></div></dl>
@@ -502,16 +449,11 @@
             <p class="mc-note">Cuts false boxes on no-well images from 152 to 49 on the shared test set.</p>
             <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo26">Model card</a></p>
           </article>
-          <article class="mc">
-            <header><h4>Toxoplasma Well Detector v3 (YOLO11 Gel Doc candidate)</h4><span class="mc-badge candidate">candidate</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v3</dd></div><div><dt>Base model</dt><dd>yolo11n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>73 clean validation images · incumbent validation images after removing exact and canonical-figure duplicates; validation data, not an independent test</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>previous version (well detector v1, the YOLO11n incumbent) on the same validation images</th></tr></thead><tbody><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.970"></span><span class="mc-num">0.970</span></td><td><span class="mc-bar va" style="--v:0.963"></span><span class="mc-num">0.963</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.998"></span><span class="mc-num">0.998</span></td><td><span class="mc-bar va" style="--v:0.988"></span><span class="mc-num">0.988</span></td></tr><tr><th scope="row">mAP at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.994"></span><span class="mc-num">0.994</span></td><td><span class="mc-bar va" style="--v:0.992"></span><span class="mc-num">0.992</span></td></tr><tr><th scope="row">mAP at IoU 0.5 to 0.95</th><td><span class="mc-bar ft" style="--v:0.884"></span><span class="mc-num">0.884</span></td><td><span class="mc-bar va" style="--v:0.893"></span><span class="mc-num">0.893</span></td></tr></tbody></table>
-            <p class="mc-note">On 3 Gel Doc validation plates mAP50-95 rises from 0.895 to 0.931; both models recover the expected well count on all 3.</p>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11-v4-geldoc">Model card</a></p>
-          </article>
+          <p class="mc-more">Also published, not the default: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11-v4-geldoc">v3</a> (candidate)</p>
+          <p class="mc-more">Previous versions: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11">v1</a></p>
           </div>
         </div>
-        <div class="mc-group" role="group" aria-labelledby="mc-crosschannel">
+        <div class="mc-group wide" role="group" aria-labelledby="mc-crosschannel">
           <h3 id="mc-crosschannel">Cross-channel models</h3>
           <p class="note mc-why">Cross-channel models predict one object type from another channel's image, so a stain can be left out and its channel used for another marker: cells from Hoechst alone, nuclei from a cell mask alone, and Toxoplasma vacuoles from either. Stock cpsam_v2 does not do this: on held-out fields its F1 at IoU 0.5 is 0.301, 0.201, 0.022 and 0.002 against 0.870, 0.888, 0.606 and 0.569 for the four trained models.</p>
           <div class="mc-grid">
@@ -543,12 +485,13 @@
             <p class="mc-note">The Hoechst route is harder than the cell-mask route; compare Toxoplasma from Cell Mask.</p>
             <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">Model card</a></p>
           </article>
+
           </div>
         </div>
         <div class="mc-group" role="group" aria-labelledby="mc-livecell">
           <h3 id="mc-livecell">Live-cell segmentation</h3>
           <p class="note mc-why">Segments unstained cells in phase contrast, brightfield and DIC images. On test datasets stock cpsam_v2 was not trained on, F1 at IoU 0.5 is 0.960 against 0.885 for stock; over all 2,199 test fields it is 0.694 against 0.738, because stock was trained on LIVECell and scores higher on it.</p>
-          <div class="mc-grid">
+          <div class="mc-one">
           <article class="mc">
             <header><h4>Live cell v1 (phase, brightfield, DIC)</h4><span class="mc-badge default">default</span></header>
             <dl class="mc-facts"><div><dt>Version</dt><dd>v1</dd></div><div><dt>Base model</dt><dd>cpsam_v2</dd></div><div class="wide"><dt>Held-out test set</dt><dd>2,199 test fields from 14 public datasets · transmitted-light test split grouped by acquisition (phase contrast, brightfield, DIC)</dd></div></dl>
@@ -556,12 +499,13 @@
             <p class="mc-note">On test datasets stock cpsam_v2 was not trained on, F1 0.960 against 0.885; stock was trained on LIVECell and scores higher there.</p>
             <p class="mc-link"><a href="https://huggingface.co/einarolafsson/live-cell-segmentation-cpsam">Model card</a></p>
           </article>
+
           </div>
         </div>
         <div class="mc-group" role="group" aria-labelledby="mc-other">
           <h3 id="mc-other">Other</h3>
           <p class="note mc-why">The colony detector (alpha) counts bacterial and fungal colonies on plate photos for colony counting. On 39 held-out plates with 30-300 colonies its median count error is 2.4% against 16.5% for spaCR's thresholding counter.</p>
-          <div class="mc-grid">
+          <div class="mc-one">
           <article class="mc">
             <header><h4>Colony Detector v1 (alpha)</h4><span class="mc-badge alpha">alpha</span></header>
             <dl class="mc-facts"><div><dt>Version</dt><dd>v1</dd></div><div><dt>Base model</dt><dd>yolo11n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>39 held-out plates with 30-300 colonies · smartphone plate photos of 24 bacterial and fungal species (Makrai et al. 2023, Scientific Data, CC BY 4.0)</dd></div></dl>
@@ -569,6 +513,7 @@
             <p class="mc-note">One dataset and one split; confluent swarming colonies remain hard.</p>
             <p class="mc-link"><a href="https://huggingface.co/datasets/einarolafsson/models/tree/d559f7c48c281b605c29b6f125c68fda4fc43f10/colony_detector/v1">Model card</a></p>
           </article>
+
           </div>
         </div>
       </div>
@@ -605,7 +550,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=08370ee546">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=944302ba24">
         <h3 id="ols-volcano-title">Alle vier Platten: Geneffekte aus der OLS-Regression von spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Die Regressionsergebnisse werden geladen…</p>
