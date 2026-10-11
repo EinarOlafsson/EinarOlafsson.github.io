@@ -35,12 +35,12 @@
 <canvas id="fx" aria-hidden="true"></canvas>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Microscopy projects</span></a>
+    <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Mikroskopiprojekt</span></a>
     <nav class="nav" aria-label="Projekt">
       <a href="/projects/spacr/sv/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
       <a href="/projects/live-cell/" data-nav="live-cell">live_cell</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
-      <a href="#about" data-nav="about">About</a>
+      <a href="#about" data-nav="about">Om</a>
     </nav>
     <div class="tools">
       <details class="lang" data-lang-menu>
@@ -63,18 +63,18 @@
         <span class="label">Pausa</span>
       </button>
       <details class="fx-pick" data-fx-menu>
-        <summary class="icon-btn" title="Background"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Background</span></summary>
-        <ul aria-label="Background">
+        <summary class="icon-btn" title="Bakgrund"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/><circle cx="13" cy="3" r="1.2"/><circle cx="3" cy="8" r="1.2"/><circle cx="8" cy="8" r="1.9"/><circle cx="13" cy="8" r="1.2"/><circle cx="3" cy="13" r="1.2"/><circle cx="8" cy="13" r="1.2"/><circle cx="13" cy="13" r="1.2"/></svg><span class="label">Bakgrund</span></summary>
+        <ul aria-label="Bakgrund">
           <li><button type="button" data-fx-theme="advection" aria-pressed="true">spaCR advection</button></li>
           <li><button type="button" data-fx-theme="field" aria-pressed="false">spaCR field</button></li>
-          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR field phenomena</button></li>
+          <li><button type="button" data-fx-theme="field_phenomena" aria-pressed="false">spaCR-fältfenomen</button></li>
           <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
           <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
           <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
           <li><button type="button" data-fx-theme="aurora" aria-pressed="false">spaCR aurora</button></li>
           <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
           <li><button type="button" data-fx-theme="spinn" aria-pressed="false">spaCR spinn</button></li>
-          <li><button type="button" data-fx-theme="fractals" aria-pressed="false">spaCR fractals</button></li>
+          <li><button type="button" data-fx-theme="fractals" aria-pressed="false">spaCR-fraktaler</button></li>
         </ul>
       </details>
       <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Byt tema" title="Byt tema">
@@ -97,7 +97,7 @@
         <a role="tab" id="tab-assays" href="#assays" aria-controls="assays" aria-selected="false">Analyser och QC</a>
         <a role="tab" id="tab-papers" href="#papers" aria-controls="papers" aria-selected="false">Artiklar</a>
         <a role="tab" id="tab-install" href="#install" aria-controls="install" aria-selected="false">Installera och citera</a>
-        <a role="tab" id="tab-about" href="#about" aria-controls="about" aria-selected="false">About</a>
+        <a role="tab" id="tab-about" href="#about" aria-controls="about" aria-selected="false">Om</a>
       </div>
     </nav>
   </div>
@@ -125,90 +125,90 @@
       <figure class="ov-strip">
         <a class="figlink" href="#pipeline"><picture>
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.webp" width="800" height="1140">
-          <img src="/assets/img/spacr/overview-strip.webp" width="1600" height="400" alt="One field of the example screen in five panels: the raw image, cell, nucleus and parasite outlines, a table of measurements, cells coloured by classifier score, and a volcano plot with the hit labelled" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.webp" width="1600" height="400" alt="Ett synfält från exempelscreenen i fem paneler: rådatabilden, konturer av celler, cellkärnor och parasiter, en tabell med mätningar, celler färgade efter klassificerarpoäng och ett vulkandiagram med träffen märkt" fetchpriority="high">
         </picture></a>
-        <ol class="ov-steps" aria-hidden="true"><li>Image</li><li>Masks</li><li>Measurements</li><li>Classifier scores</li><li>Hits</li></ol>
-        <figcaption>One field from the public example screen followed from the raw image to the gene it implicates: plate 1, well H02, a GRA14 well. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> and <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, CC BY 4.0. See <a href="#pipeline">Pipeline</a>.</figcaption>
+        <ol class="ov-steps" aria-hidden="true"><li>Bild</li><li>Masker</li><li>Mätningar</li><li>Klassificerarpoäng</li><li>Träffar</li></ol>
+        <figcaption>Ett synfält från den offentliga exempelscreenen, följt från rådatabilden till den gen det pekar ut: platta 1, brunn H02, en GRA14-brunn. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> och <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, CC BY 4.0. Se <a href="#pipeline">Arbetsflöde</a>.</figcaption>
       </figure>
       <ul class="stats six" aria-label="spaCR i siffror">
         <li><a class="row" href="#models"><b>16</b><span>publicerade modeller</span></a></li>
         <li><a class="row" href="#papers"><b>5</b><span>artiklar som använder spaCR</span></a></li>
-        <li><a class="row" href="#screen"><b>4</b><span>screen plates analysed</span></a></li>
+        <li><a class="row" href="#screen"><b>4</b><span>analyserade screenplattor</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>lektioner i handledningar</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>gränssnittsspråk</span></a></li>
         <li><a class="row" href="#install"><b>84,854</b><span>automatiska tester</span></a></li>
       </ul>
 
       <div class="ov-block">
-        <h2>What spaCR does</h2>
-        <p class="note">Seven modules, run in order. Each one reads the previous module's output and writes its own into the same project folder. Segmentation, measurement, annotation and classification also run without sequencing data.</p>
+        <h2>Vad spaCR gör</h2>
+        <p class="note">Sju moduler som körs i ordning. Varje modul läser utdata från föregående modul och skriver sina egna till samma projektmapp. Segmentering, mätning, annotering och klassificering fungerar också utan sekvenseringsdata.</p>
         <ol class="mods">
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M7.5 9.5 12 14l4.5-4.5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg><b>Import</b><span>Converts microscope files into one folder layout per plate.</span><span class="out"><span class="vh">Produces:</span> <span>Image folders and a project</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="5"/><circle cx="16" cy="14" r="5"/><circle cx="9" cy="10" r="1.5"/></svg><b>Mask</b><span>Segments cells, nuclei, parasites and organelles with Cellpose models.</span><span class="out"><span class="vh">Produces:</span> <span>Label masks for every field</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg><b>Measure</b><span>Measures shape, intensity, texture and position of every object.</span><span class="out"><span class="vh">Produces:</span> <span><code>measurements.db</code> and single-object crops</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></svg><b>Annotate</b><span>Labels object crops in a keyboard-driven grid.</span><span class="out"><span class="vh">Produces:</span> <span>Labels in the project database</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="m15 17.5 2 2 3.5-4"/></svg><b>Classify</b><span>Trains image models (ResNet, MaxViT) or measurement models (XGBoost, random forest).</span><span class="out"><span class="vh">Produces:</span> <span>Checkpoints with held-out metrics, per-object scores</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14M7 5v14M11 5v14M13 5v14M17 5v14M20 5v14"/></svg><b>Map barcodes</b><span>Decodes row, column and guide barcodes from FASTQ reads.</span><span class="out"><span class="vh">Produces:</span> <span>Guide counts per well</span></span></li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="15" r="1"/><circle cx="12" cy="11" r="1"/><circle cx="16" cy="9" r="1"/><circle cx="18" cy="5" r="1"/><path d="m6 18 14-13"/></svg><b>Regression</b><span>Estimates guide and gene effects from scores and guide counts.</span><span class="out"><span class="vh">Produces:</span> <span>Volcano plot and ranked hit list</span></span></li>
-          <li class="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><b class="nonum">And more</b><span>Dose-response, control charts, plaque and recruitment assays, image UMAP, batch correction, power and plate design, and a QC dashboard. See <a href="#assays">Assays and QC</a> and <a href="#phenotypes">Phenotypes</a>.</span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M7.5 9.5 12 14l4.5-4.5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg><b>Import</b><span>Konverterar mikroskopfiler till en enhetlig mappstruktur per platta.</span><span class="out"><span class="vh">Ger:</span> <span>Bildmappar och ett projekt</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="5"/><circle cx="16" cy="14" r="5"/><circle cx="9" cy="10" r="1.5"/></svg><b>Mask</b><span>Segmenterar celler, cellkärnor, parasiter och organeller med Cellpose-modeller.</span><span class="out"><span class="vh">Ger:</span> <span>Etikettmasker för varje synfält</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg><b>Measure</b><span>Mäter form, intensitet, textur och position för varje objekt.</span><span class="out"><span class="vh">Ger:</span> <span><code>measurements.db</code> och utklipp av enskilda objekt</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></svg><b>Annotate</b><span>Märker objektutklipp i ett rutnät som styrs med tangentbordet.</span><span class="out"><span class="vh">Ger:</span> <span>Etiketter i projektdatabasen</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="m15 17.5 2 2 3.5-4"/></svg><b>Classify</b><span>Tränar bildmodeller (ResNet, MaxViT) eller mätmodeller (XGBoost, random forest).</span><span class="out"><span class="vh">Ger:</span> <span>Kontrollpunkter med mått på undanhållna data, poäng per objekt</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14M7 5v14M11 5v14M13 5v14M17 5v14M20 5v14"/></svg><b>Map barcodes</b><span>Avkodar rad-, kolumn- och guidestreckkoder från FASTQ-läsningar.</span><span class="out"><span class="vh">Ger:</span> <span>Guideantal per brunn</span></span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="15" r="1"/><circle cx="12" cy="11" r="1"/><circle cx="16" cy="9" r="1"/><circle cx="18" cy="5" r="1"/><path d="m6 18 14-13"/></svg><b>Regression</b><span>Skattar guide- och geneffekter från poäng och guideantal.</span><span class="out"><span class="vh">Ger:</span> <span>Vulkandiagram och rangordnad träfflista</span></span></li>
+          <li class="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><b class="nonum">Med mera</b><span>Dos-respons, styrdiagram, plack- och rekryteringsanalyser, bild-UMAP, batchkorrigering, statistisk styrka och plattdesign samt en QC-översikt. Se <a href="#assays">Analyser och QC</a> och <a href="#phenotypes">Fenotyper</a>.</span></li>
         </ol>
       </div>
 
       <div class="ov-block grid three io">
         <div>
-          <h3>Inputs</h3>
+          <h3>Indata</h3>
           <ul class="plain">
-            <li>TIFF, OME-TIFF, ND2, CZI and LIF images, 2-D, volumetric and time series</li>
-            <li>Multi-well plates from any microscope that writes one of these formats</li>
-            <li>FASTQ reads with row, column and guide barcodes</li>
-            <li>Live folder watch for ND2, CZI, LIF and OME-TIFF files as they are written (alpha, off by default)</li>
-            <li>OME-Zarr and OMERO through optional extras</li>
+            <li>Bilder i TIFF, OME-TIFF, ND2, CZI och LIF, i 2D, volymetriska och som tidsserier</li>
+            <li>Brunnsplattor från alla mikroskop som skriver något av dessa format</li>
+            <li>FASTQ-läsningar med rad-, kolumn- och guidestreckkoder</li>
+            <li>Direktbevakning av en mapp för ND2-, CZI-, LIF- och OME-TIFF-filer medan de skrivs (alfa, avstängd som standard)</li>
+            <li>OME-Zarr och OMERO via valfria tillägg</li>
           </ul>
         </div>
         <div>
-          <h3>Organisms</h3>
+          <h3>Organismer</h3>
           <ul class="plain">
-            <li><i>Toxoplasma gondii</i> in host cells: guide, recruitment, plaque and replication assays</li>
-            <li>Any cell type for segmentation, measurement and classification</li>
-            <li>Pages for other pathogens are in development and hidden by default</li>
+            <li><i>Toxoplasma gondii</i> i värdceller: guide-, rekryterings-, plack- och replikationsanalyser</li>
+            <li>Alla celltyper för segmentering, mätning och klassificering</li>
+            <li>Sidor för andra patogener är under utveckling och dolda som standard</li>
           </ul>
         </div>
         <div>
-          <h3>Outputs</h3>
+          <h3>Utdata</h3>
           <ul class="plain">
-            <li>An SQLite database per project: measurements, labels, predictions</li>
-            <li>Masks, crops and images as files on disk</li>
-            <li>Effect estimates, p and q values, diagnostics and run records</li>
-            <li>Figures as PNG, PDF, SVG or TIFF; one zip per figure with its data, statistics and a script that redraws it</li>
-            <li>AnnData export, and a vvvv export (alpha)</li>
+            <li>En SQLite-databas per projekt: mätningar, etiketter, prediktioner</li>
+            <li>Masker, utklipp och bilder som filer på disk</li>
+            <li>Effektskattningar, p- och q-värden, diagnostik och körningsposter</li>
+            <li>Figurer som PNG, PDF, SVG eller TIFF; en zip-fil per figur med dess data, statistik och ett skript som ritar om den</li>
+            <li>AnnData-export och en vvvv-export (alfa)</li>
           </ul>
         </div>
       </div>
 
       <div class="ov-block">
-        <h2>Models</h2>
-        <p class="note">16 published Cellpose-SAM and YOLO models with model cards: parasite vacuoles, plaques, plaque-assay wells, and cross-channel models that predict cells, nuclei or parasites from a single stain. Weights download from Hugging Face and are checked against a published checksum. See <a href="#models">Models</a>.</p>
+        <h2>Modeller</h2>
+        <p class="note">16 publicerade Cellpose-SAM- och YOLO-modeller med modellkort: parasitvakuoler, plack, brunnar från plackanalyser och korskanalmodeller som förutsäger celler, cellkärnor eller parasiter från en enda färgning. Vikterna laddas ned från Hugging Face och kontrolleras mot en publicerad kontrollsumma. Se <a href="#models">Modeller</a>.</p>
       </div>
 
       <div class="ov-block">
-        <h2>Ways to run it</h2>
+        <h2>Sätt att köra det</h2>
         <ul class="ways">
-          <li><b>Desktop app</b><span>Installers for Windows, macOS and Linux, or <code>spacr</code> after pip or conda.</span></li>
-          <li><b>Python API</b><span>Every module is a function that takes a settings dictionary.</span></li>
-          <li><b>Command line</b><span><code>spacr-run</code> runs any pipeline headless on a workstation, server or cluster.</span></li>
-          <li><b>Notebooks</b><span>Jupyter notebooks for each step, from masks to regression, in the repository.</span></li>
-          <li><b>Docker</b><span>CPU and CUDA images on GitHub Container Registry. See <a href="#docker">Docker</a>.</span></li>
+          <li><b>Skrivbordsprogram</b><span>Installationsprogram för Windows, macOS och Linux, eller <code>spacr</code> efter installation med pip eller conda.</span></li>
+          <li><b>Python-API</b><span>Varje modul är en funktion som tar en ordbok med inställningar.</span></li>
+          <li><b>Kommandorad</b><span><code>spacr-run</code> kör vilket arbetsflöde som helst utan grafiskt gränssnitt på en arbetsstation, en server eller ett kluster.</span></li>
+          <li><b>Notebooks</b><span>Jupyter-notebooks för varje steg, från masker till regression, i kodförrådet.</span></li>
+          <li><b>Docker</b><span>CPU- och CUDA-avbildningar i GitHub Container Registry. Se <a href="#docker">Docker</a>.</span></li>
         </ul>
       </div>
 
       <div id="learn" class="ov-block">
-        <h2>Learn and cite</h2>
+        <h2>Lär dig och citera</h2>
         <ul class="links">
-          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84 tutorial lessons</b><span>Narrated and captioned, with example data.</span></a></li>
-          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Documentation</b><span>User guide and API reference.</span></a></li>
-          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10 languages</b><span>The interface, tutorials and README are translated.</span></a></li>
-          <li><a class="row" href="https://github.com/EinarOlafsson/spacr/blob/main/LICENSE"><b>BSD-3-Clause licence</b><span>Free for academic and commercial use.</span></a></li>
-          <li><a class="row" href="#cite"><b>Citation</b><span>Concept DOI, version DOI, preprint and BibTeX.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/tutorials/"><b>84 lektioner i handledningar</b><span>Med berättarröst och undertexter, med exempeldata.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>Dokumentation</b><span>Användarhandbok och API-referens.</span></a></li>
+          <li><a class="row" href="https://einarolafsson.github.io/spacr/"><b>10 språk</b><span>Gränssnittet, handledningarna och README är översatta.</span></a></li>
+          <li><a class="row" href="https://github.com/EinarOlafsson/spacr/blob/main/LICENSE"><b>BSD-3-Clause-licens</b><span>Fri för akademisk och kommersiell användning.</span></a></li>
+          <li><a class="row" href="#cite"><b>Citering</b><span>Koncept-DOI, versions-DOI, preprint och BibTeX.</span></a></li>
         </ul>
       </div>
     </div>
@@ -341,7 +341,7 @@
         </figure>
         <figure class="model-fig" aria-labelledby="pv-h">
           <div class="viewer" style="aspect-ratio:1024/1024">
-            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="Greyscale fluorescence image with bright, rounded Toxoplasma vacuoles scattered over faint host cells" loading="lazy" decoding="async">
+            <img class="base" src="/assets/img/models/pv-raw.webp" width="1024" height="1024" alt="Gråskalig fluorescensbild med ljusa, rundade Toxoplasma-vakuoler utspridda över svaga värdceller" loading="lazy" decoding="async">
             <div class="layers">
             <img id="pv-l0" src="/assets/img/models/pv-vacuole.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
             </div>
@@ -350,21 +350,21 @@
             <span class="handle" aria-hidden="true"></span>
           </div>
           <figcaption>
-          <h3 id="pv-h">Toxoplasma vacuoles: parasitophorous vacuole segmentation</h3>
-          <p class="small">One fluorescence image of the Toxoplasma channel from an infected host-cell monolayer. Parasitophorous vacuoles are segmented by spaCR's PV model. This well is in the dataset's held-out test split and was not used to train the model.</p>
+          <h3 id="pv-h">Toxoplasma-vakuoler: segmentering av parasitofora vakuoler</h3>
+          <p class="small">En fluorescensbild av Toxoplasma-kanalen från ett infekterat monolager av värdceller. Parasitofora vakuoler segmenteras av spaCR:s PV-modell. Brunnen ingår i datamängdens undanhållna testuppsättning och användes inte för att träna modellen.</p>
           <ul class="classes">
           <li><label>
             <input type="checkbox" checked data-layer="pv-l0" aria-label="Visa konturer för Toxoplasma-vakuoler">
             <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Toxoplasma-vakuoler</span>
             <span class="count">125</span>
-            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. Test F1 0.854 on 11 held-out wells (model card). 136 vacuoles in the hand-curated mask; F1 0.874 at IoU 0.5 on this well</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">toxoplasma_pv_v4 (round 7)</a>. Test-F1 0,854 på 11 undanhållna brunnar (modellkort). 136 vakuoler i den handkurerade masken; F1 0,874 vid IoU 0,5 i denna brunn</span>
           </label></li>
           </ul>
           <dl>
-          <dt>Indata</dt><dd>Toxoplasma fluorescence channel, greyscale</dd>
-          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">Anchor well plate7_K07_8, test split (held out from training)</a></dd>
+          <dt>Indata</dt><dd>Toxoplasma-fluorescenskanal, gråskala</dd>
+          <dt>Bild</dt><dd><a href="https://huggingface.co/datasets/einarolafsson/toxoplasma-pv-segmentation-dataset-r7">Ankarbrunn plate7_K07_8, testuppsättning (undanhållen från träning)</a></dd>
           <dt>Licens</dt><dd>CC BY 4.0</dd>
-          <dt>Storlek</dt><dd>1994 × 1994 px, shown at 1024 px</dd>
+          <dt>Storlek</dt><dd>1994 × 1994 px, visad i 1024 px</dd>
           <dt>Figur</dt><dd><a href="/assets/img/models/pv-figure.webp">Med bildtext och kontrollsummor</a></dd>
           </dl>
           </figcaption>
@@ -387,7 +387,7 @@
             <input type="checkbox" checked data-layer="plaque-l0" aria-label="Visa konturer för Plack">
             <span class="cls"><span class="swatch" style="background:#FF00FF" aria-hidden="true"></span>Plack</span>
             <span class="count">99</span>
-            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. The default plaque model in the zoo since 2026-10-10. 98 plaques in the hand-drawn mask; F1 0.964 at IoU 0.5 on this well</span>
+            <span class="src"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">toxoplasma_plaque_v3</a>. Standardmodell för plack i modellsamlingen sedan 2026-10-10. 98 plack i den handritade masken; F1 0,964 vid IoU 0,5 i denna brunn</span>
           </label></li>
           </ul>
           <dl>
@@ -420,60 +420,60 @@
         <figcaption>Geneffekter från en mätklassificerare (XGBoost, vänster) och en bildklassificerare (MaxViT, höger); EAF1 och GRA14 passerar 3σ i båda. Preprint, fig. 5.</figcaption>
       </figure>
       <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=3cb955e92c">
-        <h3 id="ols-volcano-title">All four plates: gene effects from spaCR's OLS regression</h3>
+        <h3 id="ols-volcano-title">Alla fyra plattor: geneffekter från spaCR:s OLS-regression</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
-          <p class="volcano-status">Loading the regression results…</p>
+          <p class="volcano-status">Läser in regressionsresultaten…</p>
         </div>
         <ul class="volcano-legend" aria-hidden="true">
-          <li class="hit">Called and past 3σ</li>
-          <li class="called">Called (FDR 5%)</li>
-          <li>Not called</li>
+          <li class="hit">Utpekad och bortom 3σ</li>
+          <li class="called">Utpekad (FDR 5 %)</li>
+          <li>Ej utpekad</li>
         </ul>
-        <p class="volcano-hint" id="ols-volcano-hint">Hover or tab to a point for its values; click it, or press Enter, for the gene card. Arrow keys move between genes, Escape closes the card.</p>
+        <p class="volcano-hint" id="ols-volcano-hint">Hovra över eller tabba till en punkt för att se dess värden; klicka på den eller tryck på Enter för att öppna genkortet. Piltangenterna flyttar mellan gener och Escape stänger kortet.</p>
         <div class="volcano-card" hidden role="region" tabindex="-1"></div>
         <p class="volcano-live vh" aria-live="polite"></p>
-        <figcaption>Ordinary least squares on all four screen plates (1,290 wells, 414 genes, 953 guides), as spaCR's Regression module runs it on its test data. Height is the raw p; Benjamini–Hochberg FDR 5% decides the colour and the dashed line. Dotted lines: ±3σ (MAD) of the gene effects. 225160 (TGGT1_225160) is the gene the preprint names EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
+        <figcaption>Minstakvadratmetoden (OLS) på alla fyra screenplattor (1 290 brunnar, 414 gener, 953 guider), så som spaCR:s modul Regression kör den på sina testdata. Höjden är det ojusterade p-värdet; Benjamini–Hochberg FDR 5 % avgör färgen och den streckade linjen. Prickade linjer: ±3σ (MAD) av geneffekterna. 225160 (TGGT1_225160) är den gen som preprinten kallar EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
         <template class="volcano-strings">
-          <span data-k="plotLabel">Volcano plot of gene effects. Use the arrow keys to move between genes and Enter to open a gene card.</span>
-          <span data-k="xLabel">OLS coefficient (gene effect)</span>
-          <span data-k="yLabel">−log10(raw OLS p)</span>
+          <span data-k="plotLabel">Vulkandiagram över geneffekter. Använd piltangenterna för att flytta mellan gener och Enter för att öppna ett genkort.</span>
+          <span data-k="xLabel">OLS-koefficient (geneffekt)</span>
+          <span data-k="yLabel">−log10(ojusterat OLS-p)</span>
           <span data-k="sigma">3σ</span>
-          <span data-k="fdr">FDR 5%</span>
-          <span data-k="coef">Coefficient</span>
+          <span data-k="fdr">FDR 5 %</span>
+          <span data-k="coef">Koefficient</span>
           <span data-k="p">p</span>
           <span data-k="q">q</span>
           <span data-k="pZero">&lt; 10⁻³⁰⁰</span>
-          <span data-k="zeroNote">(reported as 0; drawn three decades above the smallest non-zero p, as spaCR does)</span>
-          <span data-k="controlTitle">Non-targeting control</span>
-          <span data-k="controlNote">Non-targeting guides, not a gene: the null this screen measures every real guide against.</span>
-          <span data-k="noProduct">no product description</span>
-          <span data-k="identity">Identity</span>
-          <span data-k="geneId">Gene ID</span>
-          <span data-k="product">Product</span>
+          <span data-k="zeroNote">(rapporteras som 0; ritas tre tiopotenser över det minsta p-värde som inte är noll, så som spaCR gör)</span>
+          <span data-k="controlTitle">Icke-riktad kontroll</span>
+          <span data-k="controlNote">Icke-riktade guider, inte en gen: nollnivån som den här screenen mäter varje verklig guide mot.</span>
+          <span data-k="noProduct">ingen produktbeskrivning</span>
+          <span data-k="identity">Identitet</span>
+          <span data-k="geneId">Gen-ID</span>
+          <span data-k="product">Produkt</span>
           <span data-k="symbol">Symbol</span>
-          <span data-k="localisation">Localisation (TAGM/LOPIT)</span>
-          <span data-k="thisScreen">This screen</span>
-          <span data-k="effect">Effect (coefficient)</span>
-          <span data-k="pValue">p-value</span>
-          <span data-k="qValue">q-value (Benjamini–Hochberg)</span>
-          <span data-k="condition">Condition</span>
-          <span data-k="condPc">positive control</span>
-          <span data-k="condNc">negative control</span>
-          <span data-k="condCtl">non-targeting control</span>
-          <span data-k="condOther">library gene</span>
-          <span data-k="nGene">Well–guide observations</span>
-          <span data-k="guidesFitted">Guides fitted</span>
-          <span data-k="guidesAgree">Guides agreeing in sign</span>
-          <span data-k="agreeOf">{a} of {b}</span>
-          <span data-k="guidesHeading">The guides behind it</span>
+          <span data-k="localisation">Lokalisering (TAGM/LOPIT)</span>
+          <span data-k="thisScreen">Den här screenen</span>
+          <span data-k="effect">Effekt (koefficient)</span>
+          <span data-k="pValue">p-värde</span>
+          <span data-k="qValue">q-värde (Benjamini–Hochberg)</span>
+          <span data-k="condition">Betingelse</span>
+          <span data-k="condPc">positiv kontroll</span>
+          <span data-k="condNc">negativ kontroll</span>
+          <span data-k="condCtl">icke-riktad kontroll</span>
+          <span data-k="condOther">biblioteksgen</span>
+          <span data-k="nGene">Observationer brunn–guide</span>
+          <span data-k="guidesFitted">Anpassade guider</span>
+          <span data-k="guidesAgree">Guider med samma tecken</span>
+          <span data-k="agreeOf">{a} av {b}</span>
+          <span data-k="guidesHeading">Guiderna bakom</span>
           <span data-k="guide">Guide</span>
-          <span data-k="nGrna">Wells</span>
-          <span data-k="opposes">opposes the gene effect</span>
-          <span data-k="records">External records</span>
-          <span data-k="close">Close</span>
-          <span data-k="opened">Gene card opened:</span>
-          <span data-k="closed">Gene card closed.</span>
-          <span data-k="error">The regression results could not be loaded.</span>
+          <span data-k="nGrna">Brunnar</span>
+          <span data-k="opposes">motsatt geneffekten</span>
+          <span data-k="records">Externa poster</span>
+          <span data-k="close">Stäng</span>
+          <span data-k="opened">Genkortet öppnat:</span>
+          <span data-k="closed">Genkortet stängt.</span>
+          <span data-k="error">Regressionsresultaten kunde inte läsas in.</span>
         </template>
       </figure>
     </div>
@@ -507,47 +507,47 @@
 
       <div class="sub" id="classification">
         <div class="section-head">
-          <h2>Classification</h2>
-          <p>Classifiers that tell the screen's control wells apart, trained and explained with spaCR on CPU: an XGBoost model on per-cell measurements and a small image model (MobileNetV3-small, 8 epochs) on single-cell crops. Column 1 wells carry guides against SAG1 (negative control) and column 2 wells against GRA14 (positive control). Wells are held out whole, so no test cell shares a well with a training cell. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> and <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, plate 1, CC BY 4.0.</p>
+          <h2>Klassificering</h2>
+          <p>Klassificerare som skiljer screenens kontrollbrunnar åt, tränade och förklarade med spaCR på CPU: en XGBoost-modell på mätningar per cell och en liten bildmodell (MobileNetV3-small, 8 epoker) på utklipp av enskilda celler. Brunnarna i kolumn 1 har guider mot SAG1 (negativ kontroll) och brunnarna i kolumn 2 guider mot GRA14 (positiv kontroll). Hela brunnar hålls undan, så ingen testcell delar brunn med en träningscell. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> och <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>, platta 1, CC BY 4.0.</p>
         </div>
         <div class="results stack">
         <figure class="wide">
-          <img src="/assets/img/phenotypes/class_example_crops.webp" width="1200" height="660" alt="Two three-by-three grids of single-cell fluorescence crops on black. Left grid labelled SAG1, right grid labelled GRA14. Each crop shows a HeLa cell with a blue nucleus, green GFP-TSG101 cytoplasm and red Toxoplasma vacuoles; in most SAG1 crops the vacuoles look yellow where green overlaps red, in the GRA14 crops they stay red." loading="lazy" decoding="async">
-          <figcaption>The 9 held-out cells per class that spaCR&#x27;s CNN classified correctly with the highest confidence, from 405 test cells in 4 wells never used for training (B02, C01, E02, G01); test accuracy 0.901.</figcaption>
+          <img src="/assets/img/phenotypes/class_example_crops.webp" width="1200" height="660" alt="Två rutnät med tre gånger tre fluorescensutklipp av enskilda celler på svart bakgrund. Det vänstra rutnätet är märkt SAG1, det högra GRA14. Varje utklipp visar en HeLa-cell med blå cellkärna, grön GFP-TSG101-cytoplasma och röda Toxoplasma-vakuoler; i de flesta SAG1-utklipp ser vakuolerna gula ut där grönt överlappar rött, i GRA14-utklippen förblir de röda." loading="lazy" decoding="async">
+          <figcaption>De 9 undanhållna celler per klass som spaCR:s CNN klassificerade rätt med högst säkerhet, av 405 testceller i 4 brunnar som aldrig användes för träning (B02, C01, E02, G01); testnoggrannhet 0,901.</figcaption>
         </figure>
         <div class="grid two">
         <figure>
-          <img src="/assets/img/phenotypes/xgb_confusion_matrix.webp" width="900" height="750" alt="Two-by-two confusion matrix heatmap in blues, true class on rows (SAG1 c1, GRA14 c2), predicted class on columns, with row-normalised fractions 0.81, 0.19, 0.12 and 0.88." loading="lazy" decoding="async">
-          <figcaption>XGBoost on 76 GFP-TSG101-channel measurements per cell, 5-fold cross-validation with whole wells held out: 1,277 control cells from 16 wells, accuracy 0.853 (445 of 547 SAG1-well and 644 of 730 GRA14-well cells correct).</figcaption>
+          <img src="/assets/img/phenotypes/xgb_confusion_matrix.webp" width="900" height="750" alt="Förväxlingsmatris två gånger två som värmekarta i blått, sann klass i raderna (SAG1 c1, GRA14 c2), predikterad klass i kolumnerna, med radnormerade andelar 0,81, 0,19, 0,12 och 0,88." loading="lazy" decoding="async">
+          <figcaption>XGBoost på 76 mätningar per cell från GFP-TSG101-kanalen, 5-faldig korsvalidering med hela brunnar undanhållna: 1 277 kontrollceller från 16 brunnar, noggrannhet 0,853 (445 av 547 celler från SAG1-brunnar och 644 av 730 celler från GRA14-brunnar rätt).</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/phenotypes/xgb_roc_pr.webp" width="1200" height="550" alt="Two panels. Left: ROC curve rising steeply toward the top-left corner above a dashed diagonal chance line, legend AUC = 0.922. Right: precision-recall curve mostly between 0.85 and 0.97 precision, falling at the highest recall, above a dashed prevalence line at 0.57, legend AP = 0.913." loading="lazy" decoding="async">
-          <figcaption>ROC (AUC 0.922) and precision-recall (average precision 0.913) of the same well-held-out XGBoost predictions for 1,277 cells, GRA14 wells as the positive class (prevalence 0.57).</figcaption>
+          <img src="/assets/img/phenotypes/xgb_roc_pr.webp" width="1200" height="550" alt="Två paneler. Vänster: ROC-kurva som stiger brant mot det övre vänstra hörnet ovanför en streckad diagonal för slumpnivå, förklaring AUC = 0,922. Höger: precision-recall-kurva, mestadels mellan 0,85 och 0,97 i precision, som faller vid högst recall, ovanför en streckad prevalenslinje vid 0,57, förklaring AP = 0,913." loading="lazy" decoding="async">
+          <figcaption>ROC (AUC 0,922) och precision-recall (genomsnittlig precision 0,913) för samma XGBoost-prediktioner med undanhållna brunnar för 1 277 celler, med GRA14-brunnar som positiv klass (prevalens 0,57).</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/phenotypes/cnn_confusion_matrix.webp" width="900" height="750" alt="Two-by-two confusion matrix heatmap in blues for the image classifier, true class on rows, predicted on columns, fractions 0.92, 0.08, 0.12 and 0.88." loading="lazy" decoding="async">
-          <figcaption>spaCR&#x27;s CNN on single-cell crops of 405 held-out cells from 4 test wells: accuracy 0.901 (184 of 200 SAG1-well and 181 of 205 GRA14-well cells correct).</figcaption>
+          <img src="/assets/img/phenotypes/cnn_confusion_matrix.webp" width="900" height="750" alt="Förväxlingsmatris två gånger två som värmekarta i blått för bildklassificeraren, sann klass i raderna, predikterad i kolumnerna, andelar 0,92, 0,08, 0,12 och 0,88." loading="lazy" decoding="async">
+          <figcaption>spaCR:s CNN på utklipp av 405 undanhållna celler från 4 testbrunnar: noggrannhet 0,901 (184 av 200 celler från SAG1-brunnar och 181 av 205 celler från GRA14-brunnar rätt).</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/phenotypes/cnn_roc_pr.webp" width="1200" height="550" alt="Two panels for the image classifier. Left: ROC curve hugging the top-left corner above a dashed chance line, legend AUC = 0.968. Right: precision-recall curve near 1.0 precision until high recall, above a dashed prevalence line at 0.51, legend AP = 0.970." loading="lazy" decoding="async">
-          <figcaption>ROC (AUC 0.968) and precision-recall (average precision 0.970) of the CNN on 405 cells from 4 held-out wells, GRA14 wells as the positive class.</figcaption>
+          <img src="/assets/img/phenotypes/cnn_roc_pr.webp" width="1200" height="550" alt="Två paneler för bildklassificeraren. Vänster: ROC-kurva tätt intill det övre vänstra hörnet ovanför en streckad slumplinje, förklaring AUC = 0,968. Höger: precision-recall-kurva nära precision 1,0 upp till hög recall, ovanför en streckad prevalenslinje vid 0,51, förklaring AP = 0,970." loading="lazy" decoding="async">
+          <figcaption>ROC (AUC 0,968) och precision-recall (genomsnittlig precision 0,970) för CNN:en på 405 celler från 4 undanhållna brunnar, med GRA14-brunnar som positiv klass.</figcaption>
         </figure>
         </div>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/saliency_maps.webp" width="1200" height="970" alt="Four rows of five single-cell crops: SAG1 crops, their Grad-CAM heatmaps, GRA14 crops, their Grad-CAM heatmaps. Heatmaps are jet-coloured over a grey version of the crop; on GRA14 cells the hot spot sits on the red parasite vacuoles, on SAG1 cells heat also falls on the black background corners." loading="lazy" decoding="async">
-          <figcaption>Grad-CAM maps of the CNN for the 5 most confident correct held-out cells per class; on GRA14-well cells 4-13% of the map falls on the masked black background, on SAG1-well cells 18-53%.</figcaption>
+          <img src="/assets/img/phenotypes/saliency_maps.webp" width="1200" height="970" alt="Fyra rader med fem utklipp av enskilda celler: SAG1-utklipp, deras Grad-CAM-värmekartor, GRA14-utklipp, deras Grad-CAM-värmekartor. Värmekartorna är färgade med färgskalan jet över en gråskaleversion av utklippet; i GRA14-cellerna ligger den heta punkten på de röda parasitvakuolerna, i SAG1-cellerna faller värme även på de svarta bakgrundshörnen." loading="lazy" decoding="async">
+          <figcaption>Grad-CAM-kartor från CNN:en för de 5 undanhållna celler per klass som klassificerades rätt med högst säkerhet; i celler från GRA14-brunnar faller 4–13 % av kartan på den maskade svarta bakgrunden, i celler från SAG1-brunnar 18–53 %.</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/shap_beeswarm.webp" width="1200" height="498" alt="SHAP beeswarm: twelve feature names on the left, one row of coloured dots per feature along a horizontal SHAP value axis from about -1.1 to 1.4. The top rows, cell_channel_1_shannon_entropy and cell_channel_1_channel_2_M2_correlation_85, spread widest in both directions; lower rows cluster near zero." loading="lazy" decoding="async">
-          <figcaption>SHAP values of the XGBoost model for 256 held-out cells from 3 wells (C02, D02, H01), top 12 of 76 features by mean |SHAP|; each dot is a cell coloured by its feature value (dark low, yellow high), and positive values push toward the GRA14 class.</figcaption>
+          <img src="/assets/img/phenotypes/shap_beeswarm.webp" width="1200" height="498" alt="SHAP-svärmdiagram (beeswarm): tolv särdragsnamn till vänster, en rad färgade punkter per särdrag längs en horisontell axel för SHAP-värden från ungefär −1,1 till 1,4. De översta raderna, cell_channel_1_shannon_entropy och cell_channel_1_channel_2_M2_correlation_85, sprider sig mest åt båda hållen; de nedre raderna samlas nära noll." loading="lazy" decoding="async">
+          <figcaption>SHAP-värden för XGBoost-modellen för 256 undanhållna celler från 3 brunnar (C02, D02, H01), de 12 främsta av 76 särdrag efter medelvärdet av |SHAP|; varje punkt är en cell färgad efter sitt särdragsvärde (mörk låg, gul hög), och positiva värden drar mot klassen GRA14.</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/shap_waterfall_cell.webp" width="1200" height="547" alt="SHAP waterfall for one cell: ten horizontal arrows, red pushing right and blue pushing left, from the expected value 0.178 at the bottom to f(x) = 1.545 at the top; cell_channel_1_shannon_entropy adds +0.92 and cell_channel_1_channel_2_M2_correlation_85 adds +0.47." loading="lazy" decoding="async">
-          <figcaption>Per-cell SHAP explanation of one held-out GRA14-well cell (plate 1, well C02, field 1, object 35): the model&#x27;s base value of 0.178 log-odds plus the feature contributions gives 1.545, a GRA14 probability of 0.82.</figcaption>
+          <img src="/assets/img/phenotypes/shap_waterfall_cell.webp" width="1200" height="547" alt="SHAP-vattenfallsdiagram för en cell: tio horisontella pilar, röda som drar åt höger och blå som drar åt vänster, från det förväntade värdet 0,178 längst ned till f(x) = 1,545 längst upp; cell_channel_1_shannon_entropy bidrar med +0,92 och cell_channel_1_channel_2_M2_correlation_85 med +0,47." loading="lazy" decoding="async">
+          <figcaption>SHAP-förklaring för en enskild undanhållen cell från en GRA14-brunn (platta 1, brunn C02, synfält 1, objekt 35): modellens basvärde 0,178 log-odds plus särdragens bidrag ger 1,545, en GRA14-sannolikhet på 0,82.</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/xgb_feature_importance.webp" width="1200" height="737" alt="Horizontal grey bar chart of the 15 most important measurement features, longest bar at the top for cell_channel_1_channel_2_M2_correlation_85 (about 0.20), then cell_channel_1_shannon_entropy (about 0.13), with the remaining bars below 0.06." loading="lazy" decoding="async">
-          <figcaption>Top 15 of 76 features by XGBoost importance for the model trained on 1,021 control cells from 13 wells; cell_channel_1_channel_2_M2_correlation_85 ranks first (0.196), then cell_channel_1_shannon_entropy (0.133).</figcaption>
+          <img src="/assets/img/phenotypes/xgb_feature_importance.webp" width="1200" height="737" alt="Liggande grått stapeldiagram över de 15 viktigaste mätsärdragen, med den längsta stapeln överst för cell_channel_1_channel_2_M2_correlation_85 (ungefär 0,20), sedan cell_channel_1_shannon_entropy (ungefär 0,13) och övriga staplar under 0,06." loading="lazy" decoding="async">
+          <figcaption>De 15 främsta av 76 särdrag efter betydelse i XGBoost för modellen tränad på 1 021 kontrollceller från 13 brunnar; cell_channel_1_channel_2_M2_correlation_85 rankas först (0,196), sedan cell_channel_1_shannon_entropy (0,133).</figcaption>
         </figure>
         </div>
       </div>
@@ -671,24 +671,24 @@
       </div>
       <div id="docker" class="docker sub-s">
         <h3>Docker</h3>
-        <p class="note">Images for Linux x86-64 on <a href="https://github.com/EinarOlafsson/spacr/pkgs/container/spacr">GitHub Container Registry</a>, one per release: <code>1.5.1.4</code> and <code>1.5.1.4-cpu</code> for CPU, <code>1.5.1.4-cuda12.4</code> for NVIDIA GPUs, and <code>latest</code>. They run the command-line pipelines; the desktop app is not included.</p>
+        <p class="note">Avbildningar för Linux x86-64 i <a href="https://github.com/EinarOlafsson/spacr/pkgs/container/spacr">GitHub Container Registry</a>, en per utgåva: <code>1.5.1.4</code> och <code>1.5.1.4-cpu</code> för CPU, <code>1.5.1.4-cuda12.4</code> för NVIDIA-GPU:er, och <code>latest</code>. De kör kommandoradens bearbetningsflöden; skrivbordsprogrammet ingår inte.</p>
         <div class="grid two">
           <div>
-            <p class="small">CPU: list the pipelines</p>
+            <p class="small">CPU: lista bearbetningsflödena</p>
             <div class="code-wrap">
 <pre id="docker-cmd"><code>docker run --rm ghcr.io/einarolafsson/spacr:1.5.1.4 spacr-run --list</code></pre>
               <button class="copy" type="button" data-copy="docker-cmd">Kopiera</button>
             </div>
           </div>
           <div>
-            <p class="small">NVIDIA GPU (needs the NVIDIA Container Toolkit)</p>
+            <p class="small">NVIDIA-GPU (kräver NVIDIA Container Toolkit)</p>
             <div class="code-wrap">
 <pre id="docker-gpu-cmd"><code>docker run --rm --gpus all ghcr.io/einarolafsson/spacr:1.5.1.4-cuda12.4 spacr-run --list</code></pre>
               <button class="copy" type="button" data-copy="docker-gpu-cmd">Kopiera</button>
             </div>
           </div>
         </div>
-        <p class="note">Mounting data and models, settings files and full pipeline commands: <a href="https://einarolafsson.github.io/spacr/installer_guide.html#container-images">container guide</a>.</p>
+        <p class="note">Montering av data och modeller, inställningsfiler och fullständiga kommandon för bearbetningsflödena: <a href="https://einarolafsson.github.io/spacr/installer_guide.html#container-images">containerguiden</a>.</p>
       </div>
       <div class="grid two sub-s">
         <div>
@@ -778,15 +778,15 @@ spacr</code></pre>
   <section id="about" class="panel-sec" role="tabpanel" aria-labelledby="tab-about" tabindex="-1">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="about-h">About</h2>
-        <p>This site presents spaCR and related microscopy projects: software, segmentation models and hardware, with the data and code behind each figure.</p>
+        <h2 id="about-h">Om</h2>
+        <p>Den här webbplatsen presenterar spaCR och relaterade mikroskopiprojekt: programvara, segmenteringsmodeller och hårdvara, med data och kod bakom varje figur.</p>
       </div>
       <dl class="about">
-        <div><dt>Maintainer</dt><dd>Einar B. Olafsson</dd></div>
-        <div><dt>Affiliation</dt><dd class="pending-inline">Affiliation pending</dd></div>
-        <div><dt>Biography</dt><dd class="pending-inline">Short biography pending</dd></div>
-        <div><dt>Profiles</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
-        <div><dt>How to cite</dt><dd>Cite spaCR with its concept DOI <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>, which covers all versions, or with the version DOI and BibTeX under <a href="#cite">Install and cite</a>.</dd></div>
+        <div><dt>Ansvarig</dt><dd>Einar B. Olafsson</dd></div>
+        <div><dt>Organisation</dt><dd class="pending-inline">Organisation anges senare</dd></div>
+        <div><dt>Biografi</dt><dd class="pending-inline">Kort biografi anges senare</dd></div>
+        <div><dt>Profiler</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
+        <div><dt>Så citerar du</dt><dd>Citera spaCR med dess koncept-DOI <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>, som omfattar alla versioner, eller med versions-DOI och BibTeX under <a href="#cite">Installera och citera</a>.</dd></div>
       </dl>
 
     </div>
@@ -794,7 +794,7 @@ spacr</code></pre>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <p>Static HTML and CSS. The backgrounds are WebGL ports of the spaCR desktop app's animated themes; choose one under Background. No analytics and no cookies.</p>
+    <p>Statisk HTML och CSS. Bakgrunderna är WebGL-versioner av de animerade temana i spaCR:s skrivbordsprogram; välj ett under Bakgrund. Ingen webbanalys och inga kakor.</p>
     <p><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></p>
 
   </div>
