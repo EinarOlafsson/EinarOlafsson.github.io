@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5feb28dc03">
+<link rel="stylesheet" href="/assets/css/site.css?v=56d6459866">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=5feb28dc03" defer></script>
+<script src="/assets/js/fx.js?v=56d6459866" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: hlutun, mælingar á stökum frumum, flokkun, vörpun strikamerkja og aðhvarfsgreining fyrir myndrænar, samsafnaðar CRISPR-skimanir. Vinnsluferli, birt líkön, niðurstöður skimunar, greinar og uppsetning.">
-<script src="/assets/js/volcano.js?v=5feb28dc03" defer></script>
+<script src="/assets/js/volcano.js?v=56d6459866" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Fara beint í efni</a>
@@ -137,7 +137,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>skimunarplötur greindar</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>kennslustundir</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>tungumál viðmóts</span></a></li>
-        <li><a class="row" href="#install"><b>84,947</b><span>sjálfvirk próf</span></a></li>
+        <li><a class="row" href="#install"><b>85,263</b><span>sjálfvirk próf</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -413,14 +413,28 @@
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>skimunarplötur</span></div></li>
-        <li><div class="tile"><b>2</b><span>gen yfir 3σ með báðum flokkurum</span></div></li>
+        <li><div class="tile"><b>3</b><span>genes past FDR 5% and the effect cut, by permutation</span></div></li>
         <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>söfnun, GRA14 á móti SAG1</span></div></li>
       </ul>
-      <figure class="wide results neutral">
-        <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="Tvö eldfjallarit af áhrifum gena á móti marktækni; EAF1 og GRA14 eru yfir þröskuldinum í báðum" loading="lazy" decoding="async">
-        <figcaption>Áhrif gena samkvæmt mælingaflokkara (XGBoost, vinstri) og myndflokkara (MaxViT, hægri); EAF1 og GRA14 fara yfir 3σ í báðum. Forprent, mynd 5.</figcaption>
+      <div class="perm">
+        <h3>Permutation tests</h3>
+        <p class="note">spaCR's guide-permutation analysis (Regression, nonparametric inference) on the screen's MaxViT per-cell scores: each gene's and each guide's partial correlation with the well-mean score, given plate, row and column, against 2,000,000 within-plate Freedman–Lane permutations (seed 0). Layout as in the preprint's Figure S7 (panels R and S). With the example's shipped settings, control wells and guides stay in, so the numbers differ from the preprint, which excluded them and filtered wells. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>, settings from <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>.</p>
+        <div class="results stack">
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_gene_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_gene_volcano.light.webp" width="1200" height="750" alt="Gene-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14, EAF1 and SAG1 named." loading="lazy" decoding="async"></picture>
+        <figcaption>Gene level: 414 genes tested (each gene's summed guide fractions). 4 reach BH q &lt; 0.05 (SAG1 (TGGT1_233460) r = −0.317, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; GRA14 (TGGT1_239740) r = +0.435, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; EAF1 (TGGT1_225160) r = +0.240, P = 1.0×10⁻⁶, q = 1.4×10⁻⁴; GRA12B (TGGT1_275860) r = +0.157, P = 1.7×10⁻⁴, q = 1.7×10⁻²); 3 also pass the effect cut: SAG1 (TGGT1_233460), GRA14 (TGGT1_239740), EAF1 (TGGT1_225160). 2 genes sit at the P floor (no permutation as extreme). 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
       </figure>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=5feb28dc03">
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_guide_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_guide_volcano.light.webp" width="1200" height="750" alt="Guide-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14 guides 1 and 3, SAG1 guide 4 and EAF1 guide 2 named." loading="lazy" decoding="async"></picture>
+        <figcaption>Guide level: 953 guides tested. 3 reach BH q &lt; 0.05 (SAG1 guide 4 r = −0.317, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 1 r = +0.397, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 3 r = +0.263, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴); 3 pass the effect cut. 3 guides sit at the P floor. 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
+      </figure>
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_null.dark.webp" width="1200" height="480"><img src="/assets/img/screen/perm_null.light.webp" width="1200" height="480" alt="Three histograms of the permutation null of the partial correlation, for GRA14, EAF1 and SAG1, each with the observed value far outside the null." loading="lazy" decoding="async"></picture>
+        <figcaption>Permutation null of the gene-level partial correlation for GRA14, EAF1 and SAG1 (2,000,000 draws, seed 0; log count scale). Solid line: observed r; dashed: -r (the test is two-sided on |r|). b = permutations at least as extreme; P = (b+1)/(B+1). GRA14 r = +0.435, b = 0; EAF1 r = +0.240, b = 1; SAG1 r = −0.317, b = 0. The draws were regenerated from spaCR's own projection and seeded generator, and their exceedance counts equal the counts spaCR reported for these genes.</figcaption>
+      </figure>
+        </div>
+      </div>
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=56d6459866">
         <h3 id="ols-volcano-title">Allar fjórar plöturnar: áhrif gena úr OLS-aðhvarfsgreiningu spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Hleð niðurstöðum aðhvarfsgreiningar…</p>
@@ -433,7 +447,7 @@
         <p class="volcano-hint" id="ols-volcano-hint">Færðu bendilinn yfir punkt eða farðu á hann með dálklyklinum til að sjá gildi hans; smelltu á hann eða ýttu á Enter til að opna genaspjaldið. Örvalyklar færa á milli gena og Escape lokar spjaldinu.</p>
         <div class="volcano-card" hidden role="region" tabindex="-1"></div>
         <p class="volcano-live vh" aria-live="polite"></p>
-        <figcaption>Aðhvarfsgreining með minnstu kvaðrötum (OLS) á öllum fjórum skimunarplötunum (1.290 brunnar, 414 gen, 953 leiðsagnarraðir), eins og Regression-eining spaCR keyrir hana á prófunargögnum sínum. Hæðin er óleiðrétta p-gildið; Benjamini–Hochberg FDR 5 % ræður litnum og strikalínunni. Punktalínur: ±3σ (MAD) af áhrifum gena. 225160 (TGGT1_225160) er genið sem forprentið nefnir EAF1. Gögn: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
+        <figcaption>Ordinary least squares on the MaxViT per-cell scores of all four screen plates (1,290 wells, 414 genes, 953 guides), as spaCR's Regression module runs it on its test data. Height is the raw p; Benjamini–Hochberg FDR 5% decides the colour and the dashed line. Dotted lines: ±3σ (MAD) of the gene effects. 225160 (TGGT1_225160) is the gene the preprint names EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
         <template class="volcano-strings">
           <span data-k="plotLabel">Eldfjallarit af áhrifum gena. Notaðu örvalyklana til að færa á milli gena og Enter til að opna genaspjald.</span>
           <span data-k="xLabel">OLS-stuðull (áhrif gens)</span>
@@ -495,16 +509,6 @@
         <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/umap.dark.webp" width="1200" height="700"><img src="/assets/img/spacr/umap.light.webp" width="1200" height="700" alt="UMAP scatter of 5,000 cells forming 6 outlined, numbered clusters on the left; on the right one row per cluster with its number, its cell count and four example single-cell crops framed in the cluster colour." loading="lazy" decoding="async"></picture>
         <figcaption>UMAP of 6 measurements of 5,000 randomly sampled cells from screen plate 1 (60,816 cells), 6 DBSCAN clusters that differ mainly in nuclei and parasite objects per cell (1: 2,529 cells, median 1 nucleus and 1 parasite object; 2: 146 cells, median 1 nucleus and 1 parasite object; 3: 1,131 cells, median 1 nucleus and 2 parasite objects; 4: 468 cells, median 2 nuclei and 1 parasite object; 5: 502 cells, median 2 nuclei and 3 parasite objects; 6: 223 cells, median 3 nuclei and 3 parasite objects); crops are cells near each cluster centre.</figcaption>
       </figure>
-      <div class="grid two results" style="margin-top:48px">
-        <figure>
-          <img src="/assets/img/spacr/measure-crops.webp" width="804" height="496" alt="Einingin Measure sem sýnir hnitanet myndskurða af stökum frumum" loading="lazy" decoding="async">
-          <figcaption>Myndskurðir hluta sem Measure vistaði í keyrslu á sextán myndsviðum.</figcaption>
-        </figure>
-        <figure>
-          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/recruitment-field.dark.webp" width="1200" height="241"><img src="/assets/img/spacr/recruitment-field.light.webp" width="1200" height="241" alt="Hoechst and CellMask channels of one field, then the same window with thin cell, nucleus and vacuole outlines" loading="lazy" decoding="async"></picture>
-          <figcaption>One field, five views: Hoechst, CellMask, then cell, nucleus and vacuole outlines (MTOC screen plate 2, well P08, field 16; CC BY 4.0).</figcaption>
-        </figure>
-      </div>
 
       <div class="sub" id="classification">
         <div class="section-head">
@@ -767,8 +771,9 @@ spacr</code></pre>
       </div>
       <dl class="about">
         <div><dt>Umsjónarmaður</dt><dd>Einar B. Olafsson</dd></div>
-        <div><dt>Stofnun</dt><dd class="pending-inline">Stofnun verður skráð síðar</dd></div>
-        <div><dt>Æviágrip</dt><dd class="pending-inline">Stutt æviágrip verður birt síðar</dd></div>
+        <div><dt>Stofnun</dt><dd>Research Investigator, Department of Microbiology &amp; Immunology, University of Michigan</dd></div>
+        <div><dt>Æviágrip</dt><dd>Einar B. Olafsson is a Research Investigator in the Department of Microbiology &amp; Immunology at the University of Michigan. He studies how <i>Toxoplasma gondii</i> interacts with the cells it infects, combining CRISPR screening, high-content microscopy and AI-based single-cell image analysis to link genetic perturbations to spatial cellular phenotypes. He created and maintains spaCR. He studied biology and immunology at Uppsala University and received his PhD in Molecular Biosciences from Stockholm University, with a thesis on signalling in <i>Toxoplasma</i> dissemination by infected immune cells.</dd></div>
+        <div><dt>Contact</dt><dd><a href="mailto:olafsson@med.umich.edu">olafsson@med.umich.edu</a></dd></div>
         <div><dt>Prófílar</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
         <div><dt>Hvernig á að vísa í spaCR</dt><dd>Vísaðu í spaCR með hugtaks-DOI þess, <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>, sem nær yfir allar útgáfur, eða með útgáfu-DOI og BibTeX undir <a href="#cite">Uppsetning og tilvísun</a>.</dd></div>
       </dl>

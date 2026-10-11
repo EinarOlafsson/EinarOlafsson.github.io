@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5feb28dc03">
+<link rel="stylesheet" href="/assets/css/site.css?v=56d6459866">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=5feb28dc03" defer></script>
+<script src="/assets/js/fx.js?v=56d6459866" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4：用于基于图像的混合 CRISPR 筛选的分割、单细胞测量、分类、条形码映射和回归。包含流程、已发布模型、筛选结果、论文和安装说明。">
-<script src="/assets/js/volcano.js?v=5feb28dc03" defer></script>
+<script src="/assets/js/volcano.js?v=56d6459866" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">跳到正文</a>
@@ -137,7 +137,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>已分析的筛选板</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>教程课程</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>界面语言</span></a></li>
-        <li><a class="row" href="#install"><b>84,947</b><span>自动化测试</span></a></li>
+        <li><a class="row" href="#install"><b>85,263</b><span>自动化测试</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -413,14 +413,28 @@
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>4</b><span>筛选板</span></div></li>
-        <li><div class="tile"><b>2</b><span>两种分类器下均超过 3σ 的基因</span></div></li>
+        <li><div class="tile"><b>3</b><span>genes past FDR 5% and the effect cut, by permutation</span></div></li>
         <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>GRA14 相对 SAG1 的募集</span></div></li>
       </ul>
-      <figure class="wide results neutral">
-        <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="两幅基因效应对显著性的火山图；EAF1 和 GRA14 在两幅图中均位于阈值之上" loading="lazy" decoding="async">
-        <figcaption>来自测量分类器（XGBoost，左）和图像分类器（MaxViT，右）的基因效应；EAF1 和 GRA14 在两者中均超过 3σ。预印本图 5。</figcaption>
+      <div class="perm">
+        <h3>Permutation tests</h3>
+        <p class="note">spaCR's guide-permutation analysis (Regression, nonparametric inference) on the screen's MaxViT per-cell scores: each gene's and each guide's partial correlation with the well-mean score, given plate, row and column, against 2,000,000 within-plate Freedman–Lane permutations (seed 0). Layout as in the preprint's Figure S7 (panels R and S). With the example's shipped settings, control wells and guides stay in, so the numbers differ from the preprint, which excluded them and filtered wells. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>, settings from <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>.</p>
+        <div class="results stack">
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_gene_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_gene_volcano.light.webp" width="1200" height="750" alt="Gene-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14, EAF1 and SAG1 named." loading="lazy" decoding="async"></picture>
+        <figcaption>Gene level: 414 genes tested (each gene's summed guide fractions). 4 reach BH q &lt; 0.05 (SAG1 (TGGT1_233460) r = −0.317, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; GRA14 (TGGT1_239740) r = +0.435, P = 5.0×10⁻⁷, q = 1.0×10⁻⁴; EAF1 (TGGT1_225160) r = +0.240, P = 1.0×10⁻⁶, q = 1.4×10⁻⁴; GRA12B (TGGT1_275860) r = +0.157, P = 1.7×10⁻⁴, q = 1.7×10⁻²); 3 also pass the effect cut: SAG1 (TGGT1_233460), GRA14 (TGGT1_239740), EAF1 (TGGT1_225160). 2 genes sit at the P floor (no permutation as extreme). 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
       </figure>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=5feb28dc03">
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_guide_volcano.dark.webp" width="1200" height="750"><img src="/assets/img/screen/perm_guide_volcano.light.webp" width="1200" height="750" alt="Guide-level permutation volcano: partial correlation against minus log10 BH-adjusted empirical P, coloured by compartment; GRA14 guides 1 and 3, SAG1 guide 4 and EAF1 guide 2 named." loading="lazy" decoding="async"></picture>
+        <figcaption>Guide level: 953 guides tested. 3 reach BH q &lt; 0.05 (SAG1 guide 4 r = −0.317, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 1 r = +0.397, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴; GRA14 guide 3 r = +0.263, P = 5.0×10⁻⁷, q = 1.6×10⁻⁴); 3 pass the effect cut. 3 guides sit at the P floor. 2,000,000 within-plate Freedman-Lane permutations, seed 0; smallest attainable P = 1/(B+1) = 5.0×10⁻⁷. MaxViT per-cell scores averaged per well, 1,290 wells on 4 plates, partial Pearson r given plate, row and column. Dashed line BH q = 0.05; dotted lines the spaCR effect cut (3x std of 29 controls = 0.221).</figcaption>
+      </figure>
+      <figure class="wide">
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/screen/perm_null.dark.webp" width="1200" height="480"><img src="/assets/img/screen/perm_null.light.webp" width="1200" height="480" alt="Three histograms of the permutation null of the partial correlation, for GRA14, EAF1 and SAG1, each with the observed value far outside the null." loading="lazy" decoding="async"></picture>
+        <figcaption>Permutation null of the gene-level partial correlation for GRA14, EAF1 and SAG1 (2,000,000 draws, seed 0; log count scale). Solid line: observed r; dashed: -r (the test is two-sided on |r|). b = permutations at least as extreme; P = (b+1)/(B+1). GRA14 r = +0.435, b = 0; EAF1 r = +0.240, b = 1; SAG1 r = −0.317, b = 0. The draws were regenerated from spaCR's own projection and seeded generator, and their exceedance counts equal the counts spaCR reported for these genes.</figcaption>
+      </figure>
+        </div>
+      </div>
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=56d6459866">
         <h3 id="ols-volcano-title">全部四块板：spaCR OLS 回归得到的基因效应</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">正在加载回归结果…</p>
@@ -433,7 +447,7 @@
         <p class="volcano-hint" id="ols-volcano-hint">将鼠标悬停在某个点上或用 Tab 键移到该点可查看数值；点击该点或按 Enter 键可打开基因卡片。方向键在基因之间移动，Escape 键关闭卡片。</p>
         <div class="volcano-card" hidden role="region" tabindex="-1"></div>
         <p class="volcano-live vh" aria-live="polite"></p>
-        <figcaption>对全部四块筛选板（1,290 个孔、414 个基因、953 条向导 RNA）进行普通最小二乘法（OLS）回归，与 spaCR 的 Regression 模块在其测试数据上的运行方式相同。纵轴高度为原始 p 值；颜色和虚线由 Benjamini–Hochberg FDR 5% 决定。点线：基因效应的 ±3σ（MAD）。225160（TGGT1_225160）是预印本中命名为 EAF1 的基因。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>。</figcaption>
+        <figcaption>Ordinary least squares on the MaxViT per-cell scores of all four screen plates (1,290 wells, 414 genes, 953 guides), as spaCR's Regression module runs it on its test data. Height is the raw p; Benjamini–Hochberg FDR 5% decides the colour and the dashed line. Dotted lines: ±3σ (MAD) of the gene effects. 225160 (TGGT1_225160) is the gene the preprint names EAF1. Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
         <template class="volcano-strings">
           <span data-k="plotLabel">基因效应火山图。用方向键在基因之间移动，按 Enter 键打开基因卡片。</span>
           <span data-k="xLabel">OLS 系数（基因效应）</span>
@@ -495,16 +509,6 @@
         <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/umap.dark.webp" width="1200" height="700"><img src="/assets/img/spacr/umap.light.webp" width="1200" height="700" alt="UMAP scatter of 5,000 cells forming 6 outlined, numbered clusters on the left; on the right one row per cluster with its number, its cell count and four example single-cell crops framed in the cluster colour." loading="lazy" decoding="async"></picture>
         <figcaption>UMAP of 6 measurements of 5,000 randomly sampled cells from screen plate 1 (60,816 cells), 6 DBSCAN clusters that differ mainly in nuclei and parasite objects per cell (1: 2,529 cells, median 1 nucleus and 1 parasite object; 2: 146 cells, median 1 nucleus and 1 parasite object; 3: 1,131 cells, median 1 nucleus and 2 parasite objects; 4: 468 cells, median 2 nuclei and 1 parasite object; 5: 502 cells, median 2 nuclei and 3 parasite objects; 6: 223 cells, median 3 nuclei and 3 parasite objects); crops are cells near each cluster centre.</figcaption>
       </figure>
-      <div class="grid two results" style="margin-top:48px">
-        <figure>
-          <img src="/assets/img/spacr/measure-crops.webp" width="804" height="496" alt="Measure 模块显示单细胞裁剪图网格" loading="lazy" decoding="async">
-          <figcaption>Measure 在一次十六视野运行中保存的对象裁剪图。</figcaption>
-        </figure>
-        <figure>
-          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/recruitment-field.dark.webp" width="1200" height="241"><img src="/assets/img/spacr/recruitment-field.light.webp" width="1200" height="241" alt="Hoechst and CellMask channels of one field, then the same window with thin cell, nucleus and vacuole outlines" loading="lazy" decoding="async"></picture>
-          <figcaption>One field, five views: Hoechst, CellMask, then cell, nucleus and vacuole outlines (MTOC screen plate 2, well P08, field 16; CC BY 4.0).</figcaption>
-        </figure>
-      </div>
 
       <div class="sub" id="classification">
         <div class="section-head">
@@ -767,8 +771,9 @@ spacr</code></pre>
       </div>
       <dl class="about">
         <div><dt>维护者</dt><dd>Einar B. Olafsson</dd></div>
-        <div><dt>单位</dt><dd class="pending-inline">单位信息待补充</dd></div>
-        <div><dt>简介</dt><dd class="pending-inline">个人简介待补充</dd></div>
+        <div><dt>单位</dt><dd>Research Investigator, Department of Microbiology &amp; Immunology, University of Michigan</dd></div>
+        <div><dt>简介</dt><dd>Einar B. Olafsson is a Research Investigator in the Department of Microbiology &amp; Immunology at the University of Michigan. He studies how <i>Toxoplasma gondii</i> interacts with the cells it infects, combining CRISPR screening, high-content microscopy and AI-based single-cell image analysis to link genetic perturbations to spatial cellular phenotypes. He created and maintains spaCR. He studied biology and immunology at Uppsala University and received his PhD in Molecular Biosciences from Stockholm University, with a thesis on signalling in <i>Toxoplasma</i> dissemination by infected immune cells.</dd></div>
+        <div><dt>Contact</dt><dd><a href="mailto:olafsson@med.umich.edu">olafsson@med.umich.edu</a></dd></div>
         <div><dt>个人主页</dt><dd><a href="https://github.com/EinarOlafsson">GitHub</a> · <a href="https://orcid.org/0000-0002-3388-061X">ORCID</a></dd></div>
         <div><dt>如何引用</dt><dd>引用 spaCR 时可使用涵盖所有版本的概念 DOI <a href="https://doi.org/10.5281/zenodo.21343316">10.5281/zenodo.21343316</a>，或使用<a href="#cite">安装与引用</a>中的版本 DOI 和 BibTeX。</dd></div>
       </dl>
