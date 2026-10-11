@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=3cb955e92c">
+<link rel="stylesheet" href="/assets/css/site.css?v=82ca62514b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=3cb955e92c" defer></script>
+<script src="/assets/js/fx.js?v=82ca62514b" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,10 +24,12 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"切换到深色主题","ui.theme_light":"切换到浅色主题","ui.fx_pause":"暂停背景动画","ui.fx_resume":"继续背景动画","ui.fx_reduced":"背景动画已关闭：您的系统要求减少动态效果","ui.pause":"暂停","ui.resume":"继续","ui.copied":"已复制"}</script>
 
 <title>spaCR：CRISPR-Cas9 筛选的空间表型分析</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.webp" media="(min-width: 601px)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.webp" media="(max-width: 600px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4：用于基于图像的混合 CRISPR 筛选的分割、单细胞测量、分类、条形码映射和回归。包含流程、已发布模型、筛选结果、论文和安装说明。">
-<script src="/assets/js/volcano.js?v=3cb955e92c" defer></script>
+<script src="/assets/js/volcano.js?v=82ca62514b" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">跳到正文</a>
@@ -71,10 +73,7 @@
           <li><button type="button" data-fx-theme="waves" aria-pressed="false">spaCR waves</button></li>
           <li><button type="button" data-fx-theme="blobs" aria-pressed="false">spaCR blobs</button></li>
           <li><button type="button" data-fx-theme="stratified" aria-pressed="false">spaCR stratified</button></li>
-          <li><button type="button" data-fx-theme="aurora" aria-pressed="false">spaCR aurora</button></li>
           <li><button type="button" data-fx-theme="growth" aria-pressed="false">spaCR growth</button></li>
-          <li><button type="button" data-fx-theme="spinn" aria-pressed="false">spaCR spinn</button></li>
-          <li><button type="button" data-fx-theme="fractals" aria-pressed="false">spaCR 分形</button></li>
         </ul>
       </details>
       <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="切换主题" title="切换主题">
@@ -124,11 +123,13 @@
       </div>
       <figure class="ov-strip">
         <a class="figlink" href="#pipeline"><picture>
-          <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.webp" width="800" height="1140">
-          <img src="/assets/img/spacr/overview-strip.webp" width="1600" height="400" alt="示例筛选中的一个视野，分为五个面板：原始图像、细胞、细胞核和寄生虫轮廓、测量值表格、按分类器得分着色的细胞，以及标注了命中的火山图" fetchpriority="high">
+          <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
+          <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
+          <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="One field of HeLa cells infected with Toxoplasma in five panels: the image, thin cell, nucleus and vacuole outlines, a table of measured values, cells coloured by an infection score, and a volcano plot with GRA14 labelled" fetchpriority="high">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>图像</li><li>掩膜</li><li>测量值</li><li>分类器得分</li><li>命中</li></ol>
-        <figcaption>从原始图像一直追踪到其所指向的基因：公开示例筛选中的一个视野，第 1 板 H02 孔，一个 GRA14 孔。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> 和 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a>，CC BY 4.0。参见<a href="#pipeline">流程</a>。</figcaption>
+        <figcaption>One whole field of HeLa cells infected with <i>Toxoplasma</i> (MTOC screen plate 2, well P08, field 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">public data</a>, CC BY 4.0) through spaCR: image, outlines, Measure values and an infection score. The hit list comes from a different public screen, the four-plate GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">example screen</a>. See <a href="#pipeline">Pipeline</a>.</figcaption>
       </figure>
       <ul class="stats six" aria-label="spaCR 数据一览">
         <li><a class="row" href="#models"><b>16</b><span>已发布模型</span></a></li>
@@ -136,7 +137,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>已分析的筛选板</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>教程课程</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>界面语言</span></a></li>
-        <li><a class="row" href="#install"><b>84,854</b><span>自动化测试</span></a></li>
+        <li><a class="row" href="#install"><b>84,947</b><span>自动化测试</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -218,16 +219,16 @@
     <div class="wrap">
       <div class="section-head">
         <h2>流程</h2>
-        <p>用一个视野贯穿 spaCR 全流程：示例筛选的第 1 板、H02 孔、第 4 视野。该孔中 92% 的向导 RNA 靶向阳性对照 GRA14。</p>
+        <p>One whole field followed through spaCR: HeLa cells infected with <i>Toxoplasma</i>, plate 2, well P08, field 16 of the MTOC screen, imaged with Hoechst and CellMask. Steps 1 to 4 use this field; step 5 is the hit list of the GFP-TSG101 example screen, because the MTOC screen's hits are not public.</p>
       </div>
       <ol class="strip">
-        <li><a class="figlink" href="/assets/img/pipeline/01_raw.webp"><img src="/assets/img/pipeline/01_raw.webp" width="800" height="600" alt="受感染的细胞：细胞核为蓝色，标记物为绿色，寄生虫为红色" loading="lazy" decoding="async"></a><h3><span class="num">1</span><span>图像</span></h3><p>19 个受感染细胞，由 Measure 裁剪图重新拼合而成。</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/02_masks.webp"><img src="/assets/img/pipeline/02_masks.webp" width="800" height="600" alt="同一批细胞上的细胞、细胞核和寄生虫轮廓" loading="lazy" decoding="async"></a><h3><span class="num">2</span><span>Mask</span></h3><p>细胞、细胞核和寄生虫轮廓。</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.webp"><img src="/assets/img/pipeline/03_measurements.webp" width="800" height="600" alt="按寄生虫通道 1 强度着色的细胞" loading="lazy" decoding="async"></a><h3><span class="num">3</span><span>Measure</span></h3><p>按寄生虫通道 1 强度着色的细胞。</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/04_classification.webp"><img src="/assets/img/pipeline/04_classification.webp" width="800" height="600" alt="按分类器得分着色的细胞，大多数接近 1" loading="lazy" decoding="async"></a><h3><span class="num">4</span><span>Classify</span></h3><p>每个细胞的分类器得分；19 个中有 18 个高于 0.5。</p></li>
-        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.webp"><img src="/assets/img/pipeline/05_screen_hit.webp" width="800" height="600" alt="火山图，GRA14 被圈出，SAG1 已标注" loading="lazy" decoding="async"></a><h3><span class="num">5</span><span>命中</span></h3><p>回归分析判定 GRA14 为命中（q 0.040）。</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/01_raw.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/01_raw.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/01_raw.light.webp" width="800" height="600" alt="HeLa cells with blue nuclei and grey cytoplasm; Toxoplasma vacuoles appear as warm clusters" loading="lazy" decoding="async"></picture></a><h3><span class="num">1</span><span>图像</span></h3><p>13 host cells and 54 vacuoles in this window of a 2000 × 2000 px field; Hoechst blue, CellMask grey.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/02_masks.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/02_masks.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/02_masks.light.webp" width="800" height="600" alt="Thin cyan cell, blue nucleus and magenta vacuole outlines on the same cells" loading="lazy" decoding="async"></picture></a><h3><span class="num">2</span><span>Mask</span></h3><p>Cell, nucleus and vacuole outlines: 37 cells, 44 nuclei and 130 vacuoles in the field.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/03_measurements.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/03_measurements.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/03_measurements.light.webp" width="800" height="600" alt="Cells coloured by the fraction of their area covered by vacuoles" loading="lazy" decoding="async"></picture></a><h3><span class="num">3</span><span>Measure</span></h3><p>Cells coloured by vacuole coverage (Measure): 9 of 13 above 0, up to 0.161.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/04_classification.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/04_classification.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/04_classification.light.webp" width="800" height="600" alt="Cells coloured by an infection score from blue (low) to orange (high)" loading="lazy" decoding="async"></picture></a><h3><span class="num">4</span><span>Classify</span></h3><p>XGBoost infection score from host features only; 8 of 13 cells above 0.5, field not used for training.</p></li>
+        <li><a class="figlink" href="/assets/img/pipeline/05_screen_hit.dark.webp"><picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/pipeline/05_screen_hit.dark.webp" width="800" height="600"><img src="/assets/img/pipeline/05_screen_hit.light.webp" width="800" height="600" alt="Volcano plot of 414 genes with GRA14 labelled at the top" loading="lazy" decoding="async"></picture></a><h3><span class="num">5</span><span>命中</span></h3><p>Four-plate GFP-TSG101 screen: 414 genes, 4 called at q &lt; 0.05; GRA14 is the hit.</p></li>
       </ol>
-      <p class="note">数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a> 裁剪图，以及 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-hit">spacr-example-hit</a> 测量值、得分和向导计数。细胞轮廓来自该筛选的掩膜；细胞核和寄生虫轮廓通过 spaCR 在 CPU 上用 Cellpose-SAM 重新计算；回归仅涵盖这 30 个孔的子集。</p>
+      <p class="note">Data: Hoechst and CellMask images with published cell, nucleus and vacuole masks from <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">cross-channel-cell-from-hoechst</a>, <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-nuclei-from-cellmask">cross-channel-nuclei-from-cellmask</a> and <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-toxoplasma-from-cellmask">cross-channel-toxoplasma-from-cellmask</a> (CC BY 4.0). Measure and the XGBoost classifier ran in spaCR on CPU over 52 fields of the same plate. Hit list: OLS regression of <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</p>
       <ul class="steps" aria-label="模块" style="margin-top:48px">
         <li><b>Mask</b><span>用 Cellpose 模型分割细胞、细胞核、病原体和细胞器。</span></li>
         <li><b>Measure</b><span>每个对象的形状、强度、纹理和位置，以及每个对象的裁剪图，存储在 SQLite 中。</span></li>
@@ -415,11 +416,11 @@
         <li><div class="tile"><b>2</b><span>两种分类器下均超过 3σ 的基因</span></div></li>
         <li><div class="tile"><b>p 8.4 × 10⁻⁵</b><span>GRA14 相对 SAG1 的募集</span></div></li>
       </ul>
-      <figure class="wide results">
+      <figure class="wide results neutral">
         <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="两幅基因效应对显著性的火山图；EAF1 和 GRA14 在两幅图中均位于阈值之上" loading="lazy" decoding="async">
         <figcaption>来自测量分类器（XGBoost，左）和图像分类器（MaxViT，右）的基因效应；EAF1 和 GRA14 在两者中均超过 3σ。预印本图 5。</figcaption>
       </figure>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=3cb955e92c">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=82ca62514b">
         <h3 id="ols-volcano-title">全部四块板：spaCR OLS 回归得到的基因效应</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">正在加载回归结果…</p>
@@ -487,12 +488,12 @@
       </div>
       <ul class="stats mini">
         <li><div class="tile"><b>5,000</b><span>已映射细胞</span></div></li>
-        <li><div class="tile"><b>5</b><span>聚类</span></div></li>
-        <li><div class="tile"><b>9%</b><span>未归类</span></div></li>
+        <li><div class="tile"><b>6</b><span>聚类</span></div></li>
+        <li><div class="tile"><b>60,816</b><span>cells measured on plate 1</span></div></li>
       </ul>
       <figure class="wide">
-        <img src="/assets/img/spacr/umap.webp" width="1200" height="592" alt="5,000 个细胞的 UMAP，勾勒出五个聚类，每个聚类附四个示例裁剪图" loading="lazy" decoding="async">
-        <figcaption>筛选第 1 板 5,000 个细胞的图像 UMAP：五个 HDBSCAN 聚类，在每个细胞的细胞核数和空泡数上有所不同；裁剪图为靠近各聚类中心的细胞。</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/umap.dark.webp" width="1200" height="700"><img src="/assets/img/spacr/umap.light.webp" width="1200" height="700" alt="UMAP scatter of 5,000 cells forming 6 outlined, numbered clusters on the left; on the right one row per cluster with its number, its cell count and four example single-cell crops framed in the cluster colour." loading="lazy" decoding="async"></picture>
+        <figcaption>UMAP of 6 measurements of 5,000 randomly sampled cells from screen plate 1 (60,816 cells), 6 DBSCAN clusters that differ mainly in nuclei and parasite objects per cell (1: 2,529 cells, median 1 nucleus and 1 parasite object; 2: 146 cells, median 1 nucleus and 1 parasite object; 3: 1,131 cells, median 1 nucleus and 2 parasite objects; 4: 468 cells, median 2 nuclei and 1 parasite object; 5: 502 cells, median 2 nuclei and 3 parasite objects; 6: 223 cells, median 3 nuclei and 3 parasite objects); crops are cells near each cluster centre.</figcaption>
       </figure>
       <div class="grid two results" style="margin-top:48px">
         <figure>
@@ -500,8 +501,8 @@
           <figcaption>Measure 在一次十六视野运行中保存的对象裁剪图。</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/spacr/recruitment-field.webp" width="1200" height="241" alt="一个视野按通道分别显示，随后是细胞、细胞核和寄生虫掩膜" loading="lazy" decoding="async">
-          <figcaption>一个募集实验视野：各通道，随后是细胞、细胞核和寄生虫掩膜。</figcaption>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/recruitment-field.dark.webp" width="1200" height="241"><img src="/assets/img/spacr/recruitment-field.light.webp" width="1200" height="241" alt="Hoechst and CellMask channels of one field, then the same window with thin cell, nucleus and vacuole outlines" loading="lazy" decoding="async"></picture>
+          <figcaption>One field, five views: Hoechst, CellMask, then cell, nucleus and vacuole outlines (MTOC screen plate 2, well P08, field 16; CC BY 4.0).</figcaption>
         </figure>
       </div>
 
@@ -512,44 +513,27 @@
         </div>
         <div class="results stack">
         <figure class="wide">
-          <img src="/assets/img/phenotypes/class_example_crops.webp" width="1200" height="660" alt="黑色背景上的两个三乘三单细胞荧光裁剪图网格。左侧网格标注为 SAG1，右侧网格标注为 GRA14。每张裁剪图显示一个 HeLa 细胞，细胞核为蓝色，GFP-TSG101 细胞质为绿色，弓形虫空泡为红色；在大多数 SAG1 裁剪图中，绿色与红色重叠处的空泡呈黄色，而在 GRA14 裁剪图中空泡仍为红色。" loading="lazy" decoding="async">
-          <figcaption>spaCR 的 CNN 以最高置信度正确分类的每类 9 个留出细胞，选自 4 个从未用于训练的孔（B02、C01、E02、G01）中的 405 个测试细胞；测试准确率 0.901。</figcaption>
-        </figure>
-        <div class="grid two">
-        <figure>
-          <img src="/assets/img/phenotypes/xgb_confusion_matrix.webp" width="900" height="750" alt="蓝色系的二乘二混淆矩阵热图，行为真实类别（SAG1 c1、GRA14 c2），列为预测类别，按行归一化的比例为 0.81、0.19、0.12 和 0.88。" loading="lazy" decoding="async">
-          <figcaption>基于每个细胞 76 项 GFP-TSG101 通道测量值的 XGBoost，按整孔留出的 5 折交叉验证：来自 16 个孔的 1,277 个对照细胞，准确率 0.853（SAG1 孔细胞 547 个中 445 个正确，GRA14 孔细胞 730 个中 644 个正确）。</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/phenotypes/xgb_roc_pr.webp" width="1200" height="550" alt="两个面板。左：ROC 曲线在对角虚线（随机水平）之上向左上角陡升，图例 AUC = 0.922。右：精确率-召回率曲线，精确率大多在 0.85 到 0.97 之间，在召回率最高处下降，位于 0.57 的患病率虚线之上，图例 AP = 0.913。" loading="lazy" decoding="async">
-          <figcaption>同一组按整孔留出的 XGBoost 预测（1,277 个细胞）的 ROC（AUC 0.922）和精确率-召回率（平均精确率 0.913），以 GRA14 孔为阳性类别（患病率 0.57）。</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/phenotypes/cnn_confusion_matrix.webp" width="900" height="750" alt="图像分类器的蓝色系二乘二混淆矩阵热图，行为真实类别，列为预测类别，比例为 0.92、0.08、0.12 和 0.88。" loading="lazy" decoding="async">
-          <figcaption>spaCR 的 CNN 在 4 个测试孔中 405 个留出细胞的单细胞裁剪图上的结果：准确率 0.901（SAG1 孔细胞 200 个中 184 个正确，GRA14 孔细胞 205 个中 181 个正确）。</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/img/phenotypes/cnn_roc_pr.webp" width="1200" height="550" alt="图像分类器的两个面板。左：ROC 曲线在随机水平虚线之上紧贴左上角，图例 AUC = 0.968。右：精确率-召回率曲线在召回率较高之前精确率接近 1.0，位于 0.51 的患病率虚线之上，图例 AP = 0.970。" loading="lazy" decoding="async">
-          <figcaption>CNN 在 4 个留出孔的 405 个细胞上的 ROC（AUC 0.968）和精确率-召回率（平均精确率 0.970），以 GRA14 孔为阳性类别。</figcaption>
-        </figure>
-        </div>
-        <figure class="wide">
-          <img src="/assets/img/phenotypes/saliency_maps.webp" width="1200" height="970" alt="四行单细胞裁剪图，每行五张：SAG1 裁剪图、其 Grad-CAM 热图、GRA14 裁剪图、其 Grad-CAM 热图。热图以 jet 配色叠加在裁剪图的灰度版本上；在 GRA14 细胞上，热点位于红色的寄生虫空泡处，在 SAG1 细胞上，黑色背景角落也有热度。" loading="lazy" decoding="async">
-          <figcaption>CNN 对每类置信度最高的 5 个正确分类的留出细胞的 Grad-CAM 图；在 GRA14 孔细胞上，图中 4-13% 落在被掩蔽的黑色背景上，在 SAG1 孔细胞上为 18-53%。</figcaption>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/class_example_crops.dark.webp" width="1200" height="650"><img src="/assets/img/phenotypes/class_example_crops.light.webp" width="1200" height="650" alt="Two three-by-three grids of single-cell fluorescence crops on black, labelled SAG1 (left) and GRA14 (right). Each crop shows a HeLa cell with a blue nucleus, green GFP-TSG101 and red Toxoplasma vacuoles; in most SAG1 crops the vacuoles look yellow where green overlaps red, in the GRA14 crops they stay red." loading="lazy" decoding="async"></picture>
+          <figcaption>The 9 held-out cells per class that spaCR's CNN classified correctly with the highest confidence, from 405 test cells (306 SAG1-well, 99 GRA14-well) in 4 wells never used for training (A01, C02, F01, H01); test accuracy 0.909, ROC AUC 0.958.</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/shap_beeswarm.webp" width="1200" height="498" alt="SHAP 蜂群图：左侧为十二个特征名称，每个特征沿水平 SHAP 值轴（约 -1.1 到 1.4）有一行彩色点。最上面两行 cell_channel_1_shannon_entropy 和 cell_channel_1_channel_2_M2_correlation_85 向两侧分布最广；较低的行聚集在零附近。" loading="lazy" decoding="async">
-          <figcaption>XGBoost 模型在 3 个孔（C02、D02、H01）的 256 个留出细胞上的 SHAP 值，按平均 |SHAP| 取 76 个特征中的前 12 个；每个点代表一个细胞，按其特征值着色（深色为低，黄色为高），正值推向 GRA14 类别。</figcaption>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/saliency_maps.dark.webp" width="1200" height="933"><img src="/assets/img/phenotypes/saliency_maps.light.webp" width="1200" height="933" alt="Four rows of five single-cell crops: SAG1 crops, the same cells as dim grey images with a magma heat overlay of input-gradient saliency drawn only inside the cell, then GRA14 crops and their saliency overlays. The heat is brightest along the cell outline, with smaller hot spots inside the cells." loading="lazy" decoding="async"></picture>
+          <figcaption>Input-gradient saliency (SmoothGrad, 32 samples) of the CNN for the 5 most confident correct held-out cells per class, shown inside the cell only; in 10 of 10 cells the share of saliency inside the cell (39-93%) is below the share of the crop the cell covers (50-95%), and inside the cell it peaks at the cell outline.</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/shap_waterfall_cell.webp" width="1200" height="547" alt="单个细胞的 SHAP 瀑布图：十个水平箭头，红色向右推，蓝色向左推，从底部的期望值 0.178 到顶部的 f(x) = 1.545；cell_channel_1_shannon_entropy 贡献 +0.92，cell_channel_1_channel_2_M2_correlation_85 贡献 +0.47。" loading="lazy" decoding="async">
-          <figcaption>一个留出的 GRA14 孔细胞（第 1 板，C02 孔，视野 1，对象 35）的单细胞 SHAP 解释：模型基准值 0.178（对数几率）加上各特征贡献得到 1.545，即 GRA14 概率为 0.82。</figcaption>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/shap_beeswarm.dark.webp" width="1200" height="504"><img src="/assets/img/phenotypes/shap_beeswarm.light.webp" width="1200" height="504" alt="SHAP 蜂群图：左侧为十二个特征名称，每个特征沿水平 SHAP 值轴（约 -1.1 到 1.4）有一行彩色点。最上面两行 cell_channel_1_shannon_entropy 和 cell_channel_1_channel_2_M2_correlation_85 向两侧分布最广；较低的行聚集在零附近。" loading="lazy" decoding="async"></picture>
+          <figcaption>SHAP values of spaCR's XGBoost model for 256 held-out cells from 3 wells (C02, D02, H01), top 12 of 76 features by mean |SHAP|; each dot is a cell coloured by its feature value (dark low, yellow high), and positive values push toward the GRA14 class (well-grouped 5-fold accuracy 0.853, ROC AUC 0.922 on 1,277 cells).</figcaption>
         </figure>
         <figure class="wide">
-          <img src="/assets/img/phenotypes/xgb_feature_importance.webp" width="1200" height="737" alt="最重要的 15 个测量特征的灰色水平条形图，最长的条位于顶部，为 cell_channel_1_channel_2_M2_correlation_85（约 0.20），其次为 cell_channel_1_shannon_entropy（约 0.13），其余条均低于 0.06。" loading="lazy" decoding="async">
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/shap_waterfall_cell.dark.webp" width="1200" height="549"><img src="/assets/img/phenotypes/shap_waterfall_cell.light.webp" width="1200" height="549" alt="SHAP waterfall for one cell: ten horizontal arrows, red pushing right and blue pushing left, from the expected value 0.178 at the bottom to f(x) = 1.545 at the top; cell_channel_1_shannon_entropy adds the largest positive contribution." loading="lazy" decoding="async"></picture>
+          <figcaption>Per-cell SHAP explanation of one held-out GRA14-well cell (plate 1, well C02, field 1, object 35): the model's base value of 0.178 log-odds plus the feature contributions gives 1.545, a GRA14 probability of 0.82.</figcaption>
+        </figure>
+        <figure class="wide">
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/phenotypes/xgb_feature_importance.dark.webp" width="1200" height="737"><img src="/assets/img/phenotypes/xgb_feature_importance.light.webp" width="1200" height="737" alt="Horizontal grey bar chart of the 15 most important measurement features, longest bar at the top for cell_channel_1_channel_2_M2_correlation_85 (about 0.20), then cell_channel_1_shannon_entropy (about 0.13)." loading="lazy" decoding="async"></picture>
           <figcaption>用来自 13 个孔的 1,021 个对照细胞训练的模型中，按 XGBoost 重要性排列的 76 个特征中的前 15 个；cell_channel_1_channel_2_M2_correlation_85 排第一（0.196），其次为 cell_channel_1_shannon_entropy（0.133）。</figcaption>
         </figure>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -567,20 +551,20 @@
       </ul>
       <div class="grid two results">
         <figure>
-          <img src="/assets/img/examples/dose_response.webp" width="1170" height="792" alt="五种化合物的中位细胞数剂量反应曲线，突出显示 SNX-2112 及其 EC50" loading="lazy" decoding="async">
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/examples/dose_response.dark.webp" width="1170" height="792"><img src="/assets/img/examples/dose_response.light.webp" width="1170" height="792" alt="五种化合物的中位细胞数剂量反应曲线，突出显示 SNX-2112 及其 EC50" loading="lazy" decoding="async"></picture>
           <figcaption>Dose-Response：58 种化合物中 EC50 有界的 5 种的四参数逻辑斯蒂拟合；SNX-2112 EC50 为 0.299 µM（95% CI 0.279–0.319）。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-dose">spacr-example-dose</a>，1,536 个孔，4 块板。</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/examples/control_chart.webp" width="1200" height="747" alt="24 块板 DMSO 孔中位细胞数的控制图，带控制限和被标记的板" loading="lazy" decoding="async">
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/examples/control_chart.dark.webp" width="1200" height="747"><img src="/assets/img/examples/control_chart.light.webp" width="1200" height="747" alt="24 块板 DMSO 孔中位细胞数的控制图，带控制限和被标记的板" loading="lazy" decoding="async"></picture>
           <figcaption>控制图：24 块板 DMSO 孔的中位细胞数；在细胞系、时间点和接种条件改变之后，全部 24 块板都落在控制限之外。数据：<a href="https://huggingface.co/datasets/einarolafsson/spacr-example-control-chart">spacr-example-control-chart</a>。</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/models/plaque-figure.webp" width="1024" height="1090" alt="结晶紫染色的噬斑孔，99 个噬斑以品红色勾勒" loading="lazy" decoding="async">
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/models/plaque.dark.webp" width="1024" height="1011"><img src="/assets/img/models/plaque.light.webp" width="1024" height="1011" alt="结晶紫染色的噬斑孔，99 个噬斑以品红色勾勒" loading="lazy" decoding="async"></picture>
           <figcaption>Plaque Assay：toxoplasma_plaque_v3 在 Cabral et al. 2024（CC BY 4.0）的一个孔中找到 99 个噬斑；手绘掩膜中为 98 个。</figcaption>
         </figure>
         <figure>
-          <img src="/assets/img/spacr/recruitment.webp" width="1200" height="464" alt="四块板上阴性和阳性对照孔 GFP-TSG101 募集的柱状图" loading="lazy" decoding="async">
-          <figcaption>Recruitment：四块板上 SAG1（阴性）和 GRA14（阳性）对照孔中 GFP-TSG101 的空泡与细胞质比值；板均值 p = 8.4 × 10⁻⁵。</figcaption>
+          <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/recruitment.dark.webp" width="1200" height="464"><img src="/assets/img/spacr/recruitment.light.webp" width="1200" height="464" alt="四块板上阴性和阳性对照孔 GFP-TSG101 募集的柱状图" loading="lazy" decoding="async"></picture>
+          <figcaption>Recruitment: GFP-TSG101 vacuole-to-cytoplasm ratio in SAG1 (negative) and GRA14 (positive) control wells on four plates, 16 wells each, recomputed with spaCR from the public plate measurements: plate means 1.31 against 1.09, p = 8.6 × 10⁻⁵ (t-test, n = 4; the preprint reports 8.4 × 10⁻⁵). Data: <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">spacr-example-screen</a>.</figcaption>
         </figure>
       </div>
     </div>
