@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");if(f&&/^[a-z_]{1,24}$/.test(f))d.setAttribute("data-fx",f);})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=cdb51bbe7a">
+<link rel="stylesheet" href="/assets/css/site.css?v=5feb28dc03">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=cdb51bbe7a" defer></script>
+<script src="/assets/js/fx.js?v=5feb28dc03" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4：用于基于图像的混合 CRISPR 筛选的分割、单细胞测量、分类、条形码映射和回归。包含流程、已发布模型、筛选结果、论文和安装说明。">
-<script src="/assets/js/volcano.js?v=cdb51bbe7a" defer></script>
+<script src="/assets/js/volcano.js?v=5feb28dc03" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">跳到正文</a>
@@ -420,7 +420,7 @@
         <img src="/assets/img/spacr/volcano.webp" width="1200" height="744" alt="两幅基因效应对显著性的火山图；EAF1 和 GRA14 在两幅图中均位于阈值之上" loading="lazy" decoding="async">
         <figcaption>来自测量分类器（XGBoost，左）和图像分类器（MaxViT，右）的基因效应；EAF1 和 GRA14 在两者中均超过 3σ。预印本图 5。</figcaption>
       </figure>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=cdb51bbe7a">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=5feb28dc03">
         <h3 id="ols-volcano-title">全部四块板：spaCR OLS 回归得到的基因效应</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">正在加载回归结果…</p>
