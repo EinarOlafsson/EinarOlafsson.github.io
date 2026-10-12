@@ -10,23 +10,23 @@
 <link rel="stylesheet" href="/assets/css/site.css?v=048c6f7f63">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/assets/js/fx.js?v=048c6f7f63" defer></script>
-<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/starplast/">
-<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/starplast/de/">
-<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/starplast/es/">
-<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/starplast/fr/">
-<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/starplast/hi/">
-<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/starplast/is/">
-<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/starplast/ko/">
-<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/starplast/pt/">
-<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/starplast/sv/">
-<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/starplast/zh-CN/">
-<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/starplast/">
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/parascape/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/parascape/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/parascape/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/parascape/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/parascape/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/parascape/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/parascape/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/parascape/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/parascape/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/parascape/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/parascape/">
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Skipta yfir í dökkt þema","ui.theme_light":"Skipta yfir í ljóst þema","ui.fx_pause":"Gera hlé á bakgrunnshreyfimynd","ui.fx_resume":"Halda bakgrunnshreyfimynd áfram","ui.fx_reduced":"Slökkt er á bakgrunnshreyfimyndinni: kerfið þitt biður um minni hreyfingu","ui.pause":"Hlé","ui.resume":"Halda áfram","ui.copied":"Afritað"}</script>
 
-<title>Starplast: vísbendingar um gen í Toxoplasma og Plasmodium</title>
-<meta name="description" content="Starplast 0.54.0: skjáborðsforrit til að kanna vísbendingar um gen í Toxoplasma gondii og Plasmodium falciparum: tjáningu, hæfniskimanir, staðsetningu, próteineiginleika, víxlverkanir og skýringar úr fræðiritum.">
+<title>ParaScape: vísbendingar um gen í Toxoplasma og Plasmodium</title>
+<meta name="description" content="ParaScape 0.55.0: skjáborðsforrit til að kanna vísbendingar um gen í Toxoplasma gondii og Plasmodium falciparum: tjáningu, hæfniskimanir, staðsetningu, próteineiginleika, víxlverkanir og skýringar úr fræðiritum.">
 </head>
-<body data-page="starplast">
+<body data-page="parascape">
 <a class="skip" href="#main">Fara beint í efni</a>
 <div class="fx-css" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -35,7 +35,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Smásjárverkefni</span></a>
     <nav class="nav" aria-label="Verkefni">
       <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
-      <a href="/projects/starplast/is/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/parascape/is/" data-nav="parascape" aria-current="page">ParaScape</a>
       <a href="/projects/timepose/" data-nav="timepose">Timepose</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="/#about" data-nav="about">Um</a>
@@ -44,16 +44,16 @@
       <details class="lang" data-lang-menu>
         <summary title="Tungumál"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Tungumál: </span><span class="lang-cur">Íslenska</span></summary>
         <ul aria-label="Tungumál">
-          <li><a href="/projects/starplast/" hreflang="en" lang="en" data-lang="en">English</a></li>
-          <li><a href="/projects/starplast/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
-          <li><a href="/projects/starplast/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
-          <li><a href="/projects/starplast/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
-          <li><a href="/projects/starplast/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
-          <li><a href="/projects/starplast/is/" hreflang="is" lang="is" data-lang="is" aria-current="true">Íslenska</a></li>
-          <li><a href="/projects/starplast/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
-          <li><a href="/projects/starplast/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
-          <li><a href="/projects/starplast/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
-          <li><a href="/projects/starplast/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+          <li><a href="/projects/parascape/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/parascape/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/parascape/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/parascape/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/parascape/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/parascape/is/" hreflang="is" lang="is" data-lang="is" aria-current="true">Íslenska</a></li>
+          <li><a href="/projects/parascape/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/parascape/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/parascape/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/parascape/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
         </ul>
       </details>
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Gera hlé á bakgrunnshreyfimynd" title="Gera hlé á bakgrunnshreyfimynd">
@@ -85,24 +85,24 @@
     <div class="wrap grid sp-top">
       <div>
         <p class="kicker"><span>Skjáborðsforrit (PyQt6)</span> · <span class="nw">MIT</span></p>
-        <h1>Starplast</h1>
+        <h1>ParaScape</h1>
         <p class="lede">Vísbendingar um gen í <i>Toxoplasma gondii</i> og <i>Plasmodium falciparum</i> á einum stað.</p>
-        <p class="prose">Starplast sameinar tjáningu, hæfniskimanir, staðsetningu, próteineiginleika, víxlverkanir og skýringar úr fræðiritum. Notaðu það til að fletta upp geni, rannsaka frambjóðendur úr skimun, bera saman hópa gena og velja gen til frekari tilrauna. Meðfylgjandi kort innihalda 8.140 gen úr <i>T. gondii</i> og 5.720 gen úr <i>P. falciparum</i>, sem eru skoðuð hvort í sínu lagi.</p>
+        <p class="prose">ParaScape sameinar tjáningu, hæfniskimanir, staðsetningu, próteineiginleika, víxlverkanir og skýringar úr fræðiritum. Notaðu það til að fletta upp geni, rannsaka frambjóðendur úr skimun, bera saman hópa gena og velja gen til frekari tilrauna. Meðfylgjandi kort innihalda 8.140 gen úr <i>T. gondii</i> og 5.720 gen úr <i>P. falciparum</i>, sem eru skoðuð hvort í sínu lagi.</p>
         <ul class="facts">
-          <li>Útgáfa <b>0.54.0</b></li>
-          <li>Gefin út <b>2026-10-05</b></li>
+          <li>Útgáfa <b>0.55.0</b></li>
+          <li>Gefin út <b>see PyPI</b></li>
           <li>Python <b>3.10 or newer</b></li>
         </ul>
         <div class="btns">
           <a class="btn primary" href="#install">Setja upp</a>
-          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">Notendahandbók</a>
-          <a class="btn" href="https://github.com/EinarOlafsson/starplast">Frumkóði</a>
-          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+          <a class="btn" href="https://einarolafsson.github.io/parascape/guide.html">Notendahandbók</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/parascape">Frumkóði</a>
+          <a class="btn" href="https://pypi.org/project/parascape/">PyPI</a>
         </div>
       </div>
       <figure class="sp-map">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Genakort Starplast: þúsundir punkta, einn fyrir hvert gen, í lituðum hópum, með línum frá einu völdu geni til skyldra gena" fetchpriority="high"></picture>
-        <figcaption>Genakort <i>T. gondii</i> í dökku og ljósu þema Starplast; það fylgir þema þessarar síðu. Hver punktur er gen; línur tengja valda genið við skyld gen. Skjámyndir úr <a href="https://github.com/EinarOlafsson/starplast">geymslu Starplast</a> (MIT).</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/parascape/map.dark.webp" width="640" height="480"><img src="/assets/img/parascape/map.light.webp" width="640" height="480" alt="Genakort ParaScape: þúsundir punkta, einn fyrir hvert gen, í lituðum hópum, með línum frá einu völdu geni til skyldra gena" fetchpriority="high"></picture>
+        <figcaption>Genakort <i>T. gondii</i> í dökku og ljósu þema ParaScape; það fylgir þema þessarar síðu. Hver punktur er gen; línur tengja valda genið við skyld gen. Skjámyndir úr <a href="https://github.com/EinarOlafsson/parascape">geymslu ParaScape</a> (MIT).</figcaption>
       </figure>
     </div>
   </section>
@@ -116,7 +116,7 @@
         <li><b>Bera saman skimun</b><span>Tengir CSV- eða TSV-skrá á genastigi við fyrirliggjandi vísbendingar og heldur óleystum auðkennum sýnilegum.</span></li>
         <li><b>39 aðferðir</b><span>Nefndar leiðir til að breyta sameinuðu gögnunum í fullyrðingu, hver með leiðbeiningum og sjálfsprófi gegn stokkuðum gögnum.</span></li>
       </ul>
-      <p class="note sp-note">Staðsetningar á kortinu koma úr greypingu valinna eiginleika: nálæg gen hafa svipuð inntaksgögn, sem eitt og sér sýnir hvorki sameiginlegt hlutverk né efnislega víxlverkun. Leitareinkunnir hjálpa til við að forgangsraða genum; þær eru ekki staðfesting með tilraunum. Genatöflur og net fylgja pakkanum og virka án nettengingar; 130 skráð gagnasöfn eru talin upp ásamt heimildum sínum í <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">gagnasafnaskránni</a>.</p>
+      <p class="note sp-note">Staðsetningar á kortinu koma úr greypingu valinna eiginleika: nálæg gen hafa svipuð inntaksgögn, sem eitt og sér sýnir hvorki sameiginlegt hlutverk né efnislega víxlverkun. Leitareinkunnir hjálpa til við að forgangsraða genum; þær eru ekki staðfesting með tilraunum. Genatöflur og net fylgja pakkanum og virka án nettengingar; 130 skráð gagnasöfn eru talin upp ásamt heimildum sínum í <a href="https://github.com/EinarOlafsson/parascape/blob/main/docs/datasets.md">gagnasafnaskránni</a>.</p>
     </div>
   </section>
 
@@ -135,20 +135,20 @@
 
   <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
     <div class="wrap">
-      <h2 id="sp-install-h">Setja upp Starplast 0.54.0</h2>
+      <h2 id="sp-install-h">Setja upp ParaScape 0.55.0</h2>
       <div class="grid two">
         <div>
           <h3>PyPI</h3>
           <div class="code-wrap">
-<pre id="sp-pip"><code>pip install starplast
-starplast</code></pre>
+<pre id="sp-pip"><code>pip install parascape
+parascape</code></pre>
             <button class="copy" type="button" data-copy="sp-pip">Afrita</button>
           </div>
-          <p class="note">Krefst Python &gt;=3.10, skjás og OpenGL. Greiningar keyra á örgjörvanum; <code>pip install "starplast[gpu]"</code> bætir við stuðningi við NVIDIA-skjákort á Linux x86-64 með rekli fyrir CUDA 12.</p>
+          <p class="note">Krefst Python &gt;=3.10, skjás og OpenGL. Greiningar keyra á örgjörvanum; <code>pip install "parascape[gpu]"</code> bætir við stuðningi við NVIDIA-skjákort á Linux x86-64 með rekli fyrir CUDA 12.</p>
         </div>
         <div>
           <h3>Úr spaCR</h3>
-          <p>Í skjáborðsforriti spaCR setur Starplast-reiturinn á <i>Toxoplasma</i>-síðunni upp Starplast í eigin Python-umhverfi og opnar það sem sérstakt forrit (merkt alfa í spaCR). Til að skoða niðurstöður spaCR í Starplast skaltu flytja töflu á genastigi út úr spaCR og flytja hana inn með File → Import data.</p>
+          <p>Í skjáborðsforriti spaCR setur ParaScape-reiturinn á <i>Toxoplasma</i>-síðunni upp ParaScape í eigin Python-umhverfi og opnar það sem sérstakt forrit (merkt alfa í spaCR). Til að skoða niðurstöður spaCR í ParaScape skaltu flytja töflu á genastigi út úr spaCR og flytja hana inn með File → Import data.</p>
           <p class="note"><a href="/projects/spacr/">Um spaCR</a></p>
         </div>
       </div>
@@ -159,12 +159,12 @@ starplast</code></pre>
     <div class="wrap">
       <h2 id="sp-links-h">Tenglar og leyfi</h2>
       <ul class="links">
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>Frumkóði</b><span>GitHub-geymsla, verkbeiðnir og útgáfur.</span></a></li>
-        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>Pakkinn starplast.</span></a></li>
-        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>Leiðbeiningar</b><span>Notendahandbók, Python-API og kynning í 40 glærum.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>Breytingar</b><span>Hvað breyttist í hverri útgáfu.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>Vísa í</b><span>Vísaðu í Starplast og upprunalegar heimildir gagnasafnanna sem þú notar.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>MIT-leyfi</b><span>Gildir um frumkóðann; upprunaleg gagnasöfn og myndefni frá þriðju aðilum halda eigin leyfum.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape"><b>Frumkóði</b><span>GitHub-geymsla, verkbeiðnir og útgáfur.</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/parascape/"><b>PyPI</b><span>Pakkinn parascape.</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/parascape/"><b>Leiðbeiningar</b><span>Notendahandbók, Python-API og kynning í 40 glærum.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"><b>Breytingar</b><span>Hvað breyttist í hverri útgáfu.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CITATION.cff"><b>Vísa í</b><span>Vísaðu í ParaScape og upprunalegar heimildir gagnasafnanna sem þú notar.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/LICENSE"><b>MIT-leyfi</b><span>Gildir um frumkóðann; upprunaleg gagnasöfn og myndefni frá þriðju aðilum halda eigin leyfum.</span></a></li>
       </ul>
     </div>
   </section>

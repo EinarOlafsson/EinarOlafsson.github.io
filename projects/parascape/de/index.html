@@ -10,23 +10,23 @@
 <link rel="stylesheet" href="/assets/css/site.css?v=048c6f7f63">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/assets/js/fx.js?v=048c6f7f63" defer></script>
-<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/starplast/">
-<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/starplast/de/">
-<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/starplast/es/">
-<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/starplast/fr/">
-<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/starplast/hi/">
-<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/starplast/is/">
-<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/starplast/ko/">
-<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/starplast/pt/">
-<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/starplast/sv/">
-<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/starplast/zh-CN/">
-<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/starplast/">
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/parascape/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/parascape/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/parascape/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/parascape/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/parascape/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/parascape/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/parascape/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/parascape/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/parascape/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/parascape/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/parascape/">
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Zum dunklen Design wechseln","ui.theme_light":"Zum hellen Design wechseln","ui.fx_pause":"Hintergrundanimation anhalten","ui.fx_resume":"Hintergrundanimation fortsetzen","ui.fx_reduced":"Die Hintergrundanimation ist aus: Ihr System fordert reduzierte Bewegung an","ui.pause":"Anhalten","ui.resume":"Fortsetzen","ui.copied":"Kopiert"}</script>
 
-<title>Starplast: Evidenz zu Genen von Toxoplasma und Plasmodium</title>
-<meta name="description" content="Starplast 0.54.0: eine Desktop-Anwendung zum Erkunden von Evidenz zu Genen in Toxoplasma gondii und Plasmodium falciparum: Expression, Fitness-Screens, Lokalisierung, Proteinmerkmale, Interaktionen und Annotationen aus der Literatur.">
+<title>ParaScape: Evidenz zu Genen von Toxoplasma und Plasmodium</title>
+<meta name="description" content="ParaScape 0.55.0: eine Desktop-Anwendung zum Erkunden von Evidenz zu Genen in Toxoplasma gondii und Plasmodium falciparum: Expression, Fitness-Screens, Lokalisierung, Proteinmerkmale, Interaktionen und Annotationen aus der Literatur.">
 </head>
-<body data-page="starplast">
+<body data-page="parascape">
 <a class="skip" href="#main">Zum Inhalt springen</a>
 <div class="fx-css" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -35,7 +35,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Mikroskopieprojekte</span></a>
     <nav class="nav" aria-label="Projekte">
       <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
-      <a href="/projects/starplast/de/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/parascape/de/" data-nav="parascape" aria-current="page">ParaScape</a>
       <a href="/projects/timepose/" data-nav="timepose">Timepose</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="/#about" data-nav="about">Über</a>
@@ -44,16 +44,16 @@
       <details class="lang" data-lang-menu>
         <summary title="Sprache"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">Sprache: </span><span class="lang-cur">Deutsch</span></summary>
         <ul aria-label="Sprache">
-          <li><a href="/projects/starplast/" hreflang="en" lang="en" data-lang="en">English</a></li>
-          <li><a href="/projects/starplast/de/" hreflang="de" lang="de" data-lang="de" aria-current="true">Deutsch</a></li>
-          <li><a href="/projects/starplast/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
-          <li><a href="/projects/starplast/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
-          <li><a href="/projects/starplast/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
-          <li><a href="/projects/starplast/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
-          <li><a href="/projects/starplast/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
-          <li><a href="/projects/starplast/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
-          <li><a href="/projects/starplast/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
-          <li><a href="/projects/starplast/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+          <li><a href="/projects/parascape/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/parascape/de/" hreflang="de" lang="de" data-lang="de" aria-current="true">Deutsch</a></li>
+          <li><a href="/projects/parascape/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/parascape/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/parascape/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/parascape/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/parascape/ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+          <li><a href="/projects/parascape/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/parascape/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/parascape/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
         </ul>
       </details>
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="Hintergrundanimation anhalten" title="Hintergrundanimation anhalten">
@@ -85,24 +85,24 @@
     <div class="wrap grid sp-top">
       <div>
         <p class="kicker"><span>Desktop-Anwendung (PyQt6)</span> · <span class="nw">MIT</span></p>
-        <h1>Starplast</h1>
+        <h1>ParaScape</h1>
         <p class="lede">Evidenz zu Genen von <i>Toxoplasma gondii</i> und <i>Plasmodium falciparum</i> an einem Ort.</p>
-        <p class="prose">Starplast führt Expression, Fitness-Screens, Lokalisierung, Proteinmerkmale, Interaktionen und Annotationen aus der Literatur zusammen. Damit können Sie ein Gen nachschlagen, Treffer aus einem Screen untersuchen, Gruppen von Genen vergleichen und Kandidaten für Folgeexperimente auswählen. Die mitgelieferten Karten enthalten 8.140 Gene von <i>T. gondii</i> und 5.720 Gene von <i>P. falciparum</i>, die getrennt angezeigt werden.</p>
+        <p class="prose">ParaScape führt Expression, Fitness-Screens, Lokalisierung, Proteinmerkmale, Interaktionen und Annotationen aus der Literatur zusammen. Damit können Sie ein Gen nachschlagen, Treffer aus einem Screen untersuchen, Gruppen von Genen vergleichen und Kandidaten für Folgeexperimente auswählen. Die mitgelieferten Karten enthalten 8.140 Gene von <i>T. gondii</i> und 5.720 Gene von <i>P. falciparum</i>, die getrennt angezeigt werden.</p>
         <ul class="facts">
-          <li>Version <b>0.54.0</b></li>
-          <li>Veröffentlicht am <b>2026-10-05</b></li>
+          <li>Version <b>0.55.0</b></li>
+          <li>Veröffentlicht am <b>see PyPI</b></li>
           <li>Python <b>3.10 or newer</b></li>
         </ul>
         <div class="btns">
           <a class="btn primary" href="#install">Installieren</a>
-          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">Benutzerhandbuch</a>
-          <a class="btn" href="https://github.com/EinarOlafsson/starplast">Quellcode</a>
-          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+          <a class="btn" href="https://einarolafsson.github.io/parascape/guide.html">Benutzerhandbuch</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/parascape">Quellcode</a>
+          <a class="btn" href="https://pypi.org/project/parascape/">PyPI</a>
         </div>
       </div>
       <figure class="sp-map">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Genkarte von Starplast: Tausende Punkte, einer pro Gen, in farbigen Gruppen, mit Linien von einem ausgewählten Gen zu verwandten Genen" fetchpriority="high"></picture>
-        <figcaption>Die Genkarte von <i>T. gondii</i> im dunklen und im hellen Design von Starplast; sie folgt dem Design dieser Seite. Jeder Punkt ist ein Gen; Linien verbinden das ausgewählte Gen mit verwandten Genen. Bildschirmfotos aus dem <a href="https://github.com/EinarOlafsson/starplast">Starplast-Repository</a> (MIT).</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/parascape/map.dark.webp" width="640" height="480"><img src="/assets/img/parascape/map.light.webp" width="640" height="480" alt="Genkarte von ParaScape: Tausende Punkte, einer pro Gen, in farbigen Gruppen, mit Linien von einem ausgewählten Gen zu verwandten Genen" fetchpriority="high"></picture>
+        <figcaption>Die Genkarte von <i>T. gondii</i> im dunklen und im hellen Design von ParaScape; sie folgt dem Design dieser Seite. Jeder Punkt ist ein Gen; Linien verbinden das ausgewählte Gen mit verwandten Genen. Bildschirmfotos aus dem <a href="https://github.com/EinarOlafsson/parascape">ParaScape-Repository</a> (MIT).</figcaption>
       </figure>
     </div>
   </section>
@@ -116,7 +116,7 @@
         <li><b>Einen Screen vergleichen</b><span>Verknüpft eine CSV- oder TSV-Datei auf Genebene mit der vorhandenen Evidenz und lässt nicht aufgelöste Kennungen sichtbar.</span></li>
         <li><b>39 Strategien</b><span>Benannte Wege, die kombinierten Daten in eine Aussage zu überführen, jeweils mit einer Anleitung und einem Selbsttest gegen permutierte Daten.</span></li>
       </ul>
-      <p class="note sp-note">Die Positionen auf der Karte stammen aus einem Embedding ausgewählter Merkmale: Benachbarte Gene haben ähnliche Eingangsdaten, was allein weder eine gemeinsame Funktion noch eine physische Interaktion belegt. Such-Scores helfen bei der Priorisierung von Kandidaten; sie sind keine experimentelle Validierung. Gentabellen und Graphen werden mit dem Paket ausgeliefert und funktionieren offline; 130 registrierte Datensätze sind mit ihren Quellen im <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">Datensatzkatalog</a> aufgeführt.</p>
+      <p class="note sp-note">Die Positionen auf der Karte stammen aus einem Embedding ausgewählter Merkmale: Benachbarte Gene haben ähnliche Eingangsdaten, was allein weder eine gemeinsame Funktion noch eine physische Interaktion belegt. Such-Scores helfen bei der Priorisierung von Kandidaten; sie sind keine experimentelle Validierung. Gentabellen und Graphen werden mit dem Paket ausgeliefert und funktionieren offline; 130 registrierte Datensätze sind mit ihren Quellen im <a href="https://github.com/EinarOlafsson/parascape/blob/main/docs/datasets.md">Datensatzkatalog</a> aufgeführt.</p>
     </div>
   </section>
 
@@ -135,20 +135,20 @@
 
   <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
     <div class="wrap">
-      <h2 id="sp-install-h">Starplast 0.54.0 installieren</h2>
+      <h2 id="sp-install-h">ParaScape 0.55.0 installieren</h2>
       <div class="grid two">
         <div>
           <h3>PyPI</h3>
           <div class="code-wrap">
-<pre id="sp-pip"><code>pip install starplast
-starplast</code></pre>
+<pre id="sp-pip"><code>pip install parascape
+parascape</code></pre>
             <button class="copy" type="button" data-copy="sp-pip">Kopieren</button>
           </div>
-          <p class="note">Erfordert Python &gt;=3.10, eine Anzeige und OpenGL. Analysen laufen auf der CPU; <code>pip install "starplast[gpu]"</code> ergänzt Unterstützung für NVIDIA-GPUs unter Linux x86-64 mit einem CUDA-12-Treiber.</p>
+          <p class="note">Erfordert Python &gt;=3.10, eine Anzeige und OpenGL. Analysen laufen auf der CPU; <code>pip install "parascape[gpu]"</code> ergänzt Unterstützung für NVIDIA-GPUs unter Linux x86-64 mit einem CUDA-12-Treiber.</p>
         </div>
         <div>
           <h3>Aus spaCR</h3>
-          <p>In der Desktop-Anwendung von spaCR installiert die Starplast-Kachel auf der Seite <i>Toxoplasma</i> Starplast in einer eigenen Python-Umgebung und öffnet es als separate Anwendung (in spaCR als Alpha gekennzeichnet). Um spaCR-Ergebnisse in Starplast anzusehen, exportieren Sie eine Tabelle auf Genebene aus spaCR und importieren Sie sie mit File → Import data.</p>
+          <p>In der Desktop-Anwendung von spaCR installiert die ParaScape-Kachel auf der Seite <i>Toxoplasma</i> ParaScape in einer eigenen Python-Umgebung und öffnet es als separate Anwendung (in spaCR als Alpha gekennzeichnet). Um spaCR-Ergebnisse in ParaScape anzusehen, exportieren Sie eine Tabelle auf Genebene aus spaCR und importieren Sie sie mit File → Import data.</p>
           <p class="note"><a href="/projects/spacr/">Über spaCR</a></p>
         </div>
       </div>
@@ -159,12 +159,12 @@ starplast</code></pre>
     <div class="wrap">
       <h2 id="sp-links-h">Links und Lizenz</h2>
       <ul class="links">
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>Quellcode</b><span>GitHub-Repository, Issues und Releases.</span></a></li>
-        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>Das Paket starplast.</span></a></li>
-        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>Dokumentation</b><span>Benutzerhandbuch, Python-API und eine Einführung mit 40 Folien.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>Änderungen</b><span>Was sich in jedem Release geändert hat.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>Zitieren</b><span>Zitieren Sie Starplast und die Originalquellen der Datensätze, die Sie verwenden.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>MIT-Lizenz</b><span>Gilt für den Quellcode; Quelldatensätze und Grafiken Dritter behalten ihre eigenen Lizenzen.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape"><b>Quellcode</b><span>GitHub-Repository, Issues und Releases.</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/parascape/"><b>PyPI</b><span>Das Paket parascape.</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/parascape/"><b>Dokumentation</b><span>Benutzerhandbuch, Python-API und eine Einführung mit 40 Folien.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"><b>Änderungen</b><span>Was sich in jedem Release geändert hat.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CITATION.cff"><b>Zitieren</b><span>Zitieren Sie ParaScape und die Originalquellen der Datensätze, die Sie verwenden.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/LICENSE"><b>MIT-Lizenz</b><span>Gilt für den Quellcode; Quelldatensätze und Grafiken Dritter behalten ihre eigenen Lizenzen.</span></a></li>
       </ul>
     </div>
   </section>

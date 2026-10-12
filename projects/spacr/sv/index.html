@@ -40,7 +40,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>Mikroskopiprojekt</span></a>
     <nav class="nav" aria-label="Projekt">
       <a href="/projects/spacr/sv/" data-nav="spacr" aria-current="page" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
-      <a href="/projects/starplast/" data-nav="starplast">Starplast</a>
+      <a href="/projects/parascape/" data-nav="parascape">ParaScape</a>
       <a href="/projects/timepose/" data-nav="timepose">Timepose</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="#about" data-nav="about">Om</a>
@@ -138,7 +138,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>analyserade screenplattor</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>lektioner i handledningar</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>gränssnittsspråk</span></a></li>
-        <li><a class="row" href="#install"><b>85,746</b><span>automatiska tester</span></a></li>
+        <li><a class="row" href="#install"><b>85,729</b><span>automatiska tester</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -445,15 +445,14 @@
           <p class="note mc-why">The plaque module first finds each well in a plate image or published figure and then segments plaques inside it; the detected well also gives the diameter that makes plaque areas comparable across microscopes. Stock YOLO has no plaque-well class, so each detector is compared with the one before it: on 129 held-out test images v2 scores mAP50 0.946 against v1's 0.884, with 49 false boxes on no-well images against 152.</p>
           <div class="mc-one">
           <article class="mc">
-            <header><h4>Toxoplasma Plaque Well Detector v2</h4><span class="mc-badge default">default</span></header>
-            <dl class="mc-facts"><div><dt>Version</dt><dd>v2</dd></div><div><dt>Base model</dt><dd>yolo26n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>129 test images (84 with no well) · plate images and literature figures, split by PMC article; never used for training or model selection</dd></div></dl>
-            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>previous version (well detector v1, YOLO11n) on the same test set</th></tr></thead><tbody><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.891"></span><span class="mc-num">0.891</span></td><td><span class="mc-bar va" style="--v:0.861"></span><span class="mc-num">0.861</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.944"></span><span class="mc-num">0.944</span></td><td><span class="mc-bar va" style="--v:0.909"></span><span class="mc-num">0.909</span></td></tr><tr><th scope="row">mAP at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.946"></span><span class="mc-num">0.946</span></td><td><span class="mc-bar va" style="--v:0.884"></span><span class="mc-num">0.884</span></td></tr><tr><th scope="row">mAP at IoU 0.5 to 0.95</th><td><span class="mc-bar ft" style="--v:0.834"></span><span class="mc-num">0.834</span></td><td><span class="mc-bar va" style="--v:0.763"></span><span class="mc-num">0.763</span></td></tr></tbody></table>
-            <p class="mc-note">Cuts false boxes on no-well images from 152 to 49 on the shared test set.</p>
+            <header><h4>Toxoplasma Well Detector v3 (YOLO11 Gel Doc candidate)</h4><span class="mc-badge default">default</span></header>
+            <dl class="mc-facts"><div><dt>Version</dt><dd>v3</dd></div><div><dt>Base model</dt><dd>yolo11n</dd></div><div class="wide"><dt>Held-out test set</dt><dd>73 clean validation images · incumbent validation images after removing exact and canonical-figure duplicates; validation data, not an independent test</dd></div></dl>
+            <table class="mc-table"><thead><tr><td></td><th scope="col"><span class="mc-key ft"></span>This model</th><th scope="col"><span class="mc-key va"></span>previous version (well detector v1, the YOLO11n incumbent) on the same validation images</th></tr></thead><tbody><tr><th scope="row">Precision</th><td><span class="mc-bar ft" style="--v:0.970"></span><span class="mc-num">0.970</span></td><td><span class="mc-bar va" style="--v:0.963"></span><span class="mc-num">0.963</span></td></tr><tr><th scope="row">Recall</th><td><span class="mc-bar ft" style="--v:0.998"></span><span class="mc-num">0.998</span></td><td><span class="mc-bar va" style="--v:0.988"></span><span class="mc-num">0.988</span></td></tr><tr><th scope="row">mAP at IoU 0.5</th><td><span class="mc-bar ft" style="--v:0.994"></span><span class="mc-num">0.994</span></td><td><span class="mc-bar va" style="--v:0.992"></span><span class="mc-num">0.992</span></td></tr><tr><th scope="row">mAP at IoU 0.5 to 0.95</th><td><span class="mc-bar ft" style="--v:0.884"></span><span class="mc-num">0.884</span></td><td><span class="mc-bar va" style="--v:0.893"></span><span class="mc-num">0.893</span></td></tr></tbody></table>
+            <p class="mc-note">On 3 Gel Doc validation plates mAP50-95 rises from 0.895 to 0.931; both models recover the expected well count on all 3.</p>
             <details class="mc-read"><summary>How to read these scores</summary><ul><li>mAP at IoU 0.5 is the mean average precision of the predicted boxes when a box counts as correct at an IoU (overlap divided by the area the two boxes cover together) of 0.5 or more. mAP at IoU 0.5 to 0.95 averages it over ten thresholds, so loosely placed boxes score lower.</li><li>Precision is the share of predicted boxes that match a reference box; low precision means false boxes. Recall is the share of reference boxes the model found; low recall means missed wells.</li><li>The grey bar is the baseline named in the column header, scored on the same test images: stock Cellpose-SAM without fine-tuning, or an earlier model where no stock model has the class.</li><li>The held-out test set is images kept out of training and used only for scoring.</li></ul></details>
-            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo26">Model card</a></p>
+            <p class="mc-link"><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11-v4-geldoc">Model card</a></p>
           </article>
-          <p class="mc-more">Also published, not the default: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11-v4-geldoc">v3</a> (candidate)</p>
-          <p class="mc-more">Previous versions: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11">v1</a></p>
+          <p class="mc-more">Previous versions: <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11">v1</a>, <a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo26">v2</a></p>
           </div>
         </div>
         <div class="mc-group wide" role="group" aria-labelledby="mc-crosschannel">

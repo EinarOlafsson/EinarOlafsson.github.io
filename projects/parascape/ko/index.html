@@ -10,23 +10,23 @@
 <link rel="stylesheet" href="/assets/css/site.css?v=048c6f7f63">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/assets/js/fx.js?v=048c6f7f63" defer></script>
-<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/starplast/">
-<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/starplast/de/">
-<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/starplast/es/">
-<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/starplast/fr/">
-<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/starplast/hi/">
-<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/starplast/is/">
-<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/starplast/ko/">
-<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/starplast/pt/">
-<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/starplast/sv/">
-<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/starplast/zh-CN/">
-<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/starplast/">
+<link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/parascape/">
+<link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/parascape/de/">
+<link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/parascape/es/">
+<link rel="alternate" hreflang="fr" href="https://einarolafsson.github.io/projects/parascape/fr/">
+<link rel="alternate" hreflang="hi" href="https://einarolafsson.github.io/projects/parascape/hi/">
+<link rel="alternate" hreflang="is" href="https://einarolafsson.github.io/projects/parascape/is/">
+<link rel="alternate" hreflang="ko" href="https://einarolafsson.github.io/projects/parascape/ko/">
+<link rel="alternate" hreflang="pt" href="https://einarolafsson.github.io/projects/parascape/pt/">
+<link rel="alternate" hreflang="sv" href="https://einarolafsson.github.io/projects/parascape/sv/">
+<link rel="alternate" hreflang="zh-CN" href="https://einarolafsson.github.io/projects/parascape/zh-CN/">
+<link rel="alternate" hreflang="x-default" href="https://einarolafsson.github.io/projects/parascape/">
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"어두운 테마로 전환","ui.theme_light":"밝은 테마로 전환","ui.fx_pause":"배경 애니메이션 일시 정지","ui.fx_resume":"배경 애니메이션 재개","ui.fx_reduced":"배경 애니메이션이 꺼져 있습니다: 시스템에서 동작 줄이기를 요청합니다","ui.pause":"일시 정지","ui.resume":"재개","ui.copied":"복사됨"}</script>
 
-<title>Starplast: Toxoplasma 및 Plasmodium 유전자 근거</title>
-<meta name="description" content="Starplast 0.54.0: Toxoplasma gondii와 Plasmodium falciparum의 유전자 근거를 탐색하는 데스크톱 애플리케이션: 발현, 적합도 스크린, 국재, 단백질 특징, 상호작용 및 문헌 주석.">
+<title>ParaScape: Toxoplasma 및 Plasmodium 유전자 근거</title>
+<meta name="description" content="ParaScape 0.55.0: Toxoplasma gondii와 Plasmodium falciparum의 유전자 근거를 탐색하는 데스크톱 애플리케이션: 발현, 적합도 스크린, 국재, 단백질 특징, 상호작용 및 문헌 주석.">
 </head>
-<body data-page="starplast">
+<body data-page="parascape">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <div class="fx-css" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -35,7 +35,7 @@
     <a class="brand" href="/"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg><span>현미경 프로젝트</span></a>
     <nav class="nav" aria-label="프로젝트">
       <a href="/projects/spacr/" data-nav="spacr" data-langs="de es fr hi is ko pt sv zh-CN">spaCR</a>
-      <a href="/projects/starplast/ko/" data-nav="starplast" aria-current="page">Starplast</a>
+      <a href="/projects/parascape/ko/" data-nav="parascape" aria-current="page">ParaScape</a>
       <a href="/projects/timepose/" data-nav="timepose">Timepose</a>
       <a href="/projects/cellect/" data-nav="cellect">Cellect mount</a>
       <a href="/#about" data-nav="about">소개</a>
@@ -44,16 +44,16 @@
       <details class="lang" data-lang-menu>
         <summary title="언어"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.6 4 2.6 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.4 5.6 5.4 8s.8 4.5 2.6 6.4"/></svg><span class="vh">언어: </span><span class="lang-cur">한국어</span></summary>
         <ul aria-label="언어">
-          <li><a href="/projects/starplast/" hreflang="en" lang="en" data-lang="en">English</a></li>
-          <li><a href="/projects/starplast/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
-          <li><a href="/projects/starplast/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
-          <li><a href="/projects/starplast/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
-          <li><a href="/projects/starplast/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
-          <li><a href="/projects/starplast/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
-          <li><a href="/projects/starplast/ko/" hreflang="ko" lang="ko" data-lang="ko" aria-current="true">한국어</a></li>
-          <li><a href="/projects/starplast/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
-          <li><a href="/projects/starplast/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
-          <li><a href="/projects/starplast/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
+          <li><a href="/projects/parascape/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/projects/parascape/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/projects/parascape/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/projects/parascape/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/projects/parascape/hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+          <li><a href="/projects/parascape/is/" hreflang="is" lang="is" data-lang="is">Íslenska</a></li>
+          <li><a href="/projects/parascape/ko/" hreflang="ko" lang="ko" data-lang="ko" aria-current="true">한국어</a></li>
+          <li><a href="/projects/parascape/pt/" hreflang="pt" lang="pt" data-lang="pt">Português</a></li>
+          <li><a href="/projects/parascape/sv/" hreflang="sv" lang="sv" data-lang="sv">Svenska</a></li>
+          <li><a href="/projects/parascape/zh-CN/" hreflang="zh-CN" lang="zh-CN" data-lang="zh_CN">简体中文</a></li>
         </ul>
       </details>
       <button class="icon-btn" id="fx-toggle" type="button" aria-pressed="false" aria-label="배경 애니메이션 일시 정지" title="배경 애니메이션 일시 정지">
@@ -85,24 +85,24 @@
     <div class="wrap grid sp-top">
       <div>
         <p class="kicker"><span>데스크톱 애플리케이션(PyQt6)</span> · <span class="nw">MIT</span></p>
-        <h1>Starplast</h1>
+        <h1>ParaScape</h1>
         <p class="lede"><i>Toxoplasma gondii</i>와 <i>Plasmodium falciparum</i>의 유전자 근거를 한곳에서.</p>
-        <p class="prose">Starplast는 발현, 적합도 스크린, 국재, 단백질 특징, 상호작용 및 문헌 주석을 한데 모읍니다. 유전자 조회, 스크린 히트 조사, 유전자 그룹 비교, 후속 실험 후보 선정에 사용할 수 있습니다. 함께 제공되는 맵에는 <i>T. gondii</i> 유전자 8,140개와 <i>P. falciparum</i> 유전자 5,720개가 있으며, 각각 따로 표시됩니다.</p>
+        <p class="prose">ParaScape는 발현, 적합도 스크린, 국재, 단백질 특징, 상호작용 및 문헌 주석을 한데 모읍니다. 유전자 조회, 스크린 히트 조사, 유전자 그룹 비교, 후속 실험 후보 선정에 사용할 수 있습니다. 함께 제공되는 맵에는 <i>T. gondii</i> 유전자 8,140개와 <i>P. falciparum</i> 유전자 5,720개가 있으며, 각각 따로 표시됩니다.</p>
         <ul class="facts">
-          <li>버전 <b>0.54.0</b></li>
-          <li>출시 <b>2026-10-05</b></li>
+          <li>버전 <b>0.55.0</b></li>
+          <li>출시 <b>see PyPI</b></li>
           <li>Python <b>3.10 or newer</b></li>
         </ul>
         <div class="btns">
           <a class="btn primary" href="#install">설치</a>
-          <a class="btn" href="https://einarolafsson.github.io/starplast/guide.html">사용자 가이드</a>
-          <a class="btn" href="https://github.com/EinarOlafsson/starplast">소스 코드</a>
-          <a class="btn" href="https://pypi.org/project/starplast/0.54.0/">PyPI</a>
+          <a class="btn" href="https://einarolafsson.github.io/parascape/guide.html">사용자 가이드</a>
+          <a class="btn" href="https://github.com/EinarOlafsson/parascape">소스 코드</a>
+          <a class="btn" href="https://pypi.org/project/parascape/">PyPI</a>
         </div>
       </div>
       <figure class="sp-map">
-        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/starplast/map.dark.webp" width="640" height="480"><img src="/assets/img/starplast/map.light.webp" width="640" height="480" alt="Starplast 유전자 맵: 유전자마다 하나씩 수천 개의 점이 색깔별 그룹으로 표시되고, 선택한 유전자 하나에서 관련 유전자로 선이 이어짐" fetchpriority="high"></picture>
-        <figcaption>Starplast의 다크 및 라이트 테마로 표시한 <i>T. gondii</i> 유전자 맵이며, 이 페이지의 테마를 따릅니다. 각 점은 유전자이며, 선은 선택한 유전자를 관련 유전자와 연결합니다. 스크린샷 출처: <a href="https://github.com/EinarOlafsson/starplast">Starplast 저장소</a>(MIT).</figcaption>
+        <picture><source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/parascape/map.dark.webp" width="640" height="480"><img src="/assets/img/parascape/map.light.webp" width="640" height="480" alt="ParaScape 유전자 맵: 유전자마다 하나씩 수천 개의 점이 색깔별 그룹으로 표시되고, 선택한 유전자 하나에서 관련 유전자로 선이 이어짐" fetchpriority="high"></picture>
+        <figcaption>ParaScape의 다크 및 라이트 테마로 표시한 <i>T. gondii</i> 유전자 맵이며, 이 페이지의 테마를 따릅니다. 각 점은 유전자이며, 선은 선택한 유전자를 관련 유전자와 연결합니다. 스크린샷 출처: <a href="https://github.com/EinarOlafsson/parascape">ParaScape 저장소</a>(MIT).</figcaption>
       </figure>
     </div>
   </section>
@@ -116,7 +116,7 @@
         <li><b>스크린 비교</b><span>유전자 수준 CSV 또는 TSV를 기존 근거와 결합하고, 확인되지 않은 식별자도 계속 표시합니다.</span></li>
         <li><b>39가지 전략</b><span>결합된 데이터를 하나의 주장으로 만드는 이름 붙은 방법으로, 각각 가이드와 셔플된 데이터에 대한 자체 검정이 있습니다.</span></li>
       </ul>
-      <p class="note sp-note">맵의 위치는 선택된 특징의 임베딩에서 나옵니다. 가까이 있는 유전자는 입력이 비슷하지만, 그것만으로 기능 공유나 물리적 상호작용을 보여 주지는 않습니다. 검색 점수는 후보의 우선순위를 정하는 데 도움이 되지만 실험적 검증은 아닙니다. 유전자 표와 그래프는 패키지에 포함되어 오프라인으로 작동하며, 등록된 데이터 세트 130개가 출처와 함께 <a href="https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md">데이터 세트 카탈로그</a>에 나열되어 있습니다.</p>
+      <p class="note sp-note">맵의 위치는 선택된 특징의 임베딩에서 나옵니다. 가까이 있는 유전자는 입력이 비슷하지만, 그것만으로 기능 공유나 물리적 상호작용을 보여 주지는 않습니다. 검색 점수는 후보의 우선순위를 정하는 데 도움이 되지만 실험적 검증은 아닙니다. 유전자 표와 그래프는 패키지에 포함되어 오프라인으로 작동하며, 등록된 데이터 세트 130개가 출처와 함께 <a href="https://github.com/EinarOlafsson/parascape/blob/main/docs/datasets.md">데이터 세트 카탈로그</a>에 나열되어 있습니다.</p>
     </div>
   </section>
 
@@ -135,20 +135,20 @@
 
   <section id="install" class="sp-sec" aria-labelledby="sp-install-h" tabindex="-1">
     <div class="wrap">
-      <h2 id="sp-install-h">Starplast 0.54.0 설치</h2>
+      <h2 id="sp-install-h">ParaScape 0.55.0 설치</h2>
       <div class="grid two">
         <div>
           <h3>PyPI</h3>
           <div class="code-wrap">
-<pre id="sp-pip"><code>pip install starplast
-starplast</code></pre>
+<pre id="sp-pip"><code>pip install parascape
+parascape</code></pre>
             <button class="copy" type="button" data-copy="sp-pip">복사</button>
           </div>
-          <p class="note">Python &gt;=3.10, 디스플레이 및 OpenGL이 필요합니다. 분석은 CPU에서 실행되며, <code>pip install "starplast[gpu]"</code>는 CUDA 12 드라이버가 있는 Linux x86-64에서 NVIDIA GPU 지원을 추가합니다.</p>
+          <p class="note">Python &gt;=3.10, 디스플레이 및 OpenGL이 필요합니다. 분석은 CPU에서 실행되며, <code>pip install "parascape[gpu]"</code>는 CUDA 12 드라이버가 있는 Linux x86-64에서 NVIDIA GPU 지원을 추가합니다.</p>
         </div>
         <div>
           <h3>spaCR에서</h3>
-          <p>spaCR 데스크톱 애플리케이션의 <i>Toxoplasma</i> 페이지에 있는 Starplast 타일은 Starplast를 별도의 Python 환경에 설치하고 별도 애플리케이션으로 엽니다(spaCR에서 알파로 표시). spaCR 결과를 Starplast에서 보려면 spaCR에서 유전자 수준 표를 내보낸 다음 File → Import data로 가져옵니다.</p>
+          <p>spaCR 데스크톱 애플리케이션의 <i>Toxoplasma</i> 페이지에 있는 ParaScape 타일은 ParaScape를 별도의 Python 환경에 설치하고 별도 애플리케이션으로 엽니다(spaCR에서 알파로 표시). spaCR 결과를 ParaScape에서 보려면 spaCR에서 유전자 수준 표를 내보낸 다음 File → Import data로 가져옵니다.</p>
           <p class="note"><a href="/projects/spacr/">spaCR 정보</a></p>
         </div>
       </div>
@@ -159,12 +159,12 @@ starplast</code></pre>
     <div class="wrap">
       <h2 id="sp-links-h">링크 및 라이선스</h2>
       <ul class="links">
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast"><b>소스 코드</b><span>GitHub 저장소, 이슈 및 릴리스.</span></a></li>
-        <li><a class="row" href="https://pypi.org/project/starplast/0.54.0/"><b>PyPI</b><span>starplast 패키지.</span></a></li>
-        <li><a class="row" href="https://einarolafsson.github.io/starplast/"><b>문서</b><span>사용자 가이드, Python API 및 40장 분량의 소개 슬라이드.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"><b>변경 사항</b><span>각 릴리스의 변경 내용.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff"><b>인용</b><span>Starplast와 사용한 데이터 세트의 원 출처를 인용하십시오.</span></a></li>
-        <li><a class="row" href="https://github.com/EinarOlafsson/starplast/blob/main/LICENSE"><b>MIT 라이선스</b><span>소스 코드에 적용되며, 원본 데이터 세트와 제3자 아트워크는 각자의 라이선스를 따릅니다.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape"><b>소스 코드</b><span>GitHub 저장소, 이슈 및 릴리스.</span></a></li>
+        <li><a class="row" href="https://pypi.org/project/parascape/"><b>PyPI</b><span>parascape 패키지.</span></a></li>
+        <li><a class="row" href="https://einarolafsson.github.io/parascape/"><b>문서</b><span>사용자 가이드, Python API 및 40장 분량의 소개 슬라이드.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"><b>변경 사항</b><span>각 릴리스의 변경 내용.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/CITATION.cff"><b>인용</b><span>ParaScape와 사용한 데이터 세트의 원 출처를 인용하십시오.</span></a></li>
+        <li><a class="row" href="https://github.com/EinarOlafsson/parascape/blob/main/LICENSE"><b>MIT 라이선스</b><span>소스 코드에 적용되며, 원본 데이터 세트와 제3자 아트워크는 각자의 라이선스를 따릅니다.</span></a></li>
       </ul>
     </div>
   </section>
