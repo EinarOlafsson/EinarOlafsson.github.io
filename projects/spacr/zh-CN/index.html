@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
+<link rel="stylesheet" href="/assets/css/site.css?v=2edd7bd3e0">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
+<script src="/assets/js/fx.js?v=2edd7bd3e0" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,7 +25,8 @@
 
 <title>spaCR：CRISPR-Cas9 筛选的空间表型分析</title>
 <meta name="description" content="spaCR 1.5.1.4：用于基于图像的混合 CRISPR 筛选的分割、单细胞测量、分类、条形码映射和回归。包含流程、已发布模型、筛选结果、论文和安装说明。">
-<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=2edd7bd3e0"></script>
+<script src="/assets/js/volcano.js?v=2edd7bd3e0" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">跳到正文</a>
@@ -88,6 +89,7 @@
         <a role="tab" id="tab-overview" href="#overview" aria-controls="overview" aria-selected="true">概览</a>
         <a role="tab" id="tab-pipeline" href="#pipeline" aria-controls="pipeline" aria-selected="false">流程</a>
         <a role="tab" id="tab-models" href="#models" aria-controls="models" aria-selected="false">模型</a>
+        <a role="tab" id="tab-mask-generator" href="#mask-generator" aria-controls="mask-generator" aria-selected="false">掩膜生成器</a>
         <a role="tab" id="tab-screen" href="#screen" aria-controls="screen" aria-selected="false">筛选结果</a>
         <a role="tab" id="tab-phenotypes" href="#phenotypes" aria-controls="phenotypes" aria-selected="false">表型</a>
         <a role="tab" id="tab-assays" href="#assays" aria-controls="assays" aria-selected="false">实验与质控</a>
@@ -142,7 +144,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>已分析的筛选板</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>教程课程</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>界面语言</span></a></li>
-        <li><a class="row" href="#install"><b>89,173</b><span>自动化测试</span></a></li>
+        <li><a class="row" href="#install"><b>89,715</b><span>自动化测试</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -307,6 +309,83 @@
     </div>
   </section>
 
+  <section id="mask-generator" class="panel-sec" role="tabpanel" aria-labelledby="tab-mask-generator" tabindex="-1">
+    <div class="wrap"><h2>掩膜生成器</h2>
+<div class="mask-generator" data-mask-generator>
+    <p class="lede">选择模型并查看其设置。连接托管服务或经验证的浏览器模型后，才能进行处理。</p>
+    <nav class="mask-family-links" aria-label="模型类别"><a href="#mask-toxoplasma_pv">寄生虫空泡</a> · <a href="#mask-toxoplasma_plaque">噬斑</a> · <a href="#mask-toxoplasma_well_detector">噬斑孔</a> · <a href="#mask-cell_from_hoechst">由 Hoechst 得到的细胞</a> · <a href="#mask-nuclei_from_cellmask">由细胞掩膜得到的细胞核</a> · <a href="#mask-toxoplasma_from_cellmask">由细胞掩膜得到的空泡</a> · <a href="#mask-toxoplasma_from_hoechst">由 Hoechst 得到的空泡</a> · <a href="#mask-live_cell">活细胞</a></nav>
+    <div class="mask-layout"><div class="mask-models"><section class="mask-family" id="mask-toxoplasma_pv" data-family="toxoplasma_pv">
+    <h3>寄生虫空泡</h3>
+    <label>模型版本<select data-model-select="toxoplasma_pv"><option value="toxoplasma_pv_v1">Toxoplasma PV v1</option><option value="toxoplasma_pv_v2">Toxoplasma PV v2 (round 5)</option><option value="toxoplasma_pv_v3">Toxoplasma PV v3 (round 6)</option><option value="toxoplasma_pv_v4" selected>Toxoplasma PV v4 (round 7) · 默认</option><option value="toxoplasma_pv_v5">Toxoplasma PV v5 (round 8, alternative)</option></select></label>
+    <article data-model="toxoplasma_pv_v1"><h4>Toxoplasma PV v1</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.793</td></tr><tr><th scope="row">精确率</th><td>0.860</td></tr><tr><th scope="row">召回率</th><td>0.735</td></tr><tr><th scope="row">AJI</th><td>0.558</td></tr><tr><th scope="row">Dice</th><td>0.794</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam">模型卡与测试数据</a></article><article data-model="toxoplasma_pv_v2"><h4>Toxoplasma PV v2 (round 5)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.713</td></tr><tr><th scope="row">精确率</th><td>0.766</td></tr><tr><th scope="row">召回率</th><td>0.667</td></tr><tr><th scope="row">AJI</th><td>0.451</td></tr><tr><th scope="row">Dice</th><td>0.678</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r5">模型卡与测试数据</a></article><article data-model="toxoplasma_pv_v3"><h4>Toxoplasma PV v3 (round 6)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.750</td></tr><tr><th scope="row">精确率</th><td>0.800</td></tr><tr><th scope="row">召回率</th><td>0.707</td></tr><tr><th scope="row">AJI</th><td>0.528</td></tr><tr><th scope="row">Dice</th><td>0.750</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r6">模型卡与测试数据</a></article><article data-model="toxoplasma_pv_v4"><h4>Toxoplasma PV v4 (round 7)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.761</td></tr><tr><th scope="row">精确率</th><td>0.769</td></tr><tr><th scope="row">召回率</th><td>0.754</td></tr><tr><th scope="row">AJI</th><td>0.582</td></tr><tr><th scope="row">Dice</th><td>0.835</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r7">模型卡与测试数据</a></article><article data-model="toxoplasma_pv_v5"><h4>Toxoplasma PV v5 (round 8, alternative)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.733</td></tr><tr><th scope="row">精确率</th><td>0.646</td></tr><tr><th scope="row">召回率</th><td>0.847</td></tr><tr><th scope="row">AJI</th><td>0.585</td></tr><tr><th scope="row">Dice</th><td>0.810</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-pv-segmentation-cpsam-r8">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-toxoplasma_plaque" data-family="toxoplasma_plaque">
+    <h3>噬斑</h3>
+    <label>模型版本<select data-model-select="toxoplasma_plaque"><option value="toxoplasma_plaque_v1">Toxoplasma Plaque v1</option><option value="toxoplasma_plaque_v2">Toxoplasma Plaque v2 (round 5)</option><option value="toxoplasma_plaque_v3">Toxoplasma Plaque v3 (Gel Doc r5)</option><option value="toxoplasma_plaque_v4" selected>Toxoplasma Plaque v4 (round 6, cpsam_v2) · 默认</option></select></label>
+    <article data-model="toxoplasma_plaque_v1"><h4>Toxoplasma Plaque v1</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.707</td></tr><tr><th scope="row">精确率</th><td>0.830</td></tr><tr><th scope="row">召回率</th><td>0.616</td></tr><tr><th scope="row">AJI</th><td>0.657</td></tr><tr><th scope="row">Dice</th><td>0.819</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam">模型卡与测试数据</a></article><article data-model="toxoplasma_plaque_v2"><h4>Toxoplasma Plaque v2 (round 5)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.455</td></tr><tr><th scope="row">精确率</th><td>0.500</td></tr><tr><th scope="row">召回率</th><td>0.417</td></tr><tr><th scope="row">AJI</th><td>0.514</td></tr><tr><th scope="row">Dice</th><td>0.696</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5">模型卡与测试数据</a></article><article data-model="toxoplasma_plaque_v3"><h4>Toxoplasma Plaque v3 (Gel Doc r5)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.732</td></tr><tr><th scope="row">精确率</th><td>0.676</td></tr><tr><th scope="row">召回率</th><td>0.798</td></tr><tr><th scope="row">AJI</th><td>0.628</td></tr><tr><th scope="row">Dice</th><td>0.811</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r5-geldoc">模型卡与测试数据</a></article><article data-model="toxoplasma_plaque_v4"><h4>Toxoplasma Plaque v4 (round 6, cpsam_v2)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.765</td></tr><tr><th scope="row">精确率</th><td>0.734</td></tr><tr><th scope="row">召回率</th><td>0.798</td></tr><tr><th scope="row">AJI</th><td>0.662</td></tr><tr><th scope="row">Dice</th><td>0.839</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-segmentation-cpsam-r6">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-toxoplasma_well_detector" data-family="toxoplasma_well_detector">
+    <h3>噬斑孔</h3>
+    <label>模型版本<select data-model-select="toxoplasma_well_detector"><option value="toxoplasma_well_detector_v1">Toxoplasma Plaque Well Detector v1</option><option value="toxoplasma_well_detector_v2">Toxoplasma Plaque Well Detector v2</option><option value="toxoplasma_well_detector_v3" selected>Toxoplasma Well Detector v3 (YOLO11 Gel Doc) · 默认</option></select></label>
+    <article data-model="toxoplasma_well_detector_v1"><h4>Toxoplasma Plaque Well Detector v1</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">精确率</th><td>0.987</td></tr><tr><th scope="row">召回率</th><td>0.987</td></tr><tr><th scope="row">IoU 0.5 时的 mAP</th><td>0.993</td></tr><tr><th scope="row">IoU 0.5 至 0.95 时的 mAP</th><td>0.886</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11">模型卡与测试数据</a></article><article data-model="toxoplasma_well_detector_v2"><h4>Toxoplasma Plaque Well Detector v2</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">精确率</th><td>0.891</td></tr><tr><th scope="row">召回率</th><td>0.944</td></tr><tr><th scope="row">IoU 0.5 时的 mAP</th><td>0.946</td></tr><tr><th scope="row">IoU 0.5 至 0.95 时的 mAP</th><td>0.834</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo26">模型卡与测试数据</a></article><article data-model="toxoplasma_well_detector_v3"><h4>Toxoplasma Well Detector v3 (YOLO11 Gel Doc)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">精确率</th><td>0.970</td></tr><tr><th scope="row">召回率</th><td>0.998</td></tr><tr><th scope="row">IoU 0.5 时的 mAP</th><td>0.994</td></tr><tr><th scope="row">IoU 0.5 至 0.95 时的 mAP</th><td>0.884</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-plaque-well-detector-yolo11-v4-geldoc">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、检测框和置信度评分、CSV、README 和来源记录。此检测器返回检测框，不返回分割掩膜、流或细胞概率。</p>
+  </section>
+<section class="mask-family" id="mask-cell_from_hoechst" data-family="cell_from_hoechst">
+    <h3>由 Hoechst 得到的细胞</h3>
+    <label>模型版本<select data-model-select="cell_from_hoechst"><option value="cell_from_hoechst_v1" selected>Cross-channel cell-from-hoechst · 默认</option></select></label>
+    <article data-model="cell_from_hoechst_v1"><h4>Cross-channel cell-from-hoechst</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.870</td></tr><tr><th scope="row">精确率</th><td>0.944</td></tr><tr><th scope="row">召回率</th><td>0.806</td></tr><tr><th scope="row">AJI</th><td>0.799</td></tr><tr><th scope="row">Dice</th><td>0.895</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/cross-channel-cell-from-hoechst-cpsam">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-nuclei_from_cellmask" data-family="nuclei_from_cellmask">
+    <h3>由细胞掩膜得到的细胞核</h3>
+    <label>模型版本<select data-model-select="nuclei_from_cellmask"><option value="nuclei_from_cellmask_v1" selected>Cross-channel nuclei-from-cellmask · 默认</option></select></label>
+    <article data-model="nuclei_from_cellmask_v1"><h4>Cross-channel nuclei-from-cellmask</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.888</td></tr><tr><th scope="row">精确率</th><td>0.932</td></tr><tr><th scope="row">召回率</th><td>0.848</td></tr><tr><th scope="row">AJI</th><td>0.792</td></tr><tr><th scope="row">Dice</th><td>0.877</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/cross-channel-nuclei-from-cellmask-cpsam">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-toxoplasma_from_cellmask" data-family="toxoplasma_from_cellmask">
+    <h3>由细胞掩膜得到的空泡</h3>
+    <label>模型版本<select data-model-select="toxoplasma_from_cellmask"><option value="toxoplasma_from_cellmask_v1" selected>Toxoplasma from Cell Mask (cross-channel) · 默认</option></select></label>
+    <article data-model="toxoplasma_from_cellmask_v1"><h4>Toxoplasma from Cell Mask (cross-channel)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.606</td></tr><tr><th scope="row">精确率</th><td>0.843</td></tr><tr><th scope="row">召回率</th><td>0.473</td></tr><tr><th scope="row">AJI</th><td>0.494</td></tr><tr><th scope="row">Dice</th><td>0.610</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-from-cellmask-cpsam">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-toxoplasma_from_hoechst" data-family="toxoplasma_from_hoechst">
+    <h3>由 Hoechst 得到的空泡</h3>
+    <label>模型版本<select data-model-select="toxoplasma_from_hoechst"><option value="toxoplasma_from_hoechst_v1" selected>Toxoplasma from Hoechst (cross-channel) · 默认</option></select></label>
+    <article data-model="toxoplasma_from_hoechst_v1"><h4>Toxoplasma from Hoechst (cross-channel)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.569</td></tr><tr><th scope="row">精确率</th><td>0.654</td></tr><tr><th scope="row">召回率</th><td>0.503</td></tr><tr><th scope="row">AJI</th><td>0.421</td></tr><tr><th scope="row">Dice</th><td>0.546</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/toxoplasma-from-hoechst-cpsam">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section>
+<section class="mask-family" id="mask-live_cell" data-family="live_cell">
+    <h3>活细胞</h3>
+    <label>模型版本<select data-model-select="live_cell"><option value="live-cell-v1" selected>Live cell v1 (phase, brightfield, DIC) · 默认</option></select></label>
+    <article data-model="live-cell-v1"><h4>Live cell v1 (phase, brightfield, DIC)</h4><table><caption>留出数据上的得分</caption><tbody><tr><th scope="row">IoU 0.5 时的 F1</th><td>0.694</td></tr></tbody></table><a href="https://huggingface.co/einarolafsson/live-cell-segmentation-cpsam">模型卡与测试数据</a></article>
+    <p><strong>下载内容</strong> 原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。</p>
+  </section><p class="note">评分复制自已发布的模型快照，并非在此重新计算。仅比较各模型卡所述的测试集。</p></div>
+    <form class="mask-settings" data-mask-form>
+      <input type="hidden" name="model_key" value="toxoplasma_pv_v4">
+      <fieldset><legend>处理位置</legend><label><input type="radio" name="route" value="hosted" checked> Hugging Face Space（托管 GPU）</label><label><input type="radio" name="route" value="browser"> 在我的浏览器中（WebGPU）</label></fieldset>
+      <p class="note" data-route-status role="status">托管处理不可用：未配置已验收的服务。不会上传任何图像。</p><p class="note" data-browser-status hidden></p>
+      <label>服务连接<input type="text" readonly value="未配置" aria-disabled="true"></label>
+      <p class="note" data-hosted-privacy>托管处理会将所选文件发送到配置的服务。其源代码当前将上传大小限制为 64 MB，并设置在一小时后清理缓存，每五分钟检查一次。这些是源代码设置，并非针对已部署服务验证过的保留期限保证。</p>
+      <label data-hosted-consent><input type="checkbox" name="accepted"> 我同意上传此图像进行处理，并理解 ZIP 文件包含原始文件。</label>
+      <label>图像或 PDF<input type="file" name="path" accept=".tif,.tiff,.png,.jpg,.jpeg,.bmp,.pdf,.czi,.nd2" disabled></label>
+      <p class="note">TIFF、OME-TIFF、PNG、JPEG、BMP 和 PDF；CZI 和 ND2 需要服务端具备兼容的读取器。序列、时间、Z、页面和通道选择均从零开始编号，处理前需要验证文件头。</p>
+      <fieldset><legend>处理设置</legend><div class="mask-fields"><label data-scope="all"><span data-label="selected_series">图像序列／位置（从零开始）</span><input type="number" name="selected_series" value="0" step="any" min="0"></label><label data-scope="all"><span data-label="selected_t">时间帧（从零开始）</span><input type="number" name="selected_t" value="0" step="any" min="0"></label><label data-scope="all"><span data-label="selected_z">Z 平面（从零开始）</span><input type="number" name="selected_z" value="0" step="any" min="0"></label><label data-scope="all"><span data-label="selected_page">PDF 页面（从零开始）</span><input type="number" name="selected_page" value="0" step="any" min="0"></label><label data-scope="all"><span data-label="selected_dpi">PDF 渲染分辨率（DPI）</span><input type="number" name="selected_dpi" value="150" step="any" min="1" max="600"></label><label data-scope="segmentation"><span data-label="chosen_diameter">直径（像素；留空则使用放大倍数）</span><input type="number" name="chosen_diameter" value="" step="any" min="0"></label><label data-scope="segmentation"><span data-label="flow_threshold">流阈值</span><input type="number" name="flow_threshold" value="0.4" step="any" min="0"></label><label data-scope="segmentation"><span data-label="score_threshold">细胞评分阈值（logits）</span><input type="number" name="score_threshold" value="-1" step="any"></label><label data-scope="masks"><span data-label="chosen_magnification">放大倍数</span><input type="number" name="chosen_magnification" value="20" step="any" min="0"></label><label data-scope="detector"><span data-label="detection_confidence">检测置信度</span><input type="number" name="detection_confidence" value="0.25" step="any" min="0" max="1"></label><label data-scope="detector"><span data-label="minimum_axis_ratio">孔的最小轴比</span><input type="number" name="minimum_axis_ratio" value="0.7" step="any" min="0" max="1"></label><label data-scope="detector"><span data-label="detector_image_size">检测器图像大小（像素）</span><input type="number" name="detector_image_size" value="640" step="any" min="1"></label>
+      <label>输入通道（从零开始，以逗号分隔）<input type="text" name="chosen_channels" inputmode="numeric" value="" placeholder="0"></label>
+      <label data-scope="segmentation"><span data-label="native_scale">自动直径</span><input type="checkbox" name="native_scale"></label></div></fieldset>
+      <details data-scope="masks"><summary>归一化与对象过滤器</summary><p class="note">数值字段留空或选择“桌面默认值”时，保留模型在桌面应用中的设置。强度值使用原始图像的单位。</p><div class="mask-fields"><label data-scope="masks"><span data-label="background_value">背景下限</span><input type="number" name="background_value" value="" step="any" min="0"></label><label data-scope="masks"><span data-label="signal_value">信噪比锚点</span><input type="number" name="signal_value" value="" step="any" min="0"></label><label data-scope="masks"><span data-label="lower_value">强度下百分位数</span><input type="number" name="lower_value" value="" step="any" min="0" max="100"></label><label data-scope="masks"><span data-label="perimeter_value">合并所需的共享周长比例</span><input type="number" name="perimeter_value" value="" step="any" min="0" max="1"></label>
+      <label>移除背景<select name="background_switch"><option value="default">桌面默认值</option><option value="enabled">已启用</option><option value="disabled">已禁用</option></select></label>
+      <label>移除接触图像边缘的对象<select name="border_switch"><option value="default">桌面默认值</option><option value="enabled">已启用</option><option value="disabled">已禁用</option></select></label>
+      <label>其他桌面对象过滤设置（JSON）<textarea name="advanced" rows="2">{}</textarea></label></div></details>
+      <div class="btns"><button class="btn primary" type="submit" disabled data-run>生成掩膜</button><button class="btn" type="button" disabled>随机选择已批准的测试图像</button></div>
+      <p class="note">此页面未配置已批准示例的连接。</p><p class="note">供研究使用。处理不可用时，此页面不会执行推理或上传。</p>
+    </form></div>
+    <script type="application/json" data-mask-config>{"schema":1,"source_commit":"7eee39dd38953dbe12c103a23695d32d6abf0857","hosted":{"url":null,"accepted":false},"browser":{"export_manifest":null,"accepted":false},"max_upload_bytes":64000000,"protocol":["path","model_key","accepted","selected_series","selected_t","selected_z","chosen_channels","selected_page","selected_dpi","chosen_diameter","native_scale","flow_threshold","score_threshold","chosen_magnification","advanced","detection_confidence","minimum_axis_ratio","background_value","signal_value","lower_value","background_switch","perimeter_value","border_switch","detector_image_size"],"families":[{"id":"toxoplasma_pv","stem":"toxoplasma_pv","default":"toxoplasma_pv_v4","output":"labels","channels":[1],"score":-1,"versions":["toxoplasma_pv_v1","toxoplasma_pv_v2","toxoplasma_pv_v3","toxoplasma_pv_v4","toxoplasma_pv_v5"]},{"id":"toxoplasma_plaque","stem":"toxoplasma_plaque","default":"toxoplasma_plaque_v4","output":"labels","channels":[1,2,3],"score":0,"versions":["toxoplasma_plaque_v1","toxoplasma_plaque_v2","toxoplasma_plaque_v3","toxoplasma_plaque_v4"]},{"id":"toxoplasma_well_detector","stem":"toxoplasma_well_detector","default":"toxoplasma_well_detector_v3","output":"boxes","channels":[1,3],"score":0,"versions":["toxoplasma_well_detector_v1","toxoplasma_well_detector_v2","toxoplasma_well_detector_v3"]},{"id":"cell_from_hoechst","stem":"cell_from_hoechst","default":"cell_from_hoechst_v1","output":"labels","channels":[1],"score":0,"versions":["cell_from_hoechst_v1"]},{"id":"nuclei_from_cellmask","stem":"nuclei_from_cellmask","default":"nuclei_from_cellmask_v1","output":"labels","channels":[1],"score":0,"versions":["nuclei_from_cellmask_v1"]},{"id":"toxoplasma_from_cellmask","stem":"toxoplasma_from_cellmask","default":"toxoplasma_from_cellmask_v1","output":"labels","channels":[1],"score":-1,"versions":["toxoplasma_from_cellmask_v1"]},{"id":"toxoplasma_from_hoechst","stem":"toxoplasma_from_hoechst","default":"toxoplasma_from_hoechst_v1","output":"labels","channels":[1],"score":-1,"versions":["toxoplasma_from_hoechst_v1"]},{"id":"live_cell","stem":"live-cell","default":"live-cell-v1","output":"labels","channels":[1],"score":0,"versions":["live-cell-v1"]}],"strings":{"mask.title":"掩膜生成器","mask.intro":"选择模型并查看其设置。连接托管服务或经验证的浏览器模型后，才能进行处理。","mask.family":"模型类别","mask.version":"模型版本","mask.route":"处理位置","mask.hosted":"Hugging Face Space（托管 GPU）","mask.browser":"在我的浏览器中（WebGPU）","mask.hosted_unavailable":"托管处理不可用：未配置已验收的服务。不会上传任何图像。","mask.browser_unavailable":"浏览器处理不可用：未配置经验证的模型导出。不会将文件发送到服务器。","mask.gpu_present":"此浏览器提供 WebGPU。尚未验证模型兼容性及 GPU 可用性。","mask.gpu_absent":"此浏览器或页面环境不提供 WebGPU。","mask.connection":"服务连接","mask.no_connection":"未配置","mask.consent":"我同意上传此图像进行处理，并理解 ZIP 文件包含原始文件。","mask.privacy":"托管处理会将所选文件发送到配置的服务。其源代码当前将上传大小限制为 64 MB，并设置在一小时后清理缓存，每五分钟检查一次。这些是源代码设置，并非针对已部署服务验证过的保留期限保证。","mask.file":"图像或 PDF","mask.formats":"TIFF、OME-TIFF、PNG、JPEG、BMP 和 PDF；CZI 和 ND2 需要服务端具备兼容的读取器。序列、时间、Z、页面和通道选择均从零开始编号，处理前需要验证文件头。","mask.settings":"处理设置","mask.series":"图像序列／位置（从零开始）","mask.time":"时间帧（从零开始）","mask.depth":"Z 平面（从零开始）","mask.channels":"输入通道（从零开始，以逗号分隔）","mask.page":"PDF 页面（从零开始）","mask.dpi":"PDF 渲染分辨率（DPI）","mask.diameter":"直径（像素；留空则使用放大倍数）","mask.plaque_diameter":"确定的直径（像素）","mask.auto":"自动直径","mask.native":"明确使用原始尺度","mask.flow":"流阈值","mask.score":"细胞评分阈值（logits）","mask.magnification":"放大倍数","mask.confidence":"检测置信度","mask.axis":"孔的最小轴比","mask.detector_size":"检测器图像大小（像素）","mask.advanced":"归一化与对象过滤器","mask.defaults":"数值字段留空或选择“桌面默认值”时，保留模型在桌面应用中的设置。强度值使用原始图像的单位。","mask.background":"背景下限","mask.signal":"信噪比锚点","mask.lower":"强度下百分位数","mask.remove_background":"移除背景","mask.perimeter":"合并所需的共享周长比例","mask.border":"移除接触图像边缘的对象","mask.extra":"其他桌面对象过滤设置（JSON）","mask.default":"桌面默认值","mask.enabled":"已启用","mask.disabled":"已禁用","mask.run":"生成掩膜","mask.detect":"检测孔","mask.example":"随机选择已批准的测试图像","mask.example_unavailable":"此页面未配置已批准示例的连接。","mask.output":"下载内容","mask.labels":"原始上传文件、所选图像、标签 TIFF、对象测量 CSV、README 和来源记录。仅当模型返回流和细胞评分时才包含这些数据；细胞评分可能是原始 logits，而非经过校准的概率。","mask.boxes":"原始上传文件、所选图像、检测框和置信度评分、CSV、README 和来源记录。此检测器返回检测框，不返回分割掩膜、流或细胞概率。","mask.card":"模型卡与测试数据","mask.snapshot":"评分复制自已发布的模型快照，并非在此重新计算。仅比较各模型卡所述的测试集。","mask.research":"供研究使用。处理不可用时，此页面不会执行推理或上传。"}}</script>
+  </div>
+    </div>
+  </section>
+
   <section id="screen" class="panel-sec" role="tabpanel" aria-labelledby="tab-screen" tabindex="-1">
     <div class="wrap">
       <div class="section-head">
@@ -336,7 +415,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=2edd7bd3e0">
         <h3 id="ols-volcano-title">全部四块板：spaCR OLS 回归得到的基因效应</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">正在加载回归结果…</p>
