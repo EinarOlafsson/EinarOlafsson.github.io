@@ -9,6 +9,6 @@
   "parascape": {
     "version": "0.0.1.0"
   },
-  "built": "2026-10-15T11:31:35Z",
-  "trigger": "schedule"
+  "built": "2026-10-15T12:22:32Z",
+  "trigger": "push"
 }
