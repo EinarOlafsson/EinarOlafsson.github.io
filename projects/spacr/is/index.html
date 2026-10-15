@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Skipta yfir í dökkt þema","ui.theme_light":"Skipta yfir í ljóst þema","ui.fx_pause":"Gera hlé á bakgrunnshreyfimynd","ui.fx_resume":"Halda bakgrunnshreyfimynd áfram","ui.fx_reduced":"Slökkt er á bakgrunnshreyfimyndinni: kerfið þitt biður um minni hreyfingu","ui.pause":"Hlé","ui.resume":"Halda áfram","ui.copied":"Afritað"}</script>
 
 <title>spaCR: rúmræn svipgerðargreining á CRISPR-Cas9-skimunum</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: hlutun, mælingar á stökum frumum, flokkun, vörpun strikamerkja og aðhvarfsgreining fyrir myndrænar, samsafnaðar CRISPR-skimanir. Vinnsluferli, birt líkön, niðurstöður skimunar, greinar og uppsetning.">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Fara beint í efni</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Eitt myndsvið með HeLa-frumum sýktum af Toxoplasma í fimm hlutum: myndin, grannar útlínur frumna, frumukjarna og safabólna, tafla með mældum gildum, frumur litaðar eftir sýkingareinkunn og eldfjallarit þar sem GRA14 er merkt" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Eitt myndsvið með HeLa-frumum sýktum af Toxoplasma í fimm hlutum: myndin, grannar útlínur frumna, frumukjarna og safabólna, tafla með mældum gildum, frumur litaðar eftir sýkingareinkunn og eldfjallarit þar sem GRA14 er merkt" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>Mynd</li><li>Grímur</li><li>Mælingar</li><li>Einkunnir flokkara</li><li>Frambjóðendur</li></ol>
         <figcaption>Eitt heilt myndsvið með HeLa-frumum sýktum af <i>Toxoplasma</i> (MTOC-skimun, plata 2, brunnur P08, myndsvið 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">opinber gögn</a>, CC BY 4.0) rakið gegnum spaCR: mynd, útlínur, gildi úr Measure og sýkingareinkunn. Frambjóðendalistinn kemur úr annarri opinberri skimun, <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">dæmaskimuninni</a> með GFP-TSG101 á fjórum plötum. Sjá <a href="#pipeline">Vinnsluferli</a>.</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>skimunarplötur greindar</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>kennslustundir</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>tungumál viðmóts</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>sjálfvirk próf</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>sjálfvirk próf</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">Allar fjórar plöturnar: áhrif gena úr OLS-aðhvarfsgreiningu spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Hleð niðurstöðum aðhvarfsgreiningar…</p>

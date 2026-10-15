@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Byt till mörkt tema","ui.theme_light":"Byt till ljust tema","ui.fx_pause":"Pausa bakgrundsanimationen","ui.fx_resume":"Återuppta bakgrundsanimationen","ui.fx_reduced":"Bakgrundsanimationen är avstängd: ditt system begär minskad rörelse","ui.pause":"Pausa","ui.resume":"Fortsätt","ui.copied":"Kopierat"}</script>
 
 <title>spaCR: spatial fenotypanalys av CRISPR-Cas9-screener</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: segmentering, mätning av enskilda celler, klassificering, streckkodsmappning och regression för bildbaserade poolade CRISPR-screener. Arbetsflöde, publicerade modeller, screenresultat, artiklar och installation.">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Hoppa till innehållet</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Ett synfält med HeLa-celler infekterade med Toxoplasma i fem paneler: bilden, tunna konturer av celler, cellkärnor och vakuoler, en tabell med uppmätta värden, celler färgade efter en infektionspoäng och ett vulkandiagram med GRA14 märkt" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Ett synfält med HeLa-celler infekterade med Toxoplasma i fem paneler: bilden, tunna konturer av celler, cellkärnor och vakuoler, en tabell med uppmätta värden, celler färgade efter en infektionspoäng och ett vulkandiagram med GRA14 märkt" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>Bild</li><li>Masker</li><li>Mätningar</li><li>Klassificerarpoäng</li><li>Träffar</li></ol>
         <figcaption>Ett helt synfält med HeLa-celler infekterade med <i>Toxoplasma</i> (MTOC-screenen, platta 2, brunn P08, synfält 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">offentliga data</a>, CC BY 4.0) följt genom spaCR: bild, konturer, värden från Measure och en infektionspoäng. Träfflistan kommer från en annan offentlig screen, den fyra plattor stora <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">exempelscreenen</a> för GFP-TSG101. Se <a href="#pipeline">Arbetsflöde</a>.</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>analyserade screenplattor</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>lektioner i handledningar</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>gränssnittsspråk</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>automatiska tester</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>automatiska tester</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">Alla fyra plattor: geneffekter från spaCR:s OLS-regression</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Läser in regressionsresultaten…</p>

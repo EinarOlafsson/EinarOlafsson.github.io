@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"डार्क थीम पर जाएँ","ui.theme_light":"लाइट थीम पर जाएँ","ui.fx_pause":"पृष्ठभूमि एनिमेशन रोकें","ui.fx_resume":"पृष्ठभूमि एनिमेशन फिर से चलाएँ","ui.fx_reduced":"पृष्ठभूमि एनिमेशन बंद है: आपका सिस्टम कम गति का अनुरोध करता है","ui.pause":"रोकें","ui.resume":"फिर से चलाएँ","ui.copied":"कॉपी हो गया"}</script>
 
 <title>spaCR: CRISPR-Cas9 स्क्रीन का स्थानिक फ़ीनोटाइप विश्लेषण</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: इमेज-आधारित पूल्ड CRISPR स्क्रीन के लिए विभाजन, एकल-कोशिका मापन, वर्गीकरण, बारकोड मैपिंग और रिग्रेशन। पाइपलाइन, प्रकाशित मॉडल, स्क्रीन परिणाम, शोध-पत्र और इंस्टॉलेशन।">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma से संक्रमित HeLa कोशिकाओं का एक फ़ील्ड पाँच पैनलों में: इमेज, कोशिका, केंद्रक और रिक्तिका की पतली रूपरेखाएँ, मापे गए मानों की एक तालिका, संक्रमण स्कोर के अनुसार रंगी गई कोशिकाएँ, और एक वॉल्केनो प्लॉट जिसमें GRA14 लेबल किया गया है" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma से संक्रमित HeLa कोशिकाओं का एक फ़ील्ड पाँच पैनलों में: इमेज, कोशिका, केंद्रक और रिक्तिका की पतली रूपरेखाएँ, मापे गए मानों की एक तालिका, संक्रमण स्कोर के अनुसार रंगी गई कोशिकाएँ, और एक वॉल्केनो प्लॉट जिसमें GRA14 लेबल किया गया है" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>इमेज</li><li>मास्क</li><li>माप</li><li>क्लासिफ़ायर स्कोर</li><li>हिट</li></ol>
         <figcaption><i>Toxoplasma</i> से संक्रमित HeLa कोशिकाओं का एक पूरा फ़ील्ड (MTOC स्क्रीन प्लेट 2, वेल P08, फ़ील्ड 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">सार्वजनिक डेटा</a>, CC BY 4.0) spaCR में शुरू से अंत तक: इमेज, रूपरेखाएँ, Measure मान और एक संक्रमण स्कोर। हिट सूची एक अलग सार्वजनिक स्क्रीन से आती है, चार प्लेटों वाली GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">उदाहरण स्क्रीन</a>। देखें <a href="#pipeline">पाइपलाइन</a>।</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>विश्लेषित स्क्रीन प्लेटें</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>ट्यूटोरियल पाठ</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>इंटरफ़ेस भाषाएँ</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>स्वचालित परीक्षण</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>स्वचालित परीक्षण</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">चारों प्लेटें: spaCR के OLS रिग्रेशन से जीन प्रभाव</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">रिग्रेशन परिणाम लोड हो रहे हैं…</p>

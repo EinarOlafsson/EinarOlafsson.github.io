@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"Passer au thème sombre","ui.theme_light":"Passer au thème clair","ui.fx_pause":"Mettre en pause l’animation d’arrière-plan","ui.fx_resume":"Reprendre l’animation d’arrière-plan","ui.fx_reduced":"L’animation d’arrière-plan est désactivée : votre système demande de réduire les animations","ui.pause":"Pause","ui.resume":"Reprendre","ui.copied":"Copié"}</script>
 
 <title>spaCR : analyse spatiale des phénotypes dans les cribles CRISPR-Cas9</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4 : segmentation, mesure de cellules individuelles, classification, attribution des codes-barres et régression pour les cribles CRISPR groupés fondés sur l’imagerie. Chaîne d’analyse, modèles publiés, résultats du crible, articles et installation.">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Aller au contenu</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Un champ de cellules HeLa infectées par Toxoplasma en cinq panneaux : l’image, les contours fins des cellules, des noyaux et des vacuoles, un tableau de valeurs mesurées, les cellules colorées selon un score d’infection et un volcano plot avec GRA14 étiqueté" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Un champ de cellules HeLa infectées par Toxoplasma en cinq panneaux : l’image, les contours fins des cellules, des noyaux et des vacuoles, un tableau de valeurs mesurées, les cellules colorées selon un score d’infection et un volcano plot avec GRA14 étiqueté" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>Image</li><li>Masques</li><li>Mesures</li><li>Scores du classifieur</li><li>Hits</li></ol>
         <figcaption>Un champ entier de cellules HeLa infectées par <i>Toxoplasma</i> (plaque 2 du crible MTOC, puits P08, champ 16 ; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">données publiques</a>, CC BY 4.0) suivi à travers spaCR : image, contours, valeurs de Measure et un score d’infection. La liste des hits provient d’un autre crible public, le <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">crible d’exemple</a> GFP-TSG101 sur quatre plaques. Voir <a href="#pipeline">Chaîne d’analyse</a>.</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>plaques du crible analysées</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>leçons de tutoriel</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>langues de l’interface</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>tests automatisés</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>tests automatisés</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">Les quatre plaques : effets géniques issus de la régression OLS de spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Chargement des résultats de la régression…</p>

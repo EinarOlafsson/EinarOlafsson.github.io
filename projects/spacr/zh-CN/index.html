@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"切换到深色主题","ui.theme_light":"切换到浅色主题","ui.fx_pause":"暂停背景动画","ui.fx_resume":"继续背景动画","ui.fx_reduced":"背景动画已关闭：您的系统要求减少动态效果","ui.pause":"暂停","ui.resume":"继续","ui.copied":"已复制"}</script>
 
 <title>spaCR：CRISPR-Cas9 筛选的空间表型分析</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4：用于基于图像的混合 CRISPR 筛选的分割、单细胞测量、分类、条形码映射和回归。包含流程、已发布模型、筛选结果、论文和安装说明。">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">跳到正文</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="一个感染 Toxoplasma 的 HeLa 细胞视野，分为五个面板：图像、细胞、细胞核和空泡的细轮廓、测量值表格、按感染得分着色的细胞，以及标注了 GRA14 的火山图" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="一个感染 Toxoplasma 的 HeLa 细胞视野，分为五个面板：图像、细胞、细胞核和空泡的细轮廓、测量值表格、按感染得分着色的细胞，以及标注了 GRA14 的火山图" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>图像</li><li>掩膜</li><li>测量值</li><li>分类器得分</li><li>命中</li></ol>
         <figcaption>一个感染 <i>Toxoplasma</i> 的 HeLa 细胞完整视野（MTOC 筛选第 2 板，P08 孔，第 16 视野；<a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">公开数据</a>，CC BY 4.0）经 spaCR 处理：图像、轮廓、Measure 测量值和感染得分。命中列表来自另一个公开筛选，即四板 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">示例筛选</a>。参见<a href="#pipeline">流程</a>。</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>已分析的筛选板</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>教程课程</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>界面语言</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>自动化测试</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>自动化测试</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">全部四块板：spaCR OLS 回归得到的基因效应</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">正在加载回归结果…</p>

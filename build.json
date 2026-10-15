@@ -2,12 +2,13 @@
   "spacr": {
     "version": "1.5.1.4",
     "release": "v1.5.1.4",
+    "assetsFingerprint": "dc7c2ef5be890403948842dbd42c1163a621f2e15f9df7367fd246fb91d0c6d4",
     "versionDoi": "10.5281/zenodo.23266544",
     "conceptDoi": "10.5281/zenodo.21343316"
   },
   "parascape": {
     "version": "0.0.1.0"
   },
-  "built": "2026-10-14T11:54:51Z",
-  "trigger": "schedule"
+  "built": "2026-10-15T02:06:24Z",
+  "trigger": "push"
 }

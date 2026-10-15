@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e96c4a36f9">
+<link rel="stylesheet" href="/assets/css/site.css?v=48db19d7e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/fx.js?v=48db19d7e8" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -24,12 +24,8 @@
 <script type="application/json" id="i18n-ui">{"ui.theme_dark":"어두운 테마로 전환","ui.theme_light":"밝은 테마로 전환","ui.fx_pause":"배경 애니메이션 일시 정지","ui.fx_resume":"배경 애니메이션 재개","ui.fx_reduced":"배경 애니메이션이 꺼져 있습니다: 시스템에서 동작 줄이기를 요청합니다","ui.pause":"일시 정지","ui.resume":"재개","ui.copied":"복사됨"}</script>
 
 <title>spaCR: CRISPR-Cas9 스크린의 공간 표현형 분석</title>
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.dark.webp" media="(min-width: 601px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-strip.light.webp" media="(min-width: 601px) and (prefers-color-scheme: light)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.dark.webp" media="(max-width: 600px) and (prefers-color-scheme: dark)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/img/spacr/overview-stack.light.webp" media="(max-width: 600px) and (prefers-color-scheme: light)" fetchpriority="high">
 <meta name="description" content="spaCR 1.5.1.4: 이미지 기반 풀링 CRISPR 스크린을 위한 분할, 단일 세포 측정, 분류, 바코드 매핑 및 회귀 분석. 파이프라인, 공개 모델, 스크린 결과, 논문 및 설치 안내.">
-<script src="/assets/js/volcano.js?v=e96c4a36f9" defer></script>
+<script src="/assets/js/volcano.js?v=48db19d7e8" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -135,7 +131,7 @@
           <source data-theme-dark="(max-width: 600px)" media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-stack.dark.webp" width="800" height="1414">
           <source media="(max-width: 600px)" srcset="/assets/img/spacr/overview-stack.light.webp" width="800" height="1414">
           <source data-theme-dark="" media="(prefers-color-scheme: dark)" srcset="/assets/img/spacr/overview-strip.dark.webp" width="1600" height="400">
-          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma에 감염된 HeLa 세포 시야 하나를 다섯 패널로 나타낸 그림: 이미지, 얇은 세포·핵·액포 윤곽선, 측정값 표, 감염 점수로 색칠한 세포, GRA14에 라벨이 붙은 볼케이노 플롯" fetchpriority="high">
+          <img src="/assets/img/spacr/overview-strip.light.webp" width="1600" height="400" alt="Toxoplasma에 감염된 HeLa 세포 시야 하나를 다섯 패널로 나타낸 그림: 이미지, 얇은 세포·핵·액포 윤곽선, 측정값 표, 감염 점수로 색칠한 세포, GRA14에 라벨이 붙은 볼케이노 플롯" loading="lazy" decoding="async">
         </picture></a>
         <ol class="ov-steps" aria-hidden="true"><li>이미지</li><li>마스크</li><li>측정값</li><li>분류기 점수</li><li>히트</li></ol>
         <figcaption><i>Toxoplasma</i>에 감염된 HeLa 세포의 시야 하나 전체(MTOC 스크린 플레이트 2, 웰 P08, 시야 16; <a href="https://huggingface.co/datasets/einarolafsson/cross-channel-cell-from-hoechst">공개 데이터</a>, CC BY 4.0)를 spaCR로 따라간 결과: 이미지, 윤곽선, Measure 값, 감염 점수. 히트 목록은 다른 공개 스크린인 플레이트 네 장 규모의 GFP-TSG101 <a href="https://huggingface.co/datasets/einarolafsson/spacr-example-screen">예제 스크린</a>에서 가져왔습니다. <a href="#pipeline">파이프라인</a> 참조.</figcaption>
@@ -146,7 +142,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>분석한 스크린 플레이트</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>튜토리얼 강의</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>인터페이스 언어</span></a></li>
-        <li><a class="row" href="#install"><b>86,667</b><span>자동화 테스트</span></a></li>
+        <li><a class="row" href="#install"><b>87,151</b><span>자동화 테스트</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -340,7 +336,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=e96c4a36f9">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=48db19d7e8">
         <h3 id="ols-volcano-title">플레이트 네 장 전체: spaCR OLS 회귀 분석의 유전자 효과</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">회귀 분석 결과를 불러오는 중…</p>
