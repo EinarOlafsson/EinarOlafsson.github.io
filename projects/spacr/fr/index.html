@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=f1eecefed8">
+<link rel="stylesheet" href="/assets/css/site.css?v=fcf992ce72">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=f1eecefed8" defer></script>
+<script src="/assets/js/fx.js?v=fcf992ce72" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,8 +25,8 @@
 
 <title>spaCR : analyse spatiale des phénotypes dans les cribles CRISPR-Cas9</title>
 <meta name="description" content="spaCR 1.5.1.4 : segmentation, mesure de cellules individuelles, classification, attribution des codes-barres et régression pour les cribles CRISPR groupés fondés sur l’imagerie. Chaîne d’analyse, modèles publiés, résultats du crible, articles et installation.">
-<script type="module" src="/assets/js/mask-generator.js?v=f1eecefed8"></script>
-<script src="/assets/js/volcano.js?v=f1eecefed8" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=fcf992ce72"></script>
+<script src="/assets/js/volcano.js?v=fcf992ce72" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Aller au contenu</a>
@@ -207,21 +207,6 @@
           <li><b>Notebooks</b><span>Notebooks Jupyter pour chaque étape, des masques à la régression, dans le dépôt.</span></li>
           <li><b>Docker</b><span>Images CPU et CUDA sur GitHub Container Registry. Voir <a href="#docker">Docker</a>.</span></li>
         </ul>
-      </div>
-
-      <div id="hardware" class="ov-block">
-        <h2>Rendu 3D</h2>
-        <p class="note">La vue True 3D de Make Masks dessine avec le premier moteur qui fonctionne sur l’ordinateur, dans l’ordre indiqué.</p>
-        <table class="hw">
-          <colgroup><col class="hw-os"><col></colgroup>
-          <thead><tr><th scope="col">Plateforme</th><th scope="col">Vue True 3D</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Linux</th><td>Vulkan (wgpu) / OpenGL / CPU</td></tr>
-            <tr><th scope="row">Windows</th><td>Vulkan ou Direct3D 12 (wgpu) / OpenGL / CPU</td></tr>
-            <tr><th scope="row">macOS</th><td>Metal (wgpu) / OpenGL / CPU</td></tr>
-          </tbody>
-        </table>
-        <p class="note hw-note">wgpu est installé par défaut avec Python 3.10 ou ultérieur sous Windows (x64, arm64), macOS (Intel, Apple silicon) et Linux (x86_64, aarch64, glibc 2.28 ou ultérieure). Python 3.9, les autres processeurs, les Linux plus anciens et les installations faites sans wgpu dessinent avec OpenGL, sinon sur le CPU.</p>
       </div>
 
       <div id="learn" class="ov-block">
@@ -499,7 +484,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=f1eecefed8">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=fcf992ce72">
         <h3 id="ols-volcano-title">Les quatre plaques : effets géniques issus de la régression OLS de spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Chargement des résultats de la régression…</p>
