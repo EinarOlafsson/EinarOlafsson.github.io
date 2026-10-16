@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=770db8dc7f">
+<link rel="stylesheet" href="/assets/css/site.css?v=6c312bb7a4">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=770db8dc7f" defer></script>
+<script src="/assets/js/fx.js?v=6c312bb7a4" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,8 +25,8 @@
 
 <title>spaCR: CRISPR-Cas9 स्क्रीन का स्थानिक फ़ीनोटाइप विश्लेषण</title>
 <meta name="description" content="spaCR 1.5.1.4: इमेज-आधारित पूल्ड CRISPR स्क्रीन के लिए विभाजन, एकल-कोशिका मापन, वर्गीकरण, बारकोड मैपिंग और रिग्रेशन। पाइपलाइन, प्रकाशित मॉडल, स्क्रीन परिणाम, शोध-पत्र और इंस्टॉलेशन।">
-<script type="module" src="/assets/js/mask-generator.js?v=770db8dc7f"></script>
-<script src="/assets/js/volcano.js?v=770db8dc7f" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=6c312bb7a4"></script>
+<script src="/assets/js/volcano.js?v=6c312bb7a4" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
@@ -144,7 +144,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>विश्लेषित स्क्रीन प्लेटें</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>ट्यूटोरियल पाठ</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>इंटरफ़ेस भाषाएँ</span></a></li>
-        <li><a class="row" href="#install"><b>91,401</b><span>स्वचालित परीक्षण</span></a></li>
+        <li><a class="row" href="#install"><b>91,449</b><span>स्वचालित परीक्षण</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -207,6 +207,21 @@
           <li><b>नोटबुक</b><span>रिपॉज़िटरी में हर चरण के लिए, मास्क से रिग्रेशन तक, Jupyter नोटबुक।</span></li>
           <li><b>Docker</b><span>GitHub Container Registry पर CPU और CUDA इमेज। देखें <a href="#docker">Docker</a>।</span></li>
         </ul>
+      </div>
+
+      <div id="hardware" class="ov-block">
+        <h2>3D रेंडरिंग</h2>
+        <p class="note">Make Masks का True 3D व्यू कंप्यूटर पर काम करने वाले पहले बैकएंड से, दिए गए क्रम में, चित्र बनाता है।</p>
+        <table class="hw">
+          <colgroup><col class="hw-os"><col></colgroup>
+          <thead><tr><th scope="col">प्लेटफ़ॉर्म</th><th scope="col">True 3D व्यू</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Linux</th><td>Vulkan (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">Windows</th><td>Vulkan या Direct3D 12 (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">macOS</th><td>Metal (wgpu) / OpenGL / CPU</td></tr>
+          </tbody>
+        </table>
+        <p class="note hw-note">Python 3.10 या बाद के संस्करण के साथ wgpu डिफ़ॉल्ट रूप से Windows (x64, arm64), macOS (Intel, Apple silicon) और Linux (x86_64, aarch64, glibc 2.28 या बाद का) पर इंस्टॉल होता है। Python 3.9, अन्य प्रोसेसर, पुराने Linux और wgpu के बिना किए गए इंस्टॉलेशन OpenGL से, अन्यथा CPU पर, चित्र बनाते हैं।</p>
       </div>
 
       <div id="learn" class="ov-block">
@@ -474,7 +489,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=770db8dc7f">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=6c312bb7a4">
         <h3 id="ols-volcano-title">चारों प्लेटें: spaCR के OLS रिग्रेशन से जीन प्रभाव</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">रिग्रेशन परिणाम लोड हो रहे हैं…</p>

@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=770db8dc7f">
+<link rel="stylesheet" href="/assets/css/site.css?v=6c312bb7a4">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=770db8dc7f" defer></script>
+<script src="/assets/js/fx.js?v=6c312bb7a4" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,8 +25,8 @@
 
 <title>spaCR: análisis espacial de fenotipos en cribados CRISPR-Cas9</title>
 <meta name="description" content="spaCR 1.5.1.4: segmentación, medición de células individuales, clasificación, asignación de códigos de barras y regresión para cribados CRISPR agrupados basados en imágenes. Flujo de análisis, modelos publicados, resultados del cribado, artículos e instalación.">
-<script type="module" src="/assets/js/mask-generator.js?v=770db8dc7f"></script>
-<script src="/assets/js/volcano.js?v=770db8dc7f" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=6c312bb7a4"></script>
+<script src="/assets/js/volcano.js?v=6c312bb7a4" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Ir al contenido</a>
@@ -144,7 +144,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>placas del cribado analizadas</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>lecciones de tutorial</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>idiomas de la interfaz</span></a></li>
-        <li><a class="row" href="#install"><b>91,401</b><span>pruebas automatizadas</span></a></li>
+        <li><a class="row" href="#install"><b>91,449</b><span>pruebas automatizadas</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -207,6 +207,21 @@
           <li><b>Cuadernos</b><span>Cuadernos de Jupyter para cada paso, de las máscaras a la regresión, en el repositorio.</span></li>
           <li><b>Docker</b><span>Imágenes para CPU y CUDA en GitHub Container Registry. Véase <a href="#docker">Docker</a>.</span></li>
         </ul>
+      </div>
+
+      <div id="hardware" class="ov-block">
+        <h2>Renderizado 3D</h2>
+        <p class="note">La vista True 3D de Make Masks dibuja con el primer backend que funciona en el equipo, en el orden indicado.</p>
+        <table class="hw">
+          <colgroup><col class="hw-os"><col></colgroup>
+          <thead><tr><th scope="col">Plataforma</th><th scope="col">Vista True 3D</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Linux</th><td>Vulkan (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">Windows</th><td>Vulkan o Direct3D 12 (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">macOS</th><td>Metal (wgpu) / OpenGL / CPU</td></tr>
+          </tbody>
+        </table>
+        <p class="note hw-note">wgpu se instala por defecto con Python 3.10 o posterior en Windows (x64, arm64), macOS (Intel, Apple silicon) y Linux (x86_64, aarch64, glibc 2.28 o posterior). Python 3.9, otros procesadores, Linux más antiguos y las instalaciones sin wgpu dibujan con OpenGL o, si no, en la CPU.</p>
       </div>
 
       <div id="learn" class="ov-block">
@@ -474,7 +489,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=770db8dc7f">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=6c312bb7a4">
         <h3 id="ols-volcano-title">Las cuatro placas: efectos génicos de la regresión OLS de spaCR</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Cargando los resultados de la regresión…</p>

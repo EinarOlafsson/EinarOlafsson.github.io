@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=770db8dc7f">
+<link rel="stylesheet" href="/assets/css/site.css?v=6c312bb7a4">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=770db8dc7f" defer></script>
+<script src="/assets/js/fx.js?v=6c312bb7a4" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,8 +25,8 @@
 
 <title>spaCR: CRISPR-Cas9 스크린의 공간 표현형 분석</title>
 <meta name="description" content="spaCR 1.5.1.4: 이미지 기반 풀링 CRISPR 스크린을 위한 분할, 단일 세포 측정, 분류, 바코드 매핑 및 회귀 분석. 파이프라인, 공개 모델, 스크린 결과, 논문 및 설치 안내.">
-<script type="module" src="/assets/js/mask-generator.js?v=770db8dc7f"></script>
-<script src="/assets/js/volcano.js?v=770db8dc7f" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=6c312bb7a4"></script>
+<script src="/assets/js/volcano.js?v=6c312bb7a4" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -144,7 +144,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>분석한 스크린 플레이트</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>튜토리얼 강의</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>인터페이스 언어</span></a></li>
-        <li><a class="row" href="#install"><b>91,401</b><span>자동화 테스트</span></a></li>
+        <li><a class="row" href="#install"><b>91,449</b><span>자동화 테스트</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -207,6 +207,21 @@
           <li><b>노트북</b><span>마스크부터 회귀 분석까지 단계별 Jupyter 노트북이 저장소에 있습니다.</span></li>
           <li><b>Docker</b><span>GitHub Container Registry의 CPU 및 CUDA 이미지. <a href="#docker">Docker</a> 참조.</span></li>
         </ul>
+      </div>
+
+      <div id="hardware" class="ov-block">
+        <h2>3D 렌더링</h2>
+        <p class="note">Make Masks의 True 3D 보기는 컴퓨터에서 작동하는 첫 번째 백엔드로, 나열된 순서대로 그립니다.</p>
+        <table class="hw">
+          <colgroup><col class="hw-os"><col></colgroup>
+          <thead><tr><th scope="col">플랫폼</th><th scope="col">True 3D 보기</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Linux</th><td>Vulkan (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">Windows</th><td>Vulkan 또는 Direct3D 12 (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">macOS</th><td>Metal (wgpu) / OpenGL / CPU</td></tr>
+          </tbody>
+        </table>
+        <p class="note hw-note">wgpu는 Python 3.10 이상에서 Windows(x64, arm64), macOS(Intel, Apple silicon), Linux(x86_64, aarch64, glibc 2.28 이상)에 기본으로 설치됩니다. Python 3.9, 기타 프로세서, 오래된 Linux, wgpu 없이 설치한 경우에는 OpenGL로, 그렇지 않으면 CPU로 그립니다.</p>
       </div>
 
       <div id="learn" class="ov-block">
@@ -474,7 +489,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=770db8dc7f">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=6c312bb7a4">
         <h3 id="ols-volcano-title">플레이트 네 장 전체: spaCR OLS 회귀 분석의 유전자 효과</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">회귀 분석 결과를 불러오는 중…</p>

@@ -7,9 +7,9 @@
 <script>(function(){var d=document.documentElement,t=null,p=null,f=null;try{t=localStorage.getItem("theme");p=localStorage.getItem("fx-paused");f=localStorage.getItem("fx-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t);d.classList.add("js");if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("no-motion");if(p==="1")d.classList.add("fx-paused");d.setAttribute("data-fx",f&&/^[a-z_]{1,24}$/.test(f)?f:"field");})();</script>
 <link rel="preload" href="/assets/fonts/open-sans-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=770db8dc7f">
+<link rel="stylesheet" href="/assets/css/site.css?v=6c312bb7a4">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/assets/js/fx.js?v=770db8dc7f" defer></script>
+<script src="/assets/js/fx.js?v=6c312bb7a4" defer></script>
 <link rel="alternate" hreflang="en" href="https://einarolafsson.github.io/projects/spacr/">
 <link rel="alternate" hreflang="de" href="https://einarolafsson.github.io/projects/spacr/de/">
 <link rel="alternate" hreflang="es" href="https://einarolafsson.github.io/projects/spacr/es/">
@@ -25,8 +25,8 @@
 
 <title>spaCR: spatial fenotypanalys av CRISPR-Cas9-screener</title>
 <meta name="description" content="spaCR 1.5.1.4: segmentering, mätning av enskilda celler, klassificering, streckkodsmappning och regression för bildbaserade poolade CRISPR-screener. Arbetsflöde, publicerade modeller, screenresultat, artiklar och installation.">
-<script type="module" src="/assets/js/mask-generator.js?v=770db8dc7f"></script>
-<script src="/assets/js/volcano.js?v=770db8dc7f" defer></script>
+<script type="module" src="/assets/js/mask-generator.js?v=6c312bb7a4"></script>
+<script src="/assets/js/volcano.js?v=6c312bb7a4" defer></script>
 </head>
 <body data-page="spacr">
 <a class="skip" href="#main">Hoppa till innehållet</a>
@@ -144,7 +144,7 @@
         <li><a class="row" href="#screen"><b>4</b><span>analyserade screenplattor</span></a></li>
         <li><a class="row" href="#learn"><b>84</b><span>lektioner i handledningar</span></a></li>
         <li><a class="row" href="#learn"><b>10</b><span>gränssnittsspråk</span></a></li>
-        <li><a class="row" href="#install"><b>91,401</b><span>automatiska tester</span></a></li>
+        <li><a class="row" href="#install"><b>91,449</b><span>automatiska tester</span></a></li>
       </ul>
 
       <div class="ov-block">
@@ -207,6 +207,21 @@
           <li><b>Notebooks</b><span>Jupyter-notebooks för varje steg, från masker till regression, i kodförrådet.</span></li>
           <li><b>Docker</b><span>CPU- och CUDA-avbildningar i GitHub Container Registry. Se <a href="#docker">Docker</a>.</span></li>
         </ul>
+      </div>
+
+      <div id="hardware" class="ov-block">
+        <h2>3D-rendering</h2>
+        <p class="note">Vyn True 3D i Make Masks ritar med den första bakänden som fungerar på datorn, i den ordning som anges.</p>
+        <table class="hw">
+          <colgroup><col class="hw-os"><col></colgroup>
+          <thead><tr><th scope="col">Plattform</th><th scope="col">Vyn True 3D</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Linux</th><td>Vulkan (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">Windows</th><td>Vulkan eller Direct3D 12 (wgpu) / OpenGL / CPU</td></tr>
+            <tr><th scope="row">macOS</th><td>Metal (wgpu) / OpenGL / CPU</td></tr>
+          </tbody>
+        </table>
+        <p class="note hw-note">wgpu installeras som standard med Python 3.10 eller senare på Windows (x64, arm64), macOS (Intel, Apple silicon) och Linux (x86_64, aarch64, glibc 2.28 eller senare). Python 3.9, andra processorer, äldre Linux och installationer utan wgpu ritar med OpenGL, annars på CPU:n.</p>
       </div>
 
       <div id="learn" class="ov-block">
@@ -474,7 +489,7 @@
       </figure>
         </div>
       </div>
-      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=770db8dc7f">
+      <figure class="volcano wide" id="ols-volcano" data-volcano="/assets/data/volcano.json?v=6c312bb7a4">
         <h3 id="ols-volcano-title">Alla fyra plattor: geneffekter från spaCR:s OLS-regression</h3>
         <div class="volcano-plot" role="region" aria-labelledby="ols-volcano-title" aria-describedby="ols-volcano-hint">
           <p class="volcano-status">Läser in regressionsresultaten…</p>
