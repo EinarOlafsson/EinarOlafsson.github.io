@@ -1,14 +1,14 @@
 {
   "spacr": {
-    "version": "1.5.1.5",
-    "release": "v1.5.1.5",
-    "assetsFingerprint": "2221c4ee92160b6a5b71483ab363e1b0800d653e9766068aaa5286a748ce5b39",
-    "versionDoi": "10.5281/zenodo.23488712",
+    "version": "1.5.1.6",
+    "release": "v1.5.1.6",
+    "assetsFingerprint": "e6876753c2e1a9895cc8da0b7582679c356cfc8ce340fa8714a4fcae2c53c7f4",
+    "versionDoi": "10.5281/zenodo.23768193",
     "conceptDoi": "10.5281/zenodo.21343316"
   },
   "parascape": {
     "version": "0.0.1.0"
   },
-  "built": "2026-10-25T11:33:25Z",
-  "trigger": "schedule"
+  "built": "2026-10-29T19:22:44Z",
+  "trigger": "push"
 }
