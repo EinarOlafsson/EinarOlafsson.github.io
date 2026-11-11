@@ -7,8 +7,8 @@
     "conceptDoi": "10.5281/zenodo.21343316"
   },
   "parascape": {
-    "version": "0.0.10.0"
+    "version": "0.0.11.0"
   },
-  "built": "2026-11-10T20:11:32Z",
-  "trigger": "push"
+  "built": "2026-11-11T06:43:11Z",
+  "trigger": "schedule"
 }
